@@ -1,0 +1,33 @@
+[gd_scene load_steps=2 format=3 uid="uid://dpqa70nf0h1ks"]
+
+[ext_resource type="Script" path="res://src/scripts/main_menu.gd" id="1_p8qpl"]
+
+[node name="Main-menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_p8qpl")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 363.0
+offset_top = 147.0
+offset_right = 817.0
+offset_bottom = 257.0
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 80
+text = "Project Kiwi"
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 541.0
+offset_top = 281.0
+offset_right = 619.0
+offset_bottom = 331.0
+theme_override_font_sizes/font_size = 30
+text = "Start"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
