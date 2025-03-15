@@ -34,6 +34,20 @@ offset_right = 1070.0
 offset_bottom = 573.0
 text = "Iniciar jogo"
 
+[node name="NameInputContainer" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 546.0
+offset_top = 376.0
+offset_right = 669.0
+offset_bottom = 416.0
+
+[node name="NameLabel" type="Label" parent="NameInputContainer"]
+layout_mode = 2
+text = "Name:"
+
+[node name="NameLineEdit" type="LineEdit" parent="NameInputContainer"]
+layout_mode = 2
+
 [connection signal="pressed" from="HBoxContainer/HostButton" to="." method="_on_host_button_pressed"]
 [connection signal="pressed" from="HBoxContainer/JoinButton" to="." method="_on_join_button_pressed"]
 [connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]
