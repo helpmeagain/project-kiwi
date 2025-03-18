@@ -12,14 +12,24 @@ grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_i27j4")
 
+[node name="PlayerListBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+offset_top = 27.0
+offset_right = 309.0
+offset_bottom = 27.0
+size_flags_horizontal = 3
+theme_override_constants/separation = 10
+alignment = 1
+
 [node name="PlayerInformationTable" type="VBoxContainer" parent="."]
 layout_mode = 0
 offset_right = 309.0
 offset_bottom = 639.0
+theme_override_constants/separation = 10
 
 [node name="HeaderBoxContainer" type="HBoxContainer" parent="PlayerInformationTable"]
 layout_mode = 2
-theme_override_constants/separation = 10
+theme_override_constants/separation = 50
 alignment = 1
 
 [node name="NameTableHeader" type="Label" parent="PlayerInformationTable/HeaderBoxContainer"]
@@ -27,18 +37,23 @@ custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 text = "Name"
 horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="ScoreTableHeader" type="Label" parent="PlayerInformationTable/HeaderBoxContainer"]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 text = "Score"
 horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="ScrollContainer" type="ScrollContainer" parent="PlayerInformationTable"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="PlayerListBoxContainer" type="VBoxContainer" parent="PlayerInformationTable/ScrollContainer"]
+[node name="PlayerListGridContainer" type="GridContainer" parent="PlayerInformationTable/ScrollContainer"]
 layout_mode = 2
+size_flags_horizontal = 3
 size_flags_vertical = 3
-theme_override_constants/separation = 10
+theme_override_constants/h_separation = 10
+theme_override_constants/v_separation = 10
+columns = 2
