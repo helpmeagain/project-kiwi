@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://di7wgqh7vibe7"]
+[gd_scene load_steps=3 format=3 uid="uid://di7wgqh7vibe7"]
 
 [ext_resource type="Script" uid="uid://ukpnntfs15i0" path="res://src/scripts/questions.gd" id="1_23wpu"]
+[ext_resource type="PackedScene" uid="uid://kvuciea6od6m" path="res://src/scenes/player-score.tscn" id="2_p75t1"]
 
 [node name="Game-loop" type="Control"]
 layout_mode = 3
@@ -65,6 +66,9 @@ text = "3"
 layout_mode = 2
 theme_override_font_sizes/font_size = 40
 text = "4"
+
+[node name="Player-score" parent="." instance=ExtResource("2_p75t1")]
+layout_mode = 1
 
 [connection signal="timeout" from="ColorRect/ColorTimer" to="." method="_on_timer_timeout"]
 [connection signal="pressed" from="HBoxContainer/Button1" to="." method="_on_button_1_pressed"]

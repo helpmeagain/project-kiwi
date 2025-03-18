@@ -30,12 +30,14 @@ func start_game():
 	self.hide()
 
 @rpc("any_peer")
-func send_player_information(name, id):
+func send_player_information(player_name, id):
 	if (!MultiplayerPlayerManager.players.has(id)):
 		MultiplayerPlayerManager.players[id] = {
-			"name": name,
-			"id": id
+			"name": player_name,
+			"id": id,
+			"score": 0
 		}
+		print("[DEBUG] Jogador registrado:", player_name, "ID:", id)
 	if multiplayer.is_server():
 		for i in MultiplayerPlayerManager.players:
 			send_player_information.rpc(MultiplayerPlayerManager.players[i].name, i)
