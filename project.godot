@@ -14,3 +14,11 @@ config/name="Project Kiwi"
 run/main_scene="res://src/scenes/main-menu.tscn"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
+
+[autoload]
+
+MultiplayerPlayerManager="*res://src/scripts/multiplayer_player_manager.gd"
+
+[display]
+
+window/subwindows/embed_subwindows=false

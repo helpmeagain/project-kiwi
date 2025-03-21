@@ -20,9 +20,13 @@ func _on_button_pressed(button_number: int) -> void:
 		$ColorRect.color = Color.GREEN
 		$ScoreLabel.text = SCORE_TEXT + str(score)
 		choose_new_button()
+		if multiplayer.is_server():
+			MultiplayerPlayerManager.players[multiplayer.get_unique_id()]["score"] = score
+			MultiplayerPlayerManager.update_player_score.rpc(multiplayer.get_unique_id(), score)
+		else:
+			MultiplayerPlayerManager.request_update_score.rpc_id(1, multiplayer.get_unique_id(), score)
 	else:
 		$ColorRect.color = Color.RED
-	
 	$ColorRect/ColorTimer.start()
 
 func _on_timer_timeout() -> void:
