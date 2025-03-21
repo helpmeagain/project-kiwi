@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://di7wgqh7vibe7"]
 
 [ext_resource type="Script" uid="uid://ukpnntfs15i0" path="res://src/scripts/questions.gd" id="1_23wpu"]
-[ext_resource type="PackedScene" uid="uid://kvuciea6od6m" path="res://src/scenes/player-score.tscn" id="2_p75t1"]
+[ext_resource type="PackedScene" uid="uid://du6byd12byrk3" path="res://src/scenes/player-score.tscn" id="2_p75t1"]
 
 [node name="Game-loop" type="Control"]
 layout_mode = 3
@@ -13,6 +13,7 @@ grow_vertical = 2
 script = ExtResource("1_23wpu")
 
 [node name="Label" type="Label" parent="."]
+visible = false
 layout_mode = 0
 offset_left = 360.0
 offset_top = 203.0
@@ -30,6 +31,7 @@ offset_bottom = 143.0
 theme_override_font_sizes/font_size = 50
 
 [node name="ColorRect" type="ColorRect" parent="."]
+visible = false
 layout_mode = 0
 offset_left = 544.0
 offset_top = 288.0
@@ -41,6 +43,7 @@ wait_time = 0.5
 one_shot = true
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
+visible = false
 layout_mode = 0
 offset_left = 495.0
 offset_top = 348.0
