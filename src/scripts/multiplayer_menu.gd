@@ -38,7 +38,7 @@ func send_player_information(player_name, id):
 			"id": id,
 			"score": 0
 		}
-		print("[DEBUG] Jogador registrado:", player_name, "ID:", id)
+		print("[DEBUG] Jogador registrado: ", player_name, "; ID: ", id)
 	if multiplayer.is_server():
 		for i in MultiplayerPlayerManager.players:
 			send_player_information.rpc(MultiplayerPlayerManager.players[i].name, i)
@@ -46,13 +46,13 @@ func send_player_information(player_name, id):
 func show_error(message: String):
 	$Window.show()
 	$Window/HBoxContainer/WindowLabel.text = (message)
+	print("[DEBUG] " + message)
 
 func _on_host_button_pressed() -> void:
 	peer = ENetMultiplayerPeer.new()
 	var error = peer.create_server(port, 45)
 	if error != OK:
 		show_error("Cannot host: " + error_string(error))
-		print("[DEBUG] Cannot host: " + error_string(error))
 		return
 	# peer.get_host().compress(ENetConnection.COMPRESS_RANGE_CODER)
 	
@@ -64,14 +64,12 @@ func _on_join_button_pressed() -> void:
 	var player_name = $NameInputContainer/NameLineEdit.text
 	if player_name == "":
 		show_error("Invalid name: Empty" )
-		print("Invalid name: Empty")
 		return
 		
 	peer = ENetMultiplayerPeer.new()
 	var error = peer.create_client(address, port)
 	if error != OK:
 		show_error("Cannot join: " + error_string(error))
-		print("[DEBUG] Cannot join: " + error_string(error))
 		return
 	#peer.get_host().compress(ENetConnection.COMPRESS_RANGE_CODER)
 	
@@ -83,7 +81,6 @@ func _on_start_button_pressed() -> void:
 		start_game.rpc()
 	else:
 		show_error("Only host can start the game")
-		print("Only host can start the game")
 
 func _on_window_close_requested() -> void:
 	$Window.hide()
