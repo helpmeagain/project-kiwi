@@ -48,6 +48,40 @@ text = "Name:"
 [node name="NameLineEdit" type="LineEdit" parent="NameInputContainer"]
 layout_mode = 2
 
+[node name="Window" type="Window" parent="."]
+title = "Error"
+initial_position = 1
+size = Vector2i(350, 100)
+visible = false
+unresizable = true
+popup_window = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Window"]
+offset_right = 399.0
+offset_bottom = 110.0
+scale = Vector2(0.88, 0.92)
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 50
+alignment = 1
+
+[node name="Warning" type="Label" parent="Window/HBoxContainer"]
+custom_minimum_size = Vector2(30, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.425788, 0.357085, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 70
+text = "!"
+
+[node name="WindowLabel" type="Label" parent="Window/HBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 15
+text = "Generic error message"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [connection signal="pressed" from="HBoxContainer/HostButton" to="." method="_on_host_button_pressed"]
 [connection signal="pressed" from="HBoxContainer/JoinButton" to="." method="_on_join_button_pressed"]
 [connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="close_requested" from="Window" to="." method="_on_window_close_requested"]

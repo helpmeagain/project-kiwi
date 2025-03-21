@@ -8,13 +8,14 @@ func _ready() -> void:
 	multiplayer.peer_connected.connect(player_connected)
 	multiplayer.peer_disconnected.connect(player_disconnected)
 	multiplayer.connected_to_server.connect(player_connected_to_server)
-	multiplayer.connection_failed.connect(player_connected)
+	multiplayer.connection_failed.connect(player_connection_failed)
 
 func player_connected(id):
 	print("Player connected: " + str(id))
 
 func player_disconnected(id):
 	print("Player disconnected: " + str(id))
+	MultiplayerPlayerManager.players.erase(id)
 	
 func player_connected_to_server():
 	print("Connected to server")
@@ -41,12 +42,17 @@ func send_player_information(player_name, id):
 	if multiplayer.is_server():
 		for i in MultiplayerPlayerManager.players:
 			send_player_information.rpc(MultiplayerPlayerManager.players[i].name, i)
+			
+func show_error(message: String):
+	$Window.show()
+	$Window/HBoxContainer/WindowLabel.text = (message)
 
 func _on_host_button_pressed() -> void:
 	peer = ENetMultiplayerPeer.new()
 	var error = peer.create_server(port, 45)
 	if error != OK:
-		print("Cannot host: " + error)
+		show_error("Cannot host: " + error_string(error))
+		print("[DEBUG] Cannot host: " + error_string(error))
 		return
 	# peer.get_host().compress(ENetConnection.COMPRESS_RANGE_CODER)
 	
@@ -55,9 +61,20 @@ func _on_host_button_pressed() -> void:
 	print("Waiting for players...")
 
 func _on_join_button_pressed() -> void:
+	var player_name = $NameInputContainer/NameLineEdit.text
+	if player_name == "":
+		show_error("Invalid name: Empty" )
+		print("Invalid name: Empty")
+		return
+		
 	peer = ENetMultiplayerPeer.new()
-	peer.create_client(address, port)
+	var error = peer.create_client(address, port)
+	if error != OK:
+		show_error("Cannot join: " + error_string(error))
+		print("[DEBUG] Cannot join: " + error_string(error))
+		return
 	#peer.get_host().compress(ENetConnection.COMPRESS_RANGE_CODER)
+	
 	multiplayer.set_multiplayer_peer(peer)
 	print("Joined game!")
 
@@ -65,4 +82,8 @@ func _on_start_button_pressed() -> void:
 	if multiplayer.is_server():
 		start_game.rpc()
 	else:
+		show_error("Only host can start the game")
 		print("Only host can start the game")
+
+func _on_window_close_requested() -> void:
+	$Window.hide()
