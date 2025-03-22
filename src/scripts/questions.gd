@@ -9,10 +9,10 @@ const EXERCISE_CONFIG = {
 #		"scene": "res://src/scenes/exercises/listen-then-type.tscn",
 #		"data_file": "listen_then_type.json"
 #	},
-#	"type_translation": {
-#		"scene": "res://src/scenes/exercises/type-the-sentence.tscn",
-#		"data_file": "type_the_sentence.json"
-#	}
+	"type_translation": {
+		"scene": "res://src/scenes/exercises/type-the-sentence.tscn",
+		"data_file": "type-the-sentence.json"
+	}
 }
 
 const SCORE_TEXT = "Score = "
