@@ -5,10 +5,10 @@ const EXERCISE_CONFIG = {
 		"scene": "res://src/scenes/exercises/fill-in-the-blank.tscn",
 		"data_file": "fill_in_the_blank.json"
 	},
-#	"listen_then_type": {
-#		"scene": "res://src/scenes/exercises/listen-then-type.tscn",
-#		"data_file": "listen_then_type.json"
-#	},
+	"listen_then_type": {
+		"scene": "res://src/scenes/exercises/listen-then-type.tscn",
+		"data_file": "listen-then-type.json"
+	},
 	"type_translation": {
 		"scene": "res://src/scenes/exercises/type-the-sentence.tscn",
 		"data_file": "type-the-sentence.json"

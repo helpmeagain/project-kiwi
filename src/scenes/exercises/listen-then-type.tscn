@@ -1,0 +1,38 @@
+[gd_scene load_steps=2 format=3 uid="uid://ruhev3rtubde"]
+
+[ext_resource type="Script" uid="uid://dmb6y0sqc8yh6" path="res://src/scripts/exercises/listen_then_type.gd" id="1_bxyf1"]
+
+[node name="Listen-then-type" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_bxyf1")
+
+[node name="ListenButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 539.0
+offset_top = 283.0
+offset_right = 603.0
+offset_bottom = 314.0
+text = "Listen"
+
+[node name="LineEdit" type="LineEdit" parent="."]
+layout_mode = 0
+offset_left = 262.0
+offset_top = 332.0
+offset_right = 890.0
+offset_bottom = 487.0
+
+[node name="SubmitButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 822.0
+offset_top = 512.0
+offset_right = 885.0
+offset_bottom = 543.0
+text = "Submit"
+
+[connection signal="pressed" from="ListenButton" to="." method="_on_listen_button_pressed"]
+[connection signal="pressed" from="SubmitButton" to="." method="_on_submit_button_pressed"]

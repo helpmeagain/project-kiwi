@@ -1,0 +1,14 @@
+[
+  {
+	"text_to_speech": "I went to the park yesterday.",
+	"correct_answers": ["I went to the park yesterday", "I went to the park yesterday."]
+  },
+  {
+	"text_to_speech": "She ate an apple for breakfast.",
+	"correct_answers": ["She ate an apple for breakfast", "She ate an apple for breakfast."]
+  },
+  {
+	"text_to_speech": "They played soccer last weekend.",
+	"correct_answers": ["They played soccer last weekend", "She ate an apple for breakfast."]
+  }
+]

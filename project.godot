@@ -15,6 +15,10 @@ run/main_scene="res://src/scenes/main-menu.tscn"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 
+[audio]
+
+general/text_to_speech=true
+
 [autoload]
 
 MultiplayerPlayerManager="*res://src/scripts/multiplayer_player_manager.gd"
