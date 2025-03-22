@@ -16,15 +16,24 @@ const EXERCISE_CONFIG = {
 }
 
 const SCORE_TEXT = "Score = "
+const MAX_QUESTIONS = 3
+
 var current_question: Node
 var score: int
+var question_count: int
 
 func _ready() -> void:
 	score = 0
+	question_count = 0
+	$QuestionCountLabel.text = str(question_count) + "/" + str(MAX_QUESTIONS)
 	$ScoreLabel.text = SCORE_TEXT + str(score)
 	load_random_question()
 
 func load_random_question() -> void:
+	if question_count >= MAX_QUESTIONS:
+		show_final_screen()
+		return
+	
 	if current_question:
 		current_question.queue_free()
 	
@@ -37,11 +46,22 @@ func load_random_question() -> void:
 	add_child(scene)
 	
 	current_question = scene
+	question_count += 1
+	$QuestionCountLabel.text = str(question_count) + "/" + str(MAX_QUESTIONS)
 	
 	if current_question.has_signal("answer_correct"):
 		current_question.connect("answer_correct", _on_answer_correct)
 	if current_question.has_signal("answer_wrong"):
 		current_question.connect("answer_wrong", _on_answer_wrong)
+		
+func show_final_screen() -> void:
+	$FinalLabel.text = "Game over! Score: " + str(score)
+	$FinalLabel.show()
+	$ScoreLabel.hide()
+	$QuestionCountLabel.hide()
+	$"Player-score".set_position(Vector2(450, 200))
+	if current_question:
+		current_question.queue_free()
 
 func _on_answer_correct() -> void:
 	score += 1
