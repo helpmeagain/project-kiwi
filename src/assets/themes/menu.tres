@@ -1,7 +1,9 @@
-[gd_resource type="Theme" load_steps=8 format=3 uid="uid://ch3x2byuiyaxy"]
+[gd_resource type="Theme" load_steps=17 format=3 uid="uid://ch3x2byuiyaxy"]
 
 [ext_resource type="FontFile" uid="uid://cli8gbn14umcl" path="res://src/assets/fonts/Abaddon Light.ttf" id="1_dj8sl"]
 [ext_resource type="Texture2D" uid="uid://bdkjmrtjyx13x" path="res://src/assets/sprites/GUI.png" id="2_3833v"]
+[ext_resource type="FontFile" uid="uid://cxsv026so27q8" path="res://src/assets/fonts/Ruler 9.ttf" id="3_78nn6"]
+[ext_resource type="Texture2D" uid="uid://b1w8js2q0pujp" path="res://src/assets/sprites/UI books & more.png" id="3_3833v"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_dj8sl"]
 texture = ExtResource("2_3833v")
@@ -16,26 +18,7 @@ expand_margin_bottom = 4.0
 region_rect = Rect2(145, 113, 46, 14)
 modulate_color = Color(0.945098, 0.564706, 0.392157, 1)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7vigk"]
-content_margin_left = 4.0
-content_margin_top = 4.0
-content_margin_right = 4.0
-content_margin_bottom = 4.0
-bg_color = Color(1, 1, 1, 0.75)
-draw_center = false
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-corner_radius_top_left = 3
-corner_radius_top_right = 3
-corner_radius_bottom_right = 3
-corner_radius_bottom_left = 3
-corner_detail = 5
-expand_margin_left = 2.0
-expand_margin_top = 2.0
-expand_margin_right = 2.0
-expand_margin_bottom = 2.0
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_dj8sl"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_78nn6"]
 texture = ExtResource("2_3833v")
@@ -76,6 +59,73 @@ expand_margin_bottom = 4.0
 region_rect = Rect2(145, 98, 46, 13)
 modulate_color = Color(0.945098, 0.564706, 0.392157, 1)
 
+[sub_resource type="Image" id="Image_dj8sl"]
+data = {
+"data": PackedByteArray(180, 180, 180, 0, 180, 180, 180, 0, 180, 180, 180, 0, 180, 180, 180, 0, 180, 180, 180, 0, 180, 180, 180, 0, 180, 180, 180, 0, 180, 180, 180, 0, 180, 180, 180, 0, 180, 180, 180, 0, 180, 180, 180, 0, 180, 180, 180, 0, 180, 180, 180, 0, 180, 180, 180, 0, 180, 180, 180, 0, 180, 180, 180, 0, 180, 180, 180, 0, 180, 180, 180, 0, 180, 180, 180, 0, 180, 180, 180, 19, 180, 180, 180, 19, 180, 180, 180, 0, 180, 180, 180, 0, 180, 180, 180, 0, 180, 180, 180, 0, 180, 180, 180, 0, 180, 180, 180, 19, 180, 180, 180, 64, 180, 180, 180, 64, 180, 180, 180, 19, 180, 180, 180, 0, 180, 180, 180, 0, 180, 180, 180, 0, 180, 180, 180, 0, 180, 180, 180, 19, 180, 180, 180, 64, 180, 180, 180, 64, 180, 180, 180, 19, 180, 180, 180, 0, 180, 180, 180, 0, 180, 180, 180, 0, 180, 180, 180, 0, 180, 180, 180, 0, 180, 180, 180, 19, 180, 180, 180, 19, 180, 180, 180, 0, 180, 180, 180, 0, 180, 180, 180, 0, 180, 180, 180, 0, 180, 180, 180, 0, 180, 180, 180, 0, 180, 180, 180, 0, 180, 180, 180, 0, 180, 180, 180, 0, 180, 180, 180, 0, 180, 180, 180, 0, 180, 180, 180, 0, 180, 180, 180, 0, 180, 180, 180, 0, 180, 180, 180, 0, 180, 180, 180, 0, 180, 180, 180, 0, 180, 180, 180, 0, 180, 180, 180, 0),
+"format": "RGBA8",
+"height": 8,
+"mipmaps": false,
+"width": 8
+}
+
+[sub_resource type="ImageTexture" id="ImageTexture_3833v"]
+image = SubResource("Image_dj8sl")
+
+[sub_resource type="Image" id="Image_78nn6"]
+data = {
+"data": PackedByteArray(179, 179, 179, 47, 179, 179, 179, 50, 179, 179, 179, 6, 175, 175, 175, 0, 180, 180, 180, 0, 180, 180, 180, 0, 180, 180, 180, 64, 180, 180, 180, 64, 177, 177, 177, 49, 180, 180, 180, 64, 175, 175, 175, 54, 175, 175, 175, 6, 175, 175, 175, 0, 180, 180, 180, 0, 180, 180, 180, 64, 180, 180, 180, 64, 177, 177, 177, 5, 177, 177, 177, 52, 180, 180, 180, 64, 175, 175, 175, 54, 175, 175, 175, 6, 180, 180, 180, 0, 180, 180, 180, 64, 180, 180, 180, 64, 177, 177, 177, 0, 177, 177, 177, 5, 177, 177, 177, 52, 180, 180, 180, 64, 179, 179, 179, 50, 179, 179, 179, 0, 180, 180, 180, 64, 180, 180, 180, 64, 178, 178, 178, 0, 178, 178, 178, 6, 178, 178, 178, 53, 180, 180, 180, 64, 177, 177, 177, 49, 177, 177, 177, 0, 180, 180, 180, 64, 180, 180, 180, 64, 178, 178, 178, 6, 178, 178, 178, 53, 180, 180, 180, 64, 178, 178, 178, 53, 177, 177, 177, 5, 180, 180, 180, 0, 180, 180, 180, 64, 180, 180, 180, 64, 181, 181, 181, 48, 180, 180, 180, 64, 178, 178, 178, 53, 178, 178, 178, 5, 178, 178, 178, 0, 180, 180, 180, 0, 180, 180, 180, 64, 180, 180, 180, 64, 181, 181, 181, 41, 181, 181, 181, 48, 178, 178, 178, 5, 178, 178, 178, 0, 180, 180, 180, 0, 180, 180, 180, 0, 180, 180, 180, 64, 180, 180, 180, 64),
+"format": "RGBA8",
+"height": 8,
+"mipmaps": false,
+"width": 8
+}
+
+[sub_resource type="ImageTexture" id="ImageTexture_wc8fi"]
+image = SubResource("Image_78nn6")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xuwqv"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(1, 1, 1, 0.75)
+draw_center = false
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+expand_margin_left = 2.0
+expand_margin_top = 2.0
+expand_margin_right = 2.0
+expand_margin_bottom = 2.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_0ayck"]
+content_margin_left = 91.0
+content_margin_top = 45.0
+content_margin_right = 10.0
+texture = ExtResource("3_3833v")
+region_rect = Rect2(512, 58, 47, 18)
+modulate_color = Color(0.99571, 0.931842, 0.882834, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3co8m"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.1, 0.1, 0.1, 0.3)
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 0.3)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
 [resource]
 default_font = ExtResource("1_dj8sl")
 Button/colors/font_color = Color(0.875, 0.875, 0.875, 1)
@@ -98,7 +148,30 @@ Button/constants/outline_size = 0
 Button/font_sizes/font_size = 30
 Button/fonts/font = ExtResource("1_dj8sl")
 Button/styles/disabled = SubResource("StyleBoxTexture_dj8sl")
-Button/styles/focus = SubResource("StyleBoxFlat_7vigk")
+Button/styles/focus = SubResource("StyleBoxEmpty_dj8sl")
 Button/styles/hover = SubResource("StyleBoxTexture_78nn6")
 Button/styles/normal = SubResource("StyleBoxTexture_gr6tg")
 Button/styles/pressed = SubResource("StyleBoxTexture_3833v")
+TextEdit/colors/background_color = Color(0, 0, 0, 0)
+TextEdit/colors/caret_background_color = Color(0, 0, 0, 1)
+TextEdit/colors/caret_color = Color(0.24357, 0.243569, 0.243569, 1)
+TextEdit/colors/current_line_color = Color(0.25, 0.25, 0.26, 0.8)
+TextEdit/colors/font_color = Color(0, 0, 0, 1)
+TextEdit/colors/font_outline_color = Color(0, 0, 0, 1)
+TextEdit/colors/font_placeholder_color = Color(0, 0, 0, 0.6)
+TextEdit/colors/font_readonly_color = Color(0.875, 0.875, 0.875, 0.5)
+TextEdit/colors/font_selected_color = Color(0, 0, 0, 0)
+TextEdit/colors/search_result_border_color = Color(0.3, 0.3, 0.3, 0.4)
+TextEdit/colors/search_result_color = Color(0.3, 0.3, 0.3, 1)
+TextEdit/colors/selection_color = Color(0.5, 0.5, 0.5, 1)
+TextEdit/colors/word_highlighted_color = Color(0.5, 0.5, 0.5, 0.25)
+TextEdit/constants/caret_width = 1
+TextEdit/constants/line_spacing = 3
+TextEdit/constants/outline_size = 0
+TextEdit/font_sizes/font_size = 30
+TextEdit/fonts/font = ExtResource("3_78nn6")
+TextEdit/icons/space = SubResource("ImageTexture_3833v")
+TextEdit/icons/tab = SubResource("ImageTexture_wc8fi")
+TextEdit/styles/focus = SubResource("StyleBoxFlat_xuwqv")
+TextEdit/styles/normal = SubResource("StyleBoxTexture_0ayck")
+TextEdit/styles/read_only = SubResource("StyleBoxFlat_3co8m")

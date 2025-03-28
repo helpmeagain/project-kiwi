@@ -1,6 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://ruhev3rtubde"]
+[gd_scene load_steps=5 format=3 uid="uid://ruhev3rtubde"]
 
 [ext_resource type="Script" uid="uid://dmb6y0sqc8yh6" path="res://src/scripts/exercises/listen_then_type.gd" id="1_bxyf1"]
+[ext_resource type="Texture2D" uid="uid://bwv6i8vk7jveh" path="res://src/assets/sprites/Speaker-0.png" id="2_ilmrf"]
+[ext_resource type="Theme" uid="uid://drabaa7jfibga" path="res://src/assets/themes/small_button.tres" id="2_kykqa"]
+[ext_resource type="Theme" uid="uid://ch3x2byuiyaxy" path="res://src/assets/themes/menu.tres" id="4_5gkyq"]
 
 [node name="Listen-then-type" type="Control"]
 layout_mode = 3
@@ -12,26 +15,53 @@ grow_vertical = 2
 script = ExtResource("1_bxyf1")
 
 [node name="ListenButton" type="Button" parent="."]
-layout_mode = 0
-offset_left = 539.0
-offset_top = 283.0
-offset_right = 603.0
-offset_bottom = 314.0
-text = "Listen"
+texture_filter = 3
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.515
+anchor_top = 0.264
+anchor_right = 0.515
+anchor_bottom = 0.264
+offset_left = -27.28
+offset_top = -27.072
+offset_right = 120.72
+offset_bottom = 120.928
+scale = Vector2(0.365351, 0.365351)
+theme = ExtResource("2_kykqa")
+icon = ExtResource("2_ilmrf")
+icon_alignment = 1
+expand_icon = true
 
-[node name="LineEdit" type="LineEdit" parent="."]
-layout_mode = 0
-offset_left = 262.0
-offset_top = 332.0
-offset_right = 890.0
-offset_bottom = 487.0
+[node name="TextEdit" type="TextEdit" parent="."]
+texture_filter = 3
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -234.0
+offset_top = -75.5
+offset_right = 234.0
+offset_bottom = 75.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("4_5gkyq")
+placeholder_text = "Insert what you heard..."
+wrap_mode = 1
 
 [node name="SubmitButton" type="Button" parent="."]
-layout_mode = 0
-offset_left = 822.0
-offset_top = 512.0
-offset_right = 885.0
-offset_bottom = 543.0
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.66
+anchor_top = 0.68
+anchor_right = 0.66
+anchor_bottom = 0.68
+offset_left = -49.32
+offset_top = -19.64
+offset_right = 49.68
+offset_bottom = 19.36
+theme = ExtResource("4_5gkyq")
 text = "Submit"
 
 [connection signal="pressed" from="ListenButton" to="." method="_on_listen_button_pressed"]

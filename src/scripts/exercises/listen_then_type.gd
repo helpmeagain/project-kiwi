@@ -34,7 +34,7 @@ func _on_listen_button_pressed() -> void:
 	DisplayServer.tts_speak(text_to_speech, voice_id)
 
 func _on_submit_button_pressed() -> void:
-	var user_answer = $LineEdit.text
+	var user_answer = $TextEdit.text
 	
 	if validate_answer(user_answer):
 		emit_signal("answer_correct")
