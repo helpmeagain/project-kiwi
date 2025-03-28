@@ -1,0 +1,38 @@
+[gd_scene load_steps=2 format=3 uid="uid://dimpdspk1a87n"]
+
+[ext_resource type="Script" uid="uid://dodn146wo7q7b" path="res://src/scripts/exercises/type_the_sentence.gd" id="1_375r2"]
+
+[node name="Type-the-sentence" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_375r2")
+
+[node name="OriginalTextLabel" type="Label" parent="."]
+layout_mode = 0
+offset_left = 178.0
+offset_top = 223.0
+offset_right = 432.0
+offset_bottom = 265.0
+theme_override_font_sizes/font_size = 30
+text = "Generic question"
+
+[node name="LineEdit" type="LineEdit" parent="."]
+layout_mode = 0
+offset_left = 171.0
+offset_top = 316.0
+offset_right = 1001.0
+offset_bottom = 484.0
+
+[node name="SubmitButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 932.0
+offset_top = 514.0
+offset_right = 995.0
+offset_bottom = 545.0
+text = "Submit"
+
+[connection signal="pressed" from="SubmitButton" to="." method="_on_submit_button_pressed"]

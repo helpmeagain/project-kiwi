@@ -1,0 +1,14 @@
+[
+  {
+	"original": "Eu sou Maria",
+	"correct_answers": ["I'm Maria", "I am Maria"]
+  },
+  {
+	"original": "Como você está?",
+	"correct_answers": ["How are you?", "How're you?", "How are you doing?"]
+  },
+  {
+	"original": "Eu tenho um cachorro",
+	"correct_answers": ["I have a dog", "I've got a dog"]
+  }
+]
