@@ -1,45 +1,62 @@
-[gd_scene load_steps=2 format=3 uid="uid://ximeayqp0acg"]
+[gd_scene load_steps=7 format=3 uid="uid://ximeayqp0acg"]
 
 [ext_resource type="Script" uid="uid://v8yuvv247t1q" path="res://src/scripts/multiplayer_menu.gd" id="1_3ekof"]
+[ext_resource type="Theme" uid="uid://ch3x2byuiyaxy" path="res://src/assets/themes/menu.tres" id="2_8ki7d"]
+[ext_resource type="Theme" uid="uid://drabaa7jfibga" path="res://src/assets/themes/small_button.tres" id="2_kfv4g"]
+[ext_resource type="Texture2D" uid="uid://c4ucb36ohohp3" path="res://src/assets/sprites/Left-Arrow.png" id="3_8ki7d"]
+[ext_resource type="Texture2D" uid="uid://h5nmdd2tq5yt" path="res://src/assets/sprites/Person.png" id="3_bv6g3"]
+[ext_resource type="Texture2D" uid="uid://cejxfhqi5mryk" path="res://src/assets/sprites/People.png" id="4_yh32n"]
 
 [node name="Multiplayer-menu" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 21.0
+offset_top = 1.0
+offset_right = 21.0
+offset_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_3ekof")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
-layout_mode = 0
-offset_left = 460.0
-offset_top = 314.0
-offset_right = 744.0
-offset_bottom = 354.0
+texture_filter = 3
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -363.0
+offset_top = -74.0
+offset_right = 363.0
+offset_bottom = 74.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_8ki7d")
+theme_override_constants/separation = 50
 
 [node name="HostButton" type="Button" parent="HBoxContainer"]
 layout_mode = 2
-text = "Criar uma sala"
+text = "I'm a teacher!
+(Create a room)"
+icon = ExtResource("3_bv6g3")
 
 [node name="JoinButton" type="Button" parent="HBoxContainer"]
+texture_filter = 3
 layout_mode = 2
-text = "Entrar em uma sala"
-
-[node name="StartButton" type="Button" parent="."]
-layout_mode = 0
-offset_left = 976.0
-offset_top = 542.0
-offset_right = 1070.0
-offset_bottom = 573.0
-text = "Iniciar jogo"
+theme = ExtResource("2_8ki7d")
+text = "I'm a student!
+(Join a room)"
+icon = ExtResource("4_yh32n")
 
 [node name="NameInputContainer" type="HBoxContainer" parent="."]
 layout_mode = 0
-offset_left = 546.0
-offset_top = 376.0
-offset_right = 669.0
-offset_bottom = 416.0
+offset_left = 605.0
+offset_top = 417.0
+offset_right = 940.0
+offset_bottom = 457.0
 
 [node name="NameLabel" type="Label" parent="NameInputContainer"]
 layout_mode = 2
@@ -47,6 +64,22 @@ text = "Name:"
 
 [node name="NameLineEdit" type="LineEdit" parent="NameInputContainer"]
 layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "Insert your name"
+
+[node name="StartButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.882
+anchor_top = 0.9
+anchor_right = 0.882
+anchor_bottom = 0.9
+offset_left = -73.064
+offset_top = -19.2
+offset_right = 73.936
+offset_bottom = 19.8
+theme = ExtResource("2_8ki7d")
+text = "Start game"
 
 [node name="Window" type="Window" parent="."]
 title = "Error"
@@ -81,7 +114,25 @@ text = "Generic error message"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="BackButton" type="Button" parent="."]
+texture_filter = 3
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.018
+anchor_top = 0.05
+anchor_right = -0.018
+anchor_bottom = 0.05
+offset_left = 23.736
+offset_top = -11.4
+offset_right = 171.736
+offset_bottom = 136.6
+scale = Vector2(0.221184, 0.221184)
+theme = ExtResource("2_kfv4g")
+icon = ExtResource("3_8ki7d")
+icon_alignment = 1
+
 [connection signal="pressed" from="HBoxContainer/HostButton" to="." method="_on_host_button_pressed"]
 [connection signal="pressed" from="HBoxContainer/JoinButton" to="." method="_on_join_button_pressed"]
 [connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]
 [connection signal="close_requested" from="Window" to="." method="_on_window_close_requested"]
+[connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]
