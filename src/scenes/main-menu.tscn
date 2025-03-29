@@ -1,6 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://dpqa70nf0h1ks"]
+[gd_scene load_steps=5 format=3 uid="uid://dpqa70nf0h1ks"]
 
 [ext_resource type="Script" uid="uid://lbcydatsm6xt" path="res://src/scripts/main_menu.gd" id="1_p8qpl"]
+[ext_resource type="FontFile" uid="uid://bmvtmpvoy1cwt" path="res://src/assets/fonts/editundo.ttf" id="2_hsqdw"]
+[ext_resource type="Theme" uid="uid://ch3x2byuiyaxy" path="res://src/assets/themes/menu.tres" id="3_hsqdw"]
+[ext_resource type="Texture2D" uid="uid://cegrq42735jks" path="res://src/assets/images/computer_room.jpg" id="4_0vgna"]
 
 [node name="Main-menu" type="Control"]
 layout_mode = 3
@@ -11,23 +14,78 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_p8qpl")
 
-[node name="Label" type="Label" parent="."]
-layout_mode = 0
-offset_left = 363.0
-offset_top = 147.0
-offset_right = 817.0
-offset_bottom = 257.0
-theme_override_constants/outline_size = 10
-theme_override_font_sizes/font_size = 80
+[node name="TextureRect" type="TextureRect" parent="."]
+modulate = Color(0.229112, 0.229112, 0.229112, 0.996078)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -638.0
+offset_top = -412.0
+offset_right = 3362.0
+offset_bottom = 2588.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.316815, 0.270733)
+texture = ExtResource("4_0vgna")
+
+[node name="LabelAndButtonsContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -337.0
+offset_top = -318.5
+offset_right = 337.0
+offset_bottom = 318.5
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="MainTitle" type="Label" parent="LabelAndButtonsContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.215686, 0.14902, 0.156863, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 8
+theme_override_fonts/font = ExtResource("2_hsqdw")
+theme_override_font_sizes/font_size = 120
 text = "Project Kiwi"
+horizontal_alignment = 1
 
-[node name="Button" type="Button" parent="."]
-layout_mode = 0
-offset_left = 541.0
-offset_top = 281.0
-offset_right = 619.0
-offset_bottom = 331.0
-theme_override_font_sizes/font_size = 30
-text = "Start"
+[node name="ButtonsContainer" type="VBoxContainer" parent="LabelAndButtonsContainer"]
+texture_filter = 3
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("3_hsqdw")
+theme_override_constants/separation = 10
 
-[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[node name="SingleplayerButton" type="Button" parent="LabelAndButtonsContainer/ButtonsContainer"]
+layout_mode = 2
+disabled = true
+text = "Singleplayer"
+
+[node name="MultiplayerButton" type="Button" parent="LabelAndButtonsContainer/ButtonsContainer"]
+layout_mode = 2
+text = "Multiplayer"
+
+[node name="HowToPlayButton" type="Button" parent="LabelAndButtonsContainer/ButtonsContainer"]
+layout_mode = 2
+disabled = true
+text = "How to play"
+
+[node name="AboutButton" type="Button" parent="LabelAndButtonsContainer/ButtonsContainer"]
+layout_mode = 2
+disabled = true
+text = "About"
+
+[node name="ExitButton" type="Button" parent="LabelAndButtonsContainer/ButtonsContainer"]
+layout_mode = 2
+text = "Exit"
+
+[connection signal="pressed" from="LabelAndButtonsContainer/ButtonsContainer/MultiplayerButton" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="LabelAndButtonsContainer/ButtonsContainer/ExitButton" to="." method="_on_exit_button_pressed"]

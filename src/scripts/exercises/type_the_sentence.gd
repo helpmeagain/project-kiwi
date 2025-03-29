@@ -20,7 +20,7 @@ func load_new_question() -> void:
 
 func setup_question_display() -> void:
 	$OriginalTextLabel.text = current_question.original 
-	$LineEdit.text = ""
+	$TextEdit.text = ""
 
 func validate_answer(answer: String) -> bool:
 	var normalized_answer = answer.to_lower().strip_edges()
@@ -32,7 +32,7 @@ func validate_answer(answer: String) -> bool:
 	return false
 
 func _on_submit_button_pressed() -> void:
-	var user_answer = $LineEdit.text
+	var user_answer = $TextEdit.text
 	
 	if validate_answer(user_answer):
 		emit_signal("answer_correct")

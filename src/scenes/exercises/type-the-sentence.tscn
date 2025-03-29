@@ -1,6 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://dimpdspk1a87n"]
+[gd_scene load_steps=4 format=3 uid="uid://dimpdspk1a87n"]
 
 [ext_resource type="Script" uid="uid://dodn146wo7q7b" path="res://src/scripts/exercises/type_the_sentence.gd" id="1_375r2"]
+[ext_resource type="Theme" uid="uid://ch3x2byuiyaxy" path="res://src/assets/themes/menu.tres" id="2_8cqk6"]
+[ext_resource type="FontFile" uid="uid://cxsv026so27q8" path="res://src/assets/fonts/Ruler 9.ttf" id="2_40d4m"]
 
 [node name="Type-the-sentence" type="Control"]
 layout_mode = 3
@@ -12,27 +14,55 @@ grow_vertical = 2
 script = ExtResource("1_375r2")
 
 [node name="OriginalTextLabel" type="Label" parent="."]
-layout_mode = 0
-offset_left = 178.0
-offset_top = 223.0
-offset_right = 432.0
-offset_bottom = 265.0
-theme_override_font_sizes/font_size = 30
+texture_filter = 3
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.51
+anchor_top = 0.282
+anchor_right = 0.51
+anchor_bottom = 0.282
+offset_left = -371.52
+offset_top = -23.736
+offset_right = 361.48
+offset_bottom = 18.264
+pivot_offset = Vector2(128, 23)
+theme_override_fonts/font = ExtResource("2_40d4m")
+theme_override_font_sizes/font_size = 60
 text = "Generic question"
-
-[node name="LineEdit" type="LineEdit" parent="."]
-layout_mode = 0
-offset_left = 171.0
-offset_top = 316.0
-offset_right = 1001.0
-offset_bottom = 484.0
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
 
 [node name="SubmitButton" type="Button" parent="."]
-layout_mode = 0
-offset_left = 932.0
-offset_top = 514.0
-offset_right = 995.0
-offset_bottom = 545.0
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.666
+anchor_top = 0.704
+anchor_right = 0.666
+anchor_bottom = 0.704
+offset_left = -42.232
+offset_top = -19.192
+offset_right = 42.768
+offset_bottom = 19.808
+theme = ExtResource("2_8cqk6")
 text = "Submit"
+
+[node name="TextEdit" type="TextEdit" parent="."]
+texture_filter = 3
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -234.0
+offset_top = -75.5
+offset_right = 234.0
+offset_bottom = 75.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_8cqk6")
+placeholder_text = "Insert the translation..."
+wrap_mode = 1
 
 [connection signal="pressed" from="SubmitButton" to="." method="_on_submit_button_pressed"]

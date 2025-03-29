@@ -1,6 +1,14 @@
-[gd_scene load_steps=2 format=3 uid="uid://du6byd12byrk3"]
+[gd_scene load_steps=4 format=3 uid="uid://du6byd12byrk3"]
 
 [ext_resource type="Script" uid="uid://dsgx3u0u5ogai" path="res://src/scripts/player_score.gd" id="1_i27j4"]
+[ext_resource type="Theme" uid="uid://ch3x2byuiyaxy" path="res://src/assets/themes/menu.tres" id="2_tuitj"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tuitj"]
+bg_color = Color(0.28614, 0.115595, 0.00171093, 0.611765)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
 
 [node name="Player-score" type="Control"]
 layout_mode = 3
@@ -12,45 +20,48 @@ grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_i27j4")
 
-[node name="PlayerListBoxContainer" type="VBoxContainer" parent="."]
-layout_mode = 2
-offset_top = 27.0
-offset_right = 309.0
-offset_bottom = 27.0
-size_flags_horizontal = 3
-theme_override_constants/separation = 10
-alignment = 1
-
-[node name="PlayerInformationTable" type="VBoxContainer" parent="."]
+[node name="Panel" type="Panel" parent="."]
 layout_mode = 0
-offset_right = 309.0
-offset_bottom = 639.0
+offset_right = 305.0
+offset_bottom = 348.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_tuitj")
+
+[node name="PlayerInformationTable" type="VBoxContainer" parent="Panel"]
+layout_mode = 0
+offset_top = 7.0
+offset_right = 304.0
+offset_bottom = 344.0
+theme = ExtResource("2_tuitj")
 theme_override_constants/separation = 10
 
-[node name="HeaderBoxContainer" type="HBoxContainer" parent="PlayerInformationTable"]
+[node name="HeaderBoxContainer" type="HBoxContainer" parent="Panel/PlayerInformationTable"]
 layout_mode = 2
 theme_override_constants/separation = 50
 alignment = 1
 
-[node name="NameTableHeader" type="Label" parent="PlayerInformationTable/HeaderBoxContainer"]
+[node name="NameTableHeader" type="Label" parent="Panel/PlayerInformationTable/HeaderBoxContainer"]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 20
 text = "Name"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ScoreTableHeader" type="Label" parent="PlayerInformationTable/HeaderBoxContainer"]
+[node name="ScoreTableHeader" type="Label" parent="Panel/PlayerInformationTable/HeaderBoxContainer"]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 20
 text = "Score"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ScrollContainer" type="ScrollContainer" parent="PlayerInformationTable"]
+[node name="ScrollContainer" type="ScrollContainer" parent="Panel/PlayerInformationTable"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="PlayerListGridContainer" type="GridContainer" parent="PlayerInformationTable/ScrollContainer"]
+[node name="PlayerListGridContainer" type="GridContainer" parent="Panel/PlayerInformationTable/ScrollContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3

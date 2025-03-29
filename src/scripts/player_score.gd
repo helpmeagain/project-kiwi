@@ -1,6 +1,6 @@
 extends Control
 
-@onready var player_list = $PlayerInformationTable/ScrollContainer/PlayerListGridContainer
+@onready var player_list = $Panel/PlayerInformationTable/ScrollContainer/PlayerListGridContainer
 
 func _ready():
 	MultiplayerPlayerManager.scores_updated.connect(update_player_list)

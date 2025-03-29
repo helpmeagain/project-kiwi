@@ -43,7 +43,7 @@ func load_random_question() -> void:
 	
 	var scene = load(config.scene).instantiate()
 	scene.initialize(config.data_file)
-	add_child(scene)
+	$QuestionsContainer.add_child(scene)
 	
 	current_question = scene
 	question_count += 1
@@ -59,7 +59,9 @@ func show_final_screen() -> void:
 	$FinalLabel.show()
 	$ScoreLabel.hide()
 	$QuestionCountLabel.hide()
+	$ShowPlayersButton.hide()
 	$"Player-score".set_position(Vector2(450, 200))
+	$"Player-score".show()
 	if current_question:
 		current_question.queue_free()
 
@@ -79,3 +81,7 @@ func _on_answer_wrong() -> void:
 
 func update_score_display() -> void:
 	$ScoreLabel.text = SCORE_TEXT + str(score)
+
+func _on_show_players_button_pressed() -> void:
+	print("CU")
+	$"Player-score".visible = not $"Player-score".visible
