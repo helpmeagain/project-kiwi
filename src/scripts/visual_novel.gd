@@ -7,11 +7,14 @@ func _ready() -> void:
 func _on_dialogic_signal(argument: String):
 	match argument:
 		"type_sentence":
-			var cena = load("res://src/scenes/exercises/fill-in-the-blank.tscn").instantiate()
+			var cena = preload("res://src/scenes/exercises/type-the-sentence.tscn").instantiate()
+			cena.initialize()
 			$QuestionsContainer.add_child(cena)
 		"listen_type":
-			var cena = load("res://src/scenes/exercises/listen-then-type.tscn").instantiate()
+			var cena = preload("res://src/scenes/exercises/listen-then-type.tscn").instantiate()
+			cena.initialize()
 			$QuestionsContainer.add_child(cena)
 		"fill_blank":
-			var cena = load("res://src/scenes/exercises/fill-in-the-blank.tscn").instantiate()
+			var cena = preload("res://src/scenes/exercises/fill-in-the-blank.tscn").instantiate()
+			cena.initialize()
 			$QuestionsContainer.add_child(cena)

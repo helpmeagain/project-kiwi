@@ -8,14 +8,24 @@ var current_question: Dictionary
 var text_to_speech: String
 var voices = DisplayServer.tts_get_voices_for_language("en")
 var voice_id = voices[0]
+var custom_data_file: String = ""
+var specific_id: String = ""
 
-func initialize(data_file: String) -> void:
-	questions = ExercisesBank.load_questions(data_file)
-	if questions.is_empty():
-		push_error("Nenhuma pergunta carregada para: " + data_file)
-		return
+func initialize(data_file: String = "listen-then-type.json", question_id: String = "") -> void:
+	custom_data_file = data_file
+	specific_id = question_id
 	
-	load_new_question()
+	if specific_id.is_empty():
+		var all_questions = ExercisesBank.load_questions(custom_data_file).all
+		if not all_questions.is_empty():
+			current_question = all_questions.pick_random()
+			text_to_speech = current_question.text_to_speech
+	else:
+		current_question = ExercisesBank.load_question_by_id(custom_data_file, specific_id)
+		if current_question.is_empty():
+			push_error("Question ID not found: ", specific_id)
+			return
+		text_to_speech = current_question.text_to_speech
 
 func load_new_question() -> void:
 	current_question = questions.pick_random()

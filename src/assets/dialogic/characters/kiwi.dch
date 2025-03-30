@@ -24,9 +24,36 @@
 "scale": 1,
 "scene": ""
 },
+"Sad": {
+"export_overrides": {
+"image": "\"res://src/assets/sprites/characters/kiwi/sad.png\""
+},
+"mirror": false,
+"offset": Vector2(0, 0),
+"scale": 1,
+"scene": ""
+},
 "Smile": {
 "export_overrides": {
 "image": "\"res://src/assets/sprites/characters/kiwi/smile.png\""
+},
+"mirror": false,
+"offset": Vector2(0, 0),
+"scale": 1,
+"scene": ""
+},
+"Surprised": {
+"export_overrides": {
+"image": "\"res://src/assets/sprites/characters/kiwi/surprised.png\""
+},
+"mirror": false,
+"offset": Vector2(0, 0),
+"scale": 1,
+"scene": ""
+},
+"Tongue": {
+"export_overrides": {
+"image": "\"res://src/assets/sprites/characters/kiwi/tongue.png\""
 },
 "mirror": false,
 "offset": Vector2(0, 0),

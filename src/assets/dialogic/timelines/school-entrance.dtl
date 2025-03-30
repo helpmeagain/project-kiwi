@@ -8,15 +8,12 @@ update eagle (Neutral)
 kiwi (Neutral): Let's play a game
 eagle: Of course!
 - Type the sentence
-	leave eagle [animation="Fade Out" wait="true"]
-	leave kiwi [animation="Fade Out" wait="true"]
+	leave --All-- [animation="Fade Out" wait="true"]
 	[signal arg="type_sentence"]
 - Listen the type
-	leave kiwi [animation="Fade Out" wait="true"]
-	leave eagle [animation="Fade Out" wait="true"]
+	leave --All-- [animation="Fade Out" wait="true"]
 	[signal arg="listen_type"]
 - Fill in the blank
-	leave eagle [animation="Fade Out" wait="true"]
-	leave kiwi [animation="Fade Out" wait="true"]
+	leave --All-- [animation="Fade Out" wait="true"]
 	[signal arg="fill_blank"]
 [end_timeline]
