@@ -1,0 +1,19 @@
+[gd_scene load_steps=2 format=3 uid="uid://d02flntjqvbfi"]
+
+[ext_resource type="Script" uid="uid://cbvh8ymekp35q" path="res://src/scripts/visual_novel.gd" id="1_w3pjf"]
+
+[node name="Visual-novel" type="Node2D"]
+script = ExtResource("1_w3pjf")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 1232.0
+offset_bottom = 659.0
+color = Color(0.128344, 0.128344, 0.128344, 1)
+
+[node name="QuestionsContainer" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 161.0
+offset_top = 4.0
+offset_right = 1011.0
+offset_bottom = 644.0
