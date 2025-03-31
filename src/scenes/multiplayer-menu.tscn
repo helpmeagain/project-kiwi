@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://ximeayqp0acg"]
+[gd_scene load_steps=9 format=3 uid="uid://ximeayqp0acg"]
 
 [ext_resource type="Script" uid="uid://v8yuvv247t1q" path="res://src/scripts/multiplayer_menu.gd" id="1_3ekof"]
 [ext_resource type="Theme" uid="uid://ch3x2byuiyaxy" path="res://src/assets/themes/menu.tres" id="2_8ki7d"]
@@ -6,6 +6,8 @@
 [ext_resource type="Texture2D" uid="uid://c4ucb36ohohp3" path="res://src/assets/sprites/Left-Arrow.png" id="3_8ki7d"]
 [ext_resource type="Texture2D" uid="uid://h5nmdd2tq5yt" path="res://src/assets/sprites/Person.png" id="3_bv6g3"]
 [ext_resource type="Texture2D" uid="uid://cejxfhqi5mryk" path="res://src/assets/sprites/People.png" id="4_yh32n"]
+[ext_resource type="Script" uid="uid://bx70dau1vkpss" path="res://src/scripts/multiplayer/server_browser.gd" id="7_yh32n"]
+[ext_resource type="PackedScene" uid="uid://bjd0ts18rh4pc" path="res://src/scenes/server_info.tscn" id="8_kv4yq"]
 
 [node name="Multiplayer-menu" type="Control"]
 layout_mode = 3
@@ -39,24 +41,30 @@ theme_override_constants/separation = 50
 
 [node name="HostButton" type="Button" parent="HBoxContainer"]
 layout_mode = 2
+size_flags_horizontal = 3
 text = "I'm a teacher!
 (Create a room)"
 icon = ExtResource("3_bv6g3")
+icon_alignment = 1
+vertical_icon_alignment = 0
 
 [node name="JoinButton" type="Button" parent="HBoxContainer"]
 texture_filter = 3
 layout_mode = 2
+size_flags_horizontal = 3
 theme = ExtResource("2_8ki7d")
 text = "I'm a student!
 (Join a room)"
 icon = ExtResource("4_yh32n")
+icon_alignment = 1
+vertical_icon_alignment = 0
 
 [node name="NameInputContainer" type="HBoxContainer" parent="."]
 layout_mode = 0
-offset_left = 605.0
-offset_top = 417.0
-offset_right = 940.0
-offset_bottom = 457.0
+offset_left = 408.0
+offset_top = 115.0
+offset_right = 743.0
+offset_bottom = 155.0
 
 [node name="NameLabel" type="Label" parent="NameInputContainer"]
 layout_mode = 2
@@ -131,8 +139,65 @@ theme = ExtResource("2_kfv4g")
 icon = ExtResource("3_8ki7d")
 icon_alignment = 1
 
+[node name="ServerBrowser" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("7_yh32n")
+serverInfo = ExtResource("8_kv4yq")
+
+[node name="BroadcastTimer" type="Timer" parent="ServerBrowser"]
+
+[node name="Panel" type="Panel" parent="ServerBrowser"]
+layout_mode = 0
+offset_left = 181.0
+offset_top = 360.0
+offset_right = 965.0
+offset_bottom = 632.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ServerBrowser/Panel"]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 7.0
+offset_right = 783.0
+offset_bottom = 400.0
+
+[node name="ServerInfoTitle" type="HBoxContainer" parent="ServerBrowser/Panel/VBoxContainer"]
+layout_mode = 2
+
+[node name="ServerNameTitleLabel" type="Label" parent="ServerBrowser/Panel/VBoxContainer/ServerInfoTitle"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Name"
+
+[node name="IPTitleLabel" type="Label" parent="ServerBrowser/Panel/VBoxContainer/ServerInfoTitle"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "IP"
+
+[node name="PlayerCountTitleLabel" type="Label" parent="ServerBrowser/Panel/VBoxContainer/ServerInfoTitle"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Player Count"
+
+[node name="PlayerCountTitleLabel2" type="Label" parent="ServerBrowser/Panel/VBoxContainer/ServerInfoTitle"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Join"
+
+[node name="DebugAddPlayersButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 1010.0
+offset_top = 241.0
+offset_right = 1109.0
+offset_bottom = 295.0
+text = "[DEBUG]
+Add players"
+
 [connection signal="pressed" from="HBoxContainer/HostButton" to="." method="_on_host_button_pressed"]
 [connection signal="pressed" from="HBoxContainer/JoinButton" to="." method="_on_join_button_pressed"]
 [connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]
 [connection signal="close_requested" from="Window" to="." method="_on_window_close_requested"]
 [connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]
+[connection signal="timeout" from="ServerBrowser/BroadcastTimer" to="ServerBrowser" method="_on_broadcast_timer_timeout"]
+[connection signal="pressed" from="DebugAddPlayersButton" to="." method="_on_debug_add_players_button_pressed"]

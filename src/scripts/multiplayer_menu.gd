@@ -9,6 +9,8 @@ func _ready() -> void:
 	multiplayer.peer_disconnected.connect(player_disconnected)
 	multiplayer.connected_to_server.connect(player_connected_to_server)
 	multiplayer.connection_failed.connect(player_connection_failed)
+	
+	$ServerBrowser.join_game.connect(join_by_ip)
 
 func player_connected(id):
 	print("Player connected: " + str(id))
@@ -58,6 +60,7 @@ func _on_host_button_pressed() -> void:
 	
 	multiplayer.set_multiplayer_peer(peer)
 	send_player_information("Teacher", multiplayer.get_unique_id())
+	$ServerBrowser.set_up_broadcast($NameInputContainer/NameLineEdit.text + "'s server")
 	print("Waiting for players...")
 
 func _on_join_button_pressed() -> void:
@@ -66,8 +69,11 @@ func _on_join_button_pressed() -> void:
 		show_error("Invalid name: Empty" )
 		return
 		
+	join_by_ip(address)
+
+func join_by_ip(ip):
 	peer = ENetMultiplayerPeer.new()
-	var error = peer.create_client(address, port)
+	var error = peer.create_client(ip, port)
 	if error != OK:
 		show_error("Cannot join: " + error_string(error))
 		return
@@ -87,3 +93,11 @@ func _on_window_close_requested() -> void:
 
 func _on_back_button_pressed() -> void:
 	get_tree().change_scene_to_file("res://src/scenes/main-menu.tscn")
+
+func _on_debug_add_players_button_pressed() -> void:
+	MultiplayerPlayerManager.players[MultiplayerPlayerManager.players.size() + 1] ={
+			"name" : "test",
+			"id" : 1,
+			"score": 0
+		}
+	pass
