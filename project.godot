@@ -32,7 +32,8 @@ directories/dch_directory={
 "unit_test_character": "res://Tests/Resources/unit_test_character.dch"
 }
 directories/dtl_directory={
-"school-entrance": "res://src/assets/dialogic/timelines/school-entrance.dtl"
+"school-entrance": "res://src/assets/dialogic/timelines/school-entrance.dtl",
+"school-lobby": "res://src/assets/dialogic/timelines/school-lobby.dtl"
 }
 layout/style_list=["res://src/assets/themes/style.tres"]
 layout/default_style="res://src/assets/dialogic/style.tres"
@@ -57,7 +58,10 @@ choices/reveal_by_input=false
 save/autosave_delay=60.0
 save/encryption_on_exports_only=true
 text/autopauses={}
-variables={}
+variables={
+"correct_answer": 0,
+"wrong_answer": 0
+}
 
 [display]
 

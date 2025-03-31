@@ -1,0 +1,34 @@
+[
+  {
+	"id": "1",
+	"sentence": "She ___ a book yesterday.",
+	"correct_answer": "read",
+	"options": ["read", "reads", "reading", "red"]
+  },
+  {
+	"id": "2",
+	"original": "Ele comprou um carro novo.",
+	"correct_answers": ["He bought a new car", "He purchased a new car"]
+  },
+  {
+	"id": "3",
+	"text_to_speech": "They visited Paris last summer.",
+	"correct_answers": ["They visited Paris last summer", "They visited Paris last summer."]
+  },
+  {
+	"id": "4",
+	"sentence": "We ___ soccer after school.",
+	"correct_answer": "played",
+	"options": ["played", "play", "plays", "playing"]
+  },
+  {
+	"id": "5",
+	"original": "Ela não foi à festa.",
+	"correct_answers": ["She didn't go to the party", "She did not go to the party"]
+  },
+  {
+	"id": "6",
+	"text_to_speech": "He finished his homework early.",
+	"correct_answers": ["He finished his homework early", "He finished his homework early."]
+  }
+]

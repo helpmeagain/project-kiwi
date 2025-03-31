@@ -7,13 +7,7 @@ eagle (Smile): Nice to meet you!
 update eagle (Neutral)
 kiwi (Neutral): Let's play a game
 eagle: Of course!
-- Type the sentence
-	leave --All-- [animation="Fade Out" wait="true"]
-	[signal arg="type_sentence"]
-- Listen the type
-	leave --All-- [animation="Fade Out" wait="true"]
-	[signal arg="listen_type"]
-- Fill in the blank
-	leave --All-- [animation="Fade Out" wait="true"]
-	[signal arg="fill_blank"]
+[clear time="1.0" music="false" background="false" positions="false" style="false"]
+[wait time="1.0"]
+[signal arg="school-entrance-exercise-1"]
 [end_timeline]

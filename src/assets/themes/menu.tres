@@ -1,9 +1,10 @@
-[gd_resource type="Theme" load_steps=17 format=3 uid="uid://ch3x2byuiyaxy"]
+[gd_resource type="Theme" load_steps=19 format=3 uid="uid://ch3x2byuiyaxy"]
 
 [ext_resource type="FontFile" uid="uid://cli8gbn14umcl" path="res://src/assets/fonts/Abaddon Light.ttf" id="1_dj8sl"]
 [ext_resource type="Texture2D" uid="uid://bdkjmrtjyx13x" path="res://src/assets/sprites/GUI.png" id="2_3833v"]
 [ext_resource type="FontFile" uid="uid://cxsv026so27q8" path="res://src/assets/fonts/Ruler 9.ttf" id="3_78nn6"]
 [ext_resource type="Texture2D" uid="uid://b1w8js2q0pujp" path="res://src/assets/sprites/UI books & more.png" id="3_3833v"]
+[ext_resource type="Texture2D" uid="uid://1wggpmhdf7ge" path="res://src/assets/sprites/UiCozyFree.png" id="3_wc8fi"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_dj8sl"]
 texture = ExtResource("2_3833v")
@@ -58,6 +59,10 @@ expand_margin_right = 2.0
 expand_margin_bottom = 4.0
 region_rect = Rect2(145, 98, 46, 13)
 modulate_color = Color(0.945098, 0.564706, 0.392157, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_3co8m"]
+texture = ExtResource("3_wc8fi")
+region_rect = Rect2(164, 167, 47, 80)
 
 [sub_resource type="Image" id="Image_78nn6"]
 data = {
@@ -152,6 +157,7 @@ Button/styles/focus = SubResource("StyleBoxEmpty_dj8sl")
 Button/styles/hover = SubResource("StyleBoxTexture_78nn6")
 Button/styles/normal = SubResource("StyleBoxTexture_gr6tg")
 Button/styles/pressed = SubResource("StyleBoxTexture_3833v")
+Panel/styles/panel = SubResource("StyleBoxTexture_3co8m")
 TextEdit/colors/background_color = Color(0, 0, 0, 0)
 TextEdit/colors/caret_background_color = Color(0, 0, 0, 1)
 TextEdit/colors/caret_color = Color(0.24357, 0.243569, 0.243569, 1)
