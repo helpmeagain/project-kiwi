@@ -5,13 +5,24 @@ signal answer_wrong
 
 var questions: Array
 var current_question: Dictionary
+var custom_data_file: String = ""
+var specific_id: String = ""
 
-func initialize(data_file: String) -> void:
-	questions = ExercisesBank.load_questions(data_file)
-	if questions.is_empty():
-		push_error("No questions for: " + data_file)
-		return
-	load_new_question()
+func initialize(data_file: String = "fill_in_the_blank.json", question_id: String = "") -> void:
+	custom_data_file = data_file
+	specific_id = question_id
+	
+	if specific_id.is_empty():
+		var all_questions = ExercisesBank.load_questions(custom_data_file).all
+		if not all_questions.is_empty():
+			current_question = all_questions.pick_random()
+			setup_question_display()
+	else:
+		current_question = ExercisesBank.load_question_by_id(custom_data_file, specific_id)
+		if current_question.is_empty():
+			push_error("Question ID not found: ", specific_id)
+			return
+		setup_question_display()
 
 func load_new_question() -> void:
 	current_question = questions.pick_random()

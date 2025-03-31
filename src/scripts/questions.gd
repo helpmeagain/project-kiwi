@@ -1,20 +1,10 @@
 extends Control
 
 const EXERCISE_CONFIG = {
-	"fill_in_blank": {
-		"scene": "res://src/scenes/exercises/fill-in-the-blank.tscn",
-		"data_file": "fill_in_the_blank.json"
-	},
-	"listen_then_type": {
-		"scene": "res://src/scenes/exercises/listen-then-type.tscn",
-		"data_file": "listen-then-type.json"
-	},
-	"type_translation": {
-		"scene": "res://src/scenes/exercises/type-the-sentence.tscn",
-		"data_file": "type-the-sentence.json"
-	}
+	"fill_in_blank": "res://src/scenes/exercises/fill-in-the-blank.tscn",
+	"listen_then_type": "res://src/scenes/exercises/listen-then-type.tscn",
+	"type_translation": "res://src/scenes/exercises/type-the-sentence.tscn"
 }
-
 const SCORE_TEXT = "Score = "
 const MAX_QUESTIONS = 3
 
@@ -40,9 +30,9 @@ func load_random_question() -> void:
 	var exercise_keys = EXERCISE_CONFIG.keys()
 	var random_key = exercise_keys[randi() % exercise_keys.size()]
 	var config = EXERCISE_CONFIG[random_key]
-	
-	var scene = load(config.scene).instantiate()
-	scene.initialize(config.data_file)
+
+	var scene = load(config).instantiate()
+	scene.initialize()
 	$QuestionsContainer.add_child(scene)
 	
 	current_question = scene
@@ -83,5 +73,4 @@ func update_score_display() -> void:
 	$ScoreLabel.text = SCORE_TEXT + str(score)
 
 func _on_show_players_button_pressed() -> void:
-	print("CU")
 	$"Player-score".visible = not $"Player-score".visible

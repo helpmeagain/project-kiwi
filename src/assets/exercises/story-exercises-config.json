@@ -1,0 +1,12 @@
+{
+	"school-entrance-exercise-1": {
+		"scene": "res://src/scenes/exercises/fill-in-the-blank.tscn",
+		"data": {"file": "story-mode.json", "id": "1"},
+		"next_timeline": "school-lobby"
+	},
+	"school-lobby-exercise-1": {
+		"scene": "res://src/scenes/exercises/fill-in-the-blank.tscn",
+		"data": {"file": "story-mode.json", "id": "4"},
+		"next_timeline": "school-entrance"
+	},
+}

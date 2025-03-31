@@ -1,0 +1,13 @@
+join kiwi (Neutral) left [length="2.0" wait="true"]
+kiwi: Hello!
+kiwi (Smile): I'm Kiwi!
+join eagle (Neutral) right
+eagle: And I'm eagle!
+eagle (Smile): Nice to meet you!
+update eagle (Neutral)
+kiwi (Neutral): Let's play a game
+eagle: Of course!
+[clear time="1.0" music="false" background="false" positions="false" style="false"]
+[wait time="1.0"]
+[signal arg="school-entrance-exercise-1"]
+[end_timeline]
