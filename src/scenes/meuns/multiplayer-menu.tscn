@@ -1,14 +1,14 @@
 [gd_scene load_steps=15 format=3 uid="uid://ximeayqp0acg"]
 
-[ext_resource type="Script" uid="uid://v8yuvv247t1q" path="res://src/scripts/multiplayer_menu.gd" id="1_3ekof"]
-[ext_resource type="Theme" uid="uid://ch3x2byuiyaxy" path="res://src/assets/themes/menu.tres" id="2_8ki7d"]
-[ext_resource type="Theme" uid="uid://drabaa7jfibga" path="res://src/assets/themes/small_button.tres" id="2_kfv4g"]
-[ext_resource type="Texture2D" uid="uid://c4ucb36ohohp3" path="res://src/assets/sprites/Left-Arrow.png" id="3_8ki7d"]
-[ext_resource type="Texture2D" uid="uid://h5nmdd2tq5yt" path="res://src/assets/sprites/Person.png" id="3_bv6g3"]
-[ext_resource type="Texture2D" uid="uid://cejxfhqi5mryk" path="res://src/assets/sprites/People.png" id="4_yh32n"]
-[ext_resource type="Texture2D" uid="uid://iqimikjyunwk" path="res://src/assets/sprites/Home.png" id="6_edoox"]
-[ext_resource type="Script" uid="uid://bx70dau1vkpss" path="res://src/scripts/multiplayer/server_browser.gd" id="7_yh32n"]
-[ext_resource type="PackedScene" uid="uid://bjd0ts18rh4pc" path="res://src/scenes/multiplayer/server_info.tscn" id="8_kv4yq"]
+[ext_resource type="Script" uid="uid://v8yuvv247t1q" path="res://src/scripts/menus/multiplayer_menu.gd" id="1_2fb8j"]
+[ext_resource type="Theme" uid="uid://ch3x2byuiyaxy" path="res://src/assets/themes/menu.tres" id="2_82we7"]
+[ext_resource type="Texture2D" uid="uid://h5nmdd2tq5yt" path="res://src/assets/sprites/Person.png" id="3_otncy"]
+[ext_resource type="Texture2D" uid="uid://cejxfhqi5mryk" path="res://src/assets/sprites/People.png" id="4_fj2ah"]
+[ext_resource type="Theme" uid="uid://drabaa7jfibga" path="res://src/assets/themes/small_button.tres" id="5_ve5k3"]
+[ext_resource type="Texture2D" uid="uid://iqimikjyunwk" path="res://src/assets/sprites/Home.png" id="6_kq3tp"]
+[ext_resource type="Script" uid="uid://bx70dau1vkpss" path="res://src/scripts/multiplayer/server_browser.gd" id="7_okjt7"]
+[ext_resource type="PackedScene" uid="uid://bjd0ts18rh4pc" path="res://src/scenes/multiplayer/server_info.tscn" id="8_8hig0"]
+[ext_resource type="Texture2D" uid="uid://c4ucb36ohohp3" path="res://src/assets/sprites/Left-Arrow.png" id="9_v1nsv"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_edoox"]
 bg_color = Color(0, 0, 0, 0.631373)
@@ -42,7 +42,7 @@ offset_right = -4.0
 offset_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_3ekof")
+script = ExtResource("1_2fb8j")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 texture_filter = 3
@@ -58,7 +58,7 @@ offset_right = 287.0
 offset_bottom = 124.5
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("2_8ki7d")
+theme = ExtResource("2_82we7")
 theme_override_constants/separation = 50
 
 [node name="HostButton" type="Button" parent="HBoxContainer"]
@@ -66,7 +66,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 text = "I'm a teacher!
 (Create a room)"
-icon = ExtResource("3_bv6g3")
+icon = ExtResource("3_otncy")
 icon_alignment = 1
 vertical_icon_alignment = 0
 
@@ -74,10 +74,10 @@ vertical_icon_alignment = 0
 texture_filter = 3
 layout_mode = 2
 size_flags_horizontal = 3
-theme = ExtResource("2_8ki7d")
+theme = ExtResource("2_82we7")
 text = "I'm a student!
 (Join a room)"
-icon = ExtResource("4_yh32n")
+icon = ExtResource("4_fj2ah")
 icon_alignment = 1
 vertical_icon_alignment = 0
 
@@ -94,8 +94,8 @@ offset_top = -16.232
 offset_right = 131.78
 offset_bottom = 131.768
 scale = Vector2(0.221184, 0.221184)
-theme = ExtResource("2_kfv4g")
-icon = ExtResource("6_edoox")
+theme = ExtResource("5_ve5k3")
+icon = ExtResource("6_kq3tp")
 icon_alignment = 1
 
 [node name="ServerBrowser" type="Control" parent="."]
@@ -104,8 +104,8 @@ anchors_preset = 0
 offset_left = -17.0
 offset_right = 1127.0
 offset_bottom = 644.0
-script = ExtResource("7_yh32n")
-serverInfo = ExtResource("8_kv4yq")
+script = ExtResource("7_okjt7")
+serverInfo = ExtResource("8_8hig0")
 
 [node name="BroadcastTimer" type="Timer" parent="ServerBrowser"]
 
@@ -142,7 +142,7 @@ offset_bottom = 471.0
 
 [node name="ServerInfoTitle" type="HBoxContainer" parent="ServerBrowser/Panel/VBoxContainer"]
 layout_mode = 2
-theme = ExtResource("2_8ki7d")
+theme = ExtResource("2_82we7")
 
 [node name="ServerNameTitleLabel" type="Label" parent="ServerBrowser/Panel/VBoxContainer/ServerInfoTitle"]
 texture_filter = 3
@@ -198,6 +198,7 @@ offset_right = 954.0
 offset_bottom = 539.0
 
 [node name="Panel2" type="Panel" parent="PlayerBrowser"]
+layout_mode = 0
 offset_left = -252.0
 offset_top = -142.0
 offset_right = 1038.0
@@ -221,7 +222,7 @@ offset_bottom = 470.0
 
 [node name="ServerInfoTitle" type="HBoxContainer" parent="PlayerBrowser/Panel/VBoxContainer"]
 layout_mode = 2
-theme = ExtResource("2_8ki7d")
+theme = ExtResource("2_82we7")
 
 [node name="ServerNameTitleLabel" type="Label" parent="PlayerBrowser/Panel/VBoxContainer/ServerInfoTitle"]
 texture_filter = 3
@@ -253,7 +254,7 @@ offset_left = -512.064
 offset_top = -10.2
 offset_right = -365.064
 offset_bottom = 28.8
-theme = ExtResource("2_8ki7d")
+theme = ExtResource("2_82we7")
 text = "Start game"
 
 [node name="NameInputContainer" type="HBoxContainer" parent="."]
@@ -268,7 +269,7 @@ offset_left = -204.5
 offset_top = -20.176
 offset_right = 202.5
 offset_bottom = 24.824
-theme = ExtResource("2_8ki7d")
+theme = ExtResource("2_82we7")
 alignment = 1
 
 [node name="NameLabel" type="Label" parent="NameInputContainer"]
@@ -307,8 +308,8 @@ offset_top = -16.12
 offset_right = 131.48
 offset_bottom = 131.88
 scale = Vector2(0.221184, 0.221184)
-theme = ExtResource("2_kfv4g")
-icon = ExtResource("3_8ki7d")
+theme = ExtResource("5_ve5k3")
+icon = ExtResource("9_v1nsv")
 icon_alignment = 1
 
 [node name="DebugAddPlayersButton" type="Button" parent="."]

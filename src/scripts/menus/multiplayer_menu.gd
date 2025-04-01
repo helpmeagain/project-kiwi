@@ -31,7 +31,7 @@ func player_connection_failed():
 
 @rpc("any_peer", "call_local")
 func start_game():
-	var scene = load("res://src/scenes/multiplayer/questions.tscn").instantiate()
+	var scene = load("res://src/scenes/gameplay/multiplayer-questions.tscn").instantiate()
 	get_tree().root.add_child(scene)
 	self.hide()
 
@@ -67,6 +67,10 @@ func _on_join_button_pressed() -> void:
 	$CloseButton.show()
 
 func join_by_ip(ip):
+	if peer != null and peer.get_connection_status() != MultiplayerPeer.CONNECTION_DISCONNECTED:
+		show_error("Already connected")
+		return
+	
 	var player_name = $NameInputContainer/NameLineEdit.text
 	if player_name == "":
 		show_error("Invalid name: Empty" )

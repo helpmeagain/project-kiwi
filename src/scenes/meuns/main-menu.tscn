@@ -1,9 +1,9 @@
 [gd_scene load_steps=5 format=3 uid="uid://dpqa70nf0h1ks"]
 
-[ext_resource type="Script" uid="uid://lbcydatsm6xt" path="res://src/scripts/main_menu.gd" id="1_p8qpl"]
-[ext_resource type="FontFile" uid="uid://bmvtmpvoy1cwt" path="res://src/assets/fonts/editundo.ttf" id="2_hsqdw"]
-[ext_resource type="Theme" uid="uid://ch3x2byuiyaxy" path="res://src/assets/themes/menu.tres" id="3_hsqdw"]
-[ext_resource type="Texture2D" uid="uid://cegrq42735jks" path="res://src/assets/images/computer_room.jpg" id="4_0vgna"]
+[ext_resource type="Script" uid="uid://lbcydatsm6xt" path="res://src/scripts/menus/main_menu.gd" id="1_da82s"]
+[ext_resource type="Texture2D" uid="uid://cegrq42735jks" path="res://src/assets/images/computer_room.jpg" id="2_g7f1q"]
+[ext_resource type="FontFile" uid="uid://bmvtmpvoy1cwt" path="res://src/assets/fonts/editundo.ttf" id="3_lw77e"]
+[ext_resource type="Theme" uid="uid://ch3x2byuiyaxy" path="res://src/assets/themes/menu.tres" id="4_lildm"]
 
 [node name="Main-menu" type="Control"]
 layout_mode = 3
@@ -12,7 +12,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_p8qpl")
+script = ExtResource("1_da82s")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 modulate = Color(0.229112, 0.229112, 0.229112, 0.996078)
@@ -29,7 +29,7 @@ offset_bottom = 2588.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.316815, 0.270733)
-texture = ExtResource("4_0vgna")
+texture = ExtResource("2_g7f1q")
 
 [node name="LabelAndButtonsContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
@@ -51,7 +51,7 @@ layout_mode = 2
 theme_override_colors/font_color = Color(0.215686, 0.14902, 0.156863, 1)
 theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
 theme_override_constants/outline_size = 8
-theme_override_fonts/font = ExtResource("2_hsqdw")
+theme_override_fonts/font = ExtResource("3_lw77e")
 theme_override_font_sizes/font_size = 120
 text = "Project Kiwi"
 horizontal_alignment = 1
@@ -61,7 +61,7 @@ texture_filter = 3
 custom_minimum_size = Vector2(250, 0)
 layout_mode = 2
 size_flags_horizontal = 4
-theme = ExtResource("3_hsqdw")
+theme = ExtResource("4_lildm")
 theme_override_constants/separation = 10
 
 [node name="SingleplayerButton" type="Button" parent="LabelAndButtonsContainer/ButtonsContainer"]

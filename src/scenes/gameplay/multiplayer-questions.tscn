@@ -1,20 +1,20 @@
 [gd_scene load_steps=7 format=3 uid="uid://di7wgqh7vibe7"]
 
-[ext_resource type="Script" uid="uid://ukpnntfs15i0" path="res://src/scripts/questions.gd" id="1_i34q1"]
-[ext_resource type="FontFile" uid="uid://bmvtmpvoy1cwt" path="res://src/assets/fonts/editundo.ttf" id="2_nrdip"]
-[ext_resource type="FontFile" uid="uid://c0w25r8vykatq" path="res://src/assets/fonts/Abaddon Bold.ttf" id="3_knf6o"]
-[ext_resource type="PackedScene" uid="uid://du6byd12byrk3" path="res://src/scenes/multiplayer/player-score.tscn" id="4_rf6n0"]
-[ext_resource type="Theme" uid="uid://drabaa7jfibga" path="res://src/assets/themes/small_button.tres" id="5_ruwoc"]
-[ext_resource type="Texture2D" uid="uid://cejxfhqi5mryk" path="res://src/assets/sprites/People.png" id="6_5y78u"]
+[ext_resource type="Script" uid="uid://ukpnntfs15i0" path="res://src/scripts/gameplay/multiplayer-questions.gd" id="1_mh1t5"]
+[ext_resource type="FontFile" uid="uid://bmvtmpvoy1cwt" path="res://src/assets/fonts/editundo.ttf" id="2_leee8"]
+[ext_resource type="FontFile" uid="uid://c0w25r8vykatq" path="res://src/assets/fonts/Abaddon Bold.ttf" id="3_n7e7y"]
+[ext_resource type="PackedScene" uid="uid://du6byd12byrk3" path="res://src/scenes/multiplayer/player-score.tscn" id="4_ohok1"]
+[ext_resource type="Theme" uid="uid://drabaa7jfibga" path="res://src/assets/themes/small_button.tres" id="5_ujsnr"]
+[ext_resource type="Texture2D" uid="uid://cejxfhqi5mryk" path="res://src/assets/sprites/People.png" id="6_yxgkn"]
 
-[node name="Game-loop" type="Control"]
+[node name="MultiplayerQuestions" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_i34q1")
+script = ExtResource("1_mh1t5")
 
 [node name="ScoreLabel" type="Label" parent="."]
 layout_mode = 1
@@ -27,7 +27,7 @@ offset_left = -88.0
 offset_top = -32.768
 offset_right = 138.0
 offset_bottom = 36.232
-theme_override_fonts/font = ExtResource("2_nrdip")
+theme_override_fonts/font = ExtResource("2_leee8")
 theme_override_font_sizes/font_size = 50
 text = "Score = 0"
 horizontal_alignment = 1
@@ -47,7 +47,7 @@ offset_right = 349.0
 offset_bottom = -147.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_fonts/font = ExtResource("2_nrdip")
+theme_override_fonts/font = ExtResource("2_leee8")
 theme_override_font_sizes/font_size = 70
 text = "Final message label"
 
@@ -59,7 +59,7 @@ anchor_right = 1.0
 offset_left = -61.0
 offset_bottom = 55.0
 grow_horizontal = 0
-theme_override_fonts/font = ExtResource("3_knf6o")
+theme_override_fonts/font = ExtResource("3_n7e7y")
 theme_override_font_sizes/font_size = 40
 text = "0/0"
 
@@ -70,7 +70,7 @@ offset_top = -3.0
 offset_right = 1151.0
 offset_bottom = 652.0
 
-[node name="Player-score" parent="." instance=ExtResource("4_rf6n0")]
+[node name="Player-score" parent="." instance=ExtResource("4_ohok1")]
 visible = false
 layout_mode = 1
 offset_left = 2.0
@@ -86,7 +86,7 @@ offset_top = 24.0
 offset_right = 145.0
 offset_bottom = 140.563
 scale = Vector2(0.269031, 0.269031)
-theme = ExtResource("5_ruwoc")
-icon = ExtResource("6_5y78u")
+theme = ExtResource("5_ujsnr")
+icon = ExtResource("6_yxgkn")
 
 [connection signal="pressed" from="ShowPlayersButton" to="." method="_on_show_players_button_pressed"]
