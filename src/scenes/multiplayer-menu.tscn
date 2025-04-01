@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://ximeayqp0acg"]
+[gd_scene load_steps=15 format=3 uid="uid://ximeayqp0acg"]
 
 [ext_resource type="Script" uid="uid://v8yuvv247t1q" path="res://src/scripts/multiplayer_menu.gd" id="1_3ekof"]
 [ext_resource type="Theme" uid="uid://ch3x2byuiyaxy" path="res://src/assets/themes/menu.tres" id="2_8ki7d"]
@@ -6,8 +6,12 @@
 [ext_resource type="Texture2D" uid="uid://c4ucb36ohohp3" path="res://src/assets/sprites/Left-Arrow.png" id="3_8ki7d"]
 [ext_resource type="Texture2D" uid="uid://h5nmdd2tq5yt" path="res://src/assets/sprites/Person.png" id="3_bv6g3"]
 [ext_resource type="Texture2D" uid="uid://cejxfhqi5mryk" path="res://src/assets/sprites/People.png" id="4_yh32n"]
+[ext_resource type="Texture2D" uid="uid://iqimikjyunwk" path="res://src/assets/sprites/Home.png" id="6_edoox"]
 [ext_resource type="Script" uid="uid://bx70dau1vkpss" path="res://src/scripts/multiplayer/server_browser.gd" id="7_yh32n"]
-[ext_resource type="PackedScene" uid="uid://bjd0ts18rh4pc" path="res://src/scenes/server_info.tscn" id="8_kv4yq"]
+[ext_resource type="PackedScene" uid="uid://bjd0ts18rh4pc" path="res://src/scenes/multiplayer/server_info.tscn" id="8_kv4yq"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_edoox"]
+bg_color = Color(0, 0, 0, 0.631373)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kv4yq"]
 bg_color = Color(0.286275, 0.113725, 0, 0.611765)
@@ -16,14 +20,25 @@ border_width_top = 2
 border_width_right = 2
 border_width_bottom = 2
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1s8xr"]
+bg_color = Color(0.286275, 0.113725, 0, 0.611765)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+
+[sub_resource type="SystemFont" id="SystemFont_kv4yq"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_kv4yq"]
+
 [node name="Multiplayer-menu" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 21.0
+offset_left = 3.0
 offset_top = 1.0
-offset_right = 21.0
+offset_right = -4.0
 offset_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -37,10 +52,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -363.0
-offset_top = -74.0
-offset_right = 363.0
-offset_bottom = 74.0
+offset_left = -287.0
+offset_top = -124.5
+offset_right = 287.0
+offset_bottom = 124.5
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("2_8ki7d")
@@ -66,38 +81,22 @@ icon = ExtResource("4_yh32n")
 icon_alignment = 1
 vertical_icon_alignment = 0
 
-[node name="Window" type="Window" parent="."]
-title = "Error"
-initial_position = 1
-size = Vector2i(350, 100)
-visible = false
-unresizable = true
-popup_window = true
-
-[node name="HBoxContainer" type="HBoxContainer" parent="Window"]
-offset_right = 399.0
-offset_bottom = 110.0
-scale = Vector2(0.88, 0.92)
-size_flags_horizontal = 3
-size_flags_vertical = 3
-theme_override_constants/separation = 50
-alignment = 1
-
-[node name="Warning" type="Label" parent="Window/HBoxContainer"]
-custom_minimum_size = Vector2(30, 0)
-layout_mode = 2
-theme_override_colors/font_color = Color(1, 0.425788, 0.357085, 1)
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 70
-text = "!"
-
-[node name="WindowLabel" type="Label" parent="Window/HBoxContainer"]
-layout_mode = 2
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_font_sizes/font_size = 15
-text = "Generic error message"
-horizontal_alignment = 1
-vertical_alignment = 1
+[node name="BackButton" type="Button" parent="."]
+texture_filter = 3
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.036
+anchor_top = 0.059
+anchor_right = 0.036
+anchor_bottom = 0.059
+offset_left = -16.22
+offset_top = -16.232
+offset_right = 131.78
+offset_bottom = 131.768
+scale = Vector2(0.221184, 0.221184)
+theme = ExtResource("2_kfv4g")
+icon = ExtResource("6_edoox")
+icon_alignment = 1
 
 [node name="ServerBrowser" type="Control" parent="."]
 visible = false
@@ -109,6 +108,14 @@ script = ExtResource("7_yh32n")
 serverInfo = ExtResource("8_kv4yq")
 
 [node name="BroadcastTimer" type="Timer" parent="ServerBrowser"]
+
+[node name="Panel2" type="Panel" parent="ServerBrowser"]
+layout_mode = 0
+offset_left = -52.0
+offset_top = -54.0
+offset_right = 1238.0
+offset_bottom = 672.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_edoox")
 
 [node name="Panel" type="Panel" parent="ServerBrowser"]
 layout_mode = 1
@@ -190,16 +197,27 @@ offset_top = 107.0
 offset_right = 954.0
 offset_bottom = 539.0
 
+[node name="Panel2" type="Panel" parent="PlayerBrowser"]
+offset_left = -252.0
+offset_top = -142.0
+offset_right = 1038.0
+offset_bottom = 584.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_edoox")
+
 [node name="Panel" type="Panel" parent="PlayerBrowser"]
 layout_mode = 0
-offset_right = 753.0
-offset_bottom = 422.0
+offset_left = -16.0
+offset_top = -21.0
+offset_right = 771.0
+offset_bottom = 455.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_1s8xr")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="PlayerBrowser/Panel"]
+layout_mode = 0
 offset_left = 6.0
 offset_top = 7.0
-offset_right = 744.0
-offset_bottom = 413.0
+offset_right = 781.0
+offset_bottom = 470.0
 
 [node name="ServerInfoTitle" type="HBoxContainer" parent="PlayerBrowser/Panel/VBoxContainer"]
 layout_mode = 2
@@ -210,7 +228,7 @@ texture_filter = 3
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 25
-text = "Name"
+text = "Players in the room"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -222,23 +240,6 @@ size_flags_vertical = 3
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-
-[node name="BackButton" type="Button" parent="."]
-texture_filter = 3
-layout_mode = 1
-anchors_preset = -1
-anchor_left = -0.018
-anchor_top = 0.05
-anchor_right = -0.018
-anchor_bottom = 0.05
-offset_left = 23.736
-offset_top = -11.4
-offset_right = 171.736
-offset_bottom = 136.6
-scale = Vector2(0.221184, 0.221184)
-theme = ExtResource("2_kfv4g")
-icon = ExtResource("3_8ki7d")
-icon_alignment = 1
 
 [node name="StartButton" type="Button" parent="."]
 visible = false
@@ -256,20 +257,59 @@ theme = ExtResource("2_8ki7d")
 text = "Start game"
 
 [node name="NameInputContainer" type="HBoxContainer" parent="."]
-layout_mode = 0
-offset_left = 410.0
-offset_top = 20.0
-offset_right = 745.0
-offset_bottom = 60.0
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.062
+anchor_right = 0.5
+anchor_bottom = 0.062
+offset_left = -204.5
+offset_top = -20.176
+offset_right = 202.5
+offset_bottom = 24.824
+theme = ExtResource("2_8ki7d")
+alignment = 1
 
 [node name="NameLabel" type="Label" parent="NameInputContainer"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 25
 text = "Name:"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="NameLineEdit" type="LineEdit" parent="NameInputContainer"]
+texture_filter = 3
 layout_mode = 2
 size_flags_horizontal = 3
-placeholder_text = "Insert your name"
+theme_override_fonts/font = SubResource("SystemFont_kv4yq")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_kv4yq")
+placeholder_text = "Insert your name..."
+
+[node name="HostButton" type="Button" parent="NameInputContainer"]
+visible = false
+texture_filter = 3
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Host room"
+
+[node name="CloseButton" type="Button" parent="."]
+visible = false
+texture_filter = 3
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.176
+anchor_top = 0.065
+anchor_right = 0.176
+anchor_bottom = 0.065
+offset_left = -16.52
+offset_top = -16.12
+offset_right = 131.48
+offset_bottom = 131.88
+scale = Vector2(0.221184, 0.221184)
+theme = ExtResource("2_kfv4g")
+icon = ExtResource("3_8ki7d")
+icon_alignment = 1
 
 [node name="DebugAddPlayersButton" type="Button" parent="."]
 layout_mode = 1
@@ -287,10 +327,45 @@ grow_vertical = 2
 text = "[DEBUG]
 Add players"
 
+[node name="Window" type="Window" parent="."]
+title = "Error"
+initial_position = 1
+size = Vector2i(350, 100)
+visible = false
+unresizable = true
+popup_window = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Window"]
+offset_right = 399.0
+offset_bottom = 110.0
+scale = Vector2(0.88, 0.92)
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 50
+alignment = 1
+
+[node name="Warning" type="Label" parent="Window/HBoxContainer"]
+custom_minimum_size = Vector2(30, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.425788, 0.357085, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 70
+text = "!"
+
+[node name="WindowLabel" type="Label" parent="Window/HBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 15
+text = "Generic error message"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [connection signal="pressed" from="HBoxContainer/HostButton" to="." method="_on_host_button_pressed"]
 [connection signal="pressed" from="HBoxContainer/JoinButton" to="." method="_on_join_button_pressed"]
-[connection signal="close_requested" from="Window" to="." method="_on_window_close_requested"]
-[connection signal="timeout" from="ServerBrowser/BroadcastTimer" to="ServerBrowser" method="_on_broadcast_timer_timeout"]
 [connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]
+[connection signal="timeout" from="ServerBrowser/BroadcastTimer" to="ServerBrowser" method="_on_broadcast_timer_timeout"]
 [connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="NameInputContainer/HostButton" to="." method="_on_create_room_button_pressed"]
+[connection signal="pressed" from="CloseButton" to="." method="_on_close_button_pressed"]
 [connection signal="pressed" from="DebugAddPlayersButton" to="." method="_on_debug_add_players_button_pressed"]
+[connection signal="close_requested" from="Window" to="." method="_on_window_close_requested"]

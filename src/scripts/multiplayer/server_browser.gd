@@ -10,7 +10,7 @@ var listener: PacketPeerUDP
 var room_info = { "name" :  "name", "playerCount": 0 }
 @export var listenPort: int = 8920
 @export var broadcastPort: int = 8930
-@export var broadcastAddress: String = "255.255.255.255"
+@export var broadcastAddress: String = "192.168.1.255"
 @export var serverInfo: PackedScene
 
 func _ready() -> void:
