@@ -36,6 +36,7 @@ offset_bottom = 644.0
 
 [node name="BlackScreen" type="ColorRect" parent="."]
 visible = false
+layout_mode = 0
 offset_left = -155.0
 offset_top = -142.0
 offset_right = 1302.0
@@ -45,6 +46,7 @@ color = Color(0, 0, 0, 0.470588)
 [node name="WrongPanel" type="Panel" parent="."]
 visible = false
 texture_filter = 3
+layout_mode = 0
 offset_left = 350.0
 offset_top = 455.0
 offset_right = 630.0

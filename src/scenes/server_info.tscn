@@ -3,6 +3,8 @@
 [ext_resource type="Script" uid="uid://unrdmub4vb4h" path="res://src/scripts/multiplayer/server_info.gd" id="1_3368i"]
 
 [node name="ServerInfo" type="HBoxContainer"]
+offset_right = 423.0
+offset_bottom = 31.0
 script = ExtResource("1_3368i")
 
 [node name="ServerNameLabel" type="Label" parent="."]

@@ -61,17 +61,20 @@ func _on_host_button_pressed() -> void:
 	multiplayer.set_multiplayer_peer(peer)
 	send_player_information("Teacher", multiplayer.get_unique_id())
 	$ServerBrowser.set_up_broadcast($NameInputContainer/NameLineEdit.text + "'s server")
+	$StartButton.show()
 	print("Waiting for players...")
 
 func _on_join_button_pressed() -> void:
+	$ServerBrowser.show()
+	$NameInputContainer.show()
+	$HBoxContainer.hide()
+
+func join_by_ip(ip):
 	var player_name = $NameInputContainer/NameLineEdit.text
 	if player_name == "":
 		show_error("Invalid name: Empty" )
 		return
 		
-	join_by_ip(address)
-
-func join_by_ip(ip):
 	peer = ENetMultiplayerPeer.new()
 	var error = peer.create_client(ip, port)
 	if error != OK:
