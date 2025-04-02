@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Project Kiwi"
-run/main_scene="res://src/scenes/meuns/main-menu.tscn"
+run/main_scene="res://src/scenes/menus/main-menu.tscn"
 config/features=PackedStringArray("4.4", "Forward Plus")
 
 [audio]
@@ -62,6 +62,7 @@ variables={
 "correct_answer": 0,
 "wrong_answer": 0
 }
+history/simple_history_enabled=false
 
 [display]
 

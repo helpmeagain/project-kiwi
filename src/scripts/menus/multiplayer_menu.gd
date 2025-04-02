@@ -103,7 +103,7 @@ func _on_back_button_pressed() -> void:
 			multiplayer.multiplayer_peer = null
 	
 	MultiplayerPlayerManager.players.clear()
-	get_tree().change_scene_to_file("res://src/scenes/main-menu.tscn")
+	get_tree().change_scene_to_file("res://src/scenes/menus/main-menu.tscn")
 
 func _on_debug_add_players_button_pressed() -> void:
 	MultiplayerPlayerManager.players[MultiplayerPlayerManager.players.size() + 1] ={

@@ -11,3 +11,7 @@
 [Abbadon](https://caffinate.itch.io/abaddon)
 [Edit Undo](https://www.dafont.com/edit-undo.font)
 [Ruler](https://somepx.itch.io/free-font-ruler)
+[Silver](https://poppyworks.itch.io/silver)
+
+# Sounds
+[Dialog Text Sound Effects](https://alan-dalcastagne.itch.io/dialog-text-sound-effects)

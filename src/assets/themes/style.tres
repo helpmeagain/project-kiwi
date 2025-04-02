@@ -14,7 +14,7 @@
 [sub_resource type="Resource" id="Resource_n3ytn"]
 script = ExtResource("1_im1re")
 overrides = {
-"global_font": "\"res://src/assets/fonts/Abaddon Light.ttf\""
+"global_font": "\"res://src/assets/fonts/Silver.ttf\""
 }
 
 [sub_resource type="Resource" id="Resource_eylrk"]
@@ -39,12 +39,13 @@ overrides = {
 "bold_font": "\"res://src/assets/fonts/Abaddon Bold.ttf\"",
 "box_panel": "\"vn_textbox_default_panel.tres\"",
 "name_label_box_modulate": "Color(0, 0, 0, 0.658824)",
+"name_label_box_offset": "Vector2(0, -5)",
 "name_label_box_panel": "\"vn_textbox_name_label_panel.tres\"",
 "name_label_box_use_global_color": "false",
-"name_label_custom_font_size": "24.0",
+"name_label_custom_font_size": "30.0",
 "name_label_use_global_font_size": "false",
 "normal_font": "\"res://src/assets/fonts/Abaddon Light.ttf\"",
-"text_size": "30.0",
+"text_size": "40.0",
 "text_use_global_size": "false"
 }
 
