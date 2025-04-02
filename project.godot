@@ -28,8 +28,7 @@ Dialogic="*res://addons/dialogic/Core/DialogicGameHandler.gd"
 
 directories/dch_directory={
 "eagle": "res://src/assets/dialogic/characters/eagle.dch",
-"kiwi": "res://src/assets/dialogic/characters/kiwi.dch",
-"unit_test_character": "res://Tests/Resources/unit_test_character.dch"
+"kiwi": "res://src/assets/dialogic/characters/kiwi.dch"
 }
 directories/dtl_directory={
 "school-entrance": "res://src/assets/dialogic/timelines/school-entrance.dtl",

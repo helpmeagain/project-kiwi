@@ -66,10 +66,12 @@ theme_override_constants/separation = 10
 
 [node name="SingleplayerButton" type="Button" parent="LabelAndButtonsContainer/ButtonsContainer"]
 layout_mode = 2
+mouse_default_cursor_shape = 2
 text = "Singleplayer"
 
 [node name="MultiplayerButton" type="Button" parent="LabelAndButtonsContainer/ButtonsContainer"]
 layout_mode = 2
+mouse_default_cursor_shape = 2
 text = "Multiplayer"
 
 [node name="HowToPlayButton" type="Button" parent="LabelAndButtonsContainer/ButtonsContainer"]
@@ -79,13 +81,16 @@ text = "How to play"
 
 [node name="AboutButton" type="Button" parent="LabelAndButtonsContainer/ButtonsContainer"]
 layout_mode = 2
-disabled = true
+mouse_default_cursor_shape = 2
 text = "About"
 
 [node name="ExitButton" type="Button" parent="LabelAndButtonsContainer/ButtonsContainer"]
 layout_mode = 2
+mouse_default_cursor_shape = 2
 text = "Exit"
 
 [connection signal="pressed" from="LabelAndButtonsContainer/ButtonsContainer/SingleplayerButton" to="." method="_on_singleplayer_button_pressed"]
-[connection signal="pressed" from="LabelAndButtonsContainer/ButtonsContainer/MultiplayerButton" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="LabelAndButtonsContainer/ButtonsContainer/MultiplayerButton" to="." method="_on_multiplayer_button_pressed"]
+[connection signal="pressed" from="LabelAndButtonsContainer/ButtonsContainer/HowToPlayButton" to="." method="_on_how_to_play_button_pressed"]
+[connection signal="pressed" from="LabelAndButtonsContainer/ButtonsContainer/AboutButton" to="." method="_on_about_button_pressed"]
 [connection signal="pressed" from="LabelAndButtonsContainer/ButtonsContainer/ExitButton" to="." method="_on_exit_button_pressed"]
