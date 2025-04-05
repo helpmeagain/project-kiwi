@@ -13,6 +13,7 @@ config_version=5
 config/name="Project Kiwi"
 run/main_scene="res://src/scenes/menus/main-menu.tscn"
 config/features=PackedStringArray("4.4", "Forward Plus")
+config/icon="uid://c5t1l62hqp4x3"
 
 [audio]
 
@@ -49,7 +50,7 @@ animations/join_default_length=0.5
 animations/join_default_wait=true
 animations/leave_default_length=0.5
 animations/leave_default_wait=true
-animations/cross_fade_default_length=0.5
+animations/cross_fade_default_length=0.0
 choices/autofocus_first=false
 choices/delay=0.2
 choices/reveal_delay=0
@@ -62,6 +63,12 @@ variables={
 "wrong_answer": 0
 }
 history/simple_history_enabled=false
+animations/leave_default="Fade Out"
+animations/join_default="Fade In"
+portraits/default_portrait=""
+text/autoadvance_enabled=false
+glossary/default_color=Color(1, 0.839966, 0.554688, 1)
+glossary/glossary_files=["res://src/assets/dialogic/glossaries/english_glossary.tres"]
 
 [display]
 

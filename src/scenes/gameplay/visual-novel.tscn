@@ -1,60 +1,94 @@
-[gd_scene load_steps=4 format=3 uid="uid://d02flntjqvbfi"]
+[gd_scene load_steps=6 format=3 uid="uid://b4uu2jjsn6is8"]
 
-[ext_resource type="Script" uid="uid://cbvh8ymekp35q" path="res://src/scripts/gameplay/visual_novel.gd" id="1_xh3sh"]
-[ext_resource type="Texture2D" uid="uid://cegrq42735jks" path="res://src/assets/images/computer_room.jpg" id="2_5gnb4"]
-[ext_resource type="Theme" uid="uid://ch3x2byuiyaxy" path="res://src/assets/themes/menu.tres" id="3_sv4s6"]
+[ext_resource type="Script" uid="uid://cbvh8ymekp35q" path="res://src/scripts/gameplay/visual_novel.gd" id="1_0tk1v"]
+[ext_resource type="Texture2D" uid="uid://du8jp5vhivi2r" path="res://src/assets/backgrounds/single_bedroom.jpg" id="1_w3pjf"]
+[ext_resource type="Script" uid="uid://b28mwb5urarq3" path="res://src/scripts/gameplay/background.gd" id="2_x8kxx"]
+[ext_resource type="Theme" uid="uid://ch3x2byuiyaxy" path="res://src/assets/themes/menu.tres" id="2_yye55"]
+[ext_resource type="FontFile" uid="uid://bhggoau4c0xk0" path="res://src/assets/fonts/Silver.ttf" id="3_jbmyh"]
 
-[node name="Visual-novel" type="Control"]
+[node name="VisualNovel" type="Control"]
 layout_mode = 3
-anchors_preset = 0
-script = ExtResource("1_xh3sh")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_0tk1v")
 
-[node name="TextureRect" type="TextureRect" parent="."]
-modulate = Color(0.185981, 0.185981, 0.185981, 1)
+[node name="BackgroundControl" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="BlackBackground" type="ColorRect" parent="BackgroundControl"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="ImageBackground" type="TextureRect" parent="BackgroundControl"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.65, 0.65)
+pivot_offset = Vector2(960, 540)
+texture = ExtResource("1_w3pjf")
+stretch_mode = 5
+script = ExtResource("2_x8kxx")
+
+[node name="QuestionsControl" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="WrongAnswer" type="Control" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="BlackScreen" type="ColorRect" parent="WrongAnswer"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.470588)
+
+[node name="WrongPanel" type="Panel" parent="WrongAnswer"]
+texture_filter = 3
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -52.0
-offset_top = -88.0
-offset_right = 3948.0
-offset_bottom = 2912.0
+offset_left = -220.0
+offset_top = 156.0
+offset_right = 60.0
+offset_bottom = 640.0
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(0.316815, 0.270733)
-texture = ExtResource("2_5gnb4")
-
-[node name="QuestionsContainer" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 0
-offset_left = 161.0
-offset_top = 4.0
-offset_right = 1011.0
-offset_bottom = 644.0
-
-[node name="BlackScreen" type="ColorRect" parent="."]
-visible = false
-layout_mode = 0
-offset_left = -155.0
-offset_top = -142.0
-offset_right = 1302.0
-offset_bottom = 762.0
-color = Color(0, 0, 0, 0.470588)
-
-[node name="WrongPanel" type="Panel" parent="."]
-visible = false
-texture_filter = 3
-layout_mode = 0
-offset_left = 350.0
-offset_top = 455.0
-offset_right = 630.0
-offset_bottom = 939.0
 rotation = -1.5708
-theme = ExtResource("3_sv4s6")
+theme = ExtResource("2_yye55")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="WrongPanel"]
+[node name="VBoxContainer" type="VBoxContainer" parent="WrongAnswer/WrongPanel"]
 texture_filter = 3
 layout_mode = 0
 offset_left = 205.0
@@ -63,7 +97,7 @@ offset_right = 796.0
 offset_bottom = 70.0
 rotation = 1.5708
 
-[node name="TitleLabel" type="Label" parent="WrongPanel/VBoxContainer"]
+[node name="TitleLabel" type="Label" parent="WrongAnswer/WrongPanel/VBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_shadow_color = Color(1, 0, 0, 0.341176)
@@ -72,7 +106,7 @@ text = "Wrong Answer!"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Subtitle" type="Label" parent="WrongPanel/VBoxContainer"]
+[node name="Subtitle" type="Label" parent="WrongAnswer/WrongPanel/VBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.517647)
@@ -81,7 +115,7 @@ text = "Try again"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="WrongPanelButton" type="Button" parent="WrongPanel"]
+[node name="WrongPanelButton" type="Button" parent="WrongAnswer/WrongPanel"]
 layout_mode = 0
 offset_left = 95.0
 offset_top = 366.0
@@ -91,4 +125,57 @@ rotation = 1.5708
 theme_override_font_sizes/font_size = 35
 text = "Ok!"
 
-[connection signal="pressed" from="WrongPanel/WrongPanelButton" to="." method="_on_wrong_panel_button_pressed"]
+[node name="StartGameControl" type="Control" parent="."]
+visible = false
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="StartGameScreen" type="ColorRect" parent="StartGameControl"]
+layout_mode = 0
+offset_left = -14.0
+offset_top = -23.0
+offset_right = 1166.0
+offset_bottom = 660.0
+theme = ExtResource("2_yye55")
+color = Color(0, 0, 0, 1)
+
+[node name="StargGameLabel" type="Label" parent="StartGameControl/StartGameScreen"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -536.5
+offset_top = -144.5
+offset_right = 532.5
+offset_bottom = 132.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("3_jbmyh")
+theme_override_font_sizes/font_size = 60
+text = "Este jogo contêm escolhas que alteram a narrativa.
+Acertar ou errar exercícios também afetam a narrativa.
+
+Escolha com sabedoria!"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="StartGameButton" type="Button" parent="StartGameControl/StartGameScreen"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.786
+anchor_right = 0.5
+anchor_bottom = 0.786
+offset_left = -111.0
+offset_top = -43.838
+offset_right = 116.0
+offset_bottom = 5.16199
+theme_override_font_sizes/font_size = 40
+text = "Continuar"
+
+[connection signal="pressed" from="WrongAnswer/WrongPanel/WrongPanelButton" to="." method="_on_wrong_panel_button_pressed"]
+[connection signal="pressed" from="StartGameControl/StartGameScreen/StartGameButton" to="." method="_on_start_game_button_pressed"]

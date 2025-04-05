@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://dpqa70nf0h1ks"]
 
 [ext_resource type="Script" uid="uid://lbcydatsm6xt" path="res://src/scripts/menus/main_menu.gd" id="1_ljxf1"]
-[ext_resource type="Texture2D" uid="uid://cegrq42735jks" path="res://src/assets/images/computer_room.jpg" id="2_ryg3t"]
+[ext_resource type="Texture2D" uid="uid://bhpbw04t5pwo8" path="res://src/assets/backgrounds/old_school.png" id="2_ljxf1"]
 [ext_resource type="FontFile" uid="uid://bmvtmpvoy1cwt" path="res://src/assets/fonts/editundo.ttf" id="3_y6nqp"]
 [ext_resource type="Theme" uid="uid://ch3x2byuiyaxy" path="res://src/assets/themes/menu.tres" id="4_nacp7"]
 
@@ -15,7 +15,7 @@ grow_vertical = 2
 script = ExtResource("1_ljxf1")
 
 [node name="TextureRect" type="TextureRect" parent="."]
-modulate = Color(0.229112, 0.229112, 0.229112, 0.996078)
+modulate = Color(0.361575, 0.361576, 0.361575, 0.996078)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -29,7 +29,7 @@ offset_bottom = 2588.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.316815, 0.270733)
-texture = ExtResource("2_ryg3t")
+texture = ExtResource("2_ljxf1")
 
 [node name="LabelAndButtonsContainer" type="VBoxContainer" parent="."]
 layout_mode = 1

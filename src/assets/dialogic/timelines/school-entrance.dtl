@@ -3,9 +3,11 @@ kiwi: Hello!
 kiwi (Smile): I'm Kiwi!
 join eagle (Neutral) right
 eagle: And I'm eagle!
+[signal arg="bg_dining_kitchen"]
 eagle (Smile): Nice to meet you!
 update eagle (Neutral)
 kiwi (Neutral): Let's play a game
+[signal arg="bg_old_school"]
 eagle: Of course!
 [clear time="1.0" music="false" background="false" positions="false" style="false"]
 [wait time="1.0"]

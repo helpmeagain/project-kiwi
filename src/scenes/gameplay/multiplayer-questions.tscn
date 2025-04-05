@@ -16,6 +16,13 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_mh1t5")
 
+[node name="QuestionsContainer" type="Control" parent="."]
+anchors_preset = 0
+offset_left = 5.0
+offset_top = -3.0
+offset_right = 1151.0
+offset_bottom = 652.0
+
 [node name="ScoreLabel" type="Label" parent="."]
 layout_mode = 1
 anchors_preset = -1
@@ -62,13 +69,6 @@ grow_horizontal = 0
 theme_override_fonts/font = ExtResource("3_n7e7y")
 theme_override_font_sizes/font_size = 40
 text = "0/0"
-
-[node name="QuestionsContainer" type="Control" parent="."]
-anchors_preset = 0
-offset_left = 5.0
-offset_top = -3.0
-offset_right = 1151.0
-offset_bottom = 652.0
 
 [node name="Player-score" parent="." instance=ExtResource("4_ohok1")]
 visible = false
