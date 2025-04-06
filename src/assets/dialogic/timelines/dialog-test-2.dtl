@@ -1,0 +1,8 @@
+join kiwi (Smile) left [animation="Fade In" wait="true"]
+join eagle (Smile) right [animation="Fade In" wait="true"]
+kiwi: This is a test!
+eagle: Yep, it is!
+kiwi: One more exercise!
+[clear time="1.0" music="false" background="false" positions="false" style="false"]
+[wait time="1.0"]
+[signal arg="dialog-test-2"]

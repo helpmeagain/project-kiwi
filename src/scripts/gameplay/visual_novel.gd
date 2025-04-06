@@ -89,4 +89,4 @@ func _on_wrong_panel_button_pressed() -> void:
 
 func _on_start_game_button_pressed() -> void:
 	$StartGameControl.hide()
-	start_dialogic_timeline("school-entrance")
+	start_dialogic_timeline("introduction")

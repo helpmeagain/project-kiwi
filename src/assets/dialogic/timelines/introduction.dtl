@@ -1,0 +1,95 @@
+if {introduction_part_3} == true:
+	jump introduction-3
+if {introduction_part_2} == true:
+	jump introduction-2
+if {introduction_part_1} == true:
+	jump introduction-1
+kiwi: Hoje é o meu primeiro dia de aula...
+kiwi: Estou tão ansiosa pelo que está por vir. Já consigo ouvir as borboletas no meu estômago!
+kiwi: Será que cometi um erro com esse intercâmbio?
+kiwi: ...
+kiwi: Enfim, preciso terminar de me arrumar.
+[style name="style"]
+(Um tempo se passa...)
+join kiwi (Sad) center [animation="Slide In Left" wait="true"]
+kiwi: Okay. Acho que estou pronta. Eu consigo, eu sei que consigo!
+kiwi (Neutral): Antes de sair, vou conversar com a minha irmã. Talvez ela consiga me tranquilizar.
+leave kiwi [animation="Fade Out" wait="true"]
+[signal arg="bg_dining_kitchen"]
+[wait time="2.5"]
+join kiwi (Neutral) left [animation="Slide In Left" wait="true"]
+kiwi: Ostrich? Pode vir aqui rapidinho?
+ostrich: Claro! Já estou indo.
+join ostrich (Smile) right [animation="Slide In Right" wait="true"]
+ostrich: Bom dia! Dormiu bem?
+kiwi (Sad): Não muito. Fiquei muito ansiosa nessa noite, não consegui dormir tanto quanto queria.
+ostrich: Se não der certo, você pode rir e aprender com a situação. O que te deixa ansiosa?
+kiwi: Sinceramente, sinto que meu inglês está enferrujado. Até as coisas mais simples me fugiram a cabeça!
+ostrich (Neutral): E se você treinar um pouquinho do simple past comigo?
+Deseja jogar o tutorial?
+- Sim
+	set {tutorial} = true
+	kiwi (Smile): Claro! Revisar o contéudo sempre é útil!
+	ostrich: Ótimo! Vamos lá!
+	update kiwi (Neutral)
+	ostrich: O simple past é o nosso equivalente do pretérito perfeito.
+	ostrich (Smile): Ou seja, é um tempo verbal que se refere a *ações que aconteceram e já terminaram*!
+	ostrich: São frases do tipo "Eu trabalhei ontem", que ficaria "She worked yesterday".
+	ostrich: Veja que o verbo ficou diferente. Normalmente, você veria ele no Simple Present como "works".
+	ostrich (Proud): Mas no simple past, adionamos o –ed. Desta forma, teremos "worked".
+	ostrich: Vamos ver!  Tente completar a frase\:
+	set {introduction_part_1} = true
+	[signal arg="introduction-part-1"]
+	[end_timeline]
+	label introduction-1
+	join kiwi left [animation="Fade In" length="0.3"]
+	join ostrich right [animation="Fade In" length="0.3"]
+	[wait time="0.3"]
+	ostrich: Ótimo! Você entendeu muito bem!
+	ostrich (Smile): Essa regra do -ed pode ser diferente. Vamos analisar um pouco melhor.
+	ostrich: Para verbos que terminam em "e", apenas adicionamos um "-d". Como por exemplo "Loved".
+	ostrich (Neutral): Para verbos que terminam em "y" e precedidos com verbo, adicionamos o sufixo "-ed". Como na palavra "Enjoyed".
+	ostrich: E para verbos  que terminam em "y" e precedidos com consoante, adicionamos "ied". Como em "Cried".
+	kiwi (Sad): Me parece um pouco complexo...
+	ostrich (Smile): Com prática fica fácil! Vamos tentar treinar de novo!
+	set {introduction_part_2} = true
+	[signal arg="introduction-part-2"]
+	[end_timeline]
+	label introduction-2
+	set {introduction_part_3} = true
+	[signal arg="introduction-part-3"]
+	[end_timeline]
+	label introduction-3
+	kiwi: Parte 3!
+- Não
+	set {tutorial} = false
+	kiwi (Neutral): Hmm... Acho que vou deixar passar.
+	kiwi (Smile): Acho que é só ansiedade. Vou conseguir lembrar de tudo!
+	ostrich (Smile): Ótimo, sua confiança já está voltando com tudo!
+update kiwi (Neutral)
+ostrich (Neutral): E lembre-se, você pode ver dicas. Com certeza será útil!
+ostrich: Ah, mais uma coisa!
+ostrich: Quer tomar um café? Para te deixar um pouco mais acordada?
+ostrich: Talvez seu dia seja mais fácil com uma xícara de café!
+- Aceitar café (questões mais fáceis)
+	set {coffe} = true
+	kiwi (Smile): Claro! Como negar com cafézinho? Thank you very much!
+	ostrich (Smile): You're welcome, sister!
+	(Um tempo se passa...)
+	update kiwi (Neutral)
+	update ostrich (Neutral)
+- Recusar café (questões mais difíceis)
+	set {coffe} = false
+	kiwi: Vou recusar dessa vez.
+	if {tutorial} == false:
+		ostrich (Proud): Para algúem que se diz ansiosa, você está *super* confiante!
+		ostrich: Gosto de te ver assim. Mas da próxima vez, vamos tomar um café e revisar juntas!
+		ostrich (Big Smile): Eu adoro estudar com você!
+		kiwi (Smile): Pode deixar!
+	else:
+		ostrich: Claro, eu entendo. As vezes é melhor fazer as coisas do jeito difícil.
+		ostrich: Da próxima vez, vamos tomar café juntas!
+		kiwi (Smile): Pode deixar!
+kiwi (Smile): Tchau irmã, até mais tarde!
+ostrich: Bye bye! See you soon!
+[end_timeline]

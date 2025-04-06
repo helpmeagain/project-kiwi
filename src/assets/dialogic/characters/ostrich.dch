@@ -1,0 +1,77 @@
+{
+"@path": "res://addons/dialogic/Resources/character.gd",
+"@subpath": NodePath(""),
+&"_translation_id": "",
+&"color": Color(1, 1, 1, 1),
+&"custom_info": {
+"sound_mood_default": "Neutral",
+"sound_moods": {
+"Neutral": {
+"mode": 0,
+"name": "Neutral",
+"pitch_base": 1.0,
+"pitch_variance": 0.3,
+"skip_characters": 3.0,
+"sound_path": "res://src/assets/sounds/Retro_Single_v3_wav.wav",
+"volume_base": -30.0,
+"volume_variance": 0.0
+}
+},
+"style": "style"
+},
+&"default_portrait": "Neutral",
+&"description": "",
+&"display_name": "Ostrich",
+&"mirror": false,
+&"nicknames": [""],
+&"offset": Vector2(0, 0),
+&"portraits": {
+"Big Smile": {
+"export_overrides": {
+"image": "\"res://src/assets/sprites/characters/ostrich/big_smile.png\""
+},
+"mirror": false,
+"offset": Vector2(0, 0),
+"scale": 1,
+"scene": "",
+"sound_mood": "Neutral"
+},
+"Neutral": {
+"export_overrides": {
+"image": "\"res://src/assets/sprites/characters/ostrich/neutral.png\""
+},
+"mirror": false,
+"offset": Vector2(0, 0),
+"scale": 1,
+"scene": ""
+},
+"Proud": {
+"export_overrides": {
+"image": "\"res://src/assets/sprites/characters/ostrich/proud.png\""
+},
+"mirror": false,
+"offset": Vector2(0, 0),
+"scale": 1,
+"scene": ""
+},
+"Sad": {
+"export_overrides": {
+"image": "\"res://src/assets/sprites/characters/ostrich/sad.png\""
+},
+"mirror": false,
+"offset": Vector2(0, 0),
+"scale": 1,
+"scene": ""
+},
+"Smile": {
+"export_overrides": {
+"image": "\"res://src/assets/sprites/characters/ostrich/smile.png\""
+},
+"mirror": false,
+"offset": Vector2(0, 0),
+"scale": 1,
+"scene": ""
+}
+},
+&"scale": 1.0
+}

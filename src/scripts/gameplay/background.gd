@@ -5,7 +5,7 @@ signal transition_finished()
 
 var current_texture: Texture
 var next_texture: Texture
-var transition_duration: float = 1.0
+var transition_duration: float = 3.0
 var transition_progress: float = 0.0
 var is_transitioning: bool = false
 var transition_type: String = "fade"

@@ -5,16 +5,11 @@
 [resource]
 script = ExtResource("1_a03fj")
 entries = {
-"Kiwi": {
-"alternatives": ["you"],
-"case_sensitive": true,
-"color": Color(1, 0.839216, 0.552941, 1),
-"extra": "Ela está na tela no momento",
-"name": "Kiwi",
-"text": "Nome da protagonista. Baseado em um passáro",
-"title": "Kiwi"
-},
-"you": "Kiwi"
+"dicas": {
+"name": "dicas",
+"text": "Você pode passar o mouse sobre os textos destacados para conseguir dicas!",
+"title": "DICAS!"
+}
 }
 enabled = true
 _translation_id = ""

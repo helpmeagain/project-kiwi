@@ -4,7 +4,7 @@
 &"_translation_id": "",
 &"color": Color(1, 1, 1, 1),
 &"custom_info": {
-"sound_mood_default": "",
+"sound_mood_default": "Neutral",
 "sound_moods": {
 "Neutral": {
 "mode": 1,
@@ -13,7 +13,7 @@
 "pitch_variance": 0.3,
 "skip_characters": 2.0,
 "sound_path": "res://src/assets/sounds/Retro_Single_v3_wav.wav",
-"volume_base": -20.0,
+"volume_base": -30.0,
 "volume_variance": 0.0
 }
 },

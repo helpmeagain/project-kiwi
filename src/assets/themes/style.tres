@@ -36,16 +36,15 @@ overrides = {}
 script = ExtResource("1_im1re")
 scene = ExtResource("5_x3dpl")
 overrides = {
-"bold_font": "\"res://src/assets/fonts/Abaddon Bold.ttf\"",
 "box_panel": "\"vn_textbox_default_panel.tres\"",
+"box_size": "Vector2(550, 160)",
 "name_label_box_modulate": "Color(0, 0, 0, 0.658824)",
-"name_label_box_offset": "Vector2(0, -5)",
 "name_label_box_panel": "\"vn_textbox_name_label_panel.tres\"",
 "name_label_box_use_global_color": "false",
-"name_label_custom_font_size": "30.0",
+"name_label_custom_font_size": "20.0",
+"name_label_use_global_font": "false",
 "name_label_use_global_font_size": "false",
-"normal_font": "\"res://src/assets/fonts/Abaddon Light.ttf\"",
-"text_size": "40.0",
+"text_size": "38.0",
 "text_use_global_size": "false"
 }
 
@@ -59,7 +58,14 @@ overrides = {
 [sub_resource type="Resource" id="Resource_gojut"]
 script = ExtResource("1_im1re")
 scene = ExtResource("7_hwy5i")
-overrides = {}
+overrides = {
+"boxes_stylebox_hovered": "\"choice_panel_hover.tres\"",
+"boxes_stylebox_normal": "\"choice_panel_normal.tres\"",
+"font_size_custom": "25.0",
+"font_size_use_global": "false",
+"font_use_global": "false",
+"sounds_volume": "-80.0"
+}
 
 [sub_resource type="Resource" id="Resource_kiy6h"]
 script = ExtResource("1_im1re")
@@ -88,4 +94,4 @@ layer_info = {
 }
 base_overrides = {}
 layers = Array[ExtResource("1_im1re")]([])
-metadata/_latest_layer = "11"
+metadata/_latest_layer = "15"

@@ -38,3 +38,6 @@ func _on_git_hub_button_pressed() -> void:
 
 func _on_repository_button_pressed() -> void:
 	OS.shell_open("https://github.com/helpmeagain/project-kiwi")
+
+func _on_anime_backgrounds_button_pressed() -> void:
+	OS.shell_open("https://noranekogames.itch.io/yumebackground")

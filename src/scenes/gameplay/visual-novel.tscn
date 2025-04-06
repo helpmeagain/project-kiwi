@@ -174,6 +174,7 @@ offset_left = -111.0
 offset_top = -43.838
 offset_right = 116.0
 offset_bottom = 5.16199
+mouse_default_cursor_shape = 2
 theme_override_font_sizes/font_size = 40
 text = "Continuar"
 

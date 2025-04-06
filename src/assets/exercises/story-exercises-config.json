@@ -1,12 +1,27 @@
 {
-	"school-entrance-exercise-1": {
+	"dialog-test-1": {
 		"scene": "res://src/scenes/exercises/fill-in-the-blank.tscn",
-		"data": {"file": "story-mode.json", "id": "1"},
-		"next_timeline": "school-lobby"
+		"data": {"file": "story-mode.json", "id": "dialog-test-1"},
+		"next_timeline": "dialog-test-2"
 	},
-	"school-lobby-exercise-1": {
+	"dialog-test-2": {
 		"scene": "res://src/scenes/exercises/fill-in-the-blank.tscn",
-		"data": {"file": "story-mode.json", "id": "4"},
-		"next_timeline": "school-entrance"
+		"data": {"file": "story-mode.json", "id": "dialog-test-2"},
+		"next_timeline": "dialog-test-1"
+	},
+	"introduction-part-1":{
+		"scene": "res://src/scenes/exercises/fill-in-the-blank.tscn",
+		"data": {"file": "story-mode.json", "id": "introduction-part-1"},
+		"next_timeline": "introduction"
+	},
+	"introduction-part-2":{
+		"scene": "res://src/scenes/exercises/fill-in-the-blank.tscn",
+		"data": {"file": "story-mode.json", "id": "introduction-part-2"},
+		"next_timeline": "introduction"
+	},
+	"introduction-part-3":{
+		"scene": "res://src/scenes/exercises/fill-in-the-blank.tscn",
+		"data": {"file": "story-mode.json", "id": "introduction-part-3"},
+		"next_timeline": "introduction"
 	},
 }
