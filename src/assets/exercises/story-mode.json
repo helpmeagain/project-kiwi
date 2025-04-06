@@ -60,7 +60,7 @@
 		"We didn’t go to the school.",
 		"We did not go to the school.",
 		"We didn’t go to the school",
-		"We did not go to the school",
+		"We did not go to the school"
 	]
   },
   {
@@ -68,7 +68,32 @@
 	"text_to_speech": "Did she call you?",
 	"correct_answers": [
 		"Did she call you?",
-		"Did she call you",
+		"Did she call you"
 	]
   },
+  {
+	"id": "train-part-1",
+	"sentence": "I ___ in Brazil.",
+	"correct_answer": "lived",
+	"options": ["lived", "liveed", "lives", "livied"]
+  },
+  {
+	"id": "train-part-2-easy",
+	"sentence": " I never ___ before.",
+	"correct_answer": "attended",
+	"options": ["attended", "attendied", "attendes", "attends"]
+  },
+  {
+	"id": "train-part-2-hard",
+	"text_to_speech": "I never went before.",
+	"correct_answers": [
+		"I never went before.",
+		"I never went before"
+	]
+  },
+  {
+	"id": "train-part-3",
+	"original": "Eu assisti vídeos ontem",
+	"correct_answers": ["I watched videos yesterday.", "I watched videos yesterday"]
+  }
 ]

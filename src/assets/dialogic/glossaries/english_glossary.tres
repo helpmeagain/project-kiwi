@@ -5,10 +5,39 @@
 [resource]
 script = ExtResource("1_a03fj")
 entries = {
+"Handle": {
+"alternatives": ["handling"],
+"case_sensitive": false,
+"extra": "Tradução: Lidar",
+"name": "Handle",
+"text": "To deal with, have responsibility for, or be in charge of.",
+"title": "HANDLE"
+},
+"deep breath": {
+"extra": "Tradução: respirar fundo",
+"name": "deep breath",
+"text": "To breathe a lot of air into your lungs as a single action.",
+"title": "DEEP BREATH"
+},
 "dicas": {
+"case_sensitive": true,
 "name": "dicas",
 "text": "Você pode passar o mouse sobre os textos destacados para conseguir dicas!",
 "title": "DICAS!"
+},
+"exchange program": {
+"case_sensitive": true,
+"extra": "Tradução: intercâmbio",
+"name": "exchange program",
+"text": "An exchange program allows individuals, often students, to study or work in a different country, promoting cultural understanding and international experiences.",
+"title": "EXCHANGE PROGRAM"
+},
+"handling": "Handle",
+"nervous": {
+"extra": "Tradução: ansioso",
+"name": "nervous",
+"text": "When someone is worried and anxious.",
+"title": "NERVOUS"
 }
 }
 enabled = true

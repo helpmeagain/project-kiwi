@@ -1,0 +1,51 @@
+{
+"@path": "res://addons/dialogic/Resources/character.gd",
+"@subpath": NodePath(""),
+&"_translation_id": "",
+&"color": Color(1, 1, 1, 1),
+&"custom_info": {
+"sound_mood_default": "Neutral",
+"sound_moods": {
+"Neutral": {
+"mode": 1,
+"name": "Neutral",
+"pitch_base": 0.3,
+"pitch_variance": 0.2,
+"skip_characters": 3.0,
+"sound_path": "res://src/assets/sounds/Retro_Single_v3_wav.wav",
+"volume_base": -30.0,
+"volume_variance": 0.0
+}
+},
+"style": "style"
+},
+&"default_portrait": "Neutral",
+&"description": "",
+&"display_name": "Potoo",
+&"mirror": false,
+&"nicknames": [""],
+&"offset": Vector2(0, 0),
+&"portraits": {
+"Neutral": {
+"export_overrides": {
+"image": "\"res://src/assets/sprites/characters/potoo/smile.png\""
+},
+"mirror": false,
+"offset": Vector2(0, 0),
+"scale": 1,
+"scene": "",
+"sound_mood": "Neutral"
+},
+"Sad": {
+"export_overrides": {
+"image": "\"res://src/assets/sprites/characters/potoo/sad.png\""
+},
+"mirror": false,
+"offset": Vector2(0, 0),
+"scale": 1,
+"scene": "",
+"sound_mood": "Neutral"
+}
+},
+&"scale": 1.0
+}

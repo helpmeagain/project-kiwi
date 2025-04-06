@@ -15,6 +15,16 @@
 "sound_path": "res://src/assets/sounds/Retro_Single_v3_wav.wav",
 "volume_base": -30.0,
 "volume_variance": 0.0
+},
+"Thinking": {
+"mode": 0,
+"name": "Thinking",
+"pitch_base": 1.0,
+"pitch_variance": 0.0,
+"skip_characters": 0.0,
+"sound_path": "",
+"volume_base": 0.0,
+"volume_variance": 0.0
 }
 },
 "style": "style"
@@ -63,7 +73,8 @@
 "mirror": false,
 "offset": Vector2(0, 0),
 "scale": 1,
-"scene": ""
+"scene": "",
+"sound_mood": "Thinking"
 },
 "Tongue": {
 "export_overrides": {

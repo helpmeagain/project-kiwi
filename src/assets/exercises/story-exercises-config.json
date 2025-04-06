@@ -54,4 +54,24 @@
 		"data": {"file": "story-mode.json", "id": "introduction-part-9"},
 		"next_timeline": "introduction"
 	},
+	"train-part-1":{
+		"scene": "res://src/scenes/exercises/fill-in-the-blank.tscn",
+		"data": {"file": "story-mode.json", "id": "train-part-1"},
+		"next_timeline": "train-ride"
+	},
+	"train-part-2-easy":{
+		"scene": "res://src/scenes/exercises/fill-in-the-blank.tscn",
+		"data": {"file": "story-mode.json", "id": "train-part-2-easy"},
+		"next_timeline": "train-ride"
+	},
+	"train-part-2-hard":{
+		"scene": "res://src/scenes/exercises/listen-then-type.tscn",
+		"data": {"file": "story-mode.json", "id": "train-part-2-hard"},
+		"next_timeline": "train-ride"
+	},
+	"train-part-3":{
+		"scene": "res://src/scenes/exercises/type-the-sentence.tscn",
+		"data": {"file": "story-mode.json", "id": "train-part-3"},
+		"next_timeline": "train-ride"
+	}
 }

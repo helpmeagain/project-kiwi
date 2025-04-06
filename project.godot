@@ -30,12 +30,14 @@ Dialogic="*res://addons/dialogic/Core/DialogicGameHandler.gd"
 directories/dch_directory={
 "eagle": "res://src/assets/dialogic/characters/eagle.dch",
 "kiwi": "res://src/assets/dialogic/characters/kiwi.dch",
-"ostrich": "res://src/assets/dialogic/characters/ostrich.dch"
+"ostrich": "res://src/assets/dialogic/characters/ostrich.dch",
+"potoo": "res://src/assets/dialogic/characters/potoo.dch"
 }
 directories/dtl_directory={
 "dialog-test-1": "res://src/assets/dialogic/timelines/dialog-test-1.dtl",
 "dialog-test-2": "res://src/assets/dialogic/timelines/dialog-test-2.dtl",
-"introduction": "res://src/assets/dialogic/timelines/introduction.dtl"
+"introduction": "res://src/assets/dialogic/timelines/introduction.dtl",
+"train-ride": "res://src/assets/dialogic/timelines/train-ride.dtl"
 }
 layout/style_list=["res://src/assets/themes/style.tres"]
 layout/default_style="res://src/assets/dialogic/style.tres"
@@ -65,6 +67,10 @@ variables={
 "correct_answer": 0,
 "did_tutorial": false,
 "introduction_part": 0,
+"train_part": 0,
+"train_ride": {
+"is_anxious": false
+},
 "wrong_answer": 0
 }
 history/simple_history_enabled=false

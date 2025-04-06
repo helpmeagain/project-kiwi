@@ -1,0 +1,95 @@
+if {train_part} == 1.0:
+	jump train-1
+elif {train_part} == 2.0:
+	jump train-2
+elif {train_part} == 3.0:
+	jump train-3
+[signal arg="bg_outdoor_stairs"]
+[wait time="2.5"]
+kiwi: Okay. Preciso ir pegar o trem.
+if {did_tutorial}   ==   true:
+	kiwi: Ainda consigo chegar a tempo na escola. Precisa dar tempo!
+else:
+	kiwi: Pelo menos ainda tenho muito tempo...
+kiwi: Estação 4B, 7C, 2E....
+kiwi: É aquela, achei!
+kiwi: Agora é só esperar o próximo chegar...
+[signal arg="bg_train_day"]
+[wait time="2.5"]
+join kiwi left [animation="Slide In Left" wait="true"]
+if {did_tutorial} == true:
+	kiwi (Smile): Não acredtio, deu tudo certo!
+else:
+	kiwi: Ótimo, este está um pouco mais vazio.
+join potoo right [animation="Slide In Right" wait="true"]
+potoo: Hi! How are you?
+kiwi (Surprised): (AAAAH, ALGUÉM VINDO FALAR COMIGO?)
+kiwi (Sad): Ééé... Bem, eu...
+potoo (Neutral): What?
+kiwi (Surprised): (Eu vou precisar começar a falar em inglês. Boa sorte pra mim)
+potoo: So... how are you doing?
+- I'm doing great!
+	set {train_ride.is_anxious} = false
+	kiwi (Smile): I'm doing great! It's been a busy morning, but I'm handling it really well.
+	potoo: Oh, that's great!
+- I'm actually so anxious...
+	set {train_ride.is_anxious} = true
+	kiwi (Sad): I’m feeling really anxious, but I’m trying to stay positive!
+	potoo (Neutral): Is there something I can do to help?
+	kiwi (Smile):  I can handle it. Everything will be fine!
+potoo: You're not from here, are you?
+kiwi: Well, no...
+set {train_part} = 1.0
+[signal arg="train-part-1"]
+[end_timeline]
+label train-1
+join kiwi left [animation="Fade In" length="0.2"]
+join potoo right [animation="Fade In" length="0.2"]
+potoo: Oh! Brazil is such an amazing country!
+kiwi: Yes, it is! I'm here on an exchange program.
+potoo: Wait, so it's your first day at school?
+kiwi (Neutral): Yes, well...
+set {train_part} = 2.0
+if {coffee} == true:
+	[signal arg="train-part-2-easy"]
+else:
+	[signal arg="train-part-2-hard"]
+[end_timeline]
+label train-2
+join kiwi left [animation="Fade In" length="0.2"]
+join potoo right [animation="Fade In" length="0.2"]
+potoo (Neutral): That's funny—it's my first day at work too!
+if {train_ride.is_anxious} == true:
+	potoo (Sad): Honestly, I’m a little nervous too...
+else:
+	potoo (Sad): Unlike you, I’m pretty nervous over here!
+kiwi (Smile): Everything’s gonna be alright. Just take a deep breath.
+potoo (Neutral): Oh, I have a question! 
+kiwi: Of course, go ahead. What’s your question?
+potoo: Tell me something in Portuguese, then explain what it means in English!
+kiwi: Oh, hmm...
+set {train_part} = 3.0
+[signal arg="train-part-3"]
+[end_timeline]
+label train-3
+join kiwi left [animation="Fade In" length="0.2"]
+join potoo right [animation="Fade In" length="0.2"]
+kiwi: ... and it means "I watched videos yesterday"!
+potoo: Oh, that's so cool!
+kiwi (Sad): Ah, I just got to my stop. Bye, see you around!
+potoo: Bye!
+leave potoo [animation="Fade Out"]
+leave kiwi [animation="Fade Out"]
+[wait time="0.5"]
+[signal arg="bg_outdoor_stairs"]
+[wait time="2.5"]
+kiwi: Ah, isso foi um pouco assustador...
+if {train_ride.is_anxious} == true:
+	kiwi: Isso me deixou um pouquinho mais ansiosa.
+	kiwi: Mas o importante é que eu consegui! Eu consegui falar com alguém em inglês!
+else:
+	kiwi: Pelo menos eu consegui manter minha calma.
+	kiwi: E além do mais, eu consegui! Eu consegui falar com alguém em inglês!
+kiwi: Minha irmã estaria super orgulhosa, disso eu tenho certeza!
+jump 
+[end_timeline]

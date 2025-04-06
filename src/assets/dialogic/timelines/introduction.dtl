@@ -187,4 +187,8 @@ Deseja tomar café? Se tomar café,  você receberá questões mais fáceis, com
 		kiwi (Smile): Pode deixar!
 kiwi (Smile): Tchau irmã, até mais tarde!
 ostrich: Bye bye! See you soon!
+leave kiwi [animation="Slide Out Right" length="1.5"]
+leave ostrich [animation="Slide Out Left" length="1.5"]
+[wait time="1.5"]
+jump train-ride/
 [end_timeline]
