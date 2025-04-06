@@ -25,8 +25,50 @@
   },
   {
 	"id": "introduction-part-3",
+	"sentence": "He ___ at home on Sunday.",
+	"correct_answer": "stayed",
+	"options": ["stayed", "staied", "stays", "stayyed"]
+  },
+  {
+	"id": "introduction-part-4",
+	"sentence": "We ___ all night.",
+	"correct_answer": "danced",
+	"options": ["danced", "dances", "dancied", "dancced"]
+  },
+  {
+	"id": "introduction-part-5",
 	"sentence": "They ___ at the traffic light.",
 	"correct_answer": "stopped",
 	"options": ["stopped", "stoped", "stopied", "stops"]
+  },
+  {
+	"id": "introduction-part-6",
+	"sentence": "We ___ a trip last summer.",
+	"correct_answer": "planned",
+	"options": ["planned", "planed", "planied", "plans"]
+  },
+  {
+	"id": "introduction-part-7",
+	"sentence": "She ___ a movie last night.",
+	"correct_answer": "saw",
+	"options": ["saw", "seed", "seied", "seeed"]
+  },
+  {
+	"id": "introduction-part-8",
+	"text_to_speech": "We didn’t go to the school.",
+	"correct_answers": [
+		"We didn’t go to the school.",
+		"We did not go to the school.",
+		"We didn’t go to the school",
+		"We did not go to the school",
+	]
+  },
+  {
+	"id": "introduction-part-9",
+	"text_to_speech": "Did she call you?",
+	"correct_answers": [
+		"Did she call you?",
+		"Did she call you",
+	]
   },
 ]

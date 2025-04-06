@@ -37,7 +37,7 @@ func setup_buttons() -> void:
 	options.shuffle()
 	
 	for i in 4:
-		var button = $VBoxContainer.get_child(floor(i / 2)).get_child(i % 2)
+		var button = $VBoxContainer.get_child(floor(i / 2.0)).get_child(i % 2)
 		button.text = options[i]
 
 func _on_button_pressed(button: Button) -> void:

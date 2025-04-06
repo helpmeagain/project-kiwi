@@ -61,12 +61,10 @@ save/autosave_delay=60.0
 save/encryption_on_exports_only=true
 text/autopauses={}
 variables={
-"coffe": false,
+"coffee": false,
 "correct_answer": 0,
-"introduction_part_1": false,
-"introduction_part_2": false,
-"introduction_part_3": false,
-"tutorial": false,
+"did_tutorial": false,
+"introduction_part": 0,
 "wrong_answer": 0
 }
 history/simple_history_enabled=false

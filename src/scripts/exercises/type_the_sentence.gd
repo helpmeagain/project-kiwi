@@ -33,13 +33,16 @@ func setup_question_display() -> void:
 	$TextEdit.text = ""
 
 func validate_answer(answer: String) -> bool:
-	var normalized_answer = answer.to_lower().strip_edges()
+	var normalized_answer = normalize_answer(answer)
 	
 	for correct in current_question.correct_answers:
-		if normalized_answer == correct.to_lower().strip_edges():
+		if normalized_answer == normalize_answer(correct):
 			return true
 	
 	return false
+
+func normalize_answer(text: String) -> String:
+	return text.to_lower().strip_edges().replace("’", "'")
 
 func _on_submit_button_pressed() -> void:
 	var user_answer = $TextEdit.text
