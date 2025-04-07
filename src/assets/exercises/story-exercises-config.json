@@ -73,5 +73,30 @@
 		"scene": "res://src/scenes/exercises/type-the-sentence.tscn",
 		"data": {"file": "story-mode.json", "id": "train-part-3"},
 		"next_timeline": "train-ride"
+	},
+	"school-part-1":{
+		"scene": "res://src/scenes/exercises/fill-in-the-blank.tscn",
+		"data": {"file": "story-mode.json", "id": "school-part-1"},
+		"next_timeline": "school-entrance"
+	},
+	"school-part-2":{
+		"scene": "res://src/scenes/exercises/fill-in-the-blank.tscn",
+		"data": {"file": "story-mode.json", "id": "school-part-2"},
+		"next_timeline": "school-entrance"
+	},
+	"school-part-3":{
+		"scene": "res://src/scenes/exercises/fill-in-the-blank.tscn",
+		"data": {"file": "story-mode.json", "id": "school-part-3"},
+		"next_timeline": "school-entrance"
+	},
+	"school-part-4-easy":{
+		"scene": "res://src/scenes/exercises/fill-in-the-blank.tscn",
+		"data": {"file": "story-mode.json", "id": "school-part-4-easy"},
+		"next_timeline": "school-entrance"
+	},
+	"school-part-4-hard":{
+		"scene": "res://src/scenes/exercises/listen-then-type.tscn",
+		"data": {"file": "story-mode.json", "id": "school-part-4-hard"},
+		"next_timeline": "school-entrance"
 	}
 }

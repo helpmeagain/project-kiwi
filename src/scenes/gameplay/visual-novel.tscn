@@ -126,7 +126,6 @@ theme_override_font_sizes/font_size = 35
 text = "Ok!"
 
 [node name="StartGameControl" type="Control" parent="."]
-visible = false
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
@@ -140,7 +139,7 @@ offset_bottom = 660.0
 theme = ExtResource("2_yye55")
 color = Color(0, 0, 0, 1)
 
-[node name="StargGameLabel" type="Label" parent="StartGameControl/StartGameScreen"]
+[node name="StartGameLabel" type="Label" parent="StartGameControl/StartGameScreen"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -178,5 +177,60 @@ mouse_default_cursor_shape = 2
 theme_override_font_sizes/font_size = 40
 text = "Continuar"
 
+[node name="EndGameControl" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="EndGameScreen" type="ColorRect" parent="EndGameControl"]
+layout_mode = 0
+offset_left = -14.0
+offset_top = -23.0
+offset_right = 1166.0
+offset_bottom = 660.0
+theme = ExtResource("2_yye55")
+color = Color(0, 0, 0, 1)
+
+[node name="EndGameLabel" type="Label" parent="EndGameControl/EndGameScreen"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -534.5
+offset_top = -68.5
+offset_right = 534.5
+offset_bottom = 68.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("3_jbmyh")
+theme_override_font_sizes/font_size = 60
+text = "THANK YOU FOR PLAYING!
+Agora, jogue o modo multiplayer!"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="EndGameButton" type="Button" parent="EndGameControl/EndGameScreen"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.509
+anchor_top = 0.75
+anchor_right = 0.509
+anchor_bottom = 0.75
+offset_left = -206.62
+offset_top = -24.2501
+offset_right = 206.38
+offset_bottom = 24.7499
+grow_horizontal = 2
+grow_vertical = 2
+mouse_default_cursor_shape = 2
+theme_override_font_sizes/font_size = 40
+text = "Voltar ao menu principal"
+
 [connection signal="pressed" from="WrongAnswer/WrongPanel/WrongPanelButton" to="." method="_on_wrong_panel_button_pressed"]
 [connection signal="pressed" from="StartGameControl/StartGameScreen/StartGameButton" to="." method="_on_start_game_button_pressed"]
+[connection signal="pressed" from="EndGameControl/EndGameScreen/EndGameButton" to="." method="_on_end_game_button_pressed"]

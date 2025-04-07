@@ -1,0 +1,88 @@
+if {school_entrance.part} == 1.0:
+	jump school-1
+elif {school_entrance.part} == 2.0:
+	jump school-2
+elif {school_entrance.part} == 3.0:
+	jump school-3
+elif {school_entrance.part} == 4.0:
+	jump school-4
+[signal arg="bg_old_school"]
+set {wrong_answer} = 0
+set {correct_answer} = 0
+[wait time="2.5"]
+join kiwi left [animation="Slide In Left" length="1.5" wait="true"]
+kiwi: Ótimo, cheguei!
+kiwi: Hm... Mas para onde eu deveria ir agora?
+kiwi: ...
+kiwi (Sad): ...
+join dove right
+update kiwi (Smile)
+\dove: Hello! You must be Kiwi!
+\dove: Hi, I’m Dove! I’ll be helping you out on your first day of school.
+kiwi: Hi! Thank you very much!
+if {train_ride.is_anxious} == true:
+	kiwi (Sad): My English isn’t very good, just so you know.
+	\dove: Oh, no problem at all. I’m here to help!
+	update kiwi (Smile)
+kiwi: Where should we start?
+\dove: First, I’ll ask you a few quick questions.
+\dove: Which school did you go to before coming here?
+set {school_entrance.part} = 1.0
+[signal arg="school-part-1"]
+[end_timeline]
+label school-1
+join kiwi left [animation="Fade In" length="0.2"]
+join dove right [animation="Fade In" length="0.2"]
+\dove (Smile): Great! From what I’ve heard, it’s an awesome school.
+\dove (Neutral): Okay, next question.
+\dove: Have you check out the campus yet?
+set {school_entrance.part} = 2.0
+[signal arg="school-part-2"]
+[end_timeline]
+label school-2
+join kiwi left [animation="Fade In" length="0.2"]
+join dove right [animation="Fade In" length="0.2"]
+\dove: Got it, I’ll show you all the key spots!
+\dove: Have you already registered at the library?
+if {train_ride.is_anxious} == true:
+	kiwi (Surprised): Wait, was I supposed to register there??
+kiwi (Sad): Well...
+set {school_entrance.part} = 3.0
+[signal arg="school-part-3"]
+[end_timeline]
+label school-3
+join kiwi left [animation="Fade In" length="0.2"]
+join dove right [animation="Fade In" length="0.2"]
+\dove (Smile): No problem! If you haven’t registered yet, I can show you how to do it!
+\dove (Poker): That’s all the questions for now!
+kiwi (Smile): I have a question as well!
+\dove (Smile): Of course! Go ahead!
+set {school_entrance.part} = 4.0
+if {coffee} == true:
+	[signal arg="school-part-4-easy"]
+	[end_timeline]
+else:
+	[signal arg="school-part-4-hard"]
+	[end_timeline]
+label school-4
+join kiwi left [animation="Fade In" length="0.2"]
+join dove right [animation="Fade In" length="0.2"]
+if {did_tutorial} == true:
+	\dove: Oh, no! You arrived just in time.
+else:
+	\dove: No! You arrived pretty early, to be honest.
+\dove (Smile): Alright! Shall we begin?
+kiwi: Yeah, of course!
+if {wrong_answer} >= {correct_answer}:
+	\dove: You still have a lot to learn!
+	kiwi (Sad): Yeah...
+	\dove: Don't be sad! You'll be able to learn from your classmates.
+update kiwi (Neutral)
+\dove: The first thing I want to show you is how to communicate with other classmates.
+\dove (Smile): Just go to the main menu and click on 'Multiplayer'. Then, join a room.
+\dove: There, you'll be able to learn a lot from your classmates!
+kiwi (Smile): That's sounds great! Let's do it right away!
+leave kiwi [animation="Fade Out" length="2.0"]
+leave dove [animation="Fade Out" length="2.0"]
+[wait time="2.0"]
+[signal arg="end-game"]

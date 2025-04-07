@@ -1,0 +1,76 @@
+{
+"@path": "res://addons/dialogic/Resources/character.gd",
+"@subpath": NodePath(""),
+&"_translation_id": "",
+&"color": Color(1, 1, 1, 1),
+&"custom_info": {
+"sound_mood_default": "Neutral",
+"sound_moods": {
+"Neutral": {
+"mode": 1,
+"name": "Neutral",
+"pitch_base": 1.0,
+"pitch_variance": 0.3,
+"skip_characters": 3.0,
+"sound_path": "res://src/assets/sounds/Retro_Single_v3_wav.wav",
+"volume_base": -30.0,
+"volume_variance": 0.0
+}
+},
+"style": "style"
+},
+&"default_portrait": "Neutral",
+&"description": "",
+&"display_name": "Dove",
+&"mirror": false,
+&"nicknames": [""],
+&"offset": Vector2(0, 0),
+&"portraits": {
+"Neutral": {
+"export_overrides": {
+"image": "\"res://src/assets/sprites/characters/dove/neutral.png\""
+},
+"mirror": false,
+"offset": Vector2(0, 0),
+"scale": 1,
+"scene": ""
+},
+"Poker": {
+"export_overrides": {
+"image": "\"res://src/assets/sprites/characters/dove/poker.png\""
+},
+"mirror": false,
+"offset": Vector2(0, 0),
+"scale": 1,
+"scene": ""
+},
+"Sad": {
+"export_overrides": {
+"image": "\"res://src/assets/sprites/characters/dove/sad.png\""
+},
+"mirror": false,
+"offset": Vector2(0, 0),
+"scale": 1,
+"scene": ""
+},
+"Smile": {
+"export_overrides": {
+"image": "\"res://src/assets/sprites/characters/dove/smile.png\""
+},
+"mirror": false,
+"offset": Vector2(0, 0),
+"scale": 1,
+"scene": ""
+},
+"Surprised": {
+"export_overrides": {
+"image": "\"res://src/assets/sprites/characters/dove/surprised.png\""
+},
+"mirror": false,
+"offset": Vector2(0, 0),
+"scale": 1,
+"scene": ""
+}
+},
+&"scale": 1.0
+}

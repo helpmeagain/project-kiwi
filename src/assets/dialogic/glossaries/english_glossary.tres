@@ -25,6 +25,12 @@ entries = {
 "text": "Você pode passar o mouse sobre os textos destacados para conseguir dicas!",
 "title": "DICAS!"
 },
+"early": {
+"extra": "Tradução: cedo",
+"name": "early",
+"text": "Near the beginning of a period of time, or before the usual, expected, or planned time.",
+"title": "EARLY"
+},
 "exchange program": {
 "case_sensitive": true,
 "extra": "Tradução: intercâmbio",
@@ -38,6 +44,12 @@ entries = {
 "name": "nervous",
 "text": "When someone is worried and anxious.",
 "title": "NERVOUS"
+},
+"spots": {
+"extra": "Tradução: local",
+"name": "spots",
+"text": "A particular place.",
+"title": "SPOTS"
 }
 }
 enabled = true

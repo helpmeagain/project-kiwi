@@ -43,6 +43,13 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_2fb8j")
 
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = -121.0
+offset_top = -95.0
+offset_right = 1274.0
+offset_bottom = 746.0
+color = Color(0.300004, 0.0741538, 0, 0.356863)
+
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 texture_filter = 3
 layout_mode = 1
@@ -257,6 +264,7 @@ theme = ExtResource("2_82we7")
 text = "Start game"
 
 [node name="NameInputContainer" type="HBoxContainer" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.5
@@ -312,6 +320,7 @@ icon = ExtResource("9_v1nsv")
 icon_alignment = 1
 
 [node name="DebugAddPlayersButton" type="Button" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.924

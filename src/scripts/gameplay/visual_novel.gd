@@ -15,6 +15,8 @@ func _on_dialogic_signal(argument: String):
 		var bg_name = parts[0].trim_prefix("bg_")
 		var transition = parts[1] if parts.size() > 1 else "fade"
 		set_background(bg_name, transition)
+	if argument.contains("end-game"):
+		$EndGameControl.show()
 	if exercise_config.has(argument):
 		setup_exercise(argument)
 
@@ -90,3 +92,6 @@ func _on_wrong_panel_button_pressed() -> void:
 func _on_start_game_button_pressed() -> void:
 	$StartGameControl.hide()
 	start_dialogic_timeline("introduction")
+
+func _on_end_game_button_pressed() -> void:
+		get_tree().change_scene_to_file("res://src/scenes/menus/main-menu.tscn")

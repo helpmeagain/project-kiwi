@@ -95,5 +95,37 @@
 	"id": "train-part-3",
 	"original": "Eu assisti vídeos ontem",
 	"correct_answers": ["I watched videos yesterday.", "I watched videos yesterday"]
+  },
+  {
+	"id": "school-part-1",
+	"sentence": "I ___ at IFCE. It's in Brazil.",
+	"correct_answer": "studied",
+	"options": ["studied", "study", "studyed", "studed"]
+  },
+  {
+	"id": "school-part-2",
+	"sentence": "I ___ get to yet.",
+	"correct_answer": "didn’t",
+	"options": ["didn’t", "not", "doesn't", "do"]
+  },
+  {
+	"id": "school-part-3",
+	"sentence": "___ I need to register there?",
+	"correct_answer": "Did",
+	"options": ["Did", "Do", "Has", "Were"]
+  },
+  {
+	"id": "school-part-4-easy",
+	"sentence": "___ I arrive too late?",
+	"correct_answer": "Did",
+	"options": ["Did", "Do", "Has", "Were"]
+  },
+  {
+	"id": "school-part-4-hard",
+	"text_to_speech": "Did I arrive too late?",
+	"correct_answers": [
+		"Did I arrive too late?",
+		"Did I arrive too late"
+	]
   }
 ]

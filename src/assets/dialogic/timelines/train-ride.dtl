@@ -36,7 +36,7 @@ potoo: So... how are you doing?
 	set {train_ride.is_anxious} = true
 	kiwi (Sad): I’m feeling really anxious, but I’m trying to stay positive!
 	potoo (Neutral): Is there something I can do to help?
-	kiwi (Smile):  I can handle it. Everything will be fine!
+	kiwi (Smile): I can handle it. Everything will be fine!
 potoo: You're not from here, are you?
 kiwi: Well, no...
 set {train_part} = 1.0
@@ -64,7 +64,7 @@ if {train_ride.is_anxious} == true:
 else:
 	potoo (Sad): Unlike you, I’m pretty nervous over here!
 kiwi (Smile): Everything’s gonna be alright. Just take a deep breath.
-potoo (Neutral): Oh, I have a question! 
+potoo (Neutral): Oh, I have a question!
 kiwi: Of course, go ahead. What’s your question?
 potoo: Tell me something in Portuguese, then explain what it means in English!
 kiwi: Oh, hmm...
@@ -91,5 +91,5 @@ else:
 	kiwi: Pelo menos eu consegui manter minha calma.
 	kiwi: E além do mais, eu consegui! Eu consegui falar com alguém em inglês!
 kiwi: Minha irmã estaria super orgulhosa, disso eu tenho certeza!
-jump 
+jump school-entrance/
 [end_timeline]

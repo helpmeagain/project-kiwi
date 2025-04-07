@@ -38,11 +38,41 @@ func load_random_question() -> void:
 	current_question = scene
 	question_count += 1
 	$QuestionCountLabel.text = str(question_count) + "/" + str(MAX_QUESTIONS)
+	set_random_background()
 	
 	if current_question.has_signal("answer_correct"):
 		current_question.connect("answer_correct", _on_answer_correct)
 	if current_question.has_signal("answer_wrong"):
 		current_question.connect("answer_wrong", _on_answer_wrong)
+
+func set_random_background(transition_type: String = "fade") -> void:
+	var dir = DirAccess.open("res://src/assets/backgrounds/")
+	if dir == null:
+		push_error("Failed to open backgrounds directory.")
+		return
+
+	var files = []
+	dir.list_dir_begin()
+	var file_name = dir.get_next()
+	while file_name != "":
+		if not dir.current_is_dir() and file_name.get_extension().to_lower() in ["png", "jpg", "jpeg"]:
+			files.append(file_name)
+		file_name = dir.get_next()
+	dir.list_dir_end()
+
+	if files.size() == 0:
+		push_error("No background images found in directory.")
+		return
+
+	var random_file = files[randi() % files.size()]
+	var bg_path = "res://src/assets/backgrounds/" + random_file
+	var new_texture: Texture2D = load(bg_path)
+
+	if new_texture:
+		$BackgroundControl/ImageBackground.change_background(new_texture, transition_type)
+	else:
+		push_error("Failed to load background texture: " + bg_path)
+
 		
 func show_final_screen() -> void:
 	$FinalLabel.text = "Game over! Score: " + str(score)

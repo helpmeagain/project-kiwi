@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://di7wgqh7vibe7"]
+[gd_scene load_steps=8 format=3 uid="uid://di7wgqh7vibe7"]
 
 [ext_resource type="Script" uid="uid://ukpnntfs15i0" path="res://src/scripts/gameplay/multiplayer-questions.gd" id="1_mh1t5"]
 [ext_resource type="FontFile" uid="uid://bmvtmpvoy1cwt" path="res://src/assets/fonts/editundo.ttf" id="2_leee8"]
 [ext_resource type="FontFile" uid="uid://c0w25r8vykatq" path="res://src/assets/fonts/Abaddon Bold.ttf" id="3_n7e7y"]
+[ext_resource type="Script" uid="uid://b28mwb5urarq3" path="res://src/scripts/gameplay/background.gd" id="3_ohok1"]
 [ext_resource type="PackedScene" uid="uid://du6byd12byrk3" path="res://src/scenes/multiplayer/player-score.tscn" id="4_ohok1"]
 [ext_resource type="Theme" uid="uid://drabaa7jfibga" path="res://src/assets/themes/small_button.tres" id="5_ujsnr"]
 [ext_resource type="Texture2D" uid="uid://cejxfhqi5mryk" path="res://src/assets/sprites/People.png" id="6_yxgkn"]
@@ -15,6 +16,36 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_mh1t5")
+
+[node name="BackgroundControl" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="BlackBackground" type="ColorRect" parent="BackgroundControl"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.717647)
+
+[node name="ImageBackground" type="TextureRect" parent="BackgroundControl"]
+modulate = Color(0.229112, 0.229112, 0.229112, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.65, 0.65)
+pivot_offset = Vector2(960, 540)
+stretch_mode = 5
+script = ExtResource("3_ohok1")
 
 [node name="QuestionsContainer" type="Control" parent="."]
 anchors_preset = 0
