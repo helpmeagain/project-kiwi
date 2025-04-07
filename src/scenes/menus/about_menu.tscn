@@ -160,6 +160,27 @@ theme_override_fonts/font = ExtResource("6_c05vn")
 theme_override_font_sizes/font_size = 40
 text = "Background"
 
+[node name="CharactersContainer3" type="HBoxContainer" parent="VBoxContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer/ScrollContainer/VBoxContainer/CharactersContainer3"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_fonts/normal_font = ExtResource("6_c05vn")
+theme_override_font_sizes/normal_font_size = 28
+text = "House Visual Novel Backgrounds by Spiral Atlas"
+fit_content = true
+scroll_active = false
+tab_size = 9
+
+[node name="HouseVisualNovelButton" type="Button" parent="VBoxContainer/ScrollContainer/VBoxContainer/CharactersContainer3"]
+layout_mode = 2
+mouse_default_cursor_shape = 2
+theme_override_font_sizes/font_size = 25
+text = "Visit"
+
 [node name="CharactersContainer2" type="HBoxContainer" parent="VBoxContainer/ScrollContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
@@ -395,6 +416,7 @@ text = "Visit"
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/GitHubButton" to="." method="_on_git_hub_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/RepositoryButton" to="." method="_on_repository_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/ScrollContainer/VBoxContainer/CharactersContainer/TenguButton" to="." method="_on_tengu_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/ScrollContainer/VBoxContainer/CharactersContainer3/HouseVisualNovelButton" to="." method="_on_house_visual_novel_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/ScrollContainer/VBoxContainer/CharactersContainer2/AnimeBackgroundsButton" to="." method="_on_anime_backgrounds_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer10/LucidButton" to="." method="_on_lucid_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer9/UICozyButton" to="." method="_on_ui_cozy_button_pressed"]

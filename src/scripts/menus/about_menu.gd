@@ -41,3 +41,6 @@ func _on_repository_button_pressed() -> void:
 
 func _on_anime_backgrounds_button_pressed() -> void:
 	OS.shell_open("https://noranekogames.itch.io/yumebackground")
+
+func _on_house_visual_novel_button_pressed() -> void:
+	OS.shell_open("https://spiralatlas.itch.io/house-visual-novel-backgrounds")
