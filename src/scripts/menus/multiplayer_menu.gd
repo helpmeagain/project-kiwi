@@ -1,17 +1,17 @@
 extends Control
 
-@export var address = "127.0.0.1"
+var peer
 @export var port = 8910
 @onready var players_container = $PlayerBrowser/Panel/VBoxContainer/ScrollContainer/VBoxContainer
-var peer
+@onready var server_browser = $ServerBrowser
+@onready var window = $Window
 
 func _ready() -> void:
 	multiplayer.peer_connected.connect(player_connected)
 	multiplayer.peer_disconnected.connect(player_disconnected)
 	multiplayer.connected_to_server.connect(player_connected_to_server)
 	multiplayer.connection_failed.connect(player_connection_failed)
-	
-	$ServerBrowser.join_game.connect(join_by_ip)
+	server_browser.join_game.connect(join_by_ip)
 
 func player_connected(id):
 	print("Player connected: " + str(id))
@@ -37,7 +37,7 @@ func start_game():
 
 @rpc("any_peer")
 func send_player_information(player_name, id):
-	if (!MultiplayerPlayerManager.players.has(id)):
+	if (!MultiplayerPlayerManager.players.has(id) && id != 1):
 		MultiplayerPlayerManager.players[id] = {
 			"name": player_name,
 			"id": id,
@@ -49,37 +49,33 @@ func send_player_information(player_name, id):
 		for i in MultiplayerPlayerManager.players:
 			send_player_information.rpc(MultiplayerPlayerManager.players[i].name, i)
 			
-func show_error(message: String):
-	$Window.show()
-	$Window/HBoxContainer/WindowLabel.text = (message)
-	print("[DEBUG] " + message)
 
 func _on_host_button_pressed() -> void:
 	$PlayerBrowser.show()
 	$NameInputContainer.show()
 	$NameInputContainer/HostButton.show()
-	$StartButton.show()
 	$CloseButton.show()
 
 func _on_join_button_pressed() -> void:
-	$ServerBrowser.show()
+	server_browser.setup_up_listener()
+	server_browser.show()
 	$NameInputContainer.show()
 	$CloseButton.show()
 
 func join_by_ip(ip):
 	if peer != null and peer.get_connection_status() != MultiplayerPeer.CONNECTION_DISCONNECTED:
-		show_error("Already connected")
+		window.show_error("Already connected")
 		return
 	
 	var player_name = $NameInputContainer/NameLineEdit.text
 	if player_name == "":
-		show_error("Invalid name: Empty" )
+		window.show_error("Invalid name: Empty" )
 		return
 		
 	peer = ENetMultiplayerPeer.new()
 	var error = peer.create_client(ip, port)
 	if error != OK:
-		show_error("Cannot join: " + error_string(error))
+		window.show_error("Cannot join: " + error_string(error))
 		return
 	#peer.get_host().compress(ENetConnection.COMPRESS_RANGE_CODER)
 	
@@ -90,11 +86,8 @@ func _on_start_button_pressed() -> void:
 	if multiplayer.is_server():
 		start_game.rpc()
 	else:
-		show_error("Only host can start the game")
-
-func _on_window_close_requested() -> void:
-	$Window.hide()
-
+		window.show_error("Only host can start the game")
+		
 func _on_back_button_pressed() -> void:
 	if peer:
 		if multiplayer.is_server():
@@ -116,24 +109,22 @@ func _on_debug_add_players_button_pressed() -> void:
 func _on_create_room_button_pressed() -> void:
 	var host_name = $NameInputContainer/NameLineEdit.text
 	if host_name == "":
-		show_error("Invalid name: Empty" )
+		window.show_error("Invalid name: Empty" )
 		return
 	peer = ENetMultiplayerPeer.new()
 	var error = peer.create_server(port, 45)
 	if error != OK:
-		show_error("Cannot host: " + error_string(error))
+		window.show_error("Cannot host: " + error_string(error))
 		return
 	# peer.get_host().compress(ENetConnection.COMPRESS_RANGE_CODER)
 	
 	multiplayer.set_multiplayer_peer(peer)
 	send_player_information("Teacher", multiplayer.get_unique_id())
-	$ServerBrowser.set_up_broadcast($NameInputContainer/NameLineEdit.text + "'s server")
-	$StartButton.show()
+	server_browser.set_up_broadcast($NameInputContainer/NameLineEdit.text + "'s server")
 	print("Waiting for players...")
 
 func _on_close_button_pressed() -> void:
-	show_error("Not implemented")
-	
+	window.show_error("Not implemented")
 
 func update_player_list():
 	for child in players_container.get_children():

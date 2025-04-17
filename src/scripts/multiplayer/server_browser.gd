@@ -4,20 +4,19 @@ signal found_server(ip, port, info)
 signal update_server(ip, port, info)
 signal join_game(ip)
 
-var broadcast_timer: Timer
 var broadcaster: PacketPeerUDP
 var listener: PacketPeerUDP
 var room_info = { "name" :  "name", "playerCount": 0 }
 @export var listenPort: int = 8920
 @export var broadcastPort: int = 8930
-@export var broadcastAddress: String = "192.168.1.255"
+@export var address: String = "192.168.1.255"
 @export var serverInfo: PackedScene
-
-func _ready() -> void:
-	broadcast_timer = $BroadcastTimer
-	setup_up_listener()
+@onready var broadcast_timer: Timer = $BroadcastTimer
+@onready var server_list: VBoxContainer = $ServerInfoPanel/ServerTableContainer/ScrollContainer/ServerListContainer
 
 func _process(_delta: float) -> void:
+	if listener == null:
+		return
 	if listener.get_available_packet_count() > 0:
 		var server_ip = listener.get_packet_ip()
 		var server_port = listener.get_packet_port()
@@ -27,7 +26,7 @@ func _process(_delta: float) -> void:
 		
 		print("Server IP: " + server_ip + " Server Port: " + str(server_port) + " Room info: " + str(room_info_from_data))
 		
-		for i in $Panel/VBoxContainer/ScrollContainer/VBoxContainer.get_children():
+		for i in server_list.get_children():
 			if i.name == room_info_from_data.name:
 				update_server.emit(server_ip, server_port, room_info_from_data)
 				i.get_node("IPLabel").text = server_ip
@@ -38,7 +37,7 @@ func _process(_delta: float) -> void:
 		currentInfo.get_node("ServerNameLabel").text = room_info_from_data.name
 		currentInfo.get_node("IPLabel").text = server_ip
 		currentInfo.get_node("PlayerCountLabel").text = str(int(room_info_from_data.playerCount))
-		$Panel/VBoxContainer/ScrollContainer/VBoxContainer.add_child(currentInfo)
+		server_list.add_child(currentInfo)
 		currentInfo.join_game.connect(join_by_ip)
 		found_server.emit(server_ip, server_port, room_info_from_data)
 		pass
@@ -56,7 +55,7 @@ func set_up_broadcast(server_name: String):
 	room_info.playerCount = MultiplayerPlayerManager.players.size()
 	broadcaster = PacketPeerUDP.new()
 	broadcaster.set_broadcast_enabled(true)
-	broadcaster.set_dest_address(broadcastAddress, listenPort)
+	broadcaster.set_dest_address(address, listenPort)
 	
 	var ok = broadcaster.bind(broadcastPort)
 	if ok == OK:
@@ -68,7 +67,8 @@ func set_up_broadcast(server_name: String):
 		
 func clean_up():
 	broadcast_timer.stop()
-	listener.close()
+	if listener !=  null:
+		listener.close()
 	if broadcaster !=  null:
 		broadcaster.close()
 
