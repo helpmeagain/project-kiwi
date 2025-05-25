@@ -120,6 +120,8 @@ serverInfo = ExtResource("8_8hig0")
 
 [node name="BroadcastTimer" type="Timer" parent="ServerBrowser"]
 
+[node name="CleanupTimer" type="Timer" parent="ServerBrowser"]
+
 [node name="BlackPanel" type="Panel" parent="ServerBrowser"]
 layout_mode = 0
 offset_left = -52.0
