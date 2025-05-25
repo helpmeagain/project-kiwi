@@ -67,9 +67,11 @@ func set_up_broadcast(server_name: String):
 		
 func clean_up():
 	broadcast_timer.stop()
-	if listener !=  null:
+	if listener != null:
 		listener.close()
-	if broadcaster !=  null:
+		for child in server_list.get_children():
+			child.queue_free()
+	if broadcaster != null:
 		broadcaster.close()
 
 func _on_broadcast_timer_timeout() -> void:

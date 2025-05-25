@@ -7,6 +7,9 @@ var peer
 @onready var window = $Window
 
 func _ready() -> void:
+	for addr in IP.get_local_addresses():
+		if addr.find(":") == -1 and addr != "127.0.0.1" and addr != "0.0.0.0":
+			$NameInputContainer/IPButton.add_item(addr)
 	multiplayer.peer_connected.connect(player_connected)
 	multiplayer.peer_disconnected.connect(player_disconnected)
 	multiplayer.connected_to_server.connect(player_connected_to_server)
@@ -54,6 +57,7 @@ func _on_host_button_pressed() -> void:
 	$PlayerBrowser.show()
 	$NameInputContainer.show()
 	$NameInputContainer/HostButton.show()
+	$NameInputContainer/IPButton.show()
 	$CloseButton.show()
 
 func _on_join_button_pressed() -> void:
@@ -124,7 +128,21 @@ func _on_create_room_button_pressed() -> void:
 	print("Waiting for players...")
 
 func _on_close_button_pressed() -> void:
-	window.show_error("Not implemented")
+	if server_browser.visible == true:
+		server_browser.hide()
+	else:
+		$NameInputContainer/HostButton.hide()
+		$NameInputContainer/IPButton.hide()
+		$PlayerBrowser.hide()
+		if peer != null:
+			peer.close()
+			multiplayer.multiplayer_peer = null
+			MultiplayerPlayerManager.players.clear()
+			update_player_list()
+	$NameInputContainer.hide()
+	$NameInputContainer/NameLineEdit.text = ""
+	$CloseButton.hide()
+	server_browser.clean_up()
 
 func update_player_list():
 	for child in players_container.get_children():
@@ -139,3 +157,8 @@ func update_player_list():
 		new_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 		
 		players_container.add_child(new_label)
+
+
+func _on_ip_button_item_selected(index: int) -> void:
+	var selected_ip = $NameInputContainer/IPButton.get_item_text(index)
+	server_browser.address = selected_ip

@@ -264,6 +264,7 @@ offset_left = -366.612
 offset_top = 77.2
 offset_right = -219.612
 offset_bottom = 116.2
+mouse_default_cursor_shape = 2
 theme = ExtResource("2_82we7")
 text = "Start game"
 
@@ -302,8 +303,14 @@ placeholder_text = "Insert your name..."
 visible = false
 texture_filter = 3
 layout_mode = 2
+mouse_default_cursor_shape = 2
 theme_override_font_sizes/font_size = 20
 text = "Host room"
+
+[node name="IPButton" type="OptionButton" parent="NameInputContainer"]
+visible = false
+layout_mode = 2
+fit_to_longest_item = false
 
 [node name="CloseButton" type="Button" parent="."]
 visible = false
@@ -319,6 +326,7 @@ offset_top = -16.12
 offset_right = 131.48
 offset_bottom = 131.88
 scale = Vector2(0.221184, 0.221184)
+mouse_default_cursor_shape = 2
 theme = ExtResource("5_ve5k3")
 icon = ExtResource("9_v1nsv")
 icon_alignment = 1
@@ -348,5 +356,6 @@ Add players"
 [connection signal="timeout" from="ServerBrowser/BroadcastTimer" to="ServerBrowser" method="_on_broadcast_timer_timeout"]
 [connection signal="pressed" from="PlayerBrowser/StartButton" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="NameInputContainer/HostButton" to="." method="_on_create_room_button_pressed"]
+[connection signal="item_selected" from="NameInputContainer/IPButton" to="." method="_on_ip_button_item_selected"]
 [connection signal="pressed" from="CloseButton" to="." method="_on_close_button_pressed"]
 [connection signal="pressed" from="DebugAddPlayersButton" to="." method="_on_debug_add_players_button_pressed"]
