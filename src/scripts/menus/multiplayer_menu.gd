@@ -7,9 +7,34 @@ var peer
 @onready var window = $Window
 
 func _ready() -> void:
+	var ip_list = []
+	var preferred_172 = []
+	var preferred_192 = []
+	var other_ips = []
+	
 	for addr in IP.get_local_addresses():
 		if addr.find(":") == -1 and addr != "127.0.0.1" and addr != "0.0.0.0":
-			$NameInputContainer/IPButton.add_item(addr)
+			if addr.begins_with("172.16."):
+				preferred_172.append(addr)
+			elif addr.begins_with("192.168."):
+				preferred_192.append(addr)
+			else:
+				other_ips.append(addr)
+	
+	ip_list.append_array(preferred_172)
+	ip_list.append_array(preferred_192)
+	ip_list.append_array(other_ips)
+	
+	for addr in ip_list:
+		$NameInputContainer/IPButton.add_item(addr)
+	
+	if ip_list.size() > 0:
+		server_browser.address = ip_list[0]
+	else:
+		printerr("Nenhum endereço IP válido encontrado!")
+		$NameInputContainer/IPButton.add_item("127.0.0.1")
+		server_browser.address = "127.0.0.1"
+	
 	multiplayer.peer_connected.connect(player_connected)
 	multiplayer.peer_disconnected.connect(player_disconnected)
 	multiplayer.connected_to_server.connect(player_connected_to_server)
@@ -35,6 +60,7 @@ func player_connection_failed():
 @rpc("any_peer", "call_local")
 func start_game():
 	var scene = load("res://src/scenes/gameplay/multiplayer-questions.tscn").instantiate()
+	server_browser.clean_up()
 	get_tree().root.add_child(scene)
 	self.hide()
 
