@@ -31,8 +31,7 @@ func _process(_delta: float) -> void:
 		var data = bytes.get_string_from_utf8()
 		var room_info_from_data = JSON.parse_string(data)
 		
-		print("Server IP: " + server_ip + " Server Port: " + str(server_port) + " Room info: " + str(room_info_from_data))
-		
+		# print("[DEBUG] Server IP: " + server_ip + " Server Port: " + str(server_port) + " Room info: " + str(room_info_from_data))
 		server_last_seen[server_ip] = Time.get_ticks_msec()
 		
 		var server_exists = false
@@ -54,7 +53,7 @@ func _process(_delta: float) -> void:
 			currentInfo.join_game.connect(join_by_ip)
 			found_server.emit(server_ip, server_port, room_info_from_data)
 
-func setup_up_listener():
+func setup_listener():
 	listener = PacketPeerUDP.new()
 	var ok = listener.bind(listenPort)
 	if ok == OK:
@@ -63,7 +62,7 @@ func setup_up_listener():
 	else:
 		print("Failed to bind to listen Port")
 
-func set_up_broadcast(server_name: String):
+func setup_broadcast(server_name: String):
 	room_info.name = server_name
 	room_info.playerCount = MultiplayerPlayerManager.players.size()
 	broadcaster = PacketPeerUDP.new()

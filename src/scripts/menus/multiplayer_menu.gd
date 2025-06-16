@@ -87,7 +87,7 @@ func _on_host_button_pressed() -> void:
 	$CloseButton.show()
 
 func _on_join_button_pressed() -> void:
-	server_browser.setup_up_listener()
+	server_browser.setup_listener()
 	server_browser.show()
 	$NameInputContainer.show()
 	$CloseButton.show()
@@ -150,7 +150,7 @@ func _on_create_room_button_pressed() -> void:
 	
 	multiplayer.set_multiplayer_peer(peer)
 	send_player_information("Teacher", multiplayer.get_unique_id())
-	server_browser.set_up_broadcast($NameInputContainer/NameLineEdit.text + "'s server")
+	server_browser.setup_broadcast($NameInputContainer/NameLineEdit.text + "'s server")
 	print("Waiting for players...")
 
 func _on_close_button_pressed() -> void:
