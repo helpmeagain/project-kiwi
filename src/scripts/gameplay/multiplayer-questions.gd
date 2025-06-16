@@ -112,9 +112,20 @@ func _on_answer_wrong() -> void:
 		extra_life_active = false
 		update_powerup_icons()
 		return
-
 	update_score_display()
-	_next_step_after_answer()
+
+	var qd: Dictionary = current_question.current_question
+
+	var respostas: Array = []
+	if qd.has("correct_answers"):
+		respostas = qd.correct_answers
+	elif qd.has("correct_answer"):
+		respostas = [ qd.correct_answer ]
+
+	var certa: String = respostas[0] if respostas.size() > 0 else "—"
+
+	$WrongAnswer/WrongPanel/VBoxContainer/Subtitle.text = certa
+	$WrongAnswer.show()
 
 func _next_step_after_answer() -> void:
 	if question_count >= MAX_QUESTIONS:
@@ -154,3 +165,8 @@ func hide_powerup_screen() -> void:
 func update_powerup_icons() -> void:
 	$PowerUpIconsControl/HBoxContainer/PowerUpIcon1.visible = double_points_active
 	$PowerUpIconsControl/HBoxContainer/PowerUpIcon2.visible = extra_life_active
+
+
+func _on_wrong_panel_button_pressed() -> void:
+	$WrongAnswer.hide()
+	_next_step_after_answer()
