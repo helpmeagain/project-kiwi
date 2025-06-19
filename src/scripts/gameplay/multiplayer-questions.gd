@@ -8,10 +8,14 @@ const EXERCISE_CONFIG = {
 const SCORE_TEXT = "Score = "
 const MAX_QUESTIONS = 7
 const POWERUP_INTERVAL := 3
+const FILL_IN_BLANK_TIME = 5
+const DEFAULT_TIME = 10 
 
 var current_question: Node
 var score: int
 var question_count: int
+var timeout_occurred := false
+var current_exercise_type: String
 
 var double_points_active := false
 var extra_life_active := false
@@ -25,6 +29,9 @@ func _ready() -> void:
 	$ScoreLabel.text = SCORE_TEXT + str(score)
 	update_powerup_icons()
 	load_random_question()
+	
+func _process(_delta):
+	$TimerLabel.text = str(int($Timer.time_left)) + "s"
 
 func load_random_question() -> void:
 	if question_count >= MAX_QUESTIONS:
@@ -36,6 +43,7 @@ func load_random_question() -> void:
 	
 	var exercise_keys = EXERCISE_CONFIG.keys()
 	var random_key = exercise_keys[randi() % exercise_keys.size()]
+	current_exercise_type = random_key
 	var config = EXERCISE_CONFIG[random_key]
 
 	var scene = load(config).instantiate()
@@ -46,6 +54,12 @@ func load_random_question() -> void:
 	question_count += 1
 	$QuestionCountLabel.text = str(question_count) + "/" + str(MAX_QUESTIONS)
 	set_random_background()
+	timeout_occurred = false
+	if current_exercise_type == "fill_in_blank":
+		$Timer.wait_time = FILL_IN_BLANK_TIME
+	else:
+		$Timer.wait_time = DEFAULT_TIME
+	$Timer.start()
 
 	if current_question.has_signal("answer_correct"):
 		current_question.connect("answer_correct", _on_answer_correct)
@@ -93,6 +107,10 @@ func show_final_screen() -> void:
 		current_question.queue_free()
 
 func _on_answer_correct() -> void:
+	if timeout_occurred:
+		return
+		
+	$Timer.stop()
 	score += 2 if double_points_active else 1
 	double_points_active = false
 	update_powerup_icons()
@@ -107,6 +125,10 @@ func _on_answer_correct() -> void:
 	_next_step_after_answer()
 
 func _on_answer_wrong() -> void:
+	if timeout_occurred:
+		return
+		
+	$Timer.stop()
 	if extra_life_active and not extra_life_used:
 		extra_life_used = true
 		extra_life_active = false
@@ -170,3 +192,25 @@ func update_powerup_icons() -> void:
 func _on_wrong_panel_button_pressed() -> void:
 	$WrongAnswer.hide()
 	_next_step_after_answer()
+
+func _on_timer_timeout() -> void:
+	timeout_occurred = true
+	$TimerLabel.text = "0s"
+	$Timer.stop()
+	
+	if current_question:
+		$WrongAnswer/WrongPanel/VBoxContainer/TitleLabel.text = "Time's Up!"
+		
+		var qd: Dictionary = current_question.current_question
+		var respostas: Array = []
+		if qd.has("correct_answers"):
+			respostas = qd.correct_answers
+		elif qd.has("correct_answer"):
+			respostas = [qd.correct_answer]
+
+		var certa: String = respostas[0] if respostas.size() > 0 else "—"
+		$WrongAnswer/WrongPanel/VBoxContainer/Subtitle.text = "Correct answer: " + certa
+		
+		$WrongAnswer.show()
+	else:
+		_next_step_after_answer()

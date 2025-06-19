@@ -66,7 +66,7 @@ func start_game():
 
 @rpc("any_peer")
 func send_player_information(player_name, id):
-	if (!MultiplayerPlayerManager.players.has(id) && id != 1):
+	if (!MultiplayerPlayerManager.players.has(id)): # && id != 1):
 		MultiplayerPlayerManager.players[id] = {
 			"name": player_name,
 			"id": id,
