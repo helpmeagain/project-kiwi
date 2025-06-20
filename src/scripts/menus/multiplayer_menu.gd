@@ -59,7 +59,7 @@ func player_connection_failed():
 
 @rpc("any_peer", "call_local")
 func start_game():
-	var scene = load("res://src/scenes/gameplay/multiplayer-questions.tscn").instantiate()
+	var scene = load("res://src/scenes/gameplay/arcade-questions.tscn").instantiate()
 	server_browser.clean_up()
 	get_tree().root.add_child(scene)
 	self.hide()
