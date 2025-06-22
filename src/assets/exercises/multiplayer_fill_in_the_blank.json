@@ -1,0 +1,29 @@
+[
+	{
+	  "id": "multi1",
+	  "sentence": "I _ an apple _",
+	  "correct_answers": ["ate", "yesterday"],
+	  "options": [
+		["ate", "eat", "eaten", "eating"],
+		["yesterday", "today", "tomorrow", "now"]
+	  ]
+	},
+	{
+	  "id": "multi2",
+	  "sentence": "She _ to the store _",
+	  "correct_answers": ["went", "yesterday"],
+	  "options": [
+		["goes", "went", "going", "gone"],
+		["today", "yesterday", "tomorrow", "now"]
+	  ]
+	},
+	{
+	  "id": "multi3",
+	  "sentence": "They _ playing soccer _",
+	  "correct_answers": ["are", "now"],
+	  "options": [
+		["is", "are", "am", "be"],
+		["yesterday", "tomorrow", "now", "later"]
+	  ]
+	}
+]

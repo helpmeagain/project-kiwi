@@ -1,4 +1,3 @@
-# exercise_bank.gd
 extends Node
 
 const QUESTION_PATH = "res://src/assets/exercises/"
@@ -27,6 +26,10 @@ func load_questions(file_name: String) -> Dictionary:
 	
 	return questions
 
-func load_question_by_id(file_name: String, question_id: String) -> Dictionary:
+func load_random_question(file_name: String) -> Dictionary:
 	var questions = load_questions(file_name)
-	return questions.by_id.get(question_id, {})
+	if not questions.all.is_empty():
+		return questions.all.pick_random()
+	else:
+		push_error("No questions found in " + file_name)
+		return {}

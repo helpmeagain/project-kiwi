@@ -35,6 +35,11 @@ func initialize_game() -> void:
 	timeout_occurred = false
 	power_up_manager.reset()
 	ui_manager.initialize_ui()
+	if multiplayer_manager.is_multiplayer():
+		multiplayer.add_user_signal("partner_answer_received", [
+			{"name": "partner_id", "type": TYPE_INT},
+			{"name": "answer", "type": TYPE_STRING}
+		])
 	exercise_manager.load_random_question()
 
 func _process(_delta) -> void:
