@@ -61,6 +61,20 @@ func _on_button_pressed(button: Button) -> void:
 		player_answer = ""
 		return
 	answered = true
+	var buttons = [
+		$VBoxContainer/HBoxContainer/Button1,
+		$VBoxContainer/HBoxContainer/Button2,
+		$VBoxContainer/HBoxContainer2/Button3,
+		$VBoxContainer/HBoxContainer2/Button4
+	]
+	
+	for btn in buttons:
+		btn.disabled = true
+		btn.focus_mode = Control.FOCUS_NONE
+	
+	button.disabled = false
+	button.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	
 	if multiplayer.get_unique_id() != 1:
 		parent.multiplayer_manager.submit_answer.rpc_id(1, multiplayer.get_unique_id(), player_answer)
 	else:
