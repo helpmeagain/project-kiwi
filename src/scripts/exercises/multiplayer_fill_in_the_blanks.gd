@@ -53,12 +53,17 @@ func _on_button_pressed(button: Button) -> void:
 		return
 	
 	player_answer = button.text
+	var correct_answer = current_question.correct_answers[player_index]
+	var is_correct = (player_answer == correct_answer)
+	if !is_correct && parent.power_up_manager.use_extra_life():
+		parent.ui_manager.update_ui_components(parent.score, parent.question_count)
+		answered = false
+		player_answer = ""
+		return
 	answered = true
-	
-	# Sempre envia para o servidor
-	if multiplayer.get_unique_id() != 1:  # Clientes enviam para o host
+	if multiplayer.get_unique_id() != 1:
 		parent.multiplayer_manager.submit_answer.rpc_id(1, multiplayer.get_unique_id(), player_answer)
-	else:  # Host envia localmente
+	else:
 		parent.multiplayer_manager._receive_answer_locally(multiplayer.get_unique_id(), player_answer)
 	
 	check_answers()
