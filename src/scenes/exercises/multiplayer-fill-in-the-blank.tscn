@@ -81,10 +81,10 @@ flat = true
 
 [node name="ResultLabel" type="Label" parent="."]
 layout_mode = 0
-offset_left = 119.0
-offset_top = 466.0
-offset_right = 175.0
-offset_bottom = 489.0
+offset_left = 6.0
+offset_top = 505.0
+offset_right = 62.0
+offset_bottom = 528.0
 text = "Results"
 horizontal_alignment = 1
 vertical_alignment = 1

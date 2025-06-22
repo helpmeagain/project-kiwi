@@ -88,10 +88,15 @@ func check_answers() -> void:
 	$ResultLabel.text = "Your answer: " + player_answer + (" ✓" if player_correct else " ✗")
 	$ResultLabel.text += "\nPartner's answer: " + partner_answer + (" ✓" if partner_correct else " ✗")
 	$ResultLabel.show()
-	print("[DEBUG] Player answer: ", player_answer, " | Partner's answer: ", partner_answer)
 	
-	if player_correct:
-		emit_signal("answer_correct")
+	var base_points = 0
+	if player_correct && partner_correct:
+		base_points = 2
+	elif player_correct:
+		base_points = 1
+	
+	if base_points > 0:
+		emit_signal("answer_correct", base_points)
 	else:
 		emit_signal("answer_wrong")
 	

@@ -46,11 +46,12 @@ func _process(_delta) -> void:
 	ui_manager.update_timer_display(timer_manager.get_time_left())
 
 # --- Funções de resposta ---
-func _on_answer_correct() -> void:
+func _on_answer_correct(points: int = 1) -> void:
 	if timeout_occurred: return
 	
 	timer_manager.stop_timer()
-	score += power_up_manager.get_score_multiplier()
+	points *= power_up_manager.get_score_multiplier()
+	score += points
 	power_up_manager.deactivate_double_points()
 	ui_manager.update_ui_components(score, question_count)
 	multiplayer_manager.update_score(score)
@@ -95,13 +96,13 @@ func _on_timer_timeout() -> void:
 func _on_powerup_double() -> void:
 	power_up_manager.activate_double_points()
 	ui_manager.hide_powerup_screen()
-	ui_manager.update_powerup_icons()  # Adicionei esta linha
+	ui_manager.update_powerup_icons()
 	exercise_manager.load_random_question()
 
 func _on_powerup_life() -> void:
 	power_up_manager.activate_extra_life()
 	ui_manager.hide_powerup_screen()
-	ui_manager.update_powerup_icons()  # Adicionei esta linha
+	ui_manager.update_powerup_icons()
 	exercise_manager.load_random_question()
 
 # --- UI handlers ---

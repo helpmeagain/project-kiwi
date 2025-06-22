@@ -28,7 +28,7 @@ func deactivate_double_points() -> void:
 
 func activate_extra_life() -> void:
 	extra_life_active = true
-	extra_life_used = false  # Adicionei esta linha para resetar o estado
+	extra_life_used = false
 
 func use_extra_life() -> bool:
 	if extra_life_active and not extra_life_used:
