@@ -1,10 +1,12 @@
-[gd_scene load_steps=13 format=3 uid="uid://di7wgqh7vibe7"]
+[gd_scene load_steps=20 format=3 uid="uid://di7wgqh7vibe7"]
 
 [ext_resource type="Script" uid="uid://ukpnntfs15i0" path="res://src/scripts/gameplay/arcade_questions.gd" id="1_cdixn"]
 [ext_resource type="Script" uid="uid://b28mwb5urarq3" path="res://src/scripts/gameplay/background.gd" id="2_1b062"]
 [ext_resource type="FontFile" uid="uid://bmvtmpvoy1cwt" path="res://src/assets/fonts/editundo.ttf" id="3_8u6t1"]
 [ext_resource type="FontFile" uid="uid://cli8gbn14umcl" path="res://src/assets/fonts/Abaddon Light.ttf" id="4_hjejh"]
+[ext_resource type="FontFile" uid="uid://bhggoau4c0xk0" path="res://src/assets/fonts/Silver.ttf" id="5_1b062"]
 [ext_resource type="Texture2D" uid="uid://cbtrgy4ve28cl" path="res://src/assets/sprites/Up-Arrows.png" id="5_8hd76"]
+[ext_resource type="Texture2D" uid="uid://mmnw8vwr7dno" path="res://src/assets/sprites/Loading.png" id="6_8u6t1"]
 [ext_resource type="Texture2D" uid="uid://x42n32rf4xqy" path="res://src/assets/sprites/Heart.png" id="6_76bfv"]
 [ext_resource type="FontFile" uid="uid://c0w25r8vykatq" path="res://src/assets/fonts/Abaddon Bold.ttf" id="7_2p6vt"]
 [ext_resource type="PackedScene" uid="uid://du6byd12byrk3" path="res://src/scenes/multiplayer/player-score.tscn" id="8_b67qj"]
@@ -12,10 +14,48 @@
 [ext_resource type="Theme" uid="uid://drabaa7jfibga" path="res://src/assets/themes/small_button.tres" id="10_bbwy0"]
 [ext_resource type="Texture2D" uid="uid://cejxfhqi5mryk" path="res://src/assets/sprites/People.png" id="11_ndjbd"]
 
-[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_ujsnr"]
-properties/0/path = NodePath("Timer:process_callback")
-properties/0/spawn = true
-properties/0/replication_mode = 1
+[sub_resource type="AtlasTexture" id="AtlasTexture_8u6t1"]
+atlas = ExtResource("6_8u6t1")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hjejh"]
+atlas = ExtResource("6_8u6t1")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8hd76"]
+atlas = ExtResource("6_8u6t1")
+region = Rect2(96, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_76bfv"]
+atlas = ExtResource("6_8u6t1")
+region = Rect2(144, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2p6vt"]
+atlas = ExtResource("6_8u6t1")
+region = Rect2(192, 0, 48, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_dct4x"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8u6t1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hjejh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8hd76")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_76bfv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2p6vt")
+}],
+"loop": true,
+"name": &"Loading",
+"speed": 5.0
+}]
 
 [node name="ArcadeQuestions" type="Control"]
 layout_mode = 3
@@ -41,7 +81,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0, 0, 0, 0.717647)
+color = Color(0, 0, 0, 0.65098)
 
 [node name="ImageBackground" type="TextureRect" parent="BackgroundControl"]
 modulate = Color(0.229112, 0.229112, 0.229112, 1)
@@ -70,10 +110,10 @@ anchor_left = 0.5
 anchor_top = 0.066
 anchor_right = 0.5
 anchor_bottom = 0.066
-offset_left = -88.0
-offset_top = -32.768
-offset_right = 138.0
-offset_bottom = 36.232
+offset_left = -126.0
+offset_top = -30.768
+offset_right = 100.0
+offset_bottom = 38.232
 theme_override_fonts/font = ExtResource("3_8u6t1")
 theme_override_font_sizes/font_size = 50
 text = "Score = 0"
@@ -89,6 +129,53 @@ offset_bottom = 76.0
 theme_override_fonts/font = ExtResource("4_hjejh")
 theme_override_font_sizes/font_size = 50
 text = "0s"
+
+[node name="MultiplayerUIControl" type="Control" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MultiplayerWarningLabel" type="Label" parent="MultiplayerUIControl"]
+layout_mode = 0
+offset_left = 95.0
+offset_top = 189.0
+offset_right = 1033.0
+offset_bottom = 256.0
+theme_override_fonts/font = ExtResource("5_1b062")
+theme_override_font_sizes/font_size = 60
+text = "A próxima questão será jogada junto a outro jogador!"
+
+[node name="MatchmakingLabel" type="Label" parent="MultiplayerUIControl"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -184.5
+offset_top = -25.5
+offset_right = 184.5
+offset_bottom = 25.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("5_1b062")
+theme_override_font_sizes/font_size = 45
+text = "Procurando outro jogador..."
+
+[node name="MatchmakingTimer" type="Timer" parent="MultiplayerUIControl"]
+
+[node name="LoadingSprite" type="AnimatedSprite2D" parent="MultiplayerUIControl"]
+texture_filter = 3
+position = Vector2(576, 454)
+scale = Vector2(2.4375, 2.4375)
+sprite_frames = SubResource("SpriteFrames_dct4x")
+animation = &"Loading"
+frame = 3
+frame_progress = 0.145893
 
 [node name="FinalLabel" type="Label" parent="."]
 visible = false
@@ -276,9 +363,6 @@ offset_bottom = 140.563
 scale = Vector2(0.269031, 0.269031)
 theme = ExtResource("10_bbwy0")
 icon = ExtResource("11_ndjbd")
-
-[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
-replication_config = SubResource("SceneReplicationConfig_ujsnr")
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 15.0

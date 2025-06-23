@@ -3,6 +3,7 @@ extends Node
 
 # Referências
 var parent: Control
+var countdown_value: int = 0
 
 func _init(parent_node: Control) -> void:
 	parent = parent_node
@@ -84,6 +85,44 @@ func hide_wrong_answer() -> void:
 func toggle_player_score_display() -> void:
 	var player_score = parent.get_node("Player-score")
 	player_score.visible = not player_score.visible
+	
+func show_searching_message() -> void:
+	parent.get_node("MultiplayerUIControl/MatchmakingLabel").text = "Procurando outro jogador..."
+	parent.get_node("MultiplayerUIControl/LoadingSprite").play("Loading")
+	parent.get_node("MultiplayerUIControl/LoadingSprite").show()
+	parent.get_node("MultiplayerUIControl").show()
+
+func show_countdown_message(message: String) -> void:
+	parent.get_node("MultiplayerUIControl/MatchmakingLabel").text = message
+	parent.get_node("MultiplayerUIControl/LoadingSprite").stop()
+	parent.get_node("MultiplayerUIControl/LoadingSprite").hide()
+	parent.get_node("MultiplayerUIControl").show()
+
+func hide_matchmaking_message() -> void:
+	parent.get_node("MultiplayerUIControl").hide()
+
+func start_countdown() -> void:
+	countdown_value = 3
+	show_countdown_message("Parceiro encontrado! Iniciando em " + str(countdown_value) + "...")
+	
+	var timer = parent.get_node("MultiplayerUIControl/MatchmakingTimer")
+	if timer.timeout.is_connected(_update_countdown):
+		timer.timeout.disconnect(_update_countdown)
+	
+	timer.timeout.connect(_update_countdown)
+	timer.wait_time = 1.0
+	timer.start()
+
+func _update_countdown() -> void:
+	countdown_value -= 1
+	
+	if countdown_value > 0:
+		show_countdown_message("Parceiro encontrado! Iniciando em " + str(countdown_value) + "...")
+	else:
+		var timer = parent.get_node("MultiplayerUIControl/MatchmakingTimer")
+		timer.stop()
+		hide_matchmaking_message()
+		timer.timeout.disconnect(_update_countdown)
 
 func set_random_background(transition_type: String = "fade") -> void:
 	var dir = DirAccess.open("res://src/assets/backgrounds/")

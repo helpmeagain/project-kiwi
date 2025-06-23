@@ -293,6 +293,27 @@ mouse_default_cursor_shape = 2
 theme_override_font_sizes/font_size = 25
 text = "Visit"
 
+[node name="HBoxContainer11" type="HBoxContainer" parent="VBoxContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer11"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_fonts/normal_font = ExtResource("6_c05vn")
+theme_override_font_sizes/normal_font_size = 28
+text = "Loading Sprite by BDragon1727"
+fit_content = true
+scroll_active = false
+tab_size = 9
+
+[node name="LoadingButton" type="Button" parent="VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer11"]
+layout_mode = 2
+mouse_default_cursor_shape = 2
+theme_override_font_sizes/font_size = 25
+text = "Visit"
+
 [node name="FontLabel" type="Label" parent="VBoxContainer/ScrollContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
@@ -422,6 +443,7 @@ text = "Visit"
 [connection signal="pressed" from="VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer9/UICozyButton" to="." method="_on_ui_cozy_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer8/UIAssetsPackButton" to="." method="_on_ui_assets_pack_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer7/GUIElementsButton" to="." method="_on_gui_elements_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer11/LoadingButton" to="." method="_on_loading_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer2/SilverButton" to="." method="_on_silver_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer3/AbbadonButton" to="." method="_on_abbadon_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer5/RulerButton" to="." method="_on_ruler_button_pressed"]

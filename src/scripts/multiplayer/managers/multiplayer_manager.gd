@@ -33,10 +33,10 @@ func enter_matchmaking() -> void:
 	if not is_multiplayer():
 		print("[DEBUG] Matchmaking falhou: não está no modo multiplayer")
 		return
-	
-	print("[DEBUG] Entrando no matchmaking")
+		
 	matchmaking_state = MatchmakingState.WAITING
 	current_exercise_id = "multiplayer_fill_" + str(Time.get_unix_time_from_system())
+	parent.ui_manager.show_searching_message()
 	
 	if multiplayer.is_server():
 		print("[DEBUG] Servidor tentando parear jogadores")
@@ -83,7 +83,11 @@ func try_match_players() -> void:
 func notify_match_found(partner_id: int, question_data: Dictionary) -> void:
 	current_partner = partner_id
 	matchmaking_state = MatchmakingState.MATCHED
-	parent.exercise_manager.load_multiplayer_exercise(current_partner, question_data)
+	parent.ui_manager.start_countdown()
+	
+	parent.get_tree().create_timer(3.0).timeout.connect(
+		func(): parent.exercise_manager.load_multiplayer_exercise(current_partner, question_data)
+	)
 
 func _receive_answer_locally(player_id: int, answer: String) -> void:
 	if multiplayer.is_server():

@@ -56,7 +56,7 @@ func _on_button_pressed(button: Button) -> void:
 	var correct_answer = current_question.correct_answers[player_index]
 	var is_correct = (player_answer == correct_answer)
 	if !is_correct && parent.power_up_manager.use_extra_life():
-		parent.ui_manager.update_ui_components(parent.score, parent.question_count)
+		parent.ui_manager.update_powerup_icons()
 		answered = false
 		player_answer = ""
 		return
