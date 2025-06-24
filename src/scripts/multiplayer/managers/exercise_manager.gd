@@ -27,7 +27,6 @@ func load_random_question() -> void:
 	if parent.question_count % 2 == 1 && parent.multiplayer_manager.is_multiplayer():
 		print("[DEBUG] Entrando no matchmaking para exercício multiplayer")
 		parent.multiplayer_manager.enter_matchmaking()
-		parent.ui_manager.update_question_count(parent.question_count)
 		parent.ui_manager.set_random_background("fade")
 		return
 		
@@ -58,6 +57,7 @@ func load_multiplayer_exercise(partner_id: int, question_data: Dictionary) -> vo
 	
 	current_question = scene
 	parent.question_count += 1
+	parent.ui_manager.update_question_count(parent.question_count)
 	
 	var player_index = determine_player_index(partner_id)
 	
