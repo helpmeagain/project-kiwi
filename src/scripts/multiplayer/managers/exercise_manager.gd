@@ -57,6 +57,7 @@ func load_multiplayer_exercise(partner_id: int, question_data: Dictionary) -> vo
 	
 	current_question = scene
 	parent.question_count += 1
+	parent.timeout_occurred = false
 	parent.ui_manager.update_question_count(parent.question_count)
 	
 	var player_index = determine_player_index(partner_id)
