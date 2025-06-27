@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://ximeayqp0acg"]
+[gd_scene load_steps=16 format=3 uid="uid://ximeayqp0acg"]
 
 [ext_resource type="Script" uid="uid://v8yuvv247t1q" path="res://src/scripts/menus/multiplayer_menu.gd" id="1_2fb8j"]
 [ext_resource type="Theme" uid="uid://ch3x2byuiyaxy" path="res://src/assets/themes/menu.tres" id="2_82we7"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://bjd0ts18rh4pc" path="res://src/scenes/multiplayer/server_info.tscn" id="8_8hig0"]
 [ext_resource type="FontFile" uid="uid://bhggoau4c0xk0" path="res://src/assets/fonts/Silver.ttf" id="9_pvauv"]
 [ext_resource type="Texture2D" uid="uid://c4ucb36ohohp3" path="res://src/assets/sprites/Left-Arrow.png" id="9_v1nsv"]
+[ext_resource type="PackedScene" uid="uid://cj6lix855k7pt" path="res://src/scenes/menus/pop-up-window.tscn" id="11_y8nup"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_edoox"]
 bg_color = Color(0, 0, 0, 0.631373)
@@ -43,7 +44,8 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_2fb8j")
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="BlackgroundColor" type="ColorRect" parent="."]
+layout_mode = 0
 offset_left = -121.0
 offset_top = -95.0
 offset_right = 1274.0
@@ -70,6 +72,7 @@ theme_override_constants/separation = 50
 [node name="HostButton" type="Button" parent="HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+mouse_default_cursor_shape = 2
 text = "I'm a teacher!
 (Create a room)"
 icon = ExtResource("3_otncy")
@@ -80,6 +83,7 @@ vertical_icon_alignment = 0
 texture_filter = 3
 layout_mode = 2
 size_flags_horizontal = 3
+mouse_default_cursor_shape = 2
 theme = ExtResource("2_82we7")
 text = "I'm a student!
 (Join a room)"
@@ -100,6 +104,7 @@ offset_top = -16.232
 offset_right = 131.78
 offset_bottom = 131.768
 scale = Vector2(0.221184, 0.221184)
+mouse_default_cursor_shape = 2
 theme = ExtResource("5_ve5k3")
 icon = ExtResource("6_kq3tp")
 icon_alignment = 1
@@ -115,7 +120,9 @@ serverInfo = ExtResource("8_8hig0")
 
 [node name="BroadcastTimer" type="Timer" parent="ServerBrowser"]
 
-[node name="Panel2" type="Panel" parent="ServerBrowser"]
+[node name="CleanupTimer" type="Timer" parent="ServerBrowser"]
+
+[node name="BlackPanel" type="Panel" parent="ServerBrowser"]
 layout_mode = 0
 offset_left = -52.0
 offset_top = -54.0
@@ -123,7 +130,7 @@ offset_right = 1238.0
 offset_bottom = 672.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_edoox")
 
-[node name="Panel" type="Panel" parent="ServerBrowser"]
+[node name="ServerInfoPanel" type="Panel" parent="ServerBrowser"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -139,18 +146,18 @@ grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_kv4yq")
 metadata/_edit_group_ = true
 
-[node name="VBoxContainer" type="VBoxContainer" parent="ServerBrowser/Panel"]
+[node name="ServerTableContainer" type="VBoxContainer" parent="ServerBrowser/ServerInfoPanel"]
 layout_mode = 0
 offset_left = 6.0
 offset_top = 7.0
 offset_right = 779.0
 offset_bottom = 471.0
 
-[node name="ServerInfoTitle" type="HBoxContainer" parent="ServerBrowser/Panel/VBoxContainer"]
+[node name="ServerInfoTitle" type="HBoxContainer" parent="ServerBrowser/ServerInfoPanel/ServerTableContainer"]
 layout_mode = 2
 theme = ExtResource("2_82we7")
 
-[node name="ServerNameTitleLabel" type="Label" parent="ServerBrowser/Panel/VBoxContainer/ServerInfoTitle"]
+[node name="ServerNameTitleLabel" type="Label" parent="ServerBrowser/ServerInfoPanel/ServerTableContainer/ServerInfoTitle"]
 texture_filter = 3
 layout_mode = 2
 size_flags_horizontal = 3
@@ -159,7 +166,7 @@ text = "Name"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="IPTitleLabel" type="Label" parent="ServerBrowser/Panel/VBoxContainer/ServerInfoTitle"]
+[node name="IPTitleLabel" type="Label" parent="ServerBrowser/ServerInfoPanel/ServerTableContainer/ServerInfoTitle"]
 texture_filter = 3
 layout_mode = 2
 size_flags_horizontal = 3
@@ -168,7 +175,7 @@ text = "IP"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="PlayerCountTitleLabel" type="Label" parent="ServerBrowser/Panel/VBoxContainer/ServerInfoTitle"]
+[node name="PlayerCountTitleLabel" type="Label" parent="ServerBrowser/ServerInfoPanel/ServerTableContainer/ServerInfoTitle"]
 texture_filter = 3
 layout_mode = 2
 size_flags_horizontal = 3
@@ -177,7 +184,7 @@ text = "Player Count"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="PlayerCountTitleLabel2" type="Label" parent="ServerBrowser/Panel/VBoxContainer/ServerInfoTitle"]
+[node name="PlayerCountTitleLabel2" type="Label" parent="ServerBrowser/ServerInfoPanel/ServerTableContainer/ServerInfoTitle"]
 texture_filter = 3
 layout_mode = 2
 size_flags_horizontal = 3
@@ -186,11 +193,11 @@ text = "Join"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ScrollContainer" type="ScrollContainer" parent="ServerBrowser/Panel/VBoxContainer"]
+[node name="ScrollContainer" type="ScrollContainer" parent="ServerBrowser/ServerInfoPanel/ServerTableContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="VBoxContainer" type="VBoxContainer" parent="ServerBrowser/Panel/VBoxContainer/ScrollContainer"]
+[node name="ServerListContainer" type="VBoxContainer" parent="ServerBrowser/ServerInfoPanel/ServerTableContainer/ScrollContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -248,18 +255,18 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="StartButton" type="Button" parent="."]
-visible = false
+[node name="StartButton" type="Button" parent="PlayerBrowser"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.882
 anchor_top = 0.9
 anchor_right = 0.882
 anchor_bottom = 0.9
-offset_left = -512.064
-offset_top = -10.2
-offset_right = -365.064
-offset_bottom = 28.8
+offset_left = -366.612
+offset_top = 77.2
+offset_right = -219.612
+offset_bottom = 116.2
+mouse_default_cursor_shape = 2
 theme = ExtResource("2_82we7")
 text = "Start game"
 
@@ -298,8 +305,14 @@ placeholder_text = "Insert your name..."
 visible = false
 texture_filter = 3
 layout_mode = 2
+mouse_default_cursor_shape = 2
 theme_override_font_sizes/font_size = 20
 text = "Host room"
+
+[node name="IPButton" type="OptionButton" parent="NameInputContainer"]
+visible = false
+layout_mode = 2
+fit_to_longest_item = false
 
 [node name="CloseButton" type="Button" parent="."]
 visible = false
@@ -315,6 +328,7 @@ offset_top = -16.12
 offset_right = 131.48
 offset_bottom = 131.88
 scale = Vector2(0.221184, 0.221184)
+mouse_default_cursor_shape = 2
 theme = ExtResource("5_ve5k3")
 icon = ExtResource("9_v1nsv")
 icon_alignment = 1
@@ -336,45 +350,14 @@ grow_vertical = 2
 text = "[DEBUG]
 Add players"
 
-[node name="Window" type="Window" parent="."]
-title = "Error"
-initial_position = 1
-size = Vector2i(350, 100)
-visible = false
-unresizable = true
-popup_window = true
-
-[node name="HBoxContainer" type="HBoxContainer" parent="Window"]
-offset_right = 399.0
-offset_bottom = 110.0
-scale = Vector2(0.88, 0.92)
-size_flags_horizontal = 3
-size_flags_vertical = 3
-theme_override_constants/separation = 50
-alignment = 1
-
-[node name="Warning" type="Label" parent="Window/HBoxContainer"]
-custom_minimum_size = Vector2(30, 0)
-layout_mode = 2
-theme_override_colors/font_color = Color(1, 0.425788, 0.357085, 1)
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 70
-text = "!"
-
-[node name="WindowLabel" type="Label" parent="Window/HBoxContainer"]
-layout_mode = 2
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_font_sizes/font_size = 15
-text = "Generic error message"
-horizontal_alignment = 1
-vertical_alignment = 1
+[node name="Window" parent="." instance=ExtResource("11_y8nup")]
 
 [connection signal="pressed" from="HBoxContainer/HostButton" to="." method="_on_host_button_pressed"]
 [connection signal="pressed" from="HBoxContainer/JoinButton" to="." method="_on_join_button_pressed"]
 [connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]
 [connection signal="timeout" from="ServerBrowser/BroadcastTimer" to="ServerBrowser" method="_on_broadcast_timer_timeout"]
-[connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="PlayerBrowser/StartButton" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="NameInputContainer/HostButton" to="." method="_on_create_room_button_pressed"]
+[connection signal="item_selected" from="NameInputContainer/IPButton" to="." method="_on_ip_button_item_selected"]
 [connection signal="pressed" from="CloseButton" to="." method="_on_close_button_pressed"]
 [connection signal="pressed" from="DebugAddPlayersButton" to="." method="_on_debug_add_players_button_pressed"]
-[connection signal="close_requested" from="Window" to="." method="_on_window_close_requested"]

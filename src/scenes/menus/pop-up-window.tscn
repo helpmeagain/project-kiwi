@@ -1,0 +1,41 @@
+[gd_scene load_steps=2 format=3 uid="uid://cj6lix855k7pt"]
+
+[ext_resource type="Script" uid="uid://dklk1tf7xks0k" path="res://src/scripts/menus/pop_up_window.gd" id="1_1in58"]
+
+[node name="Window" type="Window"]
+auto_translate_mode = 1
+title = "Error"
+initial_position = 1
+size = Vector2i(350, 100)
+visible = false
+unresizable = true
+popup_window = true
+script = ExtResource("1_1in58")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+offset_right = 399.0
+offset_bottom = 110.0
+scale = Vector2(0.88, 0.92)
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 50
+alignment = 1
+
+[node name="Warning" type="Label" parent="HBoxContainer"]
+custom_minimum_size = Vector2(30, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.425788, 0.357085, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 70
+text = "!"
+horizontal_alignment = 1
+
+[node name="WindowLabel" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 15
+text = "Generic error message"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="close_requested" from="." to="." method="_on_close_requested"]

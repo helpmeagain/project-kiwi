@@ -1,11 +1,14 @@
-[gd_scene load_steps=8 format=3 uid="uid://di7wgqh7vibe7"]
+[gd_scene load_steps=11 format=3 uid="uid://di7wgqh7vibe7"]
 
 [ext_resource type="Script" uid="uid://ukpnntfs15i0" path="res://src/scripts/gameplay/multiplayer-questions.gd" id="1_mh1t5"]
 [ext_resource type="FontFile" uid="uid://bmvtmpvoy1cwt" path="res://src/assets/fonts/editundo.ttf" id="2_leee8"]
 [ext_resource type="FontFile" uid="uid://c0w25r8vykatq" path="res://src/assets/fonts/Abaddon Bold.ttf" id="3_n7e7y"]
 [ext_resource type="Script" uid="uid://b28mwb5urarq3" path="res://src/scripts/gameplay/background.gd" id="3_ohok1"]
 [ext_resource type="PackedScene" uid="uid://du6byd12byrk3" path="res://src/scenes/multiplayer/player-score.tscn" id="4_ohok1"]
+[ext_resource type="Texture2D" uid="uid://cbtrgy4ve28cl" path="res://src/assets/sprites/Up-Arrows.png" id="4_ujsnr"]
 [ext_resource type="Theme" uid="uid://drabaa7jfibga" path="res://src/assets/themes/small_button.tres" id="5_ujsnr"]
+[ext_resource type="Texture2D" uid="uid://x42n32rf4xqy" path="res://src/assets/sprites/Heart.png" id="5_yxgkn"]
+[ext_resource type="Theme" uid="uid://ch3x2byuiyaxy" path="res://src/assets/themes/menu.tres" id="6_n7e7y"]
 [ext_resource type="Texture2D" uid="uid://cejxfhqi5mryk" path="res://src/assets/sprites/People.png" id="6_yxgkn"]
 
 [node name="MultiplayerQuestions" type="Control"]
@@ -89,6 +92,31 @@ theme_override_fonts/font = ExtResource("2_leee8")
 theme_override_font_sizes/font_size = 70
 text = "Final message label"
 
+[node name="PowerUpIconsControl" type="Control" parent="."]
+layout_mode = 1
+anchor_left = 0.644
+anchor_top = 0.028
+anchor_right = 0.91
+anchor_bottom = 0.134
+offset_left = 0.111938
+offset_top = -0.144001
+offset_right = -0.320068
+offset_bottom = 0.167999
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PowerUpIconsControl"]
+layout_mode = 0
+offset_right = 284.0
+offset_bottom = 140.0
+scale = Vector2(0.4, 0.4)
+
+[node name="PowerUpIcon1" type="TextureRect" parent="PowerUpIconsControl/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("4_ujsnr")
+
+[node name="PowerUpIcon2" type="TextureRect" parent="PowerUpIconsControl/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("5_yxgkn")
+
 [node name="QuestionCountLabel" type="Label" parent="."]
 layout_mode = 1
 anchors_preset = 1
@@ -109,6 +137,117 @@ offset_top = 92.0
 offset_right = 2.0
 offset_bottom = 92.0
 
+[node name="PowerUpControl" type="Control" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="BlackBackground" type="ColorRect" parent="PowerUpControl"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.717647)
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PowerUpControl"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("6_n7e7y")
+theme_override_constants/separation = 15
+alignment = 1
+
+[node name="PowerUpButton1" type="Button" parent="PowerUpControl/HBoxContainer"]
+layout_mode = 2
+text = "2X pontos"
+
+[node name="PowerUpButton2" type="Button" parent="PowerUpControl/HBoxContainer"]
+layout_mode = 2
+text = "Invencibilidade"
+
+[node name="WrongAnswer" type="Control" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="BlackScreen" type="ColorRect" parent="WrongAnswer"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.470588)
+
+[node name="WrongPanel" type="Panel" parent="WrongAnswer"]
+texture_filter = 3
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -303.0
+offset_top = 180.0
+offset_right = 22.0
+offset_bottom = 821.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -1.5708
+theme = ExtResource("6_n7e7y")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="WrongAnswer/WrongPanel"]
+texture_filter = 3
+layout_mode = 0
+offset_left = 268.0
+offset_top = 59.001
+offset_right = 794.0
+offset_bottom = 269.001
+rotation = 1.5708
+
+[node name="TitleLabel" type="Label" parent="WrongAnswer/WrongPanel/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(1, 0, 0, 0.341176)
+theme_override_font_sizes/font_size = 50
+text = "Wrong Answer!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Subtitle" type="Label" parent="WrongAnswer/WrongPanel/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.517647)
+theme_override_font_sizes/font_size = 30
+text = "Try again"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="WrongPanelButton" type="Button" parent="WrongAnswer/WrongPanel"]
+layout_mode = 0
+offset_left = 90.9981
+offset_top = 518.0
+offset_right = 138.998
+offset_bottom = 563.0
+rotation = 1.5708
+theme_override_font_sizes/font_size = 35
+text = "Ok!"
+
 [node name="ShowPlayersButton" type="Button" parent="."]
 texture_filter = 3
 layout_mode = 0
@@ -120,4 +259,7 @@ scale = Vector2(0.269031, 0.269031)
 theme = ExtResource("5_ujsnr")
 icon = ExtResource("6_yxgkn")
 
+[connection signal="pressed" from="PowerUpControl/HBoxContainer/PowerUpButton1" to="." method="_on_powerup_double"]
+[connection signal="pressed" from="PowerUpControl/HBoxContainer/PowerUpButton2" to="." method="_on_powerup_life"]
+[connection signal="pressed" from="WrongAnswer/WrongPanel/WrongPanelButton" to="." method="_on_wrong_panel_button_pressed"]
 [connection signal="pressed" from="ShowPlayersButton" to="." method="_on_show_players_button_pressed"]

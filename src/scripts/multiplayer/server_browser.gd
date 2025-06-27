@@ -4,20 +4,26 @@ signal found_server(ip, port, info)
 signal update_server(ip, port, info)
 signal join_game(ip)
 
-var broadcast_timer: Timer
 var broadcaster: PacketPeerUDP
 var listener: PacketPeerUDP
 var room_info = { "name" :  "name", "playerCount": 0 }
+var server_last_seen = {}
+
 @export var listenPort: int = 8920
 @export var broadcastPort: int = 8930
-@export var broadcastAddress: String = "192.168.1.255"
+@export var address: String = "192.168.1.255"
 @export var serverInfo: PackedScene
 
-func _ready() -> void:
-	broadcast_timer = $BroadcastTimer
-	setup_up_listener()
+@onready var broadcast_timer: Timer = $BroadcastTimer
+@onready var cleanup_timer: Timer = $CleanupTimer
+@onready var server_list: VBoxContainer = $ServerInfoPanel/ServerTableContainer/ScrollContainer/ServerListContainer
+
+func _ready():
+	cleanup_timer.timeout.connect(_on_cleanup_timer_timeout)
 
 func _process(_delta: float) -> void:
+	if listener == null:
+		return
 	if listener.get_available_packet_count() > 0:
 		var server_ip = listener.get_packet_ip()
 		var server_port = listener.get_packet_port()
@@ -25,38 +31,43 @@ func _process(_delta: float) -> void:
 		var data = bytes.get_string_from_utf8()
 		var room_info_from_data = JSON.parse_string(data)
 		
-		print("Server IP: " + server_ip + " Server Port: " + str(server_port) + " Room info: " + str(room_info_from_data))
+		# print("[DEBUG] Server IP: " + server_ip + " Server Port: " + str(server_port) + " Room info: " + str(room_info_from_data))
+		server_last_seen[server_ip] = Time.get_ticks_msec()
 		
-		for i in $Panel/VBoxContainer/ScrollContainer/VBoxContainer.get_children():
-			if i.name == room_info_from_data.name:
+		var server_exists = false
+		for child in server_list.get_children():
+			if child.get_node("IPLabel").text == server_ip:
 				update_server.emit(server_ip, server_port, room_info_from_data)
-				i.get_node("IPLabel").text = server_ip
-				i.get_node("PlayerCountLabel").text = str(int(room_info_from_data.playerCount))
-				return
-		var currentInfo = serverInfo.instantiate()
-		currentInfo.name = room_info_from_data.name
-		currentInfo.get_node("ServerNameLabel").text = room_info_from_data.name
-		currentInfo.get_node("IPLabel").text = server_ip
-		currentInfo.get_node("PlayerCountLabel").text = str(int(room_info_from_data.playerCount))
-		$Panel/VBoxContainer/ScrollContainer/VBoxContainer.add_child(currentInfo)
-		currentInfo.join_game.connect(join_by_ip)
-		found_server.emit(server_ip, server_port, room_info_from_data)
-		pass
+				child.get_node("ServerNameLabel").text = room_info_from_data.name
+				child.get_node("PlayerCountLabel").text = str(int(room_info_from_data.playerCount))
+				server_exists = true
+				break
+		
+		if not server_exists:
+			var currentInfo = serverInfo.instantiate()
+			currentInfo.name = room_info_from_data.name
+			currentInfo.get_node("ServerNameLabel").text = room_info_from_data.name
+			currentInfo.get_node("IPLabel").text = server_ip
+			currentInfo.get_node("PlayerCountLabel").text = str(int(room_info_from_data.playerCount))
+			server_list.add_child(currentInfo)
+			currentInfo.join_game.connect(join_by_ip)
+			found_server.emit(server_ip, server_port, room_info_from_data)
 
-func setup_up_listener():
+func setup_listener():
 	listener = PacketPeerUDP.new()
 	var ok = listener.bind(listenPort)
 	if ok == OK:
 		print("Successfully bound to listen Port: " + str(listenPort) + "!")
+		cleanup_timer.start()
 	else:
 		print("Failed to bind to listen Port")
 
-func set_up_broadcast(server_name: String):
+func setup_broadcast(server_name: String):
 	room_info.name = server_name
 	room_info.playerCount = MultiplayerPlayerManager.players.size()
 	broadcaster = PacketPeerUDP.new()
 	broadcaster.set_broadcast_enabled(true)
-	broadcaster.set_dest_address(broadcastAddress, listenPort)
+	broadcaster.set_dest_address(address, listenPort)
 	
 	var ok = broadcaster.bind(broadcastPort)
 	if ok == OK:
@@ -65,18 +76,39 @@ func set_up_broadcast(server_name: String):
 		print("Failed to bind to Broadcast Port")
 		
 	broadcast_timer.start()
-		
+
 func clean_up():
 	broadcast_timer.stop()
-	listener.close()
-	if broadcaster !=  null:
+	cleanup_timer.stop()
+	if listener != null:
+		listener.close()
+		for child in server_list.get_children():
+			child.queue_free()
+	if broadcaster != null:
 		broadcaster.close()
+	server_last_seen.clear()
 
 func _on_broadcast_timer_timeout() -> void:
 	room_info.playerCount = MultiplayerPlayerManager.players.size()
 	var data = JSON.stringify(room_info)
 	var packet = data.to_utf8_buffer()
 	broadcaster.put_packet(packet)
+
+func _on_cleanup_timer_timeout() -> void:
+	var now = Time.get_ticks_msec()
+	var threshold = 3000
+	
+	var ips_to_remove = []
+	for ip in server_last_seen:
+		if now - server_last_seen[ip] > threshold:
+			ips_to_remove.append(ip)
+	
+	for ip in ips_to_remove:
+		server_last_seen.erase(ip)
+		for child in server_list.get_children():
+			if child.get_node("IPLabel").text == ip:
+				child.queue_free()
+				break
 
 func _exit_tree() -> void:
 	clean_up()
