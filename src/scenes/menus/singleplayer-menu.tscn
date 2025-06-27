@@ -1,0 +1,85 @@
+[gd_scene load_steps=7 format=3 uid="uid://dj50o14xu17wu"]
+
+[ext_resource type="Script" uid="uid://wf1gkosfdied" path="res://src/scripts/menus/singleplayer_menu.gd" id="1_n3a7i"]
+[ext_resource type="Theme" uid="uid://drabaa7jfibga" path="res://src/assets/themes/small_button.tres" id="2_4w6cp"]
+[ext_resource type="Texture2D" uid="uid://iqimikjyunwk" path="res://src/assets/sprites/Home.png" id="3_12dgp"]
+[ext_resource type="Theme" uid="uid://ch3x2byuiyaxy" path="res://src/assets/themes/menu.tres" id="4_wicqd"]
+[ext_resource type="Texture2D" uid="uid://b3wby6vni4k4m" path="res://src/assets/sprites/File-Text.png" id="5_wicqd"]
+[ext_resource type="Texture2D" uid="uid://d3pujpxfxmnla" path="res://src/assets/sprites/Game-Controller.png" id="6_h7lm6"]
+
+[node name="Singleplayer-menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_n3a7i")
+
+[node name="BlackgroundColor" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.300004, 0.0741538, 0, 0.356863)
+
+[node name="BackButton" type="Button" parent="."]
+texture_filter = 3
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.036
+anchor_top = 0.059
+anchor_right = 0.036
+anchor_bottom = 0.059
+offset_left = -16.22
+offset_top = -16.232
+offset_right = 131.78
+offset_bottom = 131.768
+scale = Vector2(0.221184, 0.221184)
+mouse_default_cursor_shape = 2
+theme = ExtResource("2_4w6cp")
+icon = ExtResource("3_12dgp")
+icon_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+texture_filter = 3
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -287.0
+offset_top = -124.5
+offset_right = 287.0
+offset_bottom = 124.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("4_wicqd")
+theme_override_constants/separation = 50
+
+[node name="HistoryButton" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_default_cursor_shape = 2
+text = "History mode"
+icon = ExtResource("5_wicqd")
+icon_alignment = 1
+vertical_icon_alignment = 0
+
+[node name="ArcadeButton" type="Button" parent="HBoxContainer"]
+texture_filter = 3
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_default_cursor_shape = 2
+theme = ExtResource("4_wicqd")
+text = "Arcade mode"
+icon = ExtResource("6_h7lm6")
+icon_alignment = 1
+vertical_icon_alignment = 0
+
+[connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]
+[connection signal="pressed" from="HBoxContainer/HistoryButton" to="." method="_on_history_button_pressed"]
+[connection signal="pressed" from="HBoxContainer/ArcadeButton" to="." method="_on_arcade_button_pressed"]

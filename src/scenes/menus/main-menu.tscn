@@ -14,7 +14,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_ljxf1")
 
-[node name="TextureRect" type="TextureRect" parent="."]
+[node name="Background" type="TextureRect" parent="."]
 modulate = Color(0.361575, 0.361576, 0.361575, 0.996078)
 layout_mode = 1
 anchors_preset = 8
@@ -75,12 +75,6 @@ layout_mode = 2
 mouse_default_cursor_shape = 2
 text = "Multiplayer"
 
-[node name="HowToPlayButton" type="Button" parent="LabelAndButtonsContainer/ButtonsContainer"]
-visible = false
-layout_mode = 2
-disabled = true
-text = "How to play"
-
 [node name="AboutButton" type="Button" parent="LabelAndButtonsContainer/ButtonsContainer"]
 layout_mode = 2
 mouse_default_cursor_shape = 2
@@ -91,8 +85,19 @@ layout_mode = 2
 mouse_default_cursor_shape = 2
 text = "Exit"
 
+[node name="CreditsLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -29.0
+offset_right = 190.0
+grow_vertical = 0
+theme = ExtResource("4_nacp7")
+theme_override_font_sizes/font_size = 25
+text = " helpmeagain, 2025"
+
 [connection signal="pressed" from="LabelAndButtonsContainer/ButtonsContainer/SingleplayerButton" to="." method="_on_singleplayer_button_pressed"]
 [connection signal="pressed" from="LabelAndButtonsContainer/ButtonsContainer/MultiplayerButton" to="." method="_on_multiplayer_button_pressed"]
-[connection signal="pressed" from="LabelAndButtonsContainer/ButtonsContainer/HowToPlayButton" to="." method="_on_how_to_play_button_pressed"]
 [connection signal="pressed" from="LabelAndButtonsContainer/ButtonsContainer/AboutButton" to="." method="_on_about_button_pressed"]
 [connection signal="pressed" from="LabelAndButtonsContainer/ButtonsContainer/ExitButton" to="." method="_on_exit_button_pressed"]

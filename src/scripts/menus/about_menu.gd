@@ -44,3 +44,6 @@ func _on_anime_backgrounds_button_pressed() -> void:
 
 func _on_house_visual_novel_button_pressed() -> void:
 	OS.shell_open("https://spiralatlas.itch.io/house-visual-novel-backgrounds")
+
+func _on_loading_button_pressed() -> void:
+	OS.shell_open("https://bdragon1727.itch.io/basic-pixel-health-bar-and-scroll-bar")
