@@ -4,9 +4,10 @@ extends Node
 # Configurações
 const EXERCISE_CONFIG = {
 	"fill_in_blank": "res://src/scenes/exercises/fill-in-the-blank.tscn",
-	"listen_then_type": "res://src/scenes/exercises/listen-then-type.tscn",
+	#"listen_then_type": "res://src/scenes/exercises/listen-then-type.tscn",
 	"type_translation": "res://src/scenes/exercises/type-the-sentence.tscn",
-	"multiplayer_fill": "res://src/scenes/exercises/multiplayer-fill-in-the-blank.tscn"
+	"multiplayer_fill": "res://src/scenes/exercises/multiplayer-fill-in-the-blank.tscn",
+	"vocabulary" : "res://src/scenes/exercises/vocabulary.tscn"
 }
 const MAX_QUESTIONS = 7
 const POWERUP_INTERVAL := 3

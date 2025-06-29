@@ -33,3 +33,7 @@ func load_random_question(file_name: String) -> Dictionary:
 	else:
 		push_error("No questions found in " + file_name)
 		return {}
+		
+func load_question_by_id(file_name: String, question_id: String) -> Dictionary:
+	var questions = load_questions(file_name)
+	return questions.by_id.get(question_id, {})

@@ -1,0 +1,14 @@
+[
+  {
+	"id": "1",
+	"image": "umbrella.png",
+	"correct_answer": "umbrella",
+	"options": ["umbrella", "key", "desk", "chair"]
+  },
+  {
+	"id": "2",
+	"image": "flashlight.png",
+	"correct_answer": "flashlight",
+	"options": ["flashlight", "umbrella", "piano", "shoe"]
+  },
+]
