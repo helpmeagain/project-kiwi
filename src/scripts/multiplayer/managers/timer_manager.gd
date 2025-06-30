@@ -2,8 +2,8 @@ class_name TimerManager
 extends Node
 
 # Configurações
-const FILL_IN_BLANK_TIME = 5
-const DEFAULT_TIME = 15 
+const QUICKER_TIME = 15
+const DEFAULT_TIME = 25
 
 # Referências
 var parent: Control
@@ -14,8 +14,8 @@ func _init(parent_node: Control) -> void:
 func start_timer_for_exercise(exercise_type: String) -> void:
 	var timer = parent.get_node("Timer")
 	
-	if exercise_type == "fill_in_blank":
-		timer.wait_time = FILL_IN_BLANK_TIME
+	if exercise_type == "fill_in_blank" or "vocabulary":
+		timer.wait_time = QUICKER_TIME
 	else:
 		timer.wait_time = DEFAULT_TIME
 	

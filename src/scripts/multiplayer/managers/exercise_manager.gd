@@ -9,7 +9,7 @@ const EXERCISE_CONFIG = {
 	"multiplayer_fill": "res://src/scenes/exercises/multiplayer-fill-in-the-blank.tscn",
 	"vocabulary" : "res://src/scenes/exercises/vocabulary.tscn"
 }
-const MAX_QUESTIONS = 7
+const MAX_QUESTIONS = 30
 const POWERUP_INTERVAL := 3
 
 # Referências
