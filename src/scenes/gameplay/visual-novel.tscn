@@ -91,10 +91,10 @@ theme = ExtResource("2_yye55")
 [node name="VBoxContainer" type="VBoxContainer" parent="WrongAnswer/WrongPanel"]
 texture_filter = 3
 layout_mode = 0
-offset_left = 205.0
-offset_top = -47.0
-offset_right = 796.0
-offset_bottom = 70.0
+offset_left = 227.0
+offset_top = 47.0
+offset_right = 622.0
+offset_bottom = 178.0
 rotation = 1.5708
 
 [node name="TitleLabel" type="Label" parent="WrongAnswer/WrongPanel/VBoxContainer"]
@@ -107,6 +107,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Subtitle" type="Label" parent="WrongAnswer/WrongPanel/VBoxContainer"]
+custom_minimum_size = Vector2(0, 65)
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.517647)
@@ -114,6 +115,7 @@ theme_override_font_sizes/font_size = 30
 text = "Try again"
 horizontal_alignment = 1
 vertical_alignment = 1
+autowrap_mode = 3
 
 [node name="WrongPanelButton" type="Button" parent="WrongAnswer/WrongPanel"]
 layout_mode = 0
@@ -126,6 +128,7 @@ theme_override_font_sizes/font_size = 35
 text = "Ok!"
 
 [node name="StartGameControl" type="Control" parent="."]
+visible = false
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
@@ -210,11 +213,12 @@ theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("3_jbmyh")
 theme_override_font_sizes/font_size = 60
 text = "THANK YOU FOR PLAYING!
-Agora, jogue o modo multiplayer!"
+Agora, jogue o modo arcade!"
 horizontal_alignment = 1
 autowrap_mode = 3
 
 [node name="EndGameButton" type="Button" parent="EndGameControl/EndGameScreen"]
+texture_filter = 4
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.509
@@ -228,8 +232,9 @@ offset_bottom = 24.7499
 grow_horizontal = 2
 grow_vertical = 2
 mouse_default_cursor_shape = 2
-theme_override_font_sizes/font_size = 40
-text = "Voltar ao menu principal"
+theme_override_fonts/font = ExtResource("3_jbmyh")
+theme_override_font_sizes/font_size = 60
+text = "Voltar a seleção de modos"
 
 [connection signal="pressed" from="WrongAnswer/WrongPanel/WrongPanelButton" to="." method="_on_wrong_panel_button_pressed"]
 [connection signal="pressed" from="StartGameControl/StartGameScreen/StartGameButton" to="." method="_on_start_game_button_pressed"]

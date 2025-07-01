@@ -1,0 +1,162 @@
+if {introduction_part} == 1.0:
+	jump introduction-1
+elif {introduction_part} == 2.0:
+	jump introduction-2
+elif {introduction_part} == 3.0:
+	jump introduction-3
+elif {introduction_part} == 4.0:
+	jump introduction-4
+elif {introduction_part} == 5.0:
+	jump introduction-5
+elif {introduction_part} == 6.0:
+	jump introduction-6
+elif {introduction_part} == 7.0:
+	jump introduction-7
+elif {introduction_part} == 8.0:
+	jump introduction-8
+elif {introduction_part} == 9.0:
+	jump introduction-9
+kiwi: Hoje é o meu primeiro dia de aula...
+kiwi: Estou tão ansiosa pelo que está por vir. Será que cometi um erro com esse intercâmbio?
+kiwi: Enfim, preciso terminar de me arrumar....
+[style name="style"]
+join kiwi (Sad) center [animation="Slide In Left" wait="true"]
+kiwi: Okay, estou pronta. Eu consigo, eu sei que consigo!
+kiwi (Neutral): Antes de sair, vou conversar com a minha irmã. Talvez ela consiga me tranquilizar.
+leave kiwi [animation="Fade Out" wait="true"]
+[signal arg="bg_dining_kitchen"]
+[wait time="2.5"]
+join kiwi (Neutral) left [animation="Slide In Left" wait="true"]
+kiwi: Eagle? Pode vir aqui rapidinho?
+ostrich: Claro! Já estou indo.
+join ostrich (Smile) right [animation="Slide In Right" wait="true"]
+ostrich: Bom dia! Ansiosa para o primeiro dia de aula?
+kiwi (Sad): Sim, pra falar a verdade...
+kiwi: Meu inglês está meio enferrujado. E se eu não conseguir me comunicar com as pessoas?
+ostrich (Neutral): E se você treinar um pouquinho do simple past comigo?
+kiwi (Smile): Claro! Revisar o contéudo sempre é útil!
+update kiwi (Neutral)
+ostrich: O simple past é um tempo verbal que se refere a *ações que aconteceram e já terminaram*!
+ostrich: São frases do tipo "Eu trabalhei ontem", que ficaria "I worked yesterday".
+ostrich: Olhe, o verbo ficou diferente. Normalmente, você veria ele no Simple Present como "works".
+ostrich (Proud): Mas no simple past, adionamos o –ed. Desta forma, teremos "worked".
+ostrich: Certo, tente completar a frase\:
+set {introduction_part} = 1.0
+[signal arg="introduction-part-1"]
+[end_timeline]
+label introduction-1
+join kiwi left [animation="Fade In" length="0.3"]
+join ostrich right [animation="Fade In" length="0.3"]
+[wait time="0.3"]
+ostrich: Ótimo! Você entendeu muito bem!
+ostrich (Smile): Essa regra do sufixo -ed pode ser diferente. Vamos analisar um pouco melhor.
+ostrich: Para verbos que terminam em "e", apenas adicionamos um "-d". Como por exemplo "Loved" (Love).
+ostrich (Neutral): Para verbos que terminam em "y" e precedidos com vogal, adicionamos o sufixo "-ed". Como na palavra "Enjoyed" (Enjoy).
+ostrich: E para verbos que terminam em "y" e precedidos com consoante, adicionamos "ied". Como em "Cried" (Cry).
+kiwi (Sad): Me parece um pouco complexo...
+ostrich (Smile): Com prática fica fácil! Vamos tentar treinar de novo!
+set {wrong_answer} = 0
+label introduction-1-5
+set {introduction_part} = 2.0
+[signal arg="introduction-part-2"]
+[end_timeline]
+label introduction-2
+set {introduction_part} = 3.0
+[signal arg="introduction-part-3"]
+[end_timeline]
+label introduction-3
+set {introduction_part} = 4.0
+[signal arg="introduction-part-4"]
+[end_timeline]
+label introduction-4
+join kiwi left [animation="Fade In" length="0.3"]
+join ostrich right [animation="Fade In" length="0.3"]
+if {wrong_answer} == 0.0:
+	kiwi (Smile): Entendi até agora, está bem fácil!
+	ostrich: Que bom! Você arrasa!
+elif {wrong_answer} <= 2.0:
+	kiwi: Acho que entendi!
+	ostrich: Ótimo! Com o tempo você pega o jeito!
+else:
+	kiwi (Sad): Bom, isso foi difícil...
+	ostrich (Neutral): Quer tentar fazer os exercícios novamente?
+	ostrich: Se fizer novamente, pode aprender melhor!
+	[style name="style"]
+	- Sim
+		set {wrong_answer} = 0
+		set {introduction_part} = 0
+		jump introduction-1-5
+	- Não
+		kiwi (Tongue): Acho que aprendi o suficiente.
+		ostrich (Smile): Tudo bem! Vamo seguir enfrente então.
+set {wrong_answer} = 0
+update kiwi (Neutral)
+update ostrich (Neutral)
+ostrich: Certo! Agora para mais um regra dos verbos regulares!
+ostrich: Se terminar em uma consoante precedida por uma única vogal, duplique a consoante antes de adicionar "-ed".
+ostrich (Proud): Por exemplo, o verbo "stop". Sendo a última letra uma consoante, a penúltima uma vogal, e a antepenúltima uma consoante...
+ostrich (Smile): Teremos o verbo "stopped!"
+kiwi (Smile): Então... se o verbo terminar em consoante, vogal, consoante... Repetir a última letra antes de adicionar -ed?
+ostrich (Smile): Ótimo! Vamos colocar em prática!
+set {introduction_part} = 5.0
+[signal arg="introduction-part-5"]
+[end_timeline]
+label introduction-5
+set {introduction_part} = 6.0
+[signal arg="introduction-part-6"]
+[end_timeline]
+label introduction-6
+join kiwi left [animation="Fade In" length="0.3"]
+join ostrich right [animation="Fade In" length="0.3"]
+kiwi (Neutral): Okay! Mas você tinha dito verbos regulares. E como funciona com os verbos irregulares?
+ostrich: Os verbos irregulares são aqueles que não tem sufixo bem definido e podem variar bastante.
+ostrich: Neste caso, é necessário consultar um dicionário!
+kiwi (Smile): Eu lembro de um verbo irregular! O verbo "go" se transforma em "went"!
+ostrich (Big Smile): Exato! E por exemplo, o verbo "eat" se transforma em "ate"!
+ostrich (Neutral): Vamos praticar com um verbo irregular!
+set {introduction_part} = 7.0
+[signal arg="introduction-part-7"]
+[end_timeline]
+label introduction-7
+join kiwi left [animation="Fade In" length="0.3"]
+join ostrich right [animation="Fade In" length="0.3"]
+kiwi: Okay! Então isso é tudo?
+ostrich (Proud): Ainda não! Precisamo falar das formas negativas e interrogativas!
+kiwi (Smile): Ah! Na forma negativa colocamos a verbo "did not" depois do sujeito e deixamos o verbo no infinitivo!
+ostrich: Isso mesmo! Vale lembrar que também podemos contrair o "did not" para "didn't"!
+ostrich (Smile): Vou dizer uma frase negativa no simple past. Veja se consegue transcrever!
+set {introduction_part} = 8.0
+[signal arg="introduction-part-8"]
+[end_timeline]
+label introduction-8
+join kiwi left [animation="Fade In" length="0.3"]
+join ostrich right [animation="Fade In" length="0.3"]
+ostrich: Ótimo! Agora para as interrogativas!
+ostrich: Para elas, você também irá usar o verbo no infinitivo, e colocar o verbo auxliar "did" no começo da frase.
+kiwi: Eu lembro! Por exemplo, a frase "You watched the movie" iria virar "Did you watch the movie?"
+kiwi (Smile): É bem fácil, apesar de ser diferente do português...
+ostrich: Ótimo! Para o último exercício!
+set {introduction_part} = 9.0
+[signal arg="introduction-part-9"]
+[end_timeline]
+label introduction-9
+join kiwi (Smile) left [animation="Fade In" length="0.3"]
+join ostrich (Big Smile) right [animation="Fade In" length="0.3"]
+ostrich: Ótimo! Você está lembrando de tudo!
+update kiwi (Neutral)
+ostrich (Smile): Bom... Thank you very much, that was very helpful!
+ostrich (Smile): You're welcome, sister!
+(Um tempo se passa...)
+update kiwi (Neutral)
+update ostrich (Neutral)
+ostrich (Big Smile): Sabe de uma coisa? Você deveria treinar mais um pouco!
+kiwi (Tongue): Como?
+ostrich: Jogando o modo arcade, é claro! Nele, tem vários exercicios divertidos!
+kiwi (Smile): Claro! Irei fazer isso agora!
+kiwi (Smile): Tchau irmã, até mais tarde!
+ostrich: Bye bye! See you soon!
+leave kiwi [animation="Slide Out Right" length="1.5"]
+leave ostrich [animation="Slide Out Left" length="1.5"]
+[wait time="1.5"]
+[signal arg="end-game"]
+[end_timeline]

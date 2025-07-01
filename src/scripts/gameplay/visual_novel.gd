@@ -2,12 +2,13 @@ extends Control
 
 var current_exercise: Node = null
 var current_next_timeline: String = ""
+var current_exercise_id: String = ""
 var exercise_config: Dictionary
 
 func _ready() -> void:
 	exercise_config = load_exercise_config()
 	Dialogic.signal_event.connect(_on_dialogic_signal)
-	$StartGameControl.show()
+	start_dialogic_timeline("chapter-1")
 
 func _on_dialogic_signal(argument: String):
 	if argument.begins_with("bg_"):
@@ -23,6 +24,7 @@ func _on_dialogic_signal(argument: String):
 func setup_exercise(exercise_key: String) -> void:
 	var config: Dictionary = exercise_config[exercise_key]
 	
+	current_exercise_id = config.data.id
 	current_exercise = load(config.scene).instantiate()
 	current_next_timeline = config.get("next_timeline", "")
 	
@@ -75,6 +77,8 @@ func _on_answer_wrong():
 	Dialogic.VAR.wrong_answer += 1
 	$QuestionsControl.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	$WrongAnswer.show()
+	var correct = _get_correct_answer_from_json("res://src/assets/exercises/" + exercise_config[current_exercise_id].data.file)
+	$WrongAnswer/WrongPanel/VBoxContainer/Subtitle.text = "Resposta correta: " + correct
 
 func _cleanup_exercise():
 		$QuestionsControl.remove_child(current_exercise)
@@ -94,4 +98,27 @@ func _on_start_game_button_pressed() -> void:
 	start_dialogic_timeline("introduction")
 
 func _on_end_game_button_pressed() -> void:
-		get_tree().change_scene_to_file("res://src/scenes/menus/main-menu.tscn")
+		get_tree().change_scene_to_file("res://src/scenes/menus/singleplayer-menu.tscn")
+
+func _get_correct_answer_from_json(path_to_json: String) -> String:
+	var file = FileAccess.open(path_to_json, FileAccess.READ)
+	if file == null:
+		push_error("Não conseguiu abrir: " + path_to_json)
+		return ""
+	
+	var j = JSON.new()
+	var err = j.parse(file.get_as_text())
+	if err != OK:
+		push_error("JSON Parse Error: %s" % j.get_error_message())
+		return ""
+	
+	var data = j.get_data()
+	for entry in data:
+		if typeof(entry) == TYPE_DICTIONARY and entry.get("id", "") == current_exercise_id:
+			if entry.has("correct_answer"):
+				return entry.get("correct_answer", "")
+			elif entry.has("correct_answers"):
+				var arr = entry.get("correct_answers", [])
+				if arr.size() > 0:
+					return arr[0]
+	return ""

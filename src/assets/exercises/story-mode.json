@@ -55,20 +55,20 @@
   },
   {
 	"id": "introduction-part-8",
-	"text_to_speech": "We didn’t go to the school.",
+	"original": "Nós não jogamos",
 	"correct_answers": [
-		"We didn’t go to the school.",
-		"We did not go to the school.",
-		"We didn’t go to the school",
-		"We did not go to the school"
+		"We didn’t play.",
+		"We did not play.",
+		"We didn’t play",
+		"We did not play"
 	]
   },
   {
 	"id": "introduction-part-9",
-	"text_to_speech": "Did she call you?",
+	"original": "Eu trabalhei?",
 	"correct_answers": [
-		"Did she call you?",
-		"Did she call you"
+		"Did I work?",
+		"Did I work"
 	]
   },
   {

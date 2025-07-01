@@ -35,6 +35,7 @@ directories/dch_directory={
 "potoo": "res://src/assets/dialogic/characters/potoo.dch"
 }
 directories/dtl_directory={
+"chapter-1": "res://src/assets/dialogic/timelines/chapter-1.dtl",
 "dialog-test-1": "res://src/assets/dialogic/timelines/dialog-test-1.dtl",
 "dialog-test-2": "res://src/assets/dialogic/timelines/dialog-test-2.dtl",
 "introduction": "res://src/assets/dialogic/timelines/introduction.dtl",
