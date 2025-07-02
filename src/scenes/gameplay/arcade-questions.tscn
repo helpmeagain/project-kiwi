@@ -256,7 +256,41 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0, 0, 0, 0.717647)
+color = Color(0, 0, 0, 0.858824)
+
+[node name="PowerUpLabel" type="Label" parent="PowerUpControl"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -190.0
+offset_top = -154.0
+offset_right = 223.0
+offset_bottom = -25.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("3_8u6t1")
+theme_override_font_sizes/font_size = 70
+text = "Choose one! "
+
+[node name="PowerUpLabel2" type="Label" parent="PowerUpControl"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -211.0
+offset_top = 94.0
+offset_right = 202.0
+offset_bottom = 223.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("3_8u6t1")
+theme_override_font_sizes/font_size = 70
+text = "One-time use"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="PowerUpControl"]
 layout_mode = 1
@@ -272,12 +306,24 @@ theme_override_constants/separation = 15
 alignment = 1
 
 [node name="PowerUpButton1" type="Button" parent="PowerUpControl/HBoxContainer"]
+texture_filter = 3
 layout_mode = 2
+mouse_default_cursor_shape = 2
+theme_override_constants/icon_max_width = 100
 text = "2X pontos"
+icon = ExtResource("5_8hd76")
+icon_alignment = 1
+vertical_icon_alignment = 0
 
 [node name="PowerUpButton2" type="Button" parent="PowerUpControl/HBoxContainer"]
+texture_filter = 3
 layout_mode = 2
-text = "Invencibilidade"
+mouse_default_cursor_shape = 2
+theme_override_constants/icon_max_width = 125
+text = "Chance extra"
+icon = ExtResource("6_76bfv")
+icon_alignment = 1
+vertical_icon_alignment = 0
 
 [node name="WrongAnswer" type="Control" parent="."]
 visible = false
@@ -350,6 +396,7 @@ offset_top = 518.0
 offset_right = 138.998
 offset_bottom = 563.0
 rotation = 1.5708
+mouse_default_cursor_shape = 2
 theme_override_font_sizes/font_size = 35
 text = "Ok!"
 
