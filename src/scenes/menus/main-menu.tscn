@@ -97,7 +97,18 @@ theme = ExtResource("4_nacp7")
 theme_override_font_sizes/font_size = 25
 text = " helpmeagain, 2025"
 
+[node name="EasterEggButton" type="Button" parent="."]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -31.0
+offset_right = 211.0
+grow_vertical = 0
+
 [connection signal="pressed" from="LabelAndButtonsContainer/ButtonsContainer/SingleplayerButton" to="." method="_on_singleplayer_button_pressed"]
 [connection signal="pressed" from="LabelAndButtonsContainer/ButtonsContainer/MultiplayerButton" to="." method="_on_multiplayer_button_pressed"]
 [connection signal="pressed" from="LabelAndButtonsContainer/ButtonsContainer/AboutButton" to="." method="_on_about_button_pressed"]
 [connection signal="pressed" from="LabelAndButtonsContainer/ButtonsContainer/ExitButton" to="." method="_on_exit_button_pressed"]
+[connection signal="pressed" from="EasterEggButton" to="." method="_on_easter_egg_button_pressed"]

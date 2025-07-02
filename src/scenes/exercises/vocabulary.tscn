@@ -30,10 +30,10 @@ anchor_left = 0.5
 anchor_top = 0.377
 anchor_right = 0.5
 anchor_bottom = 0.377
-offset_left = -468.0
-offset_top = -152.296
-offset_right = 470.0
-offset_bottom = -92.296
+offset_left = -451.0
+offset_top = -153.296
+offset_right = 487.0
+offset_bottom = -93.296
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("2_aqu6e")
@@ -45,10 +45,10 @@ autowrap_mode = 3
 
 [node name="QuestionImage" type="TextureRect" parent="."]
 layout_mode = 0
-offset_left = 492.0
-offset_top = 161.0
-offset_right = 673.0
-offset_bottom = 342.0
+offset_left = 469.0
+offset_top = 169.0
+offset_right = 717.0
+offset_bottom = 417.0
 expand_mode = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
@@ -58,10 +58,10 @@ anchor_left = 0.508
 anchor_top = 0.647
 anchor_right = 0.508
 anchor_bottom = 0.647
-offset_left = -231.216
-offset_top = -49.256
-offset_right = 230.784
-offset_bottom = 48.744
+offset_left = -233.216
+offset_top = 35.744
+offset_right = 228.784
+offset_bottom = 133.744
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("3_hacc8")

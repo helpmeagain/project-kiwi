@@ -60,11 +60,6 @@
 	"correct_answers": ["We sang at the party", "We performed at the party"]
   },
   {
-	"id": "13",
-	"original": "Ela dirigiu até o trabalho",
-	"correct_answers": ["She drove to work", "She commuted by car to work"]
-  },
-  {
 	"id": "14",
 	"original": "Eu encontrei meus amigos",
 	"correct_answers": ["I met my friends", "I ran into my friends"]
@@ -101,11 +96,6 @@
 	"correct_answers": ["He chose the gift", "He picked the gift"]
   },
   {
-	"id": "20",
-	"original": "Ela trouxe o bolo",
-	"correct_answers": ["She brought the cake", "She carried the cake"]
-  },
-  {
 	"id": "21",
 	"original": "Nós aprendemos inglês",
 	"correct_answers": ["We learned English", "We studied English"]
@@ -138,7 +128,15 @@
   {
 	"id": "27",
 	"original": "Eu ouvi a música",
-	"correct_answers": ["I heard the song", "I listened to the song"]
+	"correct_answers": [
+		"I heard the song", 
+		"I heard the song.", 
+		"I listened to the song", 
+		"I listened to the song.", 
+		"I heard the music",
+		"I heard the music.",
+		"I listened to the music",
+		"I listened to the music."]
   },
   {
 	"id": "28",
@@ -161,11 +159,6 @@
 	"correct_answers": ["I called you", "I phoned you"]
   },
   {
-	"id": "32",
-	"original": "Ele respondeu a mensagem",
-	"correct_answers": ["He answered the message", "He replied to the message"]
-  },
-  {
 	"id": "33",
 	"original": "Ela achou o cachorro perdido",
 	"correct_answers": ["She found the lost dog", "She discovered the lost dog"]
@@ -174,19 +167,6 @@
 	"id": "34",
 	"original": "Nós começamos o projeto",
 	"correct_answers": ["We started the project", "We began the project"]
-  },
-  {
-	"id": "35",
-	"original": "Eles esquiaram nas montanhas",
-	"correct_answers": [
-	  "They skied in the mountains",
-	  "They went skiing in the mountains"
-	]
-  },
-  {
-	"id": "36",
-	"original": "Eu prometi ajudar",
-	"correct_answers": ["I promised to help", "I vowed to help"]
   },
   {
 	"id": "37",
@@ -204,19 +184,6 @@
 	"correct_answers": ["She took a taxi", "She caught a cab"]
   },
   {
-	"id": "40",
-	"original": "Eu paguei a conta",
-	"correct_answers": ["I paid the bill", "I settled the bill"]
-  },
-  {
-	"id": "41",
-	"original": "Eles nadaram na piscina",
-	"correct_answers": [
-	  "They swam in the pool",
-	  "They went swimming in the pool"
-	]
-  },
-  {
 	"id": "42",
 	"original": "Ele plantou uma árvore",
 	"correct_answers": ["He planted a tree", "He grew a tree"]
@@ -225,11 +192,6 @@
 	"id": "43",
 	"original": "Nós arrumamos o quarto",
 	"correct_answers": ["We cleaned the room", "We tidied up the room"]
-  },
-  {
-	"id": "44",
-	"original": "Ela desenhou um retrato",
-	"correct_answers": ["She drew a portrait", "She sketched a portrait"]
   },
   {
 	"id": "45",
@@ -242,48 +204,22 @@
 	"correct_answers": ["He fixed the bike", "He repaired the bike"]
   },
   {
-	"id": "47",
-	"original": "Nós pegamos um atalho",
-	"correct_answers": ["We took a shortcut", "We chose a shortcut"]
-  },
-  {
 	"id": "48",
 	"original": "Eles subiram a montanha",
 	"correct_answers": [
 	  "They climbed the mountain",
+	  "They climbed the mountain.",
 	  "They ascended the mountain"
-	]
-  },
-  {
-	"id": "49",
-	"original": "Eu emprestei meu livro",
-	"correct_answers": ["I lent my book", "I loaned my book"]
-  },
-  {
-	"id": "50",
-	"original": "Ele pulou a cerca",
-	"correct_answers": ["He jumped the fence", "He leaped over the fence"]
-  },
-  {
-	"id": "51",
-	"original": "Eu pensei sobre o problema",
-	"correct_answers": [
-	  "I thought about the problem",
-	  "I considered the problem"
-	]
-  },
-  {
-	"id": "52",
-	"original": "Eles decidiram cancelar a reunião",
-	"correct_answers": [
-	  "They decided to cancel the meeting",
-	  "They chose to cancel the meeting"
 	]
   },
   {
 	"id": "53",
 	"original": "Nós visitamos o museu",
-	"correct_answers": ["We visited the museum", "We toured the museum"]
+	"correct_answers": [
+		"We visited the museum", 
+		"We visited the museum.", 
+		"We toured the museum"
+	]
   },
   {
 	"id": "54",
@@ -291,55 +227,49 @@
 	"correct_answers": ["He showed the way", "He pointed out the way"]
   },
   {
-	"id": "55",
-	"original": "Ela perdeu o ônibus",
-	"correct_answers": ["She missed the bus", "She didn't catch the bus"]
-  },
-  {
 	"id": "56",
-	"original": "Eu encontrei dinheiro na rua",
+	"original": "Eu encontrei dinheiro",
 	"correct_answers": [
-	  "I found money on the street",
-	  "I came across money on the street"
+	  "I found money",
+	  "I found money.",
 	]
-  },
-  {
-	"id": "57",
-	"original": "Eles nadaram no lago",
-	"correct_answers": [
-	  "They swam in the lake",
-	  "They went swimming in the lake"
-	]
-  },
-  {
-	"id": "58",
-	"original": "Nós rimos muito",
-	"correct_answers": ["We laughed a lot", "We had a good laugh"]
   },
   {
 	"id": "59",
 	"original": "Ele queimou o pão",
-	"correct_answers": ["He burned the bread", "He toasted the bread too much"]
-  },
-  {
-	"id": "60",
-	"original": "Eu prometi segredo",
-	"correct_answers": ["I promised to keep quiet", "I vowed secrecy"]
+	"correct_answers": [
+		"He burned the bread", 
+		"He burned the bread.", 
+		"He toasted the bread too much"
+	]
   },
   {
 	"id": "61",
 	"original": "Eles discutiram o plano",
-	"correct_answers": ["They discussed the plan", "They talked over the plan"]
+	"correct_answers": [
+		"They discussed the plan", 
+		"They discussed the plan.", 
+		"They talked over the plan"
+	]
   },
   {
 	"id": "62",
 	"original": "Nós caminhamos na praia",
-	"correct_answers": ["We walked on the beach", "We strolled along the beach"]
+	"correct_answers": [
+		"We walked on the beach", 
+		"We walked on the beach.", 
+		"We strolled along the beach"
+	]
   },
   {
 	"id": "63",
-	"original": "Ele emprestou seu casaco",
-	"correct_answers": ["He lent his jacket", "He loaned his coat"]
+	"original": "Ele emprestou seu celular",
+	"correct_answers": [
+		"He lent his phone",
+		"He lent his phone.",
+		"He lent his cellphone",
+		"He lent his cellphone.",
+	]
   },
   {
 	"id": "64",
@@ -512,34 +442,17 @@
 	"correct_answers": ["He caught a salmon", "He landed a salmon"]
   },
   {
-	"id": "95",
-	"original": "Ela costurou o botão",
-	"correct_answers": ["She sewed the button", "She stitched the button"]
-  },
-  {
 	"id": "96",
 	"original": "Eu cavei um buraco",
 	"correct_answers": ["I dug a hole", "I excavated a pit"]
   },
   {
 	"id": "97",
-	"original": "Eles treinaram duro",
-	"correct_answers": ["They trained hard", "They practiced intensely"]
-  },
-  {
-	"id": "98",
-	"original": "Nós congelamos de frio",
-	"correct_answers": ["We froze with cold", "We were freezing cold"]
-  },
-  {
-	"id": "99",
-	"original": "Ele assoviou a música",
-	"correct_answers": ["He whistled the tune", "He hummed the melody"]
-  },
-  {
-	"id": "100",
-	"original": "Ela afogou as mágoas",
-	"correct_answers": ["She drowned her sorrows", "She drowned her grief"]
+	"original": "Eles treinaram",
+	"correct_answers": [
+		"They trained",
+		"They trained."
+	]
   },
   {
 	"id": "101",
@@ -554,7 +467,14 @@
   {
 	"id": "103",
 	"original": "Nós assistimos TV",
-	"correct_answers": ["We watched TV", "We viewed TV"]
+	"correct_answers": [
+		"We watched TV", 
+		"We watched TV.", 
+		"We watched the TV", 
+		"We watched the TV.", 
+		"We viewed TV",
+		"We viewed TV."
+	]
   },
   {
 	"id": "104",
@@ -717,16 +637,6 @@
 	"correct_answers": ["She washed the clothes", "She did laundry"]
   },
   {
-	"id": "136",
-	"original": "Nós compramos doces",
-	"correct_answers": ["We bought candies", "We purchased sweets"]
-  },
-  {
-	"id": "137",
-	"original": "Eles pularam no trampolim",
-	"correct_answers": ["They jumped on the trampoline", "They bounced"]
-  },
-  {
 	"id": "138",
 	"original": "Eu arrumei a cama",
 	"correct_answers": ["I made the bed", "I tidied the bed"]
@@ -739,52 +649,72 @@
   {
 	"id": "140",
 	"original": "Ela plantou uma flor",
-	"correct_answers": ["She planted a flower", "She grew a flower"]
-  },
-  {
-	"id": "141",
-	"original": "Nós andamos de skate",
-	"correct_answers": ["We skateboarded", "We rode skateboards"]
+	"correct_answers": [
+		"She planted a flower", 
+		"She planted a flower.", 
+		"She grew a flower",
+		"She grew a flower."
+	]
   },
   {
 	"id": "142",
 	"original": "Eu liguei para mamãe",
-	"correct_answers": ["I called mom", "I phoned mother"]
+	"correct_answers": [
+		"I called mom", 
+		"I called mom.", 
+		"I phoned mother",
+		"I phoned mother."
+	]
   },
   {
 	"id": "143",
 	"original": "Eles brincaram no parque",
-	"correct_answers": ["They played in the park", "They had fun in the park"]
+	"correct_answers": [
+		"They played in the park", 
+		"They played in the park.", 
+		"They had fun in the park",
+		"They had fun in the park."
+	]
   },
   {
 	"id": "144",
 	"original": "Ele comeu sanduíche",
-	"correct_answers": ["He ate a sandwich", "He had a sandwich"]
-  },
-  {
-	"id": "145",
-	"original": "Ela desenhou um sol",
-	"correct_answers": ["She drew a sun", "She sketched a sun"]
+	"correct_answers": [
+		"He ate a sandwich", 
+		"He ate a sandwich.", 
+		"He had a sandwich",
+		"He had a sandwich."
+	]
   },
   {
 	"id": "146",
 	"original": "Nós tomamos banho",
-	"correct_answers": ["We took a shower", "We bathed"]
+	"correct_answers": [
+		"We took a shower", 
+		"We took a shower.", 
+		"We bathed",
+		"We bathed."
+	]
   },
   {
 	"id": "147",
-	"original": "Eu lavei o rosto",
-	"correct_answers": ["I washed my face", "I cleaned my face"]
-  },
-  {
-	"id": "148",
-	"original": "Eles correram na quadra",
-	"correct_answers": ["They ran on the court", "They jogged on the field"]
+	"original": "Eu lavei o meu rosto",
+	"correct_answers": [
+		"I washed my face", 
+		"I washed my face.", 
+		"I cleaned my face",
+		"I cleaned my face."
+	]
   },
   {
 	"id": "149",
 	"original": "Ele comeu pipoca",
-	"correct_answers": ["He ate popcorn", "He had popcorn"]
+	"correct_answers": [
+		"He ate popcorn", 
+		"He ate popcorn.", 
+		"He had popcorn",
+		"He had popcorn.",
+	]
   },
   {
 	"id": "150",

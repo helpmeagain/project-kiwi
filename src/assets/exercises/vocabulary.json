@@ -3,12 +3,216 @@
 	"id": "1",
 	"image": "umbrella.png",
 	"correct_answer": "umbrella",
-	"options": ["umbrella", "key", "desk", "chair"]
+	"options": ["umbrella", "parasol", "walking stick", "cane"]
   },
   {
 	"id": "2",
 	"image": "flashlight.png",
 	"correct_answer": "flashlight",
-	"options": ["flashlight", "umbrella", "piano", "shoe"]
+	"options": ["flashlight", "stick", "laser pointer", "lantern"]
   },
+  {
+	"id": "3",
+	"image": "backpack.png",
+	"correct_answer": "backpack",
+	"options": ["backpack", "suitcase", "purse", "laptop bag"]
+  },
+  {
+	"id": "4",
+	"image": "scissors.png",
+	"correct_answer": "scissors",
+	"options": ["scissors", "pliers", "tweezers", "clippers"]
+  },
+  {
+	"id": "5",
+	"image": "toothbrush.png",
+	"correct_answer": "toothbrush",
+	"options": ["toothbrush", "comb", "razor", "pen"]
+  },
+  {
+	"id": "6",
+	"image": "keyboard.png",
+	"correct_answer": "keyboard",
+	"options": ["keyboard", "piano", "typewriter", "calculator"]
+  },
+  {
+	"id": "7",
+	"image": "guitar.png",
+	"correct_answer": "guitar",
+	"options": ["guitar", "bass", "violin", "cello"]
+  },
+  {
+	"id": "8",
+	"image": "helmet.png",
+	"correct_answer": "helmet",
+	"options": ["helmet", "hat", "cap", "headphones"]
+  },
+  {
+	"id": "9",
+	"image": "wallet.png",
+	"correct_answer": "wallet",
+	"options": ["wallet", "cardholder", "coin pouch", "passport"]
+  },
+  {
+	"id": "10",
+	"image": "mirror.png",
+	"correct_answer": "mirror",
+	"options": ["mirror", "window", "tablet", "frame"]
+  },
+  {
+	"id": "11",
+	"image": "headphones.png",
+	"correct_answer": "headphones",
+	"options": ["headphones", "earmuffs", "VR headset", "stethoscope"]
+  },
+  {
+	"id": "12",
+	"image": "microwave.png",
+	"correct_answer": "microwave",
+	"options": ["microwave", "oven", "toaster", "air fryer"]
+  },
+  {
+	"id": "13",
+	"image": "ruler.png",
+	"correct_answer": "ruler",
+	"options": ["ruler", "measuring tape", "level", "scale"]
+  },
+  {
+	"id": "14",
+	"image": "hammer.png",
+	"correct_answer": "hammer",
+	"options": ["hammer", "mallet", "wrench", "screwdriver"]
+  },
+  {
+	"id": "15",
+	"image": "gloves.png",
+	"correct_answer": "gloves",
+	"options": ["gloves", "mittens", "socks", "sleeves"]
+  },
+  {
+	"id": "16",
+	"image": "broom.png",
+	"correct_answer": "broom",
+	"options": ["broom", "mop", "rake", "vacuum"]
+  },
+  {
+	"id": "17",
+	"image": "calculator.png",
+	"correct_answer": "calculator",
+	"options": ["calculator", "remote", "phone", "pager"]
+  },
+  {
+	"id": "18",
+	"image": "clock.png",
+	"correct_answer": "clock",
+	"options": ["clock", "thermometer", "barometer", "timer"]
+  },
+  {
+	"id": "19",
+	"image": "binoculars.png",
+	"correct_answer": "binoculars",
+	"options": ["binoculars", "camera", "telescope", "monocular"]
+  },
+  {
+	"id": "20",
+	"image": "ladder.png",
+	"correct_answer": "ladder",
+	"options": ["ladder", "scaffold", "stairs", "step stool"]
+  },
+  {
+	"id": "21",
+	"image": "camera.png",
+	"correct_answer": "camera",
+	"options": ["camera", "projector", "camcorder", "binoculars"]
+  },
+  {
+	"id": "22",
+	"image": "bottle.png",
+	"correct_answer": "bottle",
+	"options": ["bottle", "thermos", "can", "jug"]
+  },
+  {
+	"id": "23",
+	"image": "towel.png",
+	"correct_answer": "towel",
+	"options": ["towel", "blanket", "sheet", "napkin"]
+  },
+  {
+	"id": "24",
+	"image": "sunglasses.png",
+	"correct_answer": "sunglasses",
+	"options": ["sunglasses", "glasses", "goggles", "visor"]
+  },
+  {
+	"id": "26",
+	"image": "shovel.png",
+	"correct_answer": "shovel",
+	"options": ["shovel", "spade", "hoe", "pickaxe"]
+  },
+  {
+	"id": "27",
+	"image": "pan.png",
+	"correct_answer": "pan",
+	"options": ["pan", "pot", "skillet", "wok"]
+  },
+  {
+	"id": "28",
+	"image": "screwdriver.png",
+	"correct_answer": "screwdriver",
+	"options": ["screwdriver", "chisel", "file", "drill"]
+  },
+  {
+	"id": "29",
+	"image": "stapler.png",
+	"correct_answer": "stapler",
+	"options": ["stapler", "hole punch", "tape dispenser", "labeler"]
+  },
+  {
+	"id": "30",
+	"image": "iron.png",
+	"correct_answer": "iron",
+	"options": ["iron", "steamer", "press", "hair straightener"]
+  },
+  {
+	"id": "32",
+	"image": "fan.png",
+	"correct_answer": "fan",
+	"options": ["fan", "air conditioner", "vent", "humidifier"]
+  },
+  {
+	"id": "33",
+	"image": "pencil.png",
+	"correct_answer": "pencil",
+	"options": ["pencil", "pen", "crayon", "marker"]
+  },
+  {
+	"id": "34",
+	"image": "sponge.png",
+	"correct_answer": "sponge",
+	"options": ["sponge", "scrub brush", "cloth", "loofah"]
+  },
+  {
+	"id": "36",
+	"image": "bathtub.png",
+	"correct_answer": "bathtub",
+	"options": ["bathtub", "jacuzzi", "sink", "shower"]
+  },
+  {
+	"id": "38",
+	"image": "remote.png",
+	"correct_answer": "remote",
+	"options": ["remote", "calculator", "phone", "game controller"]
+  },
+  {
+	"id": "39",
+	"image": "envelope.png",
+	"correct_answer": "envelope",
+	"options": ["envelope", "folder", "document", "notepad"]
+  },
+  {
+	"id": "40",
+	"image": "candle.png",
+	"correct_answer": "candle",
+	"options": ["candle", "lamp", "torch", "incense"]
+  }
 ]

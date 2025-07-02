@@ -14,7 +14,7 @@ func _init(parent_node: Control) -> void:
 func start_timer_for_exercise(exercise_type: String) -> void:
 	var timer = parent.get_node("Timer")
 	
-	if exercise_type == "fill_in_blank" or "vocabulary":
+	if exercise_type == "fill_in_blank" or exercise_type == "vocabulary":
 		timer.wait_time = QUICKER_TIME
 	else:
 		timer.wait_time = DEFAULT_TIME
