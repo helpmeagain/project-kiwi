@@ -2,7 +2,12 @@ extends Node
 
 const QUESTION_PATH = "res://src/assets/exercises/"
 
+var question_cache: Dictionary = {}
+
 func load_questions(file_name: String) -> Dictionary:
+	if question_cache.has(file_name):
+		return question_cache[file_name]
+	
 	var full_path = QUESTION_PATH + file_name
 	var questions = {
 		"all": [],
@@ -12,18 +17,21 @@ func load_questions(file_name: String) -> Dictionary:
 	if FileAccess.file_exists(full_path):
 		var file = FileAccess.open(full_path, FileAccess.READ)
 		var json = JSON.parse_string(file.get_as_text())
+		
 		if json is Array:
 			for question in json:
-				if "id" in question:
-					questions.by_id[question.id] = question
-					questions.all.append(question)
-				else:
-					push_error("Question without ID in " + file_name)
+				if not question.has("id"):
+					question["id"] = str(question.hash()) + "_" + str(Time.get_unix_time_from_system())
+				
+				questions.by_id[question.id] = question
+				questions.all.append(question)
 		else:
 			push_error("Invalid format in " + file_name)
 	else:
 		push_error("Question file not found: " + full_path)
 	
+	# Armazena em cache
+	question_cache[file_name] = questions
 	return questions
 
 func load_random_question(file_name: String) -> Dictionary:
@@ -36,4 +44,8 @@ func load_random_question(file_name: String) -> Dictionary:
 		
 func load_question_by_id(file_name: String, question_id: String) -> Dictionary:
 	var questions = load_questions(file_name)
-	return questions.by_id.get(question_id, {})
+	if questions.by_id.has(question_id):
+		return questions.by_id[question_id]
+	
+	push_error("Question ID not found: " + question_id + " in " + file_name)
+	return {}

@@ -9,6 +9,13 @@ const EXERCISE_CONFIG = {
 	"multiplayer_fill": "res://src/scenes/exercises/multiplayer-fill-in-the-blank.tscn",
 	"vocabulary" : "res://src/scenes/exercises/vocabulary.tscn"
 }
+
+const EXERCISE_DATA_FILES = {
+	"fill_in_blank": "fill_in_the_blank.json",
+	"type_translation": "type-the-sentence.json",
+	"vocabulary": "vocabulary.json"
+}
+
 const MAX_QUESTIONS = 30
 const POWERUP_INTERVAL := 3
 
@@ -17,8 +24,13 @@ var parent: Control
 var current_question: Node
 var current_exercise_type: String
 
+# Rastreamento de questões usadas
+var used_question_ids: Dictionary = {}
+
 func _init(parent_node: Control) -> void:
 	parent = parent_node
+	for exercise_type in EXERCISE_DATA_FILES:
+		used_question_ids[exercise_type] = []
 
 func load_random_question() -> void:
 	if parent.question_count >= MAX_QUESTIONS:
@@ -37,6 +49,14 @@ func load_random_question() -> void:
 		"vocabulary": 1.5
 	}
 	
+	print("\n[DEBUG] IDs já usados:")
+	for exercise_type in used_question_ids:
+		var ids = used_question_ids[exercise_type]
+		if ids.size() > 0:
+			print("  ", exercise_type, ": ", ", ".join(ids))
+		else:
+			print("  ", exercise_type, ": Nenhum")
+			
 	var candidates = []
 	var total_weight = 0.0
 	
@@ -58,19 +78,55 @@ func load_random_question() -> void:
 	
 	current_exercise_type = selected_exercise
 	var config = EXERCISE_CONFIG[selected_exercise]
+	var data_file = EXERCISE_DATA_FILES[selected_exercise]
 
 	var scene = load(config).instantiate()
-	scene.initialize()
 	parent.get_node("QuestionsContainer").add_child(scene)
+	var question_data = get_unused_question(selected_exercise, data_file)
+	
+	if question_data.is_empty():
+		push_error("Não foi possível carregar questão para " + selected_exercise)
+		scene.queue_free()
+		load_random_question()
+		return
+	
+	if scene.has_method("initialize"):
+		scene.initialize(data_file, question_data.id)
+	else:
+		push_error("Exercise scene missing initialize() method")
 	
 	current_question = scene
 	parent.question_count += 1
 	parent.timeout_occurred = false
 	
+	if question_data.has("id"):
+		used_question_ids[selected_exercise].append(question_data.id)
+		# print("Questão usada: ", selected_exercise, " - ID: ", question_data.id)
+
 	setup_exercise_signals()
 	parent.ui_manager.update_question_count(parent.question_count)
 	parent.timer_manager.start_timer_for_exercise(current_exercise_type)
 	parent.ui_manager.set_random_background("fade")
+
+func get_unused_question(exercise_type: String, data_file: String) -> Dictionary:
+	var all_questions = ExercisesBank.load_questions(data_file).all
+	var used_ids = used_question_ids[exercise_type]
+	
+	if all_questions.size() == 0:
+		push_error("Nenhuma questão encontrada para " + data_file)
+		return {}
+	
+	var unused_questions = []
+	for q in all_questions:
+		if q.has("id") and not used_ids.has(q.id):
+			unused_questions.append(q)
+	
+	if unused_questions.size() == 0:
+		print("Reciclando histórico de questões para: ", exercise_type)
+		used_question_ids[exercise_type] = []
+		return all_questions.pick_random()
+	
+	return unused_questions.pick_random()
 	
 func load_multiplayer_exercise(partner_id: int, question_data: Dictionary) -> void:
 	cleanup_current_question()
@@ -88,7 +144,7 @@ func load_multiplayer_exercise(partner_id: int, question_data: Dictionary) -> vo
 	
 	if scene.has_method("initialize"):
 		scene.initialize(
-			parent,  # PASSE O PARENT AQUI
+			parent,
 			question_data, 
 			multiplayer.get_unique_id(), 
 			player_index,
