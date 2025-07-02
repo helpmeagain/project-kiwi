@@ -46,6 +46,7 @@ func show_final_screen(final_score: int) -> void:
 	var final_label = parent.get_node("FinalLabel")
 	final_label.text = "Game over! Score: " + str(final_score)
 	final_label.show()
+	parent.get_node("FinalButton").show()
 	
 	parent.get_node("ScoreLabel").hide()
 	parent.get_node("PowerUpIconsControl").hide()

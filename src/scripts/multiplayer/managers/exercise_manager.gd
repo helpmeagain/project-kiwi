@@ -49,13 +49,13 @@ func load_random_question() -> void:
 		"vocabulary": 1.5
 	}
 	
-	print("\n[DEBUG] IDs já usados:")
-	for exercise_type in used_question_ids:
-		var ids = used_question_ids[exercise_type]
-		if ids.size() > 0:
-			print("  ", exercise_type, ": ", ", ".join(ids))
-		else:
-			print("  ", exercise_type, ": Nenhum")
+	#print("\n[DEBUG] IDs já usados:")
+	#for exercise_type in used_question_ids:
+		#var ids = used_question_ids[exercise_type]
+		#if ids.size() > 0:
+			#print("  ", exercise_type, ": ", ", ".join(ids))
+		#else:
+			#print("  ", exercise_type, ": Nenhum")
 			
 	var candidates = []
 	var total_weight = 0.0

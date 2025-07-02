@@ -113,3 +113,6 @@ func _on_wrong_panel_button_pressed() -> void:
 
 func _on_show_players_button_pressed() -> void:
 	ui_manager.toggle_player_score_display()
+
+func _on_final_button_pressed() -> void:
+	get_tree().change_scene_to_file("res://src/scenes/menus/singleplayer-menu.tscn")

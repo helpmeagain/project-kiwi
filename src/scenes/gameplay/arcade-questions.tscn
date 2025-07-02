@@ -185,15 +185,26 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -311.0
-offset_top = -243.0
-offset_right = 349.0
-offset_bottom = -147.0
+offset_left = -310.0
+offset_top = -143.0
+offset_right = 350.0
+offset_bottom = -47.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("3_8u6t1")
 theme_override_font_sizes/font_size = 70
 text = "Final message label"
+
+[node name="FinalButton" type="Button" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 530.0
+offset_top = 326.0
+offset_right = 639.0
+offset_bottom = 365.0
+mouse_default_cursor_shape = 2
+theme = ExtResource("9_dct4x")
+text = "Exit"
 
 [node name="PowerUpIconsControl" type="Control" parent="."]
 layout_mode = 1
@@ -414,6 +425,7 @@ icon = ExtResource("11_ndjbd")
 [node name="Timer" type="Timer" parent="."]
 wait_time = 15.0
 
+[connection signal="pressed" from="FinalButton" to="." method="_on_final_button_pressed"]
 [connection signal="pressed" from="PowerUpControl/HBoxContainer/PowerUpButton1" to="." method="_on_powerup_double"]
 [connection signal="pressed" from="PowerUpControl/HBoxContainer/PowerUpButton2" to="." method="_on_powerup_life"]
 [connection signal="pressed" from="WrongAnswer/WrongPanel/WrongPanelButton" to="." method="_on_wrong_panel_button_pressed"]
