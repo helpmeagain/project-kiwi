@@ -31,10 +31,33 @@ func load_random_question() -> void:
 		parent.ui_manager.set_random_background("fade")
 		return
 		
-	var exercise_keys = EXERCISE_CONFIG.keys().filter(func(key): return key != "multiplayer_fill")
-	var random_key = exercise_keys[randi() % exercise_keys.size()]
-	current_exercise_type = random_key
-	var config = EXERCISE_CONFIG[random_key]
+	var exercise_weights = {
+		"fill_in_blank": 1.5,
+		"type_translation": 1.0,
+		"vocabulary": 1.5
+	}
+	
+	var candidates = []
+	var total_weight = 0.0
+	
+	for key in EXERCISE_CONFIG:
+		if key == "multiplayer_fill": 
+			continue
+		
+		var weight = exercise_weights.get(key, 1.0)
+		total_weight += weight
+		candidates.append({"key": key, "weight": weight, "cumulative": total_weight})
+	
+	var random_value = randf() * total_weight
+	var selected_exercise = "fill_in_blank"
+	
+	for candidate in candidates:
+		if random_value <= candidate["cumulative"]:
+			selected_exercise = candidate["key"]
+			break
+	
+	current_exercise_type = selected_exercise
+	var config = EXERCISE_CONFIG[selected_exercise]
 
 	var scene = load(config).instantiate()
 	scene.initialize()
