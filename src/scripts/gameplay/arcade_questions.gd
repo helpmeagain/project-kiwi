@@ -21,8 +21,8 @@ func initialize_managers() -> void:
 	power_up_manager = preload("res://src/scripts/multiplayer/managers/power_up_manager.gd").new(self)
 	timer_manager = preload("res://src/scripts/multiplayer/managers/timer_manager.gd").new(self)
 	ui_manager = preload("res://src/scripts/multiplayer/managers/ui_manager.gd").new(self)
-	multiplayer_manager = preload("res://src/scripts/multiplayer/managers/multiplayer_manager.gd").new(self)  # Novo
-	
+	multiplayer_manager = preload("res://src/scripts/multiplayer/managers/multiplayer_manager.gd").new(self)
+
 	add_child(exercise_manager)
 	add_child(power_up_manager)
 	add_child(timer_manager)
@@ -53,9 +53,10 @@ func _on_answer_correct(points: int = 1) -> void:
 	points *= power_up_manager.get_score_multiplier()
 	score += points
 	power_up_manager.deactivate_double_points()
+	ui_manager.show_congratulations_answer(points, exercise_manager.get_correct_answer())
 	ui_manager.update_ui_components(score, question_count)
 	multiplayer_manager.update_score(score)
-	next_step_after_answer()
+	# next_step_after_answer()
 
 func _on_answer_wrong() -> void:
 	if timeout_occurred: return

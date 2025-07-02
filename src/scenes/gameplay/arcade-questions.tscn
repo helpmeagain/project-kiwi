@@ -326,7 +326,7 @@ rotation = 1.5708
 [node name="TitleLabel" type="Label" parent="WrongAnswer/WrongPanel/VBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_colors/font_shadow_color = Color(1, 0, 0, 0.341176)
+theme_override_colors/font_shadow_color = Color(1, 0, 0, 0.34902)
 theme_override_font_sizes/font_size = 50
 text = "Wrong Answer!"
 horizontal_alignment = 1
