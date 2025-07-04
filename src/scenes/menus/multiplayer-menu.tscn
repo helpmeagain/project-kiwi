@@ -45,11 +45,12 @@ grow_vertical = 2
 script = ExtResource("1_2fb8j")
 
 [node name="BlackgroundColor" type="ColorRect" parent="."]
-layout_mode = 0
-offset_left = -121.0
-offset_top = -95.0
-offset_right = 1274.0
-offset_bottom = 746.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 color = Color(0.300004, 0.0741538, 0, 0.356863)
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
@@ -111,10 +112,12 @@ icon_alignment = 1
 
 [node name="ServerBrowser" type="Control" parent="."]
 visible = false
-anchors_preset = 0
-offset_left = -17.0
-offset_right = 1127.0
-offset_bottom = 644.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("7_okjt7")
 serverInfo = ExtResource("8_8hig0")
 
@@ -123,11 +126,12 @@ serverInfo = ExtResource("8_8hig0")
 [node name="CleanupTimer" type="Timer" parent="ServerBrowser"]
 
 [node name="BlackPanel" type="Panel" parent="ServerBrowser"]
-layout_mode = 0
-offset_left = -52.0
-offset_top = -54.0
-offset_right = 1238.0
-offset_bottom = 672.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_edoox")
 
 [node name="ServerInfoPanel" type="Panel" parent="ServerBrowser"]
@@ -204,26 +208,35 @@ size_flags_vertical = 3
 
 [node name="PlayerBrowser" type="Control" parent="."]
 visible = false
-anchors_preset = 0
-offset_left = 195.0
-offset_top = 107.0
-offset_right = 954.0
-offset_bottom = 539.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="Panel2" type="Panel" parent="PlayerBrowser"]
-layout_mode = 0
-offset_left = -252.0
-offset_top = -142.0
-offset_right = 1038.0
-offset_bottom = 584.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_edoox")
 
 [node name="Panel" type="Panel" parent="PlayerBrowser"]
-layout_mode = 0
-offset_left = -16.0
-offset_top = -21.0
-offset_right = 771.0
-offset_bottom = 455.0
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -393.5
+offset_top = -238.0
+offset_right = 393.5
+offset_bottom = 238.0
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_1s8xr")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="PlayerBrowser/Panel"]
@@ -258,14 +271,16 @@ size_flags_vertical = 3
 [node name="StartButton" type="Button" parent="PlayerBrowser"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.882
-anchor_top = 0.9
-anchor_right = 0.882
-anchor_bottom = 0.9
-offset_left = -366.612
-offset_top = 77.2
-offset_right = -219.612
-offset_bottom = 116.2
+anchor_left = 0.5
+anchor_top = 0.944
+anchor_right = 0.5
+anchor_bottom = 0.944
+offset_left = -73.5
+offset_top = -19.712
+offset_right = 73.5
+offset_bottom = 19.288
+grow_horizontal = 2
+grow_vertical = 0
 mouse_default_cursor_shape = 2
 theme = ExtResource("2_82we7")
 text = "Start game"
