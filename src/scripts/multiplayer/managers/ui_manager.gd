@@ -77,21 +77,23 @@ func show_powerup_screen() -> void:
 func hide_powerup_screen() -> void:
 	parent.get_node("PowerUpControl").hide()
 	
-func show_pop_up(title: String, subtitle: String) -> void:
+func show_pop_up(is_correct_answer: bool, title: String, subtitle: String) -> void:
+	if (is_correct_answer):
+		parent.get_node("WrongAnswer/WrongPanel/VBoxContainer/TitleLabel").add_theme_color_override("font_shadow_color", Color(0,255,0,40))
+	else:
+		parent.get_node("WrongAnswer/WrongPanel/VBoxContainer/TitleLabel").add_theme_color_override("font_shadow_color", Color(255,0,0,40))
 	parent.get_node("WrongAnswer/WrongPanel/VBoxContainer/TitleLabel").text = title
 	parent.get_node("WrongAnswer/WrongPanel/VBoxContainer/Subtitle").text = subtitle
 	parent.get_node("WrongAnswer").show()
 	
 func show_wrong_answer(correct_answer: String) -> void:
-	parent.get_node("WrongAnswer/WrongPanel/VBoxContainer/TitleLabel").add_theme_color_override("font_shadow_color", Color(255,0,0,40))
-	show_pop_up("Wrong answer!", "Correct answer: " + correct_answer)
-
-func show_congratulations_answer(points: int, answer: String) -> void:
-	parent.get_node("WrongAnswer/WrongPanel/VBoxContainer/TitleLabel").add_theme_color_override("font_shadow_color", Color(0,255,0,40))
-	show_pop_up("Correct answer!", "The answer was: " + answer + "\n +" + str(points) + " points")
+	show_pop_up(false, "Wrong answer!", "Correct answer was: " + correct_answer)
 
 func show_timeout_message(correct_answer: String) -> void:
-	show_pop_up("Time's Up!", correct_answer)
+	show_pop_up(false, "Time's Up!", "Correct answer was: " + correct_answer)
+	
+func show_congratulations_answer(points: int, answer: String) -> void:
+	show_pop_up(true, "Correct answer!", "The answer was: " + answer + "\n +" + str(points) + " points")
 	
 func hide_wrong_answer() -> void:
 	parent.get_node("WrongAnswer").hide()
