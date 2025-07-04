@@ -14,7 +14,7 @@ func _ready() -> void:
 	
 	for addr in IP.get_local_addresses():
 		if addr.find(":") == -1 and addr != "127.0.0.1" and addr != "0.0.0.0":
-			if addr.begins_with("172.16."):
+			if addr.begins_with("172.16.10."):
 				preferred_172.append(addr)
 			elif addr.begins_with("192.168."):
 				preferred_192.append(addr)
