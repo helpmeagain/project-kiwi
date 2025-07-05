@@ -72,7 +72,6 @@ text = "Singleplayer"
 
 [node name="MultiplayerButton" type="Button" parent="LabelAndButtonsContainer/ButtonsContainer"]
 layout_mode = 2
-disabled = true
 text = "Multiplayer"
 
 [node name="AboutButton" type="Button" parent="LabelAndButtonsContainer/ButtonsContainer"]

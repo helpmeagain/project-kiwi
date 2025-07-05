@@ -140,15 +140,12 @@ func load_multiplayer_exercise(partner_id: int, question_data: Dictionary) -> vo
 	parent.timeout_occurred = false
 	parent.ui_manager.update_question_count(parent.question_count)
 	
-	var player_index = determine_player_index(partner_id)
-	
 	if scene.has_method("initialize"):
 		scene.initialize(
 			parent,
 			question_data, 
 			multiplayer.get_unique_id(), 
-			player_index,
-			partner_id
+			partner_id 
 		)
 	else:
 		push_error("Multiplayer exercise scene missing initialize() method")
