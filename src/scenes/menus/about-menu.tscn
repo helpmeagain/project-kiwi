@@ -18,11 +18,12 @@ grow_vertical = 2
 script = ExtResource("1_dxe8x")
 
 [node name="ColorRect" type="ColorRect" parent="."]
-layout_mode = 0
-offset_left = -121.0
-offset_top = -95.0
-offset_right = 1274.0
-offset_bottom = 746.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 color = Color(0.300004, 0.0741538, 0, 0.356863)
 
 [node name="CreatedByLabel" type="Label" parent="."]
@@ -62,15 +63,15 @@ icon_alignment = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
-anchors_preset = 8
+anchors_preset = -1
 anchor_left = 0.5
-anchor_top = 0.5
+anchor_top = 0.579
 anchor_right = 0.5
-anchor_bottom = 0.5
+anchor_bottom = 0.579
 offset_left = -236.0
-offset_top = -189.0
+offset_top = -240.192
 offset_right = 236.0
-offset_bottom = 291.0
+offset_bottom = 239.808
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
