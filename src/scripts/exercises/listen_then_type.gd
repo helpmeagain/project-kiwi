@@ -1,3 +1,5 @@
+# WILL NOT BE USED
+
 extends Control
 
 signal answer_correct
@@ -52,3 +54,4 @@ func _on_submit_button_pressed() -> void:
 		emit_signal("answer_correct")
 	else:
 		emit_signal("answer_wrong")
+	queue_free()

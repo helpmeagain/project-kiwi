@@ -3,10 +3,12 @@ extends Control
 signal answer_correct
 signal answer_wrong
 
-var questions: Array 
 var current_question: Dictionary
 var custom_data_file: String = ""
 var specific_id: String = ""
+
+@onready var original_text_label = $OriginalTextLabel
+@onready var text_input = $TextEdit
 
 func initialize(data_file: String = "type-the-sentence.json", question_id: String = "") -> void:
 	custom_data_file = data_file
@@ -22,13 +24,18 @@ func initialize(data_file: String = "type-the-sentence.json", question_id: Strin
 	
 	setup_question_display()
 
-func load_new_question() -> void:
-	current_question = questions.pick_random()
-	setup_question_display()
-
 func setup_question_display() -> void:
-	$OriginalTextLabel.text = current_question.original 
-	$TextEdit.text = ""
+	original_text_label.text = current_question.original 
+	text_input.text = ""
+
+func _on_submit_button_pressed() -> void:
+	var user_answer = text_input.text
+	
+	if validate_answer(user_answer):
+		emit_signal("answer_correct")
+	else:
+		emit_signal("answer_wrong")
+	#queue_free()
 
 func validate_answer(answer: String) -> bool:
 	var normalized_answer = normalize_answer(answer)
@@ -41,11 +48,3 @@ func validate_answer(answer: String) -> bool:
 
 func normalize_answer(text: String) -> String:
 	return text.to_lower().strip_edges().replace("’", "'")
-
-func _on_submit_button_pressed() -> void:
-	var user_answer = $TextEdit.text
-	
-	if validate_answer(user_answer):
-		emit_signal("answer_correct")
-	else:
-		emit_signal("answer_wrong")

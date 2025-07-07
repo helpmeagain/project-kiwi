@@ -1,6 +1,14 @@
 class_name UIManager
 extends Node
 
+const BACKGROUNDS = [
+	"res://src/assets/backgrounds/dining_kitchen.jpg",
+	"res://src/assets/backgrounds/old_school.png",
+	"res://src/assets/backgrounds/outdoor_stairs.png",
+	"res://src/assets/backgrounds/single_bedroom.jpg",
+	"res://src/assets/backgrounds/train_day.png"
+]
+
 # Referências
 var parent: Control
 var countdown_value: int = 0
@@ -69,21 +77,20 @@ func show_powerup_screen() -> void:
 func hide_powerup_screen() -> void:
 	parent.get_node("PowerUpControl").hide()
 	
-func show_pop_up(title: String, subtitle: String) -> void:
+func show_pop_up(shawdow_color: Color, title: String, subtitle: String) -> void:
+	parent.get_node("WrongAnswer/WrongPanel/VBoxContainer/TitleLabel").add_theme_color_override("font_shadow_color", shawdow_color)
 	parent.get_node("WrongAnswer/WrongPanel/VBoxContainer/TitleLabel").text = title
 	parent.get_node("WrongAnswer/WrongPanel/VBoxContainer/Subtitle").text = subtitle
 	parent.get_node("WrongAnswer").show()
 	
 func show_wrong_answer(correct_answer: String) -> void:
-	parent.get_node("WrongAnswer/WrongPanel/VBoxContainer/TitleLabel").add_theme_color_override("font_shadow_color", Color(255,0,0,40))
-	show_pop_up("Wrong answer!", "Correct answer: " + correct_answer)
-
-func show_congratulations_answer(points: int, answer: String) -> void:
-	parent.get_node("WrongAnswer/WrongPanel/VBoxContainer/TitleLabel").add_theme_color_override("font_shadow_color", Color(0,255,0,40))
-	show_pop_up("Correct answer!", "The answer was: " + answer + "\n +" + str(points) + " points")
+	show_pop_up(Color("RED"), "Wrong answer!", "Correct answer was: " + correct_answer)
 
 func show_timeout_message(correct_answer: String) -> void:
-	show_pop_up("Time's Up!", correct_answer)
+	show_pop_up(Color("ORANGE"), "Time's Up!", "Correct answer was: " + correct_answer)
+	
+func show_congratulations_answer(points: int, answer: String) -> void:
+	show_pop_up(Color("GREEN"), "Correct answer!", "The answer was: " + answer + "\n +" + str(points) + " points")
 	
 func hide_wrong_answer() -> void:
 	parent.get_node("WrongAnswer").hide()
@@ -131,29 +138,10 @@ func _update_countdown() -> void:
 		timer.timeout.disconnect(_update_countdown)
 
 func set_random_background(transition_type: String = "fade") -> void:
-	var dir = DirAccess.open("res://src/assets/backgrounds/")
-	if dir == null:
-		push_error("Failed to open backgrounds directory.")
-		return
-
-	var files = []
-	dir.list_dir_begin()
-	var file_name = dir.get_next()
-	while file_name != "":
-		if not dir.current_is_dir() and file_name.get_extension().to_lower() in ["png", "jpg", "jpeg"]:
-			files.append(file_name)
-		file_name = dir.get_next()
-	dir.list_dir_end()
-
-	if files.size() == 0:
-		push_error("No background images found in directory.")
-		return
-
-	var random_file = files[randi() % files.size()]
-	var bg_path = "res://src/assets/backgrounds/" + random_file
-	var new_texture: Texture2D = load(bg_path)
+	var random_path = BACKGROUNDS[randi() % BACKGROUNDS.size()]
+	var new_texture: Texture2D = load(random_path)
 
 	if new_texture:
 		parent.get_node("BackgroundControl/ImageBackground").change_background(new_texture, transition_type)
 	else:
-		push_error("Failed to load background texture: " + bg_path)
+		push_error("Failed to load background texture: " + random_path)

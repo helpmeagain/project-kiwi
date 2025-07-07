@@ -150,3 +150,49 @@ func _on_matchmaking_timer_timeout():
 	if multiplayer.is_server() and server_waiting_players.size() > 0:
 		print("[SERVER] Periodic matchmaking attempt")
 		try_match_players()
+
+
+# CÓDIGO NOVO PARA MULTIPLAYER
+@rpc("any_peer", "reliable")
+func submit_selection(player_id: int, selection: String) -> void:
+	if multiplayer.is_server():
+		_process_selection(player_id, selection)
+
+func _process_selection(player_id: int, selection: String) -> void:
+	print("[SERVER] Received selection from:", player_id, " selection:", selection)
+	
+	var partner_id = -1
+	for pair in active_pairs:
+		if pair[0] == player_id:
+			partner_id = pair[1]
+			break
+		elif pair[1] == player_id:
+			partner_id = pair[0]
+			break
+	
+	if partner_id != -1:
+		print("[SERVER] Forwarding selection to partner:", partner_id)
+		
+		if partner_id != player_id:
+			if partner_id == 1:
+				_forward_selection_locally(partner_id, player_id, selection)
+			else:
+				rpc_id(partner_id, "_forward_selection", partner_id, player_id, selection)
+	else:
+		print("[SERVER] No partner found for selection from:", player_id)
+
+func _forward_selection_locally(target_id: int, sender_id: int, selection: String) -> void:
+	if multiplayer.get_unique_id() == target_id:
+		print("[HOST] Received partner selection locally")
+		multiplayer.emit_signal("partner_selection_received", sender_id, selection)
+
+@rpc("reliable")
+func _forward_selection(target_id: int, sender_id: int, selection: String) -> void:
+	if multiplayer.get_unique_id() == target_id:
+		print("[CLIENT] Received partner selection via RPC")
+		multiplayer.emit_signal("partner_selection_received", sender_id, selection)
+		
+func _receive_selection_locally(player_id: int, selection: String) -> void:
+	if multiplayer.is_server():
+		_process_selection(player_id, selection)
+	

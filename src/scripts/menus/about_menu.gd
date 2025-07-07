@@ -47,3 +47,21 @@ func _on_house_visual_novel_button_pressed() -> void:
 
 func _on_loading_button_pressed() -> void:
 	OS.shell_open("https://bdragon1727.itch.io/basic-pixel-health-bar-and-scroll-bar")
+
+func _on_umbrella_button_pressed() -> void:
+	OS.shell_open("https://unsplash.com/pt-br/fotografias/guarda-chuva-amarelo-na-superficie-da-agua-durante-o-dia-bmtg7lrCry4")
+
+func _on_flashlight_button_pressed() -> void:
+	OS.shell_open("https://unsplash.com/pt-br/fotografias/uma-lanterna-sentada-no-chao-de-uma-sala-XCnqwORjlWg")
+
+func _on_backpack_button_pressed() -> void:
+	OS.shell_open("https://unsplash.com/pt-br/fotografias/pessoa-na-jaqueta-preta-segurando-mochila-preta-8TSqJoI-NVs")
+
+func _on_scissor_button_pressed() -> void:
+	OS.shell_open("https://unsplash.com/pt-br/fotografias/tesoura-de-prata-na-superficie-rosa-OQ0-cv18RyY")
+
+func _on_toothbrush_button_pressed() -> void:
+	OS.shell_open("https://unsplash.com/pt-br/fotografias/varas-de-madeira-marrom-na-tigela-de-ceramica-cinza-7TgbRVEYdYY")
+
+func _on_keyboard_button_pressed() -> void:
+	OS.shell_open("https://unsplash.com/pt-br/fotografias/branco-verde-e-azul-teclado-do-computador-ZByWaPXD2fU")

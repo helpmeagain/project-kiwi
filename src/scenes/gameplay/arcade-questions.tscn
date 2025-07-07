@@ -91,17 +91,17 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(0.65, 0.65)
-pivot_offset = Vector2(960, 540)
-stretch_mode = 5
+expand_mode = 1
+stretch_mode = 6
 script = ExtResource("2_1b062")
 
 [node name="QuestionsContainer" type="Control" parent="."]
-anchors_preset = 0
-offset_left = 5.0
-offset_top = -3.0
-offset_right = 1151.0
-offset_bottom = 652.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="ScoreLabel" type="Label" parent="."]
 layout_mode = 1
@@ -140,11 +140,16 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="MultiplayerWarningLabel" type="Label" parent="MultiplayerUIControl"]
-layout_mode = 0
-offset_left = 95.0
-offset_top = 189.0
-offset_right = 1033.0
-offset_bottom = 256.0
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.342
+anchor_right = 0.5
+anchor_bottom = 0.342
+offset_left = -469.0
+offset_top = -33.616
+offset_right = 469.0
+offset_bottom = 33.384
 theme_override_fonts/font = ExtResource("5_1b062")
 theme_override_font_sizes/font_size = 60
 text = "A próxima questão será jogada junto a outro jogador!"
@@ -166,8 +171,6 @@ theme_override_fonts/font = ExtResource("5_1b062")
 theme_override_font_sizes/font_size = 45
 text = "Procurando outro jogador..."
 
-[node name="MatchmakingTimer" type="Timer" parent="MultiplayerUIControl"]
-
 [node name="LoadingSprite" type="AnimatedSprite2D" parent="MultiplayerUIControl"]
 texture_filter = 3
 position = Vector2(576, 454)
@@ -176,6 +179,8 @@ sprite_frames = SubResource("SpriteFrames_dct4x")
 animation = &"Loading"
 frame = 3
 frame_progress = 0.145893
+
+[node name="MatchmakingTimer" type="Timer" parent="MultiplayerUIControl"]
 
 [node name="FinalLabel" type="Label" parent="."]
 visible = false
@@ -233,11 +238,15 @@ texture = ExtResource("6_76bfv")
 
 [node name="QuestionCountLabel" type="Label" parent="."]
 layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -61.0
-offset_bottom = 55.0
+anchors_preset = -1
+anchor_left = 0.936
+anchor_top = 0.025
+anchor_right = 0.989
+anchor_bottom = 0.094
+offset_left = -0.272095
+offset_top = -0.200001
+offset_right = -0.328003
+offset_bottom = 0.0879974
 grow_horizontal = 0
 theme_override_fonts/font = ExtResource("7_2p6vt")
 theme_override_font_sizes/font_size = 40
