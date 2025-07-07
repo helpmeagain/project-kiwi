@@ -24,15 +24,15 @@ func _on_dialogic_signal(argument: String):
 func setup_exercise(exercise_key: String) -> void:
 	var config: Dictionary = exercise_config[exercise_key]
 	
-	current_exercise_id = config.data.id
+	current_exercise_id = exercise_key
 	current_exercise = load(config.scene).instantiate()
 	current_next_timeline = config.get("next_timeline", "")
 	
+	$QuestionsControl.add_child(current_exercise)
 	if current_exercise.has_method("initialize"):
 		current_exercise.initialize(config.data.file, config.data.id)
 	
 	_connect_exercise_signals(current_exercise)
-	$QuestionsControl.add_child(current_exercise)
 
 func set_background(background_name: String, transition_type: String = "fade") -> void:
 	var extensions = [".png", ".jpg", ".jpeg"]

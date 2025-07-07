@@ -3,10 +3,18 @@ extends Control
 signal answer_correct
 signal answer_wrong
 
-var questions: Array
 var current_question: Dictionary
 var custom_data_file: String = ""
 var specific_id: String = ""
+
+@onready var question_label = $QuestionLabel
+@onready var buttons_container = $VBoxContainer
+@onready var buttons = [
+	$VBoxContainer/HBoxContainer1/Button1,
+	$VBoxContainer/HBoxContainer1/Button2,
+	$VBoxContainer/HBoxContainer2/Button3,
+	$VBoxContainer/HBoxContainer2/Button4
+]
 
 func initialize(data_file: String = "fill_in_the_blank.json", question_id: String = "") -> void:
 	custom_data_file = data_file
@@ -22,12 +30,8 @@ func initialize(data_file: String = "fill_in_the_blank.json", question_id: Strin
 	
 	setup_question_display()
 
-func load_new_question() -> void:
-	current_question = questions.pick_random()
-	setup_question_display()
-
 func setup_question_display() -> void:
-	$QuestionLabel.text = current_question.sentence
+	question_label.text = current_question.sentence
 	setup_buttons()
 
 func setup_buttons() -> void:
@@ -35,7 +39,7 @@ func setup_buttons() -> void:
 	options.shuffle()
 	
 	for i in 4:
-		var button = $VBoxContainer.get_child(floor(i / 2.0)).get_child(i % 2)
+		var button = buttons_container.get_child(floor(i / 2.0)).get_child(i % 2)
 		button.text = options[i]
 
 func _on_button_pressed(button: Button) -> void:
@@ -43,15 +47,9 @@ func _on_button_pressed(button: Button) -> void:
 		emit_signal("answer_correct")
 	else:
 		emit_signal("answer_wrong")
+	#queue_free()
 
-func _on_button_1_pressed() -> void:
-	_on_button_pressed($VBoxContainer/HBoxContainer/Button1)
-
-func _on_button_2_pressed() -> void:
-	_on_button_pressed($VBoxContainer/HBoxContainer/Button2)
-
-func _on_button_3_pressed() -> void:
-	_on_button_pressed($VBoxContainer/HBoxContainer2/Button3)
-
-func _on_button_4_pressed() -> void:
-	_on_button_pressed($VBoxContainer/HBoxContainer2/Button4)
+func _on_button_1_pressed() -> void: _on_button_pressed(buttons[0])
+func _on_button_2_pressed() -> void: _on_button_pressed(buttons[1])
+func _on_button_3_pressed() -> void: _on_button_pressed(buttons[2])
+func _on_button_4_pressed() -> void: _on_button_pressed(buttons[3])

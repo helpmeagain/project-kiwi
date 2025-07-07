@@ -81,11 +81,15 @@ theme_override_constants/separation = 20
 [node name="Button1" type="Button" parent="VBoxContainer/HBoxContainer1"]
 layout_mode = 2
 size_flags_horizontal = 7
+mouse_default_cursor_shape = 2
+toggle_mode = true
 text = "Generic answer 1"
 
 [node name="Button2" type="Button" parent="VBoxContainer/HBoxContainer1"]
 layout_mode = 2
 size_flags_horizontal = 7
+mouse_default_cursor_shape = 2
+toggle_mode = true
 text = "Generic answer 2"
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer"]
@@ -95,15 +99,16 @@ theme_override_constants/separation = 20
 [node name="Button3" type="Button" parent="VBoxContainer/HBoxContainer2"]
 layout_mode = 2
 size_flags_horizontal = 7
+mouse_default_cursor_shape = 2
+toggle_mode = true
 text = "Generic answer 3"
 
 [node name="Button4" type="Button" parent="VBoxContainer/HBoxContainer2"]
 layout_mode = 2
 size_flags_horizontal = 7
+mouse_default_cursor_shape = 2
+toggle_mode = true
 text = "Generic answer 4"
-
-[node name="Timer" type="Timer" parent="."]
-one_shot = true
 
 [node name="PartnerAnswerLabel" type="Label" parent="."]
 layout_mode = 1
@@ -129,10 +134,13 @@ offset_left = -42.216
 offset_top = -19.56
 offset_right = 42.784
 offset_bottom = 19.44
+mouse_default_cursor_shape = 2
 theme = ExtResource("2_1id0d")
+disabled = true
 text = "Submit"
 
 [connection signal="pressed" from="VBoxContainer/HBoxContainer1/Button1" to="." method="_on_button_1_pressed"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer1/Button2" to="." method="_on_button_2_pressed"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer2/Button3" to="." method="_on_button_3_pressed"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer2/Button4" to="." method="_on_button_4_pressed"]
+[connection signal="pressed" from="SubmitButton" to="." method="_on_submit_button_pressed"]
