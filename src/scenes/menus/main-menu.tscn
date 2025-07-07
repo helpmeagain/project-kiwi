@@ -17,31 +17,25 @@ script = ExtResource("1_ljxf1")
 [node name="Background" type="TextureRect" parent="."]
 modulate = Color(0.361575, 0.361576, 0.361575, 0.996078)
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -638.0
-offset_top = -412.0
-offset_right = 3362.0
-offset_bottom = 2588.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(0.316815, 0.270733)
 texture = ExtResource("2_ljxf1")
+expand_mode = 1
+stretch_mode = 6
 
 [node name="LabelAndButtonsContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -337.0
-offset_top = -318.5
-offset_right = 337.0
-offset_bottom = 318.5
+anchors_preset = -1
+anchor_top = 0.252
+anchor_right = 1.0
+anchor_bottom = 0.748
+offset_left = 239.0
+offset_top = -0.296005
+offset_right = -239.0
+offset_bottom = 0.29599
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 30
@@ -72,7 +66,7 @@ text = "Singleplayer"
 
 [node name="MultiplayerButton" type="Button" parent="LabelAndButtonsContainer/ButtonsContainer"]
 layout_mode = 2
-disabled = true
+mouse_default_cursor_shape = 2
 text = "Multiplayer"
 
 [node name="AboutButton" type="Button" parent="LabelAndButtonsContainer/ButtonsContainer"]
@@ -98,6 +92,7 @@ theme_override_font_sizes/font_size = 25
 text = " helpmeagain, 2025"
 
 [node name="EasterEggButton" type="Button" parent="."]
+visible = false
 modulate = Color(1, 1, 1, 0)
 layout_mode = 1
 anchors_preset = 2
