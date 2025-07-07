@@ -434,6 +434,139 @@ mouse_default_cursor_shape = 2
 theme_override_font_sizes/font_size = 25
 text = "Visit"
 
+[node name="ImagesLabel" type="Label" parent="VBoxContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("6_c05vn")
+theme_override_font_sizes/font_size = 40
+text = "Images"
+
+[node name="HBoxContainer17" type="HBoxContainer" parent="VBoxContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer17"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_fonts/normal_font = ExtResource("6_c05vn")
+theme_override_font_sizes/normal_font_size = 28
+text = "Keyboard by Jay Zhang"
+fit_content = true
+scroll_active = false
+tab_size = 9
+
+[node name="KeyboardButton" type="Button" parent="VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer17"]
+layout_mode = 2
+mouse_default_cursor_shape = 2
+theme_override_font_sizes/font_size = 25
+text = "Visit"
+
+[node name="HBoxContainer16" type="HBoxContainer" parent="VBoxContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer16"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_fonts/normal_font = ExtResource("6_c05vn")
+theme_override_font_sizes/normal_font_size = 28
+text = "Toothbrush by Sara Groblechner"
+fit_content = true
+scroll_active = false
+tab_size = 9
+
+[node name="ToothbrushButton" type="Button" parent="VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer16"]
+layout_mode = 2
+mouse_default_cursor_shape = 2
+theme_override_font_sizes/font_size = 25
+text = "Visit"
+
+[node name="HBoxContainer15" type="HBoxContainer" parent="VBoxContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer15"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_fonts/normal_font = ExtResource("6_c05vn")
+theme_override_font_sizes/normal_font_size = 28
+text = "Scissor by Bere Del Valle"
+fit_content = true
+scroll_active = false
+tab_size = 9
+
+[node name="ScissorButton" type="Button" parent="VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer15"]
+layout_mode = 2
+mouse_default_cursor_shape = 2
+theme_override_font_sizes/font_size = 25
+text = "Visit"
+
+[node name="HBoxContainer14" type="HBoxContainer" parent="VBoxContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer14"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_fonts/normal_font = ExtResource("6_c05vn")
+theme_override_font_sizes/normal_font_size = 28
+text = "Backpack by Luis Quintero"
+fit_content = true
+scroll_active = false
+tab_size = 9
+
+[node name="BackpackButton" type="Button" parent="VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer14"]
+layout_mode = 2
+mouse_default_cursor_shape = 2
+theme_override_font_sizes/font_size = 25
+text = "Visit"
+
+[node name="HBoxContainer13" type="HBoxContainer" parent="VBoxContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer13"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_fonts/normal_font = ExtResource("6_c05vn")
+theme_override_font_sizes/normal_font_size = 28
+text = "Flashlight by Tawseem Hakak"
+fit_content = true
+scroll_active = false
+tab_size = 9
+
+[node name="FlashlightButton" type="Button" parent="VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer13"]
+layout_mode = 2
+mouse_default_cursor_shape = 2
+theme_override_font_sizes/font_size = 25
+text = "Visit"
+
+[node name="HBoxContainer12" type="HBoxContainer" parent="VBoxContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer12"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_fonts/normal_font = ExtResource("6_c05vn")
+theme_override_font_sizes/normal_font_size = 28
+text = "Umbrella by Saffu"
+fit_content = true
+scroll_active = false
+tab_size = 9
+
+[node name="UmbrellaButton" type="Button" parent="VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer12"]
+layout_mode = 2
+mouse_default_cursor_shape = 2
+theme_override_font_sizes/font_size = 25
+text = "Visit"
+
 [connection signal="pressed" from="HomeButton" to="." method="_on_home_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/GitHubButton" to="." method="_on_git_hub_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/RepositoryButton" to="." method="_on_repository_button_pressed"]
@@ -450,3 +583,9 @@ text = "Visit"
 [connection signal="pressed" from="VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer5/RulerButton" to="." method="_on_ruler_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer4/EditUndoButton" to="." method="_on_edit_undo_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer6/DialogSoundButton" to="." method="_on_dialog_sound_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer17/KeyboardButton" to="." method="_on_keyboard_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer16/ToothbrushButton" to="." method="_on_toothbrush_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer15/ScissorButton" to="." method="_on_scissor_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer14/BackpackButton" to="." method="_on_backpack_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer13/FlashlightButton" to="." method="_on_flashlight_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer12/UmbrellaButton" to="." method="_on_umbrella_button_pressed"]
