@@ -1,0 +1,88 @@
+[gd_resource type="Theme" load_steps=8 format=3 uid="uid://crg87lp8cixuh"]
+
+[ext_resource type="FontFile" uid="uid://cli8gbn14umcl" path="res://src/assets/fonts/Abaddon Light.ttf" id="1_50lvm"]
+[ext_resource type="Texture2D" uid="uid://bdkjmrtjyx13x" path="res://src/assets/sprites/GUI.png" id="2_v82xf"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_dj8sl"]
+texture = ExtResource("2_v82xf")
+texture_margin_left = 2.0
+texture_margin_top = 2.0
+texture_margin_right = 2.0
+texture_margin_bottom = 2.0
+expand_margin_left = 2.0
+expand_margin_top = 2.0
+expand_margin_right = 2.0
+expand_margin_bottom = 4.0
+region_rect = Rect2(113, 98, 30, 13)
+modulate_color = Color(0.945098, 0.564706, 0.392157, 0.588235)
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_50lvm"]
+color = Color(0.353591, 0.255073, 0.266579, 1)
+thickness = 10
+vertical = true
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_78nn6"]
+texture = ExtResource("2_v82xf")
+texture_margin_left = 2.0
+texture_margin_top = 2.0
+texture_margin_right = 2.0
+texture_margin_bottom = 2.0
+expand_margin_left = 2.0
+expand_margin_top = 2.0
+expand_margin_right = 2.0
+expand_margin_bottom = 4.0
+region_rect = Rect2(145, 81, 46, 14)
+modulate_color = Color(0.917036, 0.498595, 0.30282, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_gr6tg"]
+texture = ExtResource("2_v82xf")
+texture_margin_left = 2.0
+texture_margin_top = 2.0
+texture_margin_right = 2.0
+texture_margin_bottom = 2.0
+expand_margin_left = 2.0
+expand_margin_top = 2.0
+expand_margin_right = 2.0
+expand_margin_bottom = 4.0
+region_rect = Rect2(145, 81, 46, 14)
+modulate_color = Color(0.946443, 0.564895, 0.39336, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_3833v"]
+texture = ExtResource("2_v82xf")
+texture_margin_left = 2.0
+texture_margin_top = 2.0
+texture_margin_right = 2.0
+texture_margin_bottom = 2.0
+expand_margin_left = 2.0
+expand_margin_top = 2.0
+expand_margin_right = 2.0
+expand_margin_bottom = 4.0
+region_rect = Rect2(145, 98, 46, 13)
+modulate_color = Color(0.945098, 0.564706, 0.392157, 1)
+
+[resource]
+default_font = ExtResource("1_50lvm")
+Button/colors/font_color = Color(1, 1, 1, 1)
+Button/colors/font_disabled_color = Color(1, 1, 1, 1)
+Button/colors/font_focus_color = Color(1, 1, 1, 1)
+Button/colors/font_hover_color = Color(1, 1, 1, 1)
+Button/colors/font_hover_pressed_color = Color(1, 1, 1, 1)
+Button/colors/font_outline_color = Color(1, 1, 1, 1)
+Button/colors/font_pressed_color = Color(1, 1, 1, 1)
+Button/colors/icon_disabled_color = Color(1, 1, 1, 1)
+Button/colors/icon_focus_color = Color(1, 1, 1, 1)
+Button/colors/icon_hover_color = Color(1, 1, 1, 1)
+Button/colors/icon_hover_pressed_color = Color(1, 1, 1, 1)
+Button/colors/icon_normal_color = Color(1, 1, 1, 1)
+Button/colors/icon_pressed_color = Color(1, 1, 1, 1)
+Button/constants/align_to_largest_stylebox = 0
+Button/constants/h_separation = 30
+Button/constants/icon_max_width = 0
+Button/constants/outline_size = 0
+Button/font_sizes/font_size = 30
+Button/fonts/font = ExtResource("1_50lvm")
+Button/styles/disabled = SubResource("StyleBoxTexture_dj8sl")
+Button/styles/focus = SubResource("StyleBoxLine_50lvm")
+Button/styles/hover = SubResource("StyleBoxTexture_78nn6")
+Button/styles/normal = SubResource("StyleBoxTexture_gr6tg")
+Button/styles/pressed = SubResource("StyleBoxTexture_3833v")

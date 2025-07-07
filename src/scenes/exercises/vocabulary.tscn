@@ -74,17 +74,17 @@ grow_vertical = 2
 theme = ExtResource("3_hacc8")
 theme_override_constants/separation = 20
 
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+[node name="HBoxContainer1" type="HBoxContainer" parent="VBoxContainer"]
 layout_mode = 2
 theme_override_constants/separation = 20
 
-[node name="Button1" type="Button" parent="VBoxContainer/HBoxContainer"]
+[node name="Button1" type="Button" parent="VBoxContainer/HBoxContainer1"]
 layout_mode = 2
 size_flags_horizontal = 7
 mouse_default_cursor_shape = 2
 text = "Generic answer 1"
 
-[node name="Button2" type="Button" parent="VBoxContainer/HBoxContainer"]
+[node name="Button2" type="Button" parent="VBoxContainer/HBoxContainer1"]
 layout_mode = 2
 size_flags_horizontal = 7
 mouse_default_cursor_shape = 2
@@ -106,7 +106,7 @@ size_flags_horizontal = 7
 mouse_default_cursor_shape = 2
 text = "Generic answer 4"
 
-[connection signal="pressed" from="VBoxContainer/HBoxContainer/Button1" to="." method="_on_button_1_pressed"]
-[connection signal="pressed" from="VBoxContainer/HBoxContainer/Button2" to="." method="_on_button_2_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer1/Button1" to="." method="_on_button_1_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer1/Button2" to="." method="_on_button_2_pressed"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer2/Button3" to="." method="_on_button_3_pressed"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer2/Button4" to="." method="_on_button_4_pressed"]

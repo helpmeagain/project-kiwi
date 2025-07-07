@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://jxdcv46jpys8"]
+[gd_scene load_steps=5 format=3 uid="uid://jxdcv46jpys8"]
 
 [ext_resource type="Script" uid="uid://c6m5pmbh7nc65" path="res://src/scripts/exercises/multiplayer_fill_in_the_blanks.gd" id="1"]
 [ext_resource type="Theme" uid="uid://ch3x2byuiyaxy" path="res://src/assets/themes/menu.tres" id="2_1id0d"]
 [ext_resource type="FontFile" uid="uid://cxsv026so27q8" path="res://src/assets/fonts/Ruler 9.ttf" id="2_h5crs"]
+[ext_resource type="Theme" uid="uid://crg87lp8cixuh" path="res://src/assets/themes/button_clicked.tres" id="3_h5crs"]
 
 [node name="MultiplayerFillInTheBlank" type="Control"]
 layout_mode = 3
@@ -42,22 +43,17 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
 
-[node name="PlayerLabel" type="Label" parent="."]
-layout_mode = 0
-offset_left = 62.0
-offset_top = 313.0
-offset_right = 111.0
-offset_bottom = 336.0
-text = "Player"
-horizontal_alignment = 1
-vertical_alignment = 1
-
 [node name="ResultLabel" type="Label" parent="."]
-layout_mode = 0
-offset_left = 6.0
-offset_top = 505.0
-offset_right = 62.0
-offset_bottom = 528.0
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.054
+anchor_top = 0.427
+anchor_right = 0.054
+anchor_bottom = 0.427
+offset_left = -28.208
+offset_top = -11.696
+offset_right = 27.792
+offset_bottom = 11.304
 text = "Results"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -75,22 +71,24 @@ offset_right = 230.784
 offset_bottom = 48.744
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("2_1id0d")
+theme = ExtResource("3_h5crs")
 theme_override_constants/separation = 20
 
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+[node name="HBoxContainer1" type="HBoxContainer" parent="VBoxContainer"]
 layout_mode = 2
 theme_override_constants/separation = 20
 
-[node name="Button1" type="Button" parent="VBoxContainer/HBoxContainer"]
+[node name="Button1" type="Button" parent="VBoxContainer/HBoxContainer1"]
 layout_mode = 2
 size_flags_horizontal = 7
+mouse_default_cursor_shape = 2
 toggle_mode = true
 text = "Generic answer 1"
 
-[node name="Button2" type="Button" parent="VBoxContainer/HBoxContainer"]
+[node name="Button2" type="Button" parent="VBoxContainer/HBoxContainer1"]
 layout_mode = 2
 size_flags_horizontal = 7
+mouse_default_cursor_shape = 2
 toggle_mode = true
 text = "Generic answer 2"
 
@@ -101,28 +99,48 @@ theme_override_constants/separation = 20
 [node name="Button3" type="Button" parent="VBoxContainer/HBoxContainer2"]
 layout_mode = 2
 size_flags_horizontal = 7
+mouse_default_cursor_shape = 2
 toggle_mode = true
 text = "Generic answer 3"
 
 [node name="Button4" type="Button" parent="VBoxContainer/HBoxContainer2"]
 layout_mode = 2
 size_flags_horizontal = 7
+mouse_default_cursor_shape = 2
 toggle_mode = true
 text = "Generic answer 4"
 
-[node name="Timer" type="Timer" parent="."]
-one_shot = true
-
 [node name="PartnerAnswerLabel" type="Label" parent="."]
-visible = false
-layout_mode = 0
-offset_left = 490.0
-offset_top = 543.0
-offset_right = 648.0
-offset_bottom = 566.0
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.507
+anchor_top = 0.771
+anchor_right = 0.507
+anchor_bottom = 0.771
+offset_left = -79.064
+offset_top = -11.608
+offset_right = 78.936
+offset_bottom = 11.392
 text = "PartnerAnswerLabel"
 
-[connection signal="pressed" from="VBoxContainer/HBoxContainer/Button1" to="." method="_on_button_1_pressed"]
-[connection signal="pressed" from="VBoxContainer/HBoxContainer/Button2" to="." method="_on_button_2_pressed"]
+[node name="SubmitButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.508
+anchor_top = 0.845
+anchor_right = 0.508
+anchor_bottom = 0.845
+offset_left = -42.216
+offset_top = -19.56
+offset_right = 42.784
+offset_bottom = 19.44
+mouse_default_cursor_shape = 2
+theme = ExtResource("2_1id0d")
+disabled = true
+text = "Submit"
+
+[connection signal="pressed" from="VBoxContainer/HBoxContainer1/Button1" to="." method="_on_button_1_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer1/Button2" to="." method="_on_button_2_pressed"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer2/Button3" to="." method="_on_button_3_pressed"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer2/Button4" to="." method="_on_button_4_pressed"]
+[connection signal="pressed" from="SubmitButton" to="." method="_on_submit_button_pressed"]
