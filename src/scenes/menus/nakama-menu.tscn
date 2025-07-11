@@ -1,0 +1,139 @@
+[gd_scene load_steps=7 format=3 uid="uid://c5wsy40jap5i6"]
+
+[ext_resource type="Script" uid="uid://bntxmydngsh2n" path="res://src/scripts/multiplayer/nakama_client.gd" id="1_3nsq5"]
+[ext_resource type="Theme" uid="uid://ch3x2byuiyaxy" path="res://src/assets/themes/menu.tres" id="2_v8yik"]
+[ext_resource type="FontFile" uid="uid://bhggoau4c0xk0" path="res://src/assets/fonts/Silver.ttf" id="3_kferb"]
+[ext_resource type="Theme" uid="uid://drabaa7jfibga" path="res://src/assets/themes/small_button.tres" id="4_vsklx"]
+[ext_resource type="Texture2D" uid="uid://iqimikjyunwk" path="res://src/assets/sprites/Home.png" id="5_ckkf7"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vsklx"]
+
+[node name="Nakama-menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_3nsq5")
+
+[node name="BlackgroundColor" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.300004, 0.0741538, 0, 0.356863)
+
+[node name="StatusLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.353
+anchor_right = 0.5
+anchor_bottom = 0.353
+offset_left = -57.0
+offset_top = -21.744
+offset_right = 60.0
+offset_bottom = 22.256
+
+[node name="InputContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -202.0
+offset_top = -56.0
+offset_right = 202.0
+offset_bottom = 56.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_group_ = true
+
+[node name="IPContainer" type="HBoxContainer" parent="InputContainer"]
+layout_mode = 2
+theme = ExtResource("2_v8yik")
+alignment = 1
+
+[node name="IPLabel" type="Label" parent="InputContainer/IPContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "IP Address:"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="IPLineEdit" type="LineEdit" parent="InputContainer/IPContainer"]
+texture_filter = 3
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("3_kferb")
+theme_override_font_sizes/font_size = 39
+theme_override_styles/focus = SubResource("StyleBoxEmpty_vsklx")
+placeholder_text = "Insert the IP..."
+
+[node name="NameInputContainer" type="HBoxContainer" parent="InputContainer"]
+layout_mode = 2
+theme = ExtResource("2_v8yik")
+alignment = 1
+
+[node name="NameLabel" type="Label" parent="InputContainer/NameInputContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Name:"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="NameLineEdit" type="LineEdit" parent="InputContainer/NameInputContainer"]
+texture_filter = 3
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("3_kferb")
+theme_override_font_sizes/font_size = 39
+theme_override_styles/focus = SubResource("StyleBoxEmpty_vsklx")
+placeholder_text = "Insert your name..."
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.508
+anchor_top = 0.64
+anchor_right = 0.508
+anchor_bottom = 0.64
+offset_left = -66.216
+offset_top = -19.72
+offset_right = 65.784
+offset_bottom = 20.28
+metadata/_edit_group_ = true
+
+[node name="UpdateButton" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+text = "Update"
+
+[node name="SubmitButton" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+text = "Submit"
+
+[node name="BackButton" type="Button" parent="."]
+texture_filter = 3
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.036
+anchor_top = 0.059
+anchor_right = 0.036
+anchor_bottom = 0.059
+offset_left = -16.22
+offset_top = -16.232
+offset_right = 131.78
+offset_bottom = 131.768
+scale = Vector2(0.221184, 0.221184)
+mouse_default_cursor_shape = 2
+theme = ExtResource("4_vsklx")
+icon = ExtResource("5_ckkf7")
+icon_alignment = 1
+
+[connection signal="pressed" from="HBoxContainer/UpdateButton" to="." method="_on_update_button_pressed"]
+[connection signal="pressed" from="HBoxContainer/SubmitButton" to="." method="_on_submit_button_pressed"]
+[connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]

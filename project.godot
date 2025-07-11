@@ -24,6 +24,7 @@ general/text_to_speech=true
 MultiplayerPlayerManager="*res://src/scripts/multiplayer/multiplayer_player_manager.gd"
 ExercisesBank="*res://src/scripts/exercises/exercises_bank.gd"
 Dialogic="*res://addons/dialogic/Core/DialogicGameHandler.gd"
+Nakama="*res://addons/com.heroiclabs.nakama/Nakama.gd"
 
 [dialogic]
 
@@ -109,3 +110,7 @@ dialogic_default_action={
 , Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":0,"button_index":0,"pressure":0.0,"pressed":false,"script":null)
 ]
 }
+
+[rendering]
+
+textures/vram_compression/import_etc2_astc=true

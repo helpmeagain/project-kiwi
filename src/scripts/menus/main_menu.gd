@@ -19,3 +19,6 @@ func _on_easter_egg_button_pressed() -> void:
 	if (button_pressed >= 10):
 		$LabelAndButtonsContainer/ButtonsContainer/MultiplayerButton.disabled = false
 		$LabelAndButtonsContainer/ButtonsContainer/MultiplayerButton.mouse_default_cursor_shape = 2
+
+func _on_nakama_button_pressed() -> void:
+	get_tree().change_scene_to_file("res://src/scenes/menus/nakama-menu.tscn")
