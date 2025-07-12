@@ -4,7 +4,7 @@ var nakama_client: NakamaClient
 var nakama_session: NakamaSession
 var is_user_created: bool
 
-@onready var username_input = $VBoxContainer/NameInputContainer/NameLabel
+@onready var username_input = $VBoxContainer/NameInputContainer/NameLineEdit
 @onready var user_button = $VBoxContainer/UserButton
 @onready var loading_sprite = $LoadingSprite
 @onready var wait_label = $WaitLabel
