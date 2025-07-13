@@ -38,6 +38,8 @@ func _on_connect_button_pressed() -> void:
 	socket.connected.connect(onSocketConnected)
 	socket.closed.connect(onSocketClosed)
 	socket.received_error.connect(onSocketReceivedError)
+	socket.received_match_presence.connect(onMatchPresence)
+	socket.received_match_state.connect(onMatchState)
 	
 	session = await client.authenticate_device_async(OS.get_unique_id())
 	#var random_number = randi() % 10001
@@ -131,3 +133,14 @@ func onSocketReceivedError(err):
 	if is_inside_tree():
 		PopupManager.show_error("ERRO: " + str(err))
 	server_connected = false
+	
+func onMatchPresence(presence : NakamaRTAPI.MatchPresenceEvent):
+	print(presence)
+
+func onMatchState(state : NakamaRTAPI.MatchData):
+	print("Data is : " + str(state.data))
+	$UserControl/StateLabel.text = str(state.data)
+
+func _on_ping_button_pressed() -> void:
+	var data = {"hello" : "world"}
+	socket.send_match_state_async(current_match.match_id, 1, JSON.stringify(data))
