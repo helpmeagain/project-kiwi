@@ -16,7 +16,7 @@ const EXERCISE_DATA_FILES = {
 	"vocabulary": "vocabulary.json"
 }
 
-const MAX_QUESTIONS = 30
+const MAX_QUESTIONS = 5
 const POWERUP_INTERVAL := 3
 
 # Referências
@@ -35,7 +35,6 @@ func _init(parent_node: Control) -> void:
 func load_random_question() -> void:
 	if parent.question_count >= MAX_QUESTIONS:
 		return
-	
 	cleanup_current_question()
 	if parent.question_count % 2 == 1 && parent.multiplayer_manager.is_multiplayer():
 		print("[DEBUG] Entrando no matchmaking para exercício multiplayer")
@@ -107,6 +106,7 @@ func load_random_question() -> void:
 	parent.ui_manager.update_question_count(parent.question_count)
 	parent.timer_manager.start_timer_for_exercise(current_exercise_type)
 	parent.ui_manager.set_random_background("fade")
+
 
 func get_unused_question(exercise_type: String, data_file: String) -> Dictionary:
 	var all_questions = ExercisesBank.load_questions(data_file).all

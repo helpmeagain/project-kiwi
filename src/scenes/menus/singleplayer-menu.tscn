@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://dj50o14xu17wu"]
+[gd_scene load_steps=8 format=3 uid="uid://dj50o14xu17wu"]
 
 [ext_resource type="Script" uid="uid://wf1gkosfdied" path="res://src/scripts/menus/singleplayer_menu.gd" id="1_n3a7i"]
 [ext_resource type="Theme" uid="uid://drabaa7jfibga" path="res://src/assets/themes/small_button.tres" id="2_4w6cp"]
@@ -6,6 +6,7 @@
 [ext_resource type="Theme" uid="uid://ch3x2byuiyaxy" path="res://src/assets/themes/menu.tres" id="4_wicqd"]
 [ext_resource type="Texture2D" uid="uid://b3wby6vni4k4m" path="res://src/assets/sprites/File-Text.png" id="5_wicqd"]
 [ext_resource type="Texture2D" uid="uid://d3pujpxfxmnla" path="res://src/assets/sprites/Game-Controller.png" id="6_h7lm6"]
+[ext_resource type="FontFile" uid="uid://bhggoau4c0xk0" path="res://src/assets/fonts/Silver.ttf" id="7_h7lm6"]
 
 [node name="Singleplayer-menu" type="Control"]
 layout_mode = 3
@@ -79,6 +80,22 @@ text = "Arcade mode"
 icon = ExtResource("6_h7lm6")
 icon_alignment = 1
 vertical_icon_alignment = 0
+
+[node name="ArcadeHighScoreLabel" type="Label" parent="."]
+texture_filter = 3
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.637
+anchor_top = 0.282
+anchor_right = 0.637
+anchor_bottom = 0.282
+offset_left = -99.824
+offset_top = -27.736
+offset_right = 94.176
+offset_bottom = 30.264
+theme_override_fonts/font = ExtResource("7_h7lm6")
+theme_override_font_sizes/font_size = 52
+text = "HIGHSCORE: "
 
 [connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]
 [connection signal="pressed" from="HBoxContainer/HistoryButton" to="." method="_on_history_button_pressed"]
