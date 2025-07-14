@@ -30,6 +30,9 @@ func initialize_managers() -> void:
 	add_child(multiplayer_manager)
 
 func initialize_game() -> void:
+	if try_restore_active_session():
+		return 
+	
 	score = 0
 	question_count = 0
 	timeout_occurred = false
@@ -41,6 +44,37 @@ func initialize_game() -> void:
 			{"name": "answer", "type": TYPE_STRING}
 		])
 	exercise_manager.load_random_question()
+
+func try_restore_active_session() -> bool:
+	var is_multi = multiplayer_manager.is_multiplayer()
+	var saved_data = SaveManager.load_session(is_multi)
+	
+	if saved_data["question_count"] > 0 && saved_data["question_count"] < exercise_manager.MAX_QUESTIONS:
+		score = saved_data["score"]
+		question_count = saved_data["question_count"]
+		timeout_occurred = false
+		
+		power_up_manager.double_points_active = saved_data["double_points_active"]
+		power_up_manager.extra_life_active = saved_data["extra_life_active"]
+		power_up_manager.extra_life_used = saved_data["extra_life_used"]
+		print(power_up_manager.double_points_active)
+		print(power_up_manager.extra_life_active)
+		print(power_up_manager.extra_life_used)
+		ui_manager.initialize_ui()
+		ui_manager.update_ui_components(score, question_count)
+		ui_manager.update_powerup_icons()
+		
+		if is_multi:
+			multiplayer.add_user_signal("partner_answer_received", [
+				{"name": "partner_id", "type": TYPE_INT},
+				{"name": "answer", "type": TYPE_STRING}
+			])
+		
+		exercise_manager.load_random_question()
+		print("Sessão anterior restaurada! Pontuação: ", score, " | Perguntas: ", question_count)
+		return true
+	
+	return false
 
 func _process(_delta) -> void:
 	ui_manager.update_timer_display(timer_manager.get_time_left())
@@ -72,10 +106,12 @@ func _on_answer_wrong() -> void:
 # --- Fluxo do jogo ---
 func next_step_after_answer() -> void:
 	if question_count >= exercise_manager.MAX_QUESTIONS:
+		SaveManager.finish_session(!multiplayer_manager.is_multiplayer(), score)
 		ui_manager.show_final_screen(score)
 	elif question_count % exercise_manager.POWERUP_INTERVAL == 0:
 		ui_manager.show_powerup_screen()
 	else:
+		SaveManager.save_session(multiplayer_manager.is_multiplayer(), score, question_count, power_up_manager.extra_life_active, power_up_manager.extra_life_used, power_up_manager.double_points_active)
 		exercise_manager.load_random_question()
 
 # --- Eventos do timer ---
@@ -96,12 +132,14 @@ func _on_timer_timeout() -> void:
 # --- Power-up handlers ---
 func _on_powerup_double() -> void:
 	power_up_manager.activate_double_points()
+	SaveManager.save_session(multiplayer_manager.is_multiplayer(), score, question_count, power_up_manager.extra_life_active, power_up_manager.extra_life_used, power_up_manager.double_points_active)
 	ui_manager.hide_powerup_screen()
 	ui_manager.update_powerup_icons()
 	exercise_manager.load_random_question()
 
 func _on_powerup_life() -> void:
 	power_up_manager.activate_extra_life()
+	SaveManager.save_session(multiplayer_manager.is_multiplayer(), score, question_count, power_up_manager.extra_life_active, power_up_manager.extra_life_used, power_up_manager.double_points_active)
 	ui_manager.hide_powerup_screen()
 	ui_manager.update_powerup_icons()
 	exercise_manager.load_random_question()
@@ -115,4 +153,5 @@ func _on_show_players_button_pressed() -> void:
 	ui_manager.toggle_player_score_display()
 
 func _on_final_button_pressed() -> void:
+	SaveManager.finish_session(multiplayer_manager.is_multiplayer(), score)
 	get_tree().change_scene_to_file("res://src/scenes/menus/singleplayer-menu.tscn")
