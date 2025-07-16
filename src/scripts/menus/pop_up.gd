@@ -29,6 +29,15 @@ func _setup_popup(title: String, subtitle: String, shadow_color: Color = Color("
 		ok_button.hide()
 	show()
 
+static func show_wrong_answer(correct_answer: String) -> void:
+	instance()._setup_popup("Wrong answer!", "Correct answer was: \n" + correct_answer, Color("RED"))
+	
+static func show_congratulations_answer(correct_answer: String) -> void:
+	instance()._setup_popup("Correct answer!", "Correct answer was: \n" + correct_answer, Color("GREEN"))
+	
+static func show_timeout_message(correct_answer: String) -> void:
+	instance()._setup_popup("Time's Up!", "Correct answer was: \n" + correct_answer, Color("ORANGE"))
+	
 static func show_error(message: String) -> void:
 	instance()._setup_popup("Error!", message, Color("RED"))
 

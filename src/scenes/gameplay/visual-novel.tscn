@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cbvh8ymekp35q" path="res://src/scripts/gameplay/visual_novel.gd" id="1_0tk1v"]
 [ext_resource type="Texture2D" uid="uid://du8jp5vhivi2r" path="res://src/assets/backgrounds/single_bedroom.jpg" id="1_w3pjf"]
-[ext_resource type="Script" uid="uid://b28mwb5urarq3" path="res://src/scripts/gameplay/background.gd" id="2_x8kxx"]
+[ext_resource type="Script" uid="uid://b28mwb5urarq3" path="res://src/scripts/gameplay/arcade_questions/background.gd" id="2_x8kxx"]
 [ext_resource type="Theme" uid="uid://ch3x2byuiyaxy" path="res://src/assets/themes/menu.tres" id="2_yye55"]
 [ext_resource type="FontFile" uid="uid://bhggoau4c0xk0" path="res://src/assets/fonts/Silver.ttf" id="3_jbmyh"]
 

@@ -7,7 +7,6 @@ const SAVE_PATH := "user://save_games.tres"
 @export var singleplayer_question_count := 0
 @export var singleplayer_highscore := 0
 @export var singleplayer_extra_life_active := false
-@export var singleplayer_extra_life_used := false
 @export var singleplayer_double_points_active := false
 
 @export var multiplayer_score := 0
@@ -15,23 +14,20 @@ const SAVE_PATH := "user://save_games.tres"
 @export var multiplayer_highscore := 0
 @export var multiplayer_double_points_active := false
 @export var multiplayer_extra_life_active := false
-@export var multiplayer_extra_life_used := false
 
-static func save_session(is_multiplayer: bool, score: int, question_count: int, extra_live_active: bool, extra_life_used:bool, double_points_active: bool):
+static func save_session(is_multiplayer: bool, score: int, question_count: int, double_points_active: bool, extra_live_active: bool):
 	var save_data = _load_or_create_save()
 	
 	if is_multiplayer:
 		save_data.multiplayer_score = score
 		save_data.multiplayer_question_count = question_count
 		save_data.multiplayer_extra_life_active = extra_live_active
-		save_data.multiplayer_extra_life_used = extra_life_used
 		save_data.multiplayer_double_points_active = double_points_active
 	else:
 		save_data.singleplayer_score = score
 		save_data.singleplayer_question_count = question_count
 		save_data.singleplayer_double_points_active = double_points_active
 		save_data.singleplayer_extra_life_active = extra_live_active
-		save_data.singleplayer_extra_life_used = extra_life_used
 	
 	ResourceSaver.save(save_data, SAVE_PATH)
 
@@ -45,7 +41,6 @@ static func load_session(is_multiplayer: bool) -> Dictionary:
 			"highscore": save_data.multiplayer_highscore,
 			"double_points_active": save_data.singleplayer_double_points_active,
 			"extra_life_active": save_data.multiplayer_extra_life_active,
-			"extra_life_used": save_data.multiplayer_extra_life_used
 		}
 	else:
 		return {
@@ -54,7 +49,6 @@ static func load_session(is_multiplayer: bool) -> Dictionary:
 			"highscore": save_data.singleplayer_highscore,
 			"double_points_active": save_data.singleplayer_double_points_active,
 			"extra_life_active": save_data.singleplayer_extra_life_active,
-			"extra_life_used": save_data.singleplayer_extra_life_used
 		}
 
 
@@ -66,7 +60,6 @@ static func finish_session(is_multiplayer: bool, new_score: int):
 		save_data.multiplayer_question_count = 0
 		save_data.multiplayer_double_points_active = false
 		save_data.multiplayer_extra_life_active = false
-		save_data.multiplayer_extra_life_used = false
 		if new_score > save_data.multiplayer_highscore:
 			save_data.multiplayer_highscore = new_score
 	else:
@@ -74,7 +67,6 @@ static func finish_session(is_multiplayer: bool, new_score: int):
 		save_data.singleplayer_question_count = 0
 		save_data.singleplayer_double_points_active = false
 		save_data.singleplayer_extra_life_active = false
-		save_data.singleplayer_extra_life_used = false
 		if new_score > save_data.singleplayer_highscore:
 			save_data.singleplayer_highscore = new_score
 	
