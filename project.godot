@@ -26,6 +26,7 @@ ExercisesBank="*res://src/scripts/exercises/exercises_bank.gd"
 Dialogic="*res://addons/dialogic/Core/DialogicGameHandler.gd"
 Nakama="*res://addons/com.heroiclabs.nakama/Nakama.gd"
 PopUpManager="*res://src/scripts/menus/pop_up.gd"
+NakamaManager="*res://src/scripts/multiplayer/nakama_manager.gd"
 
 [dialogic]
 

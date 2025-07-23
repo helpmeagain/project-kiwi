@@ -1,69 +1,40 @@
 extends Node
 
-var session : NakamaSession
-var client : NakamaClient
-var socket : NakamaSocket
-var current_match : NakamaRTAPI.Match
-var matchmaker_ticket : String
-var server_connected := false
-var is_user_created := false
-
 @onready var ip_input = $ServerControl/VBoxContainer/IPContainer/IPLineEdit
 @onready var server_control = $ServerControl
 @onready var user_control = $UserControl
 
 func _ready():
-	ip_input.text = "127.0.0.1"
-	#ip_input.text = "192.169.1.1"
-	user_control.visible = false
-	#PopupManager.instance().ok_pressed.connect(_on_popup_closed)
-	user_control.profile_updated.connect(_on_profile_updated)
 	#randomize()
+	#ip_input.text = "127.0.0.1"
+	ip_input.text = "192.168.1.1"
+	user_control.profile_updated.connect(_on_profile_updated)
+	NakamaManager.socket_connected.connect(on_socket_connected)
+	NakamaManager.socket_closed.connect(on_socket_closed)
+	NakamaManager.socket_error.connect(on_socket_received_error)
 
 func _on_connect_button_pressed() -> void:    
 	if ip_input.text.strip_edges() == "":
 		PopupManager.show_warning("Digite um endereço IP")
 		return
 	
+	var connection_data = _parse_ip_and_port(ip_input.text)
+	var ip = connection_data["ip"]
+	var port = connection_data["port"]
+	
 	PopupManager.show_connecting()
-	
-	var parts = ip_input.text.split(":")
-	var ip = parts[0]
-	var port = 7350
-	if parts.size() > 1:
-		port = int(parts[1])
-	
-	client = Nakama.create_client("defaultkey", ip, port, "http")
-	socket = Nakama.create_socket_from(client)
-	socket.connected.connect(onSocketConnected)
-	socket.closed.connect(onSocketClosed)
-	socket.received_error.connect(onSocketReceivedError)
-	socket.received_match_presence.connect(onMatchPresence)
-	socket.received_match_state.connect(onMatchState)
-	
-	session = await client.authenticate_device_async(OS.get_unique_id())
-	#var random_number = randi() % 10001
-	#var email = str(random_number) + "@email.com"
-	#session = await client.authenticate_email_async(email, "password")
-	if session.is_exception():
-		var error = session.get_exception().message
-		PopupManager.show_error("Falha na autenticação: " + error)
+	var success = await NakamaManager.connect_to_server(ip, port)
+	if not success:
+		PopupManager.show_error("Falha na conexão com o servidor")
 		return
 	
-	var connection = await socket.connect_async(session)
-	if connection.is_exception():
-		var error = connection.get_exception().message
-		PopupManager.show_error("Falha na conexão: " + error)
+	#NakamaManager.socket.received_match_presence.connect(onMatchPresence)
+	NakamaManager.socket.received_match_state.connect(onMatchState)
 
 func _on_profile_updated(success: bool):
-	if success && !is_user_created:
-		is_user_created = true
+	if success && !NakamaManager.is_user_created:
+		NakamaManager.is_user_created = true
 		PopupManager.show_custom("Status", "Conta criada! Pronto para jogar!", Color.GREEN)
-		start_matchmaking()
-
-func _on_back_button_pressed() -> void:
-	if socket: socket.close()
-	get_tree().change_scene_to_file("res://src/scenes/menus/main-menu.tscn")
 
 func start_matchmaking() -> void:
 	print("Procurando oponente...")
@@ -73,7 +44,7 @@ func start_matchmaking() -> void:
 	var string_properties = {}
 	var numeric_properties = {}
 	
-	var ticket = await socket.add_matchmaker_async(
+	var ticket = await NakamaManager.socket.add_matchmaker_async(
 		query, 
 		min_players, 
 		max_players,
@@ -87,25 +58,26 @@ func start_matchmaking() -> void:
 		return
 	
 	print("Matchmaking iniciado. Ticket: ", ticket)
-	socket.received_matchmaker_matched.connect(_on_matchmaker_matched)
+	NakamaManager.socket.received_matchmaker_matched.connect(_on_matchmaker_matched)
 
 func _on_matchmaker_matched(matchmaker_matched : NakamaRTAPI.MatchmakerMatched):
-	var joinedMatch = await socket.join_matched_async(matchmaker_matched)
+	var joinedMatch = await NakamaManager.socket.join_matched_async(matchmaker_matched)
 	
 	if joinedMatch.is_exception():
 		var error = joinedMatch.get_exception().message
 		PopupManager.show_error("Erro ao entrar na partida: " + error)
 		return
 	
-	current_match = joinedMatch
-	print("Entrou na partida: ", current_match.match_id)
+	NakamaManager.current_match = joinedMatch
+	print("Entrou na partida: ", NakamaManager.current_match.match_id)
 	PopupManager.show_success("Oponente encontrado! Iniciando jogo...")
-	start_game()
+	#start_game()
 
 func start_game() -> void:
-	print("Iniciando jogo na partida: ", current_match.match_id)
-	
-func parse_ip_and_port(input_text: String, default_port: int = 7350) -> Dictionary:
+	#print("Iniciando jogo na partida: ", NakamaManager.current_match.match_id)
+	get_tree().change_scene_to_file("res://src/scenes/gameplay/arcade-questions.tscn")
+
+func _parse_ip_and_port(input_text: String, default_port: int = 7350) -> Dictionary:
 	var parts = input_text.strip_edges().split(":")
 	var ip = parts[0]
 	var port = default_port
@@ -113,34 +85,40 @@ func parse_ip_and_port(input_text: String, default_port: int = 7350) -> Dictiona
 		port = int(parts[1])
 	return { "ip": ip, "port": port }
 
-func onSocketConnected():
-	print("[DEBUG - nakama_client.gd] Socket connected")
-	server_connected = true
+func on_socket_connected():
+	print("[DEBUG] Socket connected - UI should update")
 	server_control.visible = false
 	user_control.visible = true
-	user_control.setup(client, session, is_user_created)
-	PopupManager.show_success("Conectado ao servidor!")
+	user_control.setup(NakamaManager.client, NakamaManager.session, NakamaManager.is_user_created)
+	if is_inside_tree():
+		PopupManager.show_success("Conectado ao servidor!")
 
-func onSocketClosed():
+func on_socket_closed():
 	print("[DEBUG - nakama_client.gd] Socket closed")
-	server_connected = false
 	server_control.visible = true
 	user_control.visible = false
 	if is_inside_tree():
 		PopupManager.show_warning("Conexão fechada")
 
-func onSocketReceivedError(err):
+func on_socket_received_error(err):
 	if is_inside_tree():
 		PopupManager.show_error("ERRO: " + str(err))
-	server_connected = false
 	
-func onMatchPresence(presence : NakamaRTAPI.MatchPresenceEvent):
-	print(presence)
+#func onMatchPresence(presence : NakamaRTAPI.MatchPresenceEvent):
+	#print("[DEBUG] PRESENCE:" + str(presence))
 
 func onMatchState(state : NakamaRTAPI.MatchData):
 	print("Data is : " + str(state.data))
 	$UserControl/StateLabel.text = str(state.data)
 
 func _on_ping_button_pressed() -> void:
-	var data = {"hello" : "world"}
-	socket.send_match_state_async(current_match.match_id, 1, JSON.stringify(data))
+	if NakamaManager.socket and NakamaManager.current_match:
+		var data = {"hello" : "world"}
+		NakamaManager.socket.send_match_state_async(NakamaManager.current_match.match_id, 1, JSON.stringify(data))
+
+func _on_start_button_pressed() -> void:
+	start_game()
+
+func _on_back_button_pressed() -> void:
+	if NakamaManager.socket: NakamaManager.socket.close()
+	get_tree().change_scene_to_file("res://src/scenes/menus/main-menu.tscn")

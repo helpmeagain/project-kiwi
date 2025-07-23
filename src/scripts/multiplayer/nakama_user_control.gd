@@ -25,12 +25,10 @@ func update_button_text() -> void:
 	user_button.text = "Update user" if is_user_created else "Create user"
 
 func update_user_info(username_updated: String) -> void:
-	PopupManager.show_custom("Perfil", "Atualizando perfil...", Color.LIGHT_BLUE)
-	
 	var result = await nakama_client.update_account_async(
 		nakama_session,
 		username_updated, # username
-		null, # display name
+		username_updated, # display name
 		"",  # avatar url
 		"pt", # language
 		"br", # location
@@ -61,6 +59,7 @@ func _on_user_button_pressed() -> void:
 		#print(user_data.user.username)
 		pass
 	
-	loading_sprite.play()
-	loading_sprite.show()
-	wait_label.show()
+	#loading_sprite.play()
+	#loading_sprite.show()
+	#wait_label.show()
+	$StartButton.show()

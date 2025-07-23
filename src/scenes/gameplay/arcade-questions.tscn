@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://di7wgqh7vibe7"]
+[gd_scene load_steps=23 format=3 uid="uid://di7wgqh7vibe7"]
 
 [ext_resource type="Script" uid="uid://ukpnntfs15i0" path="res://src/scripts/gameplay/arcade_questions/main.gd" id="1_cdixn"]
 [ext_resource type="Script" uid="uid://b28mwb5urarq3" path="res://src/scripts/gameplay/arcade_questions/background.gd" id="2_1b062"]
@@ -15,6 +15,7 @@
 [ext_resource type="Theme" uid="uid://ch3x2byuiyaxy" path="res://src/assets/themes/menu.tres" id="9_dct4x"]
 [ext_resource type="Theme" uid="uid://drabaa7jfibga" path="res://src/assets/themes/small_button.tres" id="10_bbwy0"]
 [ext_resource type="Texture2D" uid="uid://cejxfhqi5mryk" path="res://src/assets/sprites/People.png" id="11_ndjbd"]
+[ext_resource type="Script" uid="uid://oqcfa3seiutp" path="res://src/scripts/gameplay/arcade_questions/multiplayer_control.gd" id="14_76bfv"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8u6t1"]
 atlas = ExtResource("6_8u6t1")
@@ -204,6 +205,8 @@ offset_bottom = 33.384
 theme_override_fonts/font = ExtResource("5_1b062")
 theme_override_font_sizes/font_size = 60
 text = "A próxima questão será jogada junto a outro jogador!"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="MatchmakingLabel" type="Label" parent="UIElements/MatchmakingControl"]
 layout_mode = 1
@@ -221,6 +224,8 @@ grow_vertical = 2
 theme_override_fonts/font = ExtResource("5_1b062")
 theme_override_font_sizes/font_size = 45
 text = "Procurando outro jogador..."
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="LoadingSprite" type="AnimatedSprite2D" parent="UIElements/MatchmakingControl"]
 texture_filter = 3
@@ -232,6 +237,32 @@ frame = 3
 frame_progress = 0.145893
 
 [node name="MatchmakingTimer" type="Timer" parent="UIElements/MatchmakingControl"]
+
+[node name="PartnerAnswerLabel" type="Label" parent="UIElements"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.203
+anchor_right = 0.5
+anchor_bottom = 0.203
+offset_left = -91.0
+offset_top = -23.544
+offset_right = 92.0
+offset_bottom = 23.456
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MultiplayerControl" type="Control" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("14_76bfv")
 
 [node name="Player-score" parent="." instance=ExtResource("8_b67qj")]
 visible = false
@@ -327,7 +358,7 @@ icon_alignment = 1
 vertical_icon_alignment = 0
 
 [node name="ExerciseTimer" type="Timer" parent="."]
-wait_time = 15.0
+wait_time = 60.0
 
 [node name="GameOverScreen" type="Control" parent="."]
 visible = false
@@ -372,7 +403,9 @@ mouse_default_cursor_shape = 2
 theme = ExtResource("9_dct4x")
 text = "Exit"
 
+[connection signal="tree_exited" from="." to="." method="_on_tree_exited"]
 [connection signal="pressed" from="UIElements/ShowPlayersButton" to="." method="_on_show_players_button_pressed"]
+[connection signal="timeout" from="UIElements/MatchmakingControl/MatchmakingTimer" to="UIElements" method="_on_matchmaking_timer_timeout"]
 [connection signal="pressed" from="PowerUpSelection/HBoxContainer/PowerUpButton1" to="." method="_on_powerup_double"]
 [connection signal="pressed" from="PowerUpSelection/HBoxContainer/PowerUpButton2" to="." method="_on_powerup_life"]
 [connection signal="timeout" from="ExerciseTimer" to="." method="_on_timer_timeout"]

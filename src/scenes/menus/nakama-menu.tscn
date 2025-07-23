@@ -122,6 +122,7 @@ size_flags_horizontal = 4
 text = "Connect to server"
 
 [node name="UserControl" type="Control" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -210,6 +211,20 @@ offset_right = 1088.0
 offset_bottom = 326.0
 text = "Ping"
 
+[node name="StartButton" type="Button" parent="UserControl"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.512
+anchor_top = 0.887
+anchor_right = 0.512
+anchor_bottom = 0.887
+offset_left = -73.824
+offset_top = -19.776
+offset_right = 73.176
+offset_bottom = 19.224
+text = "Start game"
+
 [node name="BackButton" type="Button" parent="."]
 texture_filter = 3
 layout_mode = 1
@@ -231,4 +246,5 @@ icon_alignment = 1
 [connection signal="pressed" from="ServerControl/VBoxContainer/ConnectButton" to="." method="_on_connect_button_pressed"]
 [connection signal="pressed" from="UserControl/VBoxContainer/UserButton" to="UserControl" method="_on_user_button_pressed"]
 [connection signal="pressed" from="UserControl/PingButton" to="." method="_on_ping_button_pressed"]
+[connection signal="pressed" from="UserControl/StartButton" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]

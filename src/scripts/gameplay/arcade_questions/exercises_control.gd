@@ -37,6 +37,16 @@ func load_random_question() -> void:
 		return
 	
 	initialize_question(scene, data_file, question_data)
+	
+func load_multiplayer_question() -> void:
+	if current_exercise: current_exercise.queue_free()
+	
+	var config = EXERCISE_CONFIG["multiplayer_fill"]
+	var scene = load(config).instantiate()
+	self.add_child(scene)
+	
+	scene.initialize("1")
+	current_exercise = scene
 
 func select_random_exercise_type() -> String:
 	const EXERCISE_WEIGHTS := {

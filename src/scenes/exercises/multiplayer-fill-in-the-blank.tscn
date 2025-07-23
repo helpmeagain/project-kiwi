@@ -111,6 +111,7 @@ toggle_mode = true
 text = "Generic answer 4"
 
 [node name="PartnerAnswerLabel" type="Label" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.507
