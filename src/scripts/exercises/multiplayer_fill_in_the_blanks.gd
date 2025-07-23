@@ -4,6 +4,7 @@ signal answer_correct
 signal answer_wrong
 signal send_considering_answer(answer)
 signal send_submit_answer(answer)
+signal check_extra_life
 
 var current_question: Dictionary
 var player_answer: String = ""
@@ -56,10 +57,12 @@ func _on_submit_button_pressed() -> void:
 		return
 	
 	$SubmitButton.disabled = true
-	
+	var correct_answer = current_question.correct_answers[0]
+	var is_correct = (player_answer == correct_answer)
+	if !is_correct:
+		emit_signal("check_extra_life")
+		return
 #	TODO CORRIGIR SE TIVER UMA SEGUNDA VIDA
-	#var correct_answer = current_question.correct_answers[0]
-	#var is_correct = (player_answer == correct_answer)
 	#if !is_correct && parent.power_up_manager.use_extra_life():
 		#parent.ui_manager.update_powerup_icons()
 		#answered = false
@@ -71,7 +74,23 @@ func _on_submit_button_pressed() -> void:
 		#selected_button.set_focus_mode(Control.FOCUS_NONE)
 		#selected_button.add_theme_color_override("font_disabled_color", Color.DARK_RED)
 		#return
-	
+	submit_answer()
+
+func use_extra_life() -> void:
+	if answered:
+		return
+	answered = false
+	player_answer = ""
+	$SubmitButton.disabled = true
+	print(selected_button)
+	selected_button.disabled = true
+	selected_button.mouse_filter = Control.MOUSE_FILTER_STOP
+	selected_button.set_default_cursor_shape(Control.CURSOR_ARROW)
+	selected_button.set_focus_mode(Control.FOCUS_NONE)
+	selected_button.add_theme_color_override("font_disabled_color", Color.DARK_RED)
+	return
+
+func submit_answer() -> void:
 	answered = true
 	for btn in buttons:
 		btn.disabled = true

@@ -56,7 +56,6 @@ func try_restore_active_session() -> bool:
 	return false
 
 func _on_answer_correct(points: int = 1) -> void:
-	multiplayer_control.leave_match()
 	if timeout_occurred: return
 	
 	exercises_timer.stop()
@@ -72,9 +71,9 @@ func _on_answer_correct(points: int = 1) -> void:
 	#multiplayer_manager.update_score(score)
 
 func _on_answer_wrong() -> void:
-	multiplayer_control.leave_match()
 	if timeout_occurred: return
-	if _try_use_extra_life():
+	if extra_life_active and !exercises_control.current_exercise.has_method("use_extra_life"):
+		_try_use_extra_life()
 		return
 	
 	exercises_timer.stop()
@@ -87,7 +86,8 @@ func _on_timer_timeout() -> void:
 	if (MULTIPLAYER_QUESTION_TIME):
 		multiplayer_control.leave_match()
 	exercises_timer.stop()
-	if _try_use_extra_life():
+	if extra_life_active and !exercises_control.current_exercise.has_method("use_extra_life"):
+		_try_use_extra_life()
 		return
 	
 	timeout_occurred = true
@@ -129,6 +129,7 @@ func load_next_exercise() -> void:
 		exercises_control.load_multiplayer_question(match_id)
 		exercises_control.current_exercise.connect("send_considering_answer", _on_considering_answer_multiplayer)
 		exercises_control.current_exercise.connect("send_submit_answer", _on_submit_answer_multiplayer)
+		exercises_control.current_exercise.connect("check_extra_life", _try_use_extra_life)
 	else:
 		exercises_control.load_random_question()
 	exercises_control.current_exercise.connect("answer_correct", _on_answer_correct)
@@ -198,10 +199,14 @@ func _activate_power_up(power_type: String) -> void:
 
 func _try_use_extra_life() -> bool:
 	if extra_life_active:
+		if exercises_control.current_exercise != null and exercises_control.current_exercise.has_method("use_extra_life"):
+			exercises_control.current_exercise.use_extra_life()
 		extra_life_active = false
 		ui_elements.update_powerup_icons(double_points_active, extra_life_active)
 		exercises_timer.start()
 		return true
+	if exercises_control.current_exercise != null and exercises_control.current_exercise.has_method("submit_answer"):
+		exercises_control.current_exercise.submit_answer()
 	return false
 
 func finish_game() -> void:
@@ -223,6 +228,7 @@ func _save_session() -> void:
 
 func _on_popup_button_pressed() -> void:
 	next_step_after_answer()
+	multiplayer_control.leave_match()
 
 func _on_show_players_button_pressed() -> void:
 #	TODO Arrumar exibição do leaderboard
