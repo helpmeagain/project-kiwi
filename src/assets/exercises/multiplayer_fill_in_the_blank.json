@@ -14,5 +14,149 @@
 	"options": [
 	  ["goes", "went", "going", "gone"]
 	]
+  },
+  {
+	"id": "3",
+	"sentence": "They _ a movie last night",
+	"correct_answers": ["saw"],
+	"options": [
+	  ["see", "saw", "seen", "seeing"]
+	]
+  },
+  {
+	"id": "4",
+	"sentence": "He _ his keys on the table",
+	"correct_answers": ["put"],
+	"options": [
+	  ["puts", "put", "putted", "putting"]
+	]
+  },
+  {
+	"id": "5",
+	"sentence": "We _ a new song yesterday",
+	"correct_answers": ["heard"],
+	"options": [
+	  ["hear", "heard", "hears", "hearing"]
+	]
+  },
+  {
+	"id": "6",
+	"sentence": "I _ my homework before dinner",
+	"correct_answers": ["did"],
+	"options": [
+	  ["do", "did", "done", "doing"]
+	]
+  },
+  {
+	"id": "7",
+	"sentence": "She _ her arm playing soccer",
+	"correct_answers": ["broke"],
+	"options": [
+	  ["break", "broke", "broken", "breaking"]
+	]
+  },
+  {
+	"id": "8",
+	"sentence": "They _ early this morning",
+	"correct_answers": ["woke"],
+	"options": [
+	  ["wake", "woke", "woken", "waking"]
+	]
+  },
+  {
+	"id": "9",
+	"sentence": "We _ a lot of fun at the party",
+	"correct_answers": ["had"],
+	"options": [
+	  ["have", "had", "has", "having"]
+	]
+  },
+  {
+	"id": "10",
+	"sentence": "He _ me a gift for my birthday",
+	"correct_answers": ["gave"],
+	"options": [
+	  ["give", "gave", "given", "giving"]
+	]
+  },
+  {
+	"id": "11",
+	"sentence": "She _ the letter carefully",
+	"correct_answers": ["read"],
+	"options": [
+	  ["reads", "read", "reading", "red"]
+	]
+  },
+  {
+	"id": "12",
+	"sentence": "The cat _ under the sofa",
+	"correct_answers": ["hid"],
+	"options": [
+	  ["hide", "hid", "hidden", "hiding"]
+	]
+  },
+  {
+	"id": "13",
+	"sentence": "I _ my phone on the bus",
+	"correct_answers": ["lost"],
+	"options": [
+	  ["lose", "lost", "loses", "losing"]
+	]
+  },
+  {
+	"id": "14",
+	"sentence": "He _ me at the airport",
+	"correct_answers": ["met"],
+	"options": [
+	  ["meet", "met", "meeting", "meets"]
+	]
+  },
+  {
+	"id": "15",
+	"sentence": "They _ all the cookies",
+	"correct_answers": ["ate"],
+	"options": [
+	  ["eat", "ate", "eaten", "eating"]
+	]
+  },
+  {
+	"id": "16",
+	"sentence": "She _ a red dress to the event",
+	"correct_answers": ["wore"],
+	"options": [
+	  ["wear", "wore", "worn", "wearing"]
+	]
+  },
+  {
+	"id": "17",
+	"sentence": "We _ across the river by boat",
+	"correct_answers": ["rode"],
+	"options": [
+	  ["ride", "rode", "ridden", "riding"]
+	]
+  },
+  {
+	"id": "18",
+	"sentence": "He _ the answer immediately",
+	"correct_answers": ["knew"],
+	"options": [
+	  ["know", "knew", "known", "knowing"]
+	]
+  },
+  {
+	"id": "19",
+	"sentence": "I _ my ankle yesterday",
+	"correct_answers": ["sprained"],
+	"options": [
+	  ["sprain", "sprained", "sprains", "spraining"]
+	]
+  },
+  {
+	"id": "20",
+	"sentence": "They _ a lot of money on the trip",
+	"correct_answers": ["spent"],
+	"options": [
+	  ["spend", "spent", "spending", "spended"]
+	]
   }
 ]

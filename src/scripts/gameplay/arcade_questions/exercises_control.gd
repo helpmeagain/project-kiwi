@@ -38,15 +38,25 @@ func load_random_question() -> void:
 	
 	initialize_question(scene, data_file, question_data)
 	
-func load_multiplayer_question() -> void:
+func load_multiplayer_question(match_id: String) -> void:
 	if current_exercise: current_exercise.queue_free()
 	
 	var config = EXERCISE_CONFIG["multiplayer_fill"]
 	var scene = load(config).instantiate()
 	self.add_child(scene)
 	
-	scene.initialize("1")
+	var exercise_id = _get_deterministic_exercise_id(match_id)
+	scene.initialize(exercise_id)
 	current_exercise = scene
+
+func _get_deterministic_exercise_id(match_id: String) -> String:
+	var rng = RandomNumberGenerator.new()
+	rng.seed = match_id.hash()
+	
+	var all_exercises = ExercisesBank.load_questions("multiplayer_fill_in_the_blank.json").all
+	
+	var index = rng.randi_range(0, all_exercises.size() - 1)
+	return all_exercises[index].id
 
 func select_random_exercise_type() -> String:
 	const EXERCISE_WEIGHTS := {

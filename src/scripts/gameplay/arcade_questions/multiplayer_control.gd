@@ -74,3 +74,8 @@ func leave_match() -> void:
 		print("[NAKAMA DEBUG] SAIU DA PARTIDA: " + match_id)
 	else:
 		print("Aviso: Tentativa de sair de uma partida inexistente")
+
+func get_match_id() -> String:
+	if NakamaManager.current_match:
+		return NakamaManager.current_match.match_id
+	return ""

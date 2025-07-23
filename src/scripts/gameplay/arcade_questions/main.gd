@@ -124,8 +124,9 @@ func load_next_exercise() -> void:
 	exercises_timer.start()
 	background.set_random_background()
 	if MULTIPLAYER_QUESTION_TIME:
+		var match_id = multiplayer_control.get_match_id()
 		exercises_control.show()
-		exercises_control.load_multiplayer_question()
+		exercises_control.load_multiplayer_question(match_id)
 		exercises_control.current_exercise.connect("send_considering_answer", _on_considering_answer_multiplayer)
 		exercises_control.current_exercise.connect("send_submit_answer", _on_submit_answer_multiplayer)
 	else:
