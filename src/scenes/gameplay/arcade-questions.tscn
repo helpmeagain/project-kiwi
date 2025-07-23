@@ -68,6 +68,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_cdixn")
+max_questions = 30
 
 [node name="BackgroundImage" type="TextureRect" parent="."]
 modulate = Color(0.229112, 0.229112, 0.229112, 1)

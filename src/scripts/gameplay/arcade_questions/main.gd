@@ -12,17 +12,15 @@ extends Control
 @export var question_count: int = 0
 @export var max_questions = 5
 @export var power_up_interval = 3
+@export var fill_in_the_blank_timer: float = 15.0
+@export var type_translation_timer: float = 30.0
+@export var vocabulary_timer: float = 15.0
+@export var multiplayer_fill_timer: float = 60.0
 var timeout_occurred: bool = false
 var double_points_active: bool = false
 var extra_life_active: bool = false
 var partner_username: String
 var partner_answer: String
-
-# TODO tirar isso e achar uma maneira decente de fazer
-var POWERUP_CHOOSED = false
-
-# TODO lidar com timers diferentes para exercícios diferentes
-# TODO limpar resposta do parter após terminar match
 
 const DATA_TYPE = {
 	USERNAME = "username",
@@ -30,6 +28,13 @@ const DATA_TYPE = {
 	SUBMIT_ANSWER = "submit_answer",
 	SYSTEM_MSG = "system_msg"
 }
+
+# TODO tirar isso e achar uma maneira decente de fazer
+var POWERUP_CHOOSED = false
+
+# TODO lidar com timers diferentes para exercícios diferentes
+# TODO limpar resposta do parter após terminar match
+
 
 func _ready() -> void:
 	load_next_exercise()
@@ -121,7 +126,6 @@ func load_next_exercise() -> void:
 	question_count += 1
 	timeout_occurred = false
 	ui_elements.update_question_count(question_count)
-	exercises_timer.start()
 	background.set_random_background()
 	if MULTIPLAYER_QUESTION_TIME:
 		var match_id = multiplayer_control.get_match_id()
@@ -134,6 +138,18 @@ func load_next_exercise() -> void:
 		exercises_control.load_random_question()
 	exercises_control.current_exercise.connect("answer_correct", _on_answer_correct)
 	exercises_control.current_exercise.connect("answer_wrong", _on_answer_wrong)
+	match exercises_control.current_exercise_type:
+		"multiplayer_fill":
+			exercises_timer.wait_time = multiplayer_fill_timer
+		"fill_in_blank":
+			exercises_timer.wait_time = fill_in_the_blank_timer
+		"type_translation":
+			exercises_timer.wait_time = type_translation_timer
+		"vocabulary":
+			exercises_timer.wait_time = vocabulary_timer
+		_:
+			exercises_timer.wait_time = 40.0
+	exercises_timer.start()
 
 func start_matchmaking() -> void:
 	exercises_control.hide()
