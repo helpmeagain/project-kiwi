@@ -47,7 +47,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.300004, 0.0741538, 0, 0.356863)
+color = Color(0.298039, 0.219608, 0.192157, 1)
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 texture_filter = 3

@@ -67,8 +67,13 @@ func setup_broadcast(server_name: String):
 	room_info.playerCount = MultiplayerPlayerManager.players.size()
 	broadcaster = PacketPeerUDP.new()
 	broadcaster.set_broadcast_enabled(true)
-	broadcaster.set_dest_address(address, listenPort)
+	var listener_address = address
+	var ip_parts = address.split(".")
+	if ip_parts.size() == 4:
+		ip_parts[3] = "255"
+		listener_address = ".".join(ip_parts)
 	
+	broadcaster.set_dest_address(listener_address, listenPort) # mudando para "255.255.255.255" funcionou para um computador apenas
 	var ok = broadcaster.bind(broadcastPort)
 	if ok == OK:
 		print("Successfully bound to broadcast port " + str(broadcastPort) + " !")

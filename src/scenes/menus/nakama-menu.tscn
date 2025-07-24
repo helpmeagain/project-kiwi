@@ -1,0 +1,237 @@
+[gd_scene load_steps=15 format=3 uid="uid://c5wsy40jap5i6"]
+
+[ext_resource type="Script" uid="uid://bntxmydngsh2n" path="res://src/scripts/multiplayer/nakama_client.gd" id="1_3nsq5"]
+[ext_resource type="Theme" uid="uid://ch3x2byuiyaxy" path="res://src/assets/themes/menu.tres" id="2_v8yik"]
+[ext_resource type="FontFile" uid="uid://bhggoau4c0xk0" path="res://src/assets/fonts/Silver.ttf" id="3_kferb"]
+[ext_resource type="Script" uid="uid://c1r6y6dwc341y" path="res://src/scripts/multiplayer/nakama_user_control.gd" id="4_e6o3a"]
+[ext_resource type="Theme" uid="uid://drabaa7jfibga" path="res://src/assets/themes/small_button.tres" id="4_vsklx"]
+[ext_resource type="Texture2D" uid="uid://iqimikjyunwk" path="res://src/assets/sprites/Home.png" id="5_ckkf7"]
+[ext_resource type="Texture2D" uid="uid://mmnw8vwr7dno" path="res://src/assets/sprites/Loading.png" id="6_ckkf7"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vsklx"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8u6t1"]
+atlas = ExtResource("6_ckkf7")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hjejh"]
+atlas = ExtResource("6_ckkf7")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8hd76"]
+atlas = ExtResource("6_ckkf7")
+region = Rect2(96, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_76bfv"]
+atlas = ExtResource("6_ckkf7")
+region = Rect2(144, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2p6vt"]
+atlas = ExtResource("6_ckkf7")
+region = Rect2(192, 0, 48, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_e6o3a"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8u6t1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hjejh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8hd76")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_76bfv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2p6vt")
+}],
+"loop": true,
+"name": &"Loading",
+"speed": 5.0
+}]
+
+[node name="Nakama-menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_3nsq5")
+
+[node name="BlackgroundColor" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.298039, 0.219608, 0.192157, 1)
+
+[node name="ServerControl" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_v8yik")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ServerControl"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -196.0
+offset_top = -51.0
+offset_right = 258.0
+offset_bottom = 52.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_default_cursor_shape = 2
+theme_override_constants/separation = 10
+metadata/_edit_group_ = true
+
+[node name="IPContainer" type="HBoxContainer" parent="ServerControl/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="IPLabel" type="Label" parent="ServerControl/VBoxContainer/IPContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "IP Address:"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="IPLineEdit" type="LineEdit" parent="ServerControl/VBoxContainer/IPContainer"]
+texture_filter = 3
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("3_kferb")
+theme_override_font_sizes/font_size = 39
+theme_override_styles/focus = SubResource("StyleBoxEmpty_vsklx")
+placeholder_text = "Insert the IP..."
+
+[node name="ConnectButton" type="Button" parent="ServerControl/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+mouse_default_cursor_shape = 2
+text = "Connect to server"
+
+[node name="UserControl" type="Control" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_v8yik")
+script = ExtResource("4_e6o3a")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UserControl"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -169.0
+offset_top = -48.5
+offset_right = 169.0
+offset_bottom = 48.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 10
+
+[node name="NameInputContainer" type="HBoxContainer" parent="UserControl/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="NameLabel" type="Label" parent="UserControl/VBoxContainer/NameInputContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Name:"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="NameLineEdit" type="LineEdit" parent="UserControl/VBoxContainer/NameInputContainer"]
+texture_filter = 3
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("3_kferb")
+theme_override_font_sizes/font_size = 39
+theme_override_styles/focus = SubResource("StyleBoxEmpty_vsklx")
+placeholder_text = "Insert your name..."
+
+[node name="UserButton" type="Button" parent="UserControl/VBoxContainer"]
+layout_mode = 2
+mouse_default_cursor_shape = 2
+text = "Submit username"
+
+[node name="LoadingSprite" type="AnimatedSprite2D" parent="UserControl"]
+visible = false
+texture_filter = 3
+position = Vector2(593, 472)
+scale = Vector2(2.4375, 2.4375)
+sprite_frames = SubResource("SpriteFrames_e6o3a")
+animation = &"Loading"
+
+[node name="WaitLabel" type="Label" parent="UserControl"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.506
+anchor_top = 0.904
+anchor_right = 0.506
+anchor_bottom = 0.904
+offset_left = -503.912
+offset_top = -27.7921
+offset_right = 504.088
+offset_bottom = 28.2079
+theme_override_fonts/font = ExtResource("3_kferb")
+theme_override_font_sizes/font_size = 50
+text = "Aguarde o jogo iniciar! Você pode atualizar seus dados enquanto isso"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="StartButton" type="Button" parent="UserControl"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -39.0
+offset_right = 147.0
+grow_vertical = 0
+text = "Start game"
+
+[node name="CountdownTimer" type="Timer" parent="UserControl"]
+
+[node name="BackButton" type="Button" parent="."]
+texture_filter = 3
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.036
+anchor_top = 0.059
+anchor_right = 0.036
+anchor_bottom = 0.059
+offset_left = -16.22
+offset_top = -16.232
+offset_right = 131.78
+offset_bottom = 131.768
+scale = Vector2(0.221184, 0.221184)
+mouse_default_cursor_shape = 2
+theme = ExtResource("4_vsklx")
+icon = ExtResource("5_ckkf7")
+icon_alignment = 1
+
+[connection signal="pressed" from="ServerControl/VBoxContainer/ConnectButton" to="." method="_on_connect_button_pressed"]
+[connection signal="pressed" from="UserControl/VBoxContainer/UserButton" to="UserControl" method="_on_user_button_pressed"]
+[connection signal="pressed" from="UserControl/StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="timeout" from="UserControl/CountdownTimer" to="UserControl" method="_on_countdown_timer_timeout"]
+[connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]

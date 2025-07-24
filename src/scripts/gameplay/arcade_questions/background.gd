@@ -1,4 +1,13 @@
+class_name BackgroundImage
 extends TextureRect
+
+const BACKGROUNDS = [
+	"res://src/assets/backgrounds/dining_kitchen.jpg",
+	"res://src/assets/backgrounds/old_school.png",
+	"res://src/assets/backgrounds/outdoor_stairs.png",
+	"res://src/assets/backgrounds/single_bedroom.jpg",
+	"res://src/assets/backgrounds/train_day.png"
+]
 
 signal transition_started()
 signal transition_finished()
@@ -65,3 +74,12 @@ func _finish_transition() -> void:
 	modulate.a = 1.0
 	set_process(false)
 	emit_signal("transition_finished")
+
+func set_random_background() -> void:
+	var random_path = BACKGROUNDS[randi() % BACKGROUNDS.size()]
+	var new_texture: Texture2D = load(random_path)
+
+	if new_texture:
+		change_background(new_texture, transition_type)
+	else:
+		push_error("Failed to load background texture: " + random_path)

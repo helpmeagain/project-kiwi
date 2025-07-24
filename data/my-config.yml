@@ -1,0 +1,11 @@
+name: nakama1
+database:
+  address:
+    - "root@cockroachdb:26257"
+logger:
+  level: DEBUG
+matchmaker:
+  interval_sec: 2
+  max_intervals: 1
+metrics:
+  prometheus_port: 9100

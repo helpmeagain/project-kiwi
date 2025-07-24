@@ -2,15 +2,15 @@ extends Control
 
 signal answer_correct
 signal answer_wrong
+signal send_considering_answer(answer)
+signal send_submit_answer(answer)
+signal check_extra_life
 
 var current_question: Dictionary
-var player_id: int
-var partner_id: int = -1
 var player_answer: String = ""
 var partner_answer: String = ""
 var answered: bool = false
 var partner_answered: bool = false
-var parent: Control
 var selected_button: Button = null
 
 @onready var buttons_container = $VBoxContainer
@@ -21,47 +21,25 @@ var selected_button: Button = null
 	$VBoxContainer/HBoxContainer2/Button4
 ]
 
-func initialize(parent_node: Control, question_data: Dictionary, p_id: int, p_partner_id: int) -> void:
-	print("[EXERCISE - MULTIPLAYER FILL IN THE BLANKS] Initializing for player: ", player_id, " | partner: ", partner_id)
-	parent = parent_node
-	current_question = question_data
-	player_id = p_id
-	partner_id = p_partner_id
-	setup_question_display()
-	setup_buttons()
+func initialize(question_id: String = "", data_file: String = "multiplayer_fill_in_the_blank.json") -> void:	
+	if question_id == "":
+		current_question = ExercisesBank.load_random_question(data_file)
+	else:
+		current_question = ExercisesBank.load_question_by_id(data_file, question_id)
+		if current_question.is_empty():
+			push_error("Question ID not found: ", question_id)
+			current_question = ExercisesBank.load_random_question(data_file)
 	
-	if not multiplayer.has_signal("partner_selection_received"):
-		multiplayer.add_user_signal("partner_selection_received", [
-			{"name": "partner_id", "type": TYPE_INT},
-			{"name": "selection", "type": TYPE_STRING}
-		])
-	
-	if not multiplayer.has_signal("partner_answer_received"):
-		multiplayer.add_user_signal("partner_answer_received", [
-			{"name": "partner_id", "type": TYPE_INT},
-			{"name": "answer", "type": TYPE_STRING}
-		])
-	
-	if not multiplayer.is_connected("partner_selection_received", _on_partner_selection_received):
-		multiplayer.connect("partner_selection_received", _on_partner_selection_received)
-	
-	if not multiplayer.is_connected("partner_answer_received", _on_partner_answer_received):
-		multiplayer.connect("partner_answer_received", _on_partner_answer_received)
+	setup_label_and_buttons()
 
-func setup_question_display() -> void:
+func setup_label_and_buttons() -> void:
 	$QuestionLabel.text = current_question.sentence
-	$PartnerAnswerLabel.hide()
-
-func setup_buttons() -> void:
 	var options = current_question.options[0].duplicate()
 	options.shuffle()
 	
 	for i in 4:
 		var button = buttons_container.get_child(floor(i / 2.0)).get_child(i % 2)
 		button.text = options[i]
-		button.show()
-		button.disabled = false
-		button.mouse_filter = Control.MOUSE_FILTER_PASS
 	
 	$SubmitButton.disabled = true
 
@@ -72,62 +50,60 @@ func _on_button_pressed(button: Button) -> void:
 	selected_button = button
 	player_answer = button.text
 	$SubmitButton.disabled = false
-	
-	if multiplayer.get_unique_id() != 1:
-		parent.multiplayer_manager.submit_selection.rpc_id(1, multiplayer.get_unique_id(), player_answer)
-	else:
-		parent.multiplayer_manager._receive_selection_locally(multiplayer.get_unique_id(), player_answer)
+	emit_signal("send_considering_answer", player_answer)
 
 func _on_submit_button_pressed() -> void:
 	if !selected_button or answered:
 		return
 	
 	$SubmitButton.disabled = true
-	
 	var correct_answer = current_question.correct_answers[0]
 	var is_correct = (player_answer == correct_answer)
-	if !is_correct && parent.power_up_manager.use_extra_life():
-		parent.ui_manager.update_powerup_icons()
-		answered = false
-		player_answer = ""
-		$SubmitButton.disabled = true
-		selected_button.disabled = true
-		selected_button.mouse_filter = Control.MOUSE_FILTER_STOP
-		selected_button.set_default_cursor_shape(Control.CURSOR_ARROW)
-		selected_button.set_focus_mode(Control.FOCUS_NONE)
-		selected_button.add_theme_color_override("font_disabled_color", Color.DARK_RED)
+	if !is_correct:
+		emit_signal("check_extra_life")
 		return
-	
+#	TODO CORRIGIR SE TIVER UMA SEGUNDA VIDA
+	#if !is_correct && parent.power_up_manager.use_extra_life():
+		#parent.ui_manager.update_powerup_icons()
+		#answered = false
+		#player_answer = ""
+		#$SubmitButton.disabled = true
+		#selected_button.disabled = true
+		#selected_button.mouse_filter = Control.MOUSE_FILTER_STOP
+		#selected_button.set_default_cursor_shape(Control.CURSOR_ARROW)
+		#selected_button.set_focus_mode(Control.FOCUS_NONE)
+		#selected_button.add_theme_color_override("font_disabled_color", Color.DARK_RED)
+		#return
+	submit_answer()
+
+func use_extra_life() -> void:
+	if answered:
+		return
+	answered = false
+	player_answer = ""
+	$SubmitButton.disabled = true
+	print(selected_button)
+	selected_button.disabled = true
+	selected_button.mouse_filter = Control.MOUSE_FILTER_STOP
+	selected_button.set_default_cursor_shape(Control.CURSOR_ARROW)
+	selected_button.set_focus_mode(Control.FOCUS_NONE)
+	selected_button.add_theme_color_override("font_disabled_color", Color.DARK_RED)
+	return
+
+func submit_answer() -> void:
 	answered = true
-	
 	for btn in buttons:
 		btn.disabled = true
 		btn.focus_mode = Control.FOCUS_NONE
 	
-	if multiplayer.get_unique_id() != 1:
-		parent.multiplayer_manager.submit_answer.rpc_id(1, multiplayer.get_unique_id(), player_answer)  # Alterado para submit_answer
-	else:
-		parent.multiplayer_manager._receive_answer_locally(multiplayer.get_unique_id(), player_answer) 
-	
+	emit_signal("send_submit_answer", player_answer)
 	$PartnerAnswerLabel.text = "Waiting for partner's answer..."
 	$PartnerAnswerLabel.show()
-	
 	check_answers()
 
-func _on_partner_selection_received(received_partner_id: int, selection: String) -> void:
-	if partner_id != received_partner_id:
-		return
-	
-	$PartnerAnswerLabel.text = "Partner is considering: " + selection
-	$PartnerAnswerLabel.show()
-
-func _on_partner_answer_received(received_partner_id: int, answer: String) -> void:
-	if partner_id != received_partner_id:
-		return
-	
+func on_partner_answer_received(answer: String) -> void:
 	partner_answer = answer
 	partner_answered = true
-	$PartnerAnswerLabel.text = "Partner answered: " + answer
 	check_answers()
 
 func check_answers() -> void:
@@ -157,7 +133,6 @@ func check_answers() -> void:
 		emit_signal("answer_wrong")
 	
 	$ResultLabel.show()
-	queue_free()
 
 func _on_button_1_pressed() -> void: _on_button_pressed(buttons[0])
 func _on_button_2_pressed() -> void: _on_button_pressed(buttons[1])
