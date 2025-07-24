@@ -11,6 +11,7 @@ var _cached_username := ""
 signal socket_connected()
 signal socket_closed()
 signal socket_error(err)
+signal notification_received(notification)
 
 func connect_to_server(ip: String, port: int = 7350) -> bool:
 	client = Nakama.create_client("defaultkey", ip, port, "http")
@@ -19,6 +20,7 @@ func connect_to_server(ip: String, port: int = 7350) -> bool:
 	socket.connected.connect(_on_socket_connected)
 	socket.closed.connect(_on_socket_closed)
 	socket.received_error.connect(_on_socket_error)
+	socket.received_notification.connect(_on_notification_received)
 	
 	#session = await client.authenticate_device_async(OS.get_unique_id())
 	var random_number = randi() % 10001
@@ -55,3 +57,6 @@ func _on_socket_closed():
 func _on_socket_error(error):
 	server_connected = false
 	emit_signal("socket_error", error)
+
+func _on_notification_received(notification_data):
+	emit_signal("notification_received", notification_data)

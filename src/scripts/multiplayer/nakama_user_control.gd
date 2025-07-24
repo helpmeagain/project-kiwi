@@ -3,13 +3,17 @@ extends Control
 var nakama_client: NakamaClient
 var nakama_session: NakamaSession
 var is_user_created: bool
-
+var countdown: int = COUNTDOWN_DEFAULT_VALUE
 @onready var username_input = $VBoxContainer/NameInputContainer/NameLineEdit
 @onready var user_button = $VBoxContainer/UserButton
 @onready var loading_sprite = $LoadingSprite
 @onready var wait_label = $WaitLabel
+@onready var countdown_timer = $CountdownTimer
+
+const COUNTDOWN_DEFAULT_VALUE = 3
 
 signal profile_updated(success: bool)
+signal start_game
 
 func _ready():
 	loading_sprite.hide()
@@ -19,10 +23,10 @@ func setup(client: NakamaClient, session: NakamaSession, user_created: bool) -> 
 	nakama_client = client
 	nakama_session = session
 	is_user_created = user_created
-	update_button_text()
+	#update_button_text()
 
-func update_button_text() -> void:
-	user_button.text = "Update user" if is_user_created else "Create user"
+#func update_button_text() -> void:
+	#user_button.text = "Update user" if is_user_created else "Create user"
 
 func update_user_info(username_updated: String) -> void:
 	var result = await nakama_client.update_account_async(
@@ -53,13 +57,26 @@ func _on_user_button_pressed() -> void:
 	
 	if !is_user_created:	
 		is_user_created = true
-		update_button_text()
+		#update_button_text()
 	else:
 		#var user_data = await client.get_account_async(session)
 		#print(user_data.user.username)
 		pass
 	
-	#loading_sprite.play()
-	#loading_sprite.show()
-	#wait_label.show()
-	$StartButton.show()
+	loading_sprite.play()
+	loading_sprite.show()
+	wait_label.show()
+
+func start_game_countdown() -> void:
+	wait_label.text = "Iniciando em " + str(countdown) + "..."
+	countdown_timer.start()
+	loading_sprite.stop()
+	loading_sprite.hide()
+
+func _on_countdown_timer_timeout() -> void:
+	countdown -= 1
+	if countdown > 0:
+		wait_label.text = "Iniciando em " + str(countdown) + "..."
+	else:
+		countdown_timer.stop()
+		emit_signal("start_game")

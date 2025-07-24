@@ -93,6 +93,7 @@ offset_right = 258.0
 offset_bottom = 52.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_default_cursor_shape = 2
 theme_override_constants/separation = 10
 metadata/_edit_group_ = true
 
@@ -119,6 +120,7 @@ placeholder_text = "Insert the IP..."
 [node name="ConnectButton" type="Button" parent="ServerControl/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
+mouse_default_cursor_shape = 2
 text = "Connect to server"
 
 [node name="UserControl" type="Control" parent="."]
@@ -169,7 +171,8 @@ placeholder_text = "Insert your name..."
 
 [node name="UserButton" type="Button" parent="UserControl/VBoxContainer"]
 layout_mode = 2
-text = "Create user"
+mouse_default_cursor_shape = 2
+text = "Submit username"
 
 [node name="LoadingSprite" type="AnimatedSprite2D" parent="UserControl"]
 visible = false
@@ -180,7 +183,6 @@ sprite_frames = SubResource("SpriteFrames_e6o3a")
 animation = &"Loading"
 
 [node name="WaitLabel" type="Label" parent="UserControl"]
-visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.506
@@ -194,36 +196,21 @@ offset_bottom = 28.2079
 theme_override_fonts/font = ExtResource("3_kferb")
 theme_override_font_sizes/font_size = 50
 text = "Aguarde o jogo iniciar! Você pode atualizar seus dados enquanto isso"
-
-[node name="StateLabel" type="Label" parent="UserControl"]
-layout_mode = 0
-offset_left = 1037.0
-offset_top = 235.0
-offset_right = 1077.0
-offset_bottom = 253.0
-text = "Nothing"
-
-[node name="PingButton" type="Button" parent="UserControl"]
-layout_mode = 0
-offset_left = 1031.0
-offset_top = 287.0
-offset_right = 1088.0
-offset_bottom = 326.0
-text = "Ping"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="StartButton" type="Button" parent="UserControl"]
-visible = false
+modulate = Color(1, 1, 1, 0)
 layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.512
-anchor_top = 0.887
-anchor_right = 0.512
-anchor_bottom = 0.887
-offset_left = -73.824
-offset_top = -19.776
-offset_right = 73.176
-offset_bottom = 19.224
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -39.0
+offset_right = 147.0
+grow_vertical = 0
 text = "Start game"
+
+[node name="CountdownTimer" type="Timer" parent="UserControl"]
 
 [node name="BackButton" type="Button" parent="."]
 texture_filter = 3
@@ -245,6 +232,6 @@ icon_alignment = 1
 
 [connection signal="pressed" from="ServerControl/VBoxContainer/ConnectButton" to="." method="_on_connect_button_pressed"]
 [connection signal="pressed" from="UserControl/VBoxContainer/UserButton" to="UserControl" method="_on_user_button_pressed"]
-[connection signal="pressed" from="UserControl/PingButton" to="." method="_on_ping_button_pressed"]
 [connection signal="pressed" from="UserControl/StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="timeout" from="UserControl/CountdownTimer" to="UserControl" method="_on_countdown_timer_timeout"]
 [connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]
