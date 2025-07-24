@@ -56,3 +56,6 @@ func update_partner_answer_label(is_considering: bool, answer: String, partner_n
 	var status = "is considering" if is_considering else "answered"
 	$PartnerAnswerLabel.text = "%s %s: %s" % [partner_name, status, answer]
 	$PartnerAnswerLabel.show()
+	
+func hide_leaderboard() -> void:
+	$ShowPlayersButton.hide()

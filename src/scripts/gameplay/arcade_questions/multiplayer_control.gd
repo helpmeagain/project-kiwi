@@ -3,12 +3,10 @@ extends Control
 
 signal partner_found()
 signal data_received(data)
+signal leaderboard_updated(records)
 
 var is_receiver_connected := false
-
-#func _ready() -> void:
-	#if is_multiplayer_session():
-		#NakamaManager.socket.received_match_state.connect(recive_data_from_nakama)
+const LEADERBOARD_ID = "global_leaderboard"
 
 func is_multiplayer_session() -> bool:
 	return NakamaManager.is_server_connected()
@@ -79,3 +77,23 @@ func get_match_id() -> String:
 	if NakamaManager.current_match:
 		return NakamaManager.current_match.match_id
 	return ""
+
+func update_leaderboard(score: int) -> void:
+	if is_multiplayer_session():
+		var record : NakamaAPI.ApiLeaderboardRecord = await NakamaManager.client.write_leaderboard_record_async(NakamaManager.session, LEADERBOARD_ID, score)
+		if record.is_exception():
+			print("An error occurred: %s" % record)
+			return
+		print("New record username %s and score %s" % [record.username, record.score])
+	else:
+		print("Not multiplayer. Not updating leadeboard")
+
+func get_leaderboard_nakama() -> void:
+	if is_multiplayer_session():
+		var result : NakamaAPI.ApiLeaderboardRecordList = await NakamaManager.client.list_leaderboard_records_async(NakamaManager.session, LEADERBOARD_ID)
+		if result.is_exception():
+			print("An error occurred: %s" % result)
+			return
+		emit_signal("leaderboard_updated", result.records)
+	else:
+		print("Not multiplayer. Not getting leadeboard")

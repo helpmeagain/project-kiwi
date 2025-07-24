@@ -7,6 +7,7 @@ extends Control
 @onready var exercises_control: ExercisesControl = $ExercisesControl
 @onready var multiplayer_control: MultiplayerControl = $MultiplayerControl
 @onready var exercises_timer: Timer = $ExerciseTimer
+@onready var player_score = $"Player-score"
 
 @export var score: int = 0
 @export var question_count: int = 0
@@ -44,6 +45,11 @@ func _ready() -> void:
 	ui_elements.start_multiplayer_exercise.connect(load_next_exercise)
 	multiplayer_control.partner_found.connect(_on_partner_found)
 	multiplayer_control.data_received.connect(_on_data_received)
+	player_score.set_multiplayer_control(multiplayer_control)
+	if (!multiplayer_control.is_multiplayer_session()):
+		ui_elements.hide_leaderboard()
+	else:
+		multiplayer_control.update_leaderboard(score)
 
 func _process(_delta) -> void:
 	ui_elements.update_timer_label(exercises_timer.time_left)
@@ -72,8 +78,7 @@ func _on_answer_correct(points: int = 1) -> void:
 	PopupManager.instance().ok_pressed.connect(_on_popup_button_pressed)
 	PopupManager.show_congratulations_answer(exercises_control.get_correct_answer())
 	ui_elements.update_all_ui_components(score, question_count, double_points_active, extra_life_active)
-#	TODO leaderboard?
-	#multiplayer_manager.update_score(score)
+	multiplayer_control.update_leaderboard(score)
 
 func _on_answer_wrong() -> void:
 	if timeout_occurred: return
@@ -85,6 +90,7 @@ func _on_answer_wrong() -> void:
 	PopupManager.instance().ok_pressed.connect(_on_popup_button_pressed)
 	PopupManager.show_wrong_answer(exercises_control.get_correct_answer())
 	ui_elements.update_all_ui_components(score, question_count, double_points_active, extra_life_active)
+	multiplayer_control.update_leaderboard(score)
 
 func _on_timer_timeout() -> void:
 	var MULTIPLAYER_QUESTION_TIME = question_count % 2 == 1 && multiplayer_control.is_multiplayer_session()
@@ -96,6 +102,7 @@ func _on_timer_timeout() -> void:
 		return
 	
 	timeout_occurred = true
+	multiplayer_control.update_leaderboard(score)
 	if exercises_control.current_exercise != null:
 		PopupManager.instance().ok_pressed.connect(_on_popup_button_pressed)
 		PopupManager.show_timeout_message(exercises_control.get_correct_answer())
@@ -247,9 +254,9 @@ func _on_popup_button_pressed() -> void:
 	multiplayer_control.leave_match()
 
 func _on_show_players_button_pressed() -> void:
-#	TODO Arrumar exibição do leaderboard
-	#ui_manager.toggle_player_score_display()
-	pass
+	player_score.visible = !player_score.visible
+	if player_score.visible:
+		multiplayer_control.get_leaderboard_nakama()
 
 func _on_final_button_pressed() -> void:
 	get_tree().change_scene_to_file("res://src/scenes/menus/main-menu.tscn")

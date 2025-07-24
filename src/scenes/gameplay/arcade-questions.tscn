@@ -150,18 +150,6 @@ theme_override_fonts/font = ExtResource("7_2p6vt")
 theme_override_font_sizes/font_size = 40
 text = "0/0"
 
-[node name="ShowPlayersButton" type="Button" parent="UIElements"]
-visible = false
-texture_filter = 3
-layout_mode = 0
-offset_left = 20.0
-offset_top = 24.0
-offset_right = 145.0
-offset_bottom = 140.563
-scale = Vector2(0.269031, 0.269031)
-theme = ExtResource("10_bbwy0")
-icon = ExtResource("11_ndjbd")
-
 [node name="PowerUpContainer" type="HBoxContainer" parent="UIElements"]
 layout_mode = 1
 anchors_preset = -1
@@ -253,6 +241,17 @@ offset_right = 92.0
 offset_bottom = 23.456
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="ShowPlayersButton" type="Button" parent="UIElements"]
+texture_filter = 3
+layout_mode = 0
+offset_left = 20.0
+offset_top = 24.0
+offset_right = 145.0
+offset_bottom = 140.563
+scale = Vector2(0.269031, 0.269031)
+theme = ExtResource("10_bbwy0")
+icon = ExtResource("11_ndjbd")
 
 [node name="MultiplayerControl" type="Control" parent="."]
 visible = false
@@ -405,8 +404,8 @@ theme = ExtResource("9_dct4x")
 text = "Exit"
 
 [connection signal="tree_exited" from="." to="." method="_on_tree_exited"]
-[connection signal="pressed" from="UIElements/ShowPlayersButton" to="." method="_on_show_players_button_pressed"]
 [connection signal="timeout" from="UIElements/MatchmakingControl/MatchmakingTimer" to="UIElements" method="_on_matchmaking_timer_timeout"]
+[connection signal="pressed" from="UIElements/ShowPlayersButton" to="." method="_on_show_players_button_pressed"]
 [connection signal="pressed" from="PowerUpSelection/HBoxContainer/PowerUpButton1" to="." method="_on_powerup_double"]
 [connection signal="pressed" from="PowerUpSelection/HBoxContainer/PowerUpButton2" to="." method="_on_powerup_life"]
 [connection signal="timeout" from="ExerciseTimer" to="." method="_on_timer_timeout"]

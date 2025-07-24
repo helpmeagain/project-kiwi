@@ -1,19 +1,19 @@
 extends Control
 
 @onready var player_list = $Panel/PlayerInformationTable/ScrollContainer/PlayerListGridContainer
+var multiplayer_control: MultiplayerControl
 
-func _ready():
-	MultiplayerPlayerManager.scores_updated.connect(update_player_list)
-	update_player_list()
+func set_multiplayer_control(control: MultiplayerControl) -> void:
+	multiplayer_control = control
+	multiplayer_control.leaderboard_updated.connect(update_leaderboard)
 
-func update_player_list():
+func update_leaderboard(records: Array) -> void:
 	for child in player_list.get_children():
 		child.queue_free()
 	
-	var players_array = MultiplayerPlayerManager.players.values()
-	players_array.sort_custom(func(a, b): return a["score"] > b["score"])
+	records.sort_custom(func(a, b): return a.score > b.score)
 	
-	for player in players_array:
+	for record in records:
 		var name_label = Label.new()
 		name_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 		name_label.size_flags_horizontal = Control.SIZE_EXPAND_FILL
@@ -23,10 +23,11 @@ func update_player_list():
 		
 		var font = name_label.get_theme_font("font")
 		var max_width = name_label.custom_minimum_size.x
-		name_label.text = truncate_text(player["name"], font, max_width)
+		name_label.text = truncate_text(record.username, font, max_width)
 		
 		var score_label = Label.new()
-		score_label.text = str(player["score"]) + " pontos"
+		var score_value = int(record.score)
+		score_label.text = (str(score_value) if score_value != 0 else "0") + " pontos"
 		score_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 		score_label.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 		score_label.custom_minimum_size.x = 100
