@@ -6,7 +6,10 @@ func _on_singleplayer_button_pressed() -> void:
 	get_tree().change_scene_to_file("res://src/scenes/menus/singleplayer-menu.tscn")
 
 func _on_multiplayer_button_pressed() -> void:
-	get_tree().change_scene_to_file("res://src/scenes/menus/multiplayer-menu.tscn")
+	get_tree().change_scene_to_file("res://src/scenes/menus/nakama-menu.tscn")
+	
+#func _on_multiplayer_button_pressed() -> void:
+	#get_tree().change_scene_to_file("res://src/scenes/menus/multiplayer-menu.tscn")
 
 func _on_about_button_pressed() -> void:
 	get_tree().change_scene_to_file("res://src/scenes/menus/about-menu.tscn")

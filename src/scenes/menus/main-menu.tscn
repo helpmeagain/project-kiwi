@@ -75,6 +75,7 @@ mouse_default_cursor_shape = 2
 text = "About"
 
 [node name="NakamaButton" type="Button" parent="LabelAndButtonsContainer/ButtonsContainer"]
+visible = false
 layout_mode = 2
 mouse_default_cursor_shape = 2
 text = "Nakama"
