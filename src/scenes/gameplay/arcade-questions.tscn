@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://di7wgqh7vibe7"]
+[gd_scene load_steps=24 format=3 uid="uid://di7wgqh7vibe7"]
 
 [ext_resource type="Script" uid="uid://ukpnntfs15i0" path="res://src/scripts/gameplay/arcade_questions/main.gd" id="1_cdixn"]
 [ext_resource type="Script" uid="uid://b28mwb5urarq3" path="res://src/scripts/gameplay/arcade_questions/background.gd" id="2_1b062"]
@@ -16,6 +16,7 @@
 [ext_resource type="Theme" uid="uid://drabaa7jfibga" path="res://src/assets/themes/small_button.tres" id="10_bbwy0"]
 [ext_resource type="Texture2D" uid="uid://cejxfhqi5mryk" path="res://src/assets/sprites/People.png" id="11_ndjbd"]
 [ext_resource type="Script" uid="uid://oqcfa3seiutp" path="res://src/scripts/gameplay/arcade_questions/multiplayer_control.gd" id="14_76bfv"]
+[ext_resource type="Script" uid="uid://pnvv6wrxlrg7" path="res://src/scripts/gameplay/arcade_questions/chat_control.gd" id="16_2p6vt"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8u6t1"]
 atlas = ExtResource("6_8u6t1")
@@ -272,6 +273,57 @@ offset_top = 92.0
 offset_right = 2.0
 offset_bottom = 92.0
 
+[node name="ChatControl" type="Control" parent="."]
+visible = false
+layout_mode = 1
+anchor_left = 0.155
+anchor_top = 0.756
+anchor_right = 0.155
+anchor_bottom = 0.756
+offset_left = -160.56
+offset_top = -141.888
+offset_right = 159.44
+offset_bottom = 142.112
+grow_vertical = 2
+script = ExtResource("16_2p6vt")
+
+[node name="ColorRect" type="ColorRect" parent="ChatControl"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.388235)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ChatControl"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ChatTextLabel" type="RichTextLabel" parent="ChatControl/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+bbcode_enabled = true
+scroll_following = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ChatControl/VBoxContainer"]
+layout_mode = 2
+
+[node name="PlayerLabel" type="Label" parent="ChatControl/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0.670588, 0.780392, 1)
+text = "[Player]"
+
+[node name="LineEdit" type="LineEdit" parent="ChatControl/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "Press enter to send..."
+caret_blink = true
+
 [node name="PowerUpSelection" type="Control" parent="."]
 visible = false
 layout_mode = 1
@@ -406,6 +458,8 @@ text = "Exit"
 [connection signal="tree_exited" from="." to="." method="_on_tree_exited"]
 [connection signal="timeout" from="UIElements/MatchmakingControl/MatchmakingTimer" to="UIElements" method="_on_matchmaking_timer_timeout"]
 [connection signal="pressed" from="UIElements/ShowPlayersButton" to="." method="_on_show_players_button_pressed"]
+[connection signal="focus_exited" from="ChatControl/VBoxContainer/HBoxContainer/LineEdit" to="ChatControl" method="_on_line_edit_focus_exited"]
+[connection signal="text_submitted" from="ChatControl/VBoxContainer/HBoxContainer/LineEdit" to="ChatControl" method="_on_line_edit_text_submitted"]
 [connection signal="pressed" from="PowerUpSelection/HBoxContainer/PowerUpButton1" to="." method="_on_powerup_double"]
 [connection signal="pressed" from="PowerUpSelection/HBoxContainer/PowerUpButton2" to="." method="_on_powerup_life"]
 [connection signal="timeout" from="ExerciseTimer" to="." method="_on_timer_timeout"]

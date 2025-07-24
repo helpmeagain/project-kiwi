@@ -49,13 +49,7 @@ func _on_matchmaking_timer_timeout() -> void:
 	else:
 		$MatchmakingControl/MatchmakingTimer.stop()
 		$MatchmakingControl.hide()
-		$PartnerAnswerLabel.show()
 		emit_signal("start_multiplayer_exercise")
-
-func update_partner_answer_label(is_considering: bool, answer: String, partner_name: String) -> void:
-	var status = "is considering" if is_considering else "answered"
-	$PartnerAnswerLabel.text = "%s %s: %s" % [partner_name, status, answer]
-	$PartnerAnswerLabel.show()
 	
 func hide_leaderboard() -> void:
 	$ShowPlayersButton.hide()

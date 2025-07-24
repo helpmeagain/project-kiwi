@@ -97,8 +97,8 @@ func submit_answer() -> void:
 		btn.focus_mode = Control.FOCUS_NONE
 	
 	emit_signal("send_submit_answer", player_answer)
-	$PartnerAnswerLabel.text = "Waiting for partner's answer..."
-	$PartnerAnswerLabel.show()
+	#$PartnerAnswerLabel.text = "Waiting for partner's answer..."
+	#$PartnerAnswerLabel.show()
 	check_answers()
 
 func on_partner_answer_received(answer: String) -> void:

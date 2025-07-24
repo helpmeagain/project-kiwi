@@ -8,6 +8,7 @@ extends Control
 @onready var multiplayer_control: MultiplayerControl = $MultiplayerControl
 @onready var exercises_timer: Timer = $ExerciseTimer
 @onready var player_score = $"Player-score"
+@onready var chat_control: ChatControl = $ChatControl
 
 @export var score: int = 0
 @export var question_count: int = 0
@@ -27,15 +28,12 @@ const DATA_TYPE = {
 	USERNAME = "username",
 	CONSIDER_ANSWER = "consider_answer",
 	SUBMIT_ANSWER = "submit_answer",
+	CHAT_MESSAGE = "chat_message",
 	SYSTEM_MSG = "system_msg"
 }
 
 # TODO tirar isso e achar uma maneira decente de fazer
 var POWERUP_CHOOSED = false
-
-# TODO lidar com timers diferentes para exercícios diferentes
-# TODO limpar resposta do parter após terminar match
-
 
 func _ready() -> void:
 	load_next_exercise()
@@ -46,6 +44,7 @@ func _ready() -> void:
 	multiplayer_control.partner_found.connect(_on_partner_found)
 	multiplayer_control.data_received.connect(_on_data_received)
 	player_score.set_multiplayer_control(multiplayer_control)
+	chat_control.connect("send_message", _on_send_chat_message)
 	if (!multiplayer_control.is_multiplayer_session()):
 		ui_elements.hide_leaderboard()
 	else:
@@ -79,6 +78,7 @@ func _on_answer_correct(points: int = 1) -> void:
 	PopupManager.show_congratulations_answer(exercises_control.get_correct_answer())
 	ui_elements.update_all_ui_components(score, question_count, double_points_active, extra_life_active)
 	multiplayer_control.update_leaderboard(score)
+	chat_control.clear_chat()
 
 func _on_answer_wrong() -> void:
 	if timeout_occurred: return
@@ -91,6 +91,7 @@ func _on_answer_wrong() -> void:
 	PopupManager.show_wrong_answer(exercises_control.get_correct_answer())
 	ui_elements.update_all_ui_components(score, question_count, double_points_active, extra_life_active)
 	multiplayer_control.update_leaderboard(score)
+	chat_control.clear_chat()
 
 func _on_timer_timeout() -> void:
 	var MULTIPLAYER_QUESTION_TIME = question_count % 2 == 1 && multiplayer_control.is_multiplayer_session()
@@ -137,6 +138,7 @@ func load_next_exercise() -> void:
 	if MULTIPLAYER_QUESTION_TIME:
 		var match_id = multiplayer_control.get_match_id()
 		exercises_control.show()
+		chat_control.show()
 		exercises_control.load_multiplayer_question(match_id)
 		exercises_control.current_exercise.connect("send_considering_answer", _on_considering_answer_multiplayer)
 		exercises_control.current_exercise.connect("send_submit_answer", _on_submit_answer_multiplayer)
@@ -169,13 +171,19 @@ func _on_partner_found() -> void:
 	# Cria um timer para que não envie o nome imediatamente, pq é possível que não tenha atualizado o server ainda e o outro player não esteja considerado "dentro da sala"
 	await get_tree().create_timer(1.0).timeout
 	var username = await NakamaManager.get_my_username()
+	chat_control.update_player_username(username)
 	_send_data(DATA_TYPE.USERNAME, username)
 
 func _on_considering_answer_multiplayer(answer: String) -> void:
 	_send_data(DATA_TYPE.CONSIDER_ANSWER, answer)
+	chat_control.add_message("SISTEMA", await NakamaManager.get_my_username() + " está considerando " + answer, 2)
 	
 func _on_submit_answer_multiplayer(answer: String) -> void:
 	_send_data(DATA_TYPE.SUBMIT_ANSWER, answer)
+	chat_control.add_message("SISTEMA", await NakamaManager.get_my_username() + " respondeu " + answer, 2)
+	
+func _on_send_chat_message(message: String) -> void:
+	_send_data(DATA_TYPE.CHAT_MESSAGE, message)
 
 func _on_data_received(data) -> void:
 	var data_type = data["type"]
@@ -186,13 +194,16 @@ func _on_data_received(data) -> void:
 			print("[NAKAMA DEBUG] RECEBEU USERNAME: " + partner_username)
 			ui_elements.update_partner_found(partner_username)
 		DATA_TYPE.CONSIDER_ANSWER:
-			ui_elements.update_partner_answer_label(true, data_value, partner_username)
+			chat_control.add_message("SISTEMA", partner_username + " está considerando " + data_value, 2)
 		DATA_TYPE.SUBMIT_ANSWER:
 			partner_answer = data_value
-			ui_elements.update_partner_answer_label(false, partner_answer, partner_username)
 			exercises_control.current_exercise.on_partner_answer_received(partner_answer)
+			chat_control.add_message("SISTEMA", partner_username + " respondeu " + partner_answer, 2)
 		DATA_TYPE.SYSTEM_MSG:
 			pass
+		DATA_TYPE.CHAT_MESSAGE:
+			var partner_message = data_value
+			chat_control.add_message(partner_username, partner_message, 1)
 		_:
 			push_error("Tipo de dado desconhecido: " + str(data["type"]))
 	
