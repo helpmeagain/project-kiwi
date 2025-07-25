@@ -5,7 +5,7 @@ signal answer_partial_correct(player_answer, partner_answer, is_player_correct, 
 signal answer_wrong
 signal send_considering_answer(answer)
 signal send_submit_answer(answer)
-signal check_extra_life
+signal check_extra_life(answer)
 
 var current_question: Dictionary
 var player_answer: String = ""
@@ -51,6 +51,7 @@ func _on_button_pressed(button: Button) -> void:
 	selected_button = button
 	player_answer = button.text
 	$SubmitButton.disabled = false
+	$SubmitButton.mouse_default_cursor_shape = Control.CURSOR_POINTING_HAND
 	emit_signal("send_considering_answer", player_answer)
 
 func _on_submit_button_pressed() -> void:
@@ -58,23 +59,12 @@ func _on_submit_button_pressed() -> void:
 		return
 	
 	$SubmitButton.disabled = true
+	$SubmitButton.mouse_default_cursor_shape = Control.CURSOR_ARROW
 	var correct_answer = current_question.correct_answers[0]
 	var is_correct = (player_answer == correct_answer)
 	if !is_correct:
-		emit_signal("check_extra_life")
+		emit_signal("check_extra_life", player_answer)
 		return
-#	TODO CORRIGIR SE TIVER UMA SEGUNDA VIDA
-	#if !is_correct && parent.power_up_manager.use_extra_life():
-		#parent.ui_manager.update_powerup_icons()
-		#answered = false
-		#player_answer = ""
-		#$SubmitButton.disabled = true
-		#selected_button.disabled = true
-		#selected_button.mouse_filter = Control.MOUSE_FILTER_STOP
-		#selected_button.set_default_cursor_shape(Control.CURSOR_ARROW)
-		#selected_button.set_focus_mode(Control.FOCUS_NONE)
-		#selected_button.add_theme_color_override("font_disabled_color", Color.DARK_RED)
-		#return
 	submit_answer()
 
 func use_extra_life() -> void:
@@ -82,20 +72,30 @@ func use_extra_life() -> void:
 		return
 	answered = false
 	player_answer = ""
-	$SubmitButton.disabled = true
-	print(selected_button)
-	selected_button.disabled = true
-	selected_button.mouse_filter = Control.MOUSE_FILTER_STOP
-	selected_button.set_default_cursor_shape(Control.CURSOR_ARROW)
-	selected_button.set_focus_mode(Control.FOCUS_NONE)
-	selected_button.add_theme_color_override("font_disabled_color", Color.DARK_RED)
+	disable_button_by_text(selected_button.text)
 	return
+
+func disable_button_by_text(answer: String) -> void:
+	for button in buttons:
+		if button.text == answer:
+			button.disabled = true
+			button.mouse_filter = Control.MOUSE_FILTER_STOP
+			button.set_default_cursor_shape(Control.CURSOR_ARROW)
+			button.set_focus_mode(Control.FOCUS_NONE)
+			button.add_theme_color_override("font_disabled_color", Color.DARK_RED)
+			if (button == selected_button):
+				selected_button = null
+				$SubmitButton.disabled = true
+				$SubmitButton.mouse_default_cursor_shape = Control.CURSOR_ARROW
+			break
 
 func submit_answer() -> void:
 	answered = true
 	for btn in buttons:
 		btn.disabled = true
 		btn.focus_mode = Control.FOCUS_NONE
+		btn.mouse_default_cursor_shape = Control.CURSOR_ARROW
+		
 	
 	emit_signal("send_submit_answer", player_answer)
 	#$PartnerAnswerLabel.text = "Waiting for partner's answer..."

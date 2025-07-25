@@ -10,7 +10,8 @@ signal send_message(message)
 var user_types = [
 	{'name': 'player', 'color': '#00abc7'},
 	{'name': 'partner', 'color': '#ffffff'},
-	{'name': 'system', 'color': '#ffdd8b'}
+	{'name': 'system', 'color': '#ffdd8b'},
+	{'name': 'system', 'color': '#ff0000'},
 ]
 
 var user_type_index = 0

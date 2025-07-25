@@ -120,7 +120,6 @@ offset_left = -42.216
 offset_top = -19.56
 offset_right = 42.784
 offset_bottom = 19.44
-mouse_default_cursor_shape = 2
 theme = ExtResource("2_1id0d")
 disabled = true
 text = "Submit"

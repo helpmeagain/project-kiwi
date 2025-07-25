@@ -117,8 +117,10 @@ func _on_timer_timeout() -> void:
 	if exercises_control.current_exercise != null:
 		PopupManager.instance().ok_pressed.connect(_on_popup_button_pressed)
 		PopupManager.show_timeout_message(exercises_control.get_correct_answer())
+		chat_control.clear_chat()
 	else:
 		next_step_after_answer()
+		chat_control.clear_chat()
 
 func next_step_after_answer() -> void:
 	# TODO verificar o fluxo melhor, em relação a power ups. Fazer com que o powerup volte aqui, mas sem ativar o powerup time
@@ -212,6 +214,9 @@ func _on_data_received(data) -> void:
 		multiplayer_control.DATA_TYPE.CHAT_MESSAGE:
 			var partner_message = data_value
 			chat_control.add_message(partner_username, partner_message, 1)
+		multiplayer_control.DATA_TYPE.WRONG_ANSWER:
+			chat_control.add_message("SISTEMA", partner_username + " eliminou a alternativa '" + data_value + "' usando uma chance extra", 3)
+			exercises_control.current_exercise.disable_button_by_text(data_value)
 		_:
 			push_error("Tipo de dado desconhecido: " + str(data["type"]))
 
@@ -232,12 +237,15 @@ func _activate_power_up(power_type: String) -> void:
 	POWERUP_CHOOSED = true
 	next_step_after_answer()
 
-func _try_use_extra_life() -> bool:
+func _try_use_extra_life(answer: String = "") -> bool:
 	if extra_life_active:
-		if exercises_control.current_exercise != null and exercises_control.current_exercise.has_method("use_extra_life"):
-			exercises_control.current_exercise.use_extra_life()
 		extra_life_active = false
 		ui_elements.update_powerup_icons(double_points_active, extra_life_active)
+		if exercises_control.current_exercise != null and exercises_control.current_exercise.has_method("use_extra_life"):
+			exercises_control.current_exercise.use_extra_life()
+			multiplayer_control.send_data(multiplayer_control.DATA_TYPE.WRONG_ANSWER, answer)
+			chat_control.add_message("SISTEMA", "Você eliminou a alternativa '" + answer + "' usando uma chance extra", 3)
+			return true
 		exercises_timer.start()
 		return true
 	if exercises_control.current_exercise != null and exercises_control.current_exercise.has_method("submit_answer"):

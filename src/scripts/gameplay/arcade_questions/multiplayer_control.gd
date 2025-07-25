@@ -12,6 +12,7 @@ const DATA_TYPE = {
 	CONSIDER_ANSWER = "consider_answer",
 	SUBMIT_ANSWER = "submit_answer",
 	CHAT_MESSAGE = "chat_message",
+	WRONG_ANSWER = "wrong_answer",
 	SYSTEM_MSG = "system_msg"
 }
 
