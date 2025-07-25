@@ -32,9 +32,27 @@ func _setup_popup(title: String, subtitle: String, shadow_color: Color = Color("
 static func show_wrong_answer(correct_answer: String) -> void:
 	instance()._setup_popup("Wrong answer!", "Correct answer was: \n" + correct_answer, Color("RED"))
 	
-static func show_congratulations_answer(correct_answer: String) -> void:
-	instance()._setup_popup("Correct answer!", "Correct answer was: \n" + correct_answer, Color("GREEN"))
+static func show_congratulations_answer(correct_answer: String, points: int) -> void:
+	instance()._setup_popup(
+		"Correct answer! +" + str(points), 
+		"Correct answer was: \n" + correct_answer, 
+		Color("GREEN")
+	)
 	
+static func show_partial_answer(player_answer: String, partner_answer: String, is_player_correct: bool, points: int) -> void:
+	if is_player_correct:
+		instance()._setup_popup(
+			"You got it! +" + str(points), 
+			"You answered correctly: " + player_answer + ". \nPartner answered wrongly: " + partner_answer + "\nNo bonus point...", 
+			Color("GREEN")
+		)
+	else:
+		instance()._setup_popup(
+			"Wrong answer!", 
+			"Partner answered correctly: " + partner_answer + ". \nYou answered wrongly: " + player_answer, 
+			Color("CORAL")
+		)
+		
 static func show_timeout_message(correct_answer: String) -> void:
 	instance()._setup_popup("Time's Up!", "Correct answer was: \n" + correct_answer, Color("ORANGE"))
 	

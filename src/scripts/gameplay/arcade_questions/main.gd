@@ -3,11 +3,10 @@ extends Control
 @onready var ui_elements: UIControl = $UIElements
 @onready var power_up: Control = $PowerUpSelection
 @onready var background: BackgroundImage = $BackgroundImage
-@onready var game_over: Control = $GameOverScreen
 @onready var exercises_control: ExercisesControl = $ExercisesControl
 @onready var multiplayer_control: MultiplayerControl = $MultiplayerControl
 @onready var exercises_timer: Timer = $ExerciseTimer
-@onready var player_score = $"Player-score"
+@onready var player_score = $PlayerScore
 @onready var chat_control: ChatControl = $ChatControl
 
 @export var score: int = 0
@@ -23,14 +22,6 @@ var double_points_active: bool = false
 var extra_life_active: bool = false
 var partner_username: String
 var partner_answer: String
-
-const DATA_TYPE = {
-	USERNAME = "username",
-	CONSIDER_ANSWER = "consider_answer",
-	SUBMIT_ANSWER = "submit_answer",
-	CHAT_MESSAGE = "chat_message",
-	SYSTEM_MSG = "system_msg"
-}
 
 # TODO tirar isso e achar uma maneira decente de fazer
 var POWERUP_CHOOSED = false
@@ -67,15 +58,37 @@ func try_restore_active_session() -> bool:
 
 func _on_answer_correct(points: int = 1) -> void:
 	if timeout_occurred: return
-	
 	exercises_timer.stop()
+	
+	var points_earned = points
 	if double_points_active:
-		score += points * 2
+		points_earned = points * 2
+		score += points_earned
 		double_points_active = false
 	else:
 		score += points
+		
 	PopupManager.instance().ok_pressed.connect(_on_popup_button_pressed)
-	PopupManager.show_congratulations_answer(exercises_control.get_correct_answer())
+	PopupManager.show_congratulations_answer(exercises_control.get_correct_answer(), points_earned)
+	ui_elements.update_all_ui_components(score, question_count, double_points_active, extra_life_active)
+	multiplayer_control.update_leaderboard(score)
+	chat_control.clear_chat()
+
+func _on_multiplayer_partial_correct(player_answer: String, partner_answer_recived: String, is_player_correct: bool, points: int = 1) -> void:
+	if timeout_occurred: return
+	exercises_timer.stop()
+
+	var points_earned = points
+	if is_player_correct:
+		if double_points_active:
+			points_earned = points * 2
+			score += points_earned
+			double_points_active = false
+		else:
+			score += points
+		
+	PopupManager.instance().ok_pressed.connect(_on_popup_button_pressed)
+	PopupManager.show_partial_answer(player_answer, partner_answer_recived, is_player_correct, points_earned)
 	ui_elements.update_all_ui_components(score, question_count, double_points_active, extra_life_active)
 	multiplayer_control.update_leaderboard(score)
 	chat_control.clear_chat()
@@ -94,9 +107,6 @@ func _on_answer_wrong() -> void:
 	chat_control.clear_chat()
 
 func _on_timer_timeout() -> void:
-	var MULTIPLAYER_QUESTION_TIME = question_count % 2 == 1 && multiplayer_control.is_multiplayer_session()
-	if (MULTIPLAYER_QUESTION_TIME):
-		multiplayer_control.leave_match()
 	exercises_timer.stop()
 	if extra_life_active and !exercises_control.current_exercise.has_method("use_extra_life"):
 		_try_use_extra_life()
@@ -143,6 +153,7 @@ func load_next_exercise() -> void:
 		exercises_control.current_exercise.connect("send_considering_answer", _on_considering_answer_multiplayer)
 		exercises_control.current_exercise.connect("send_submit_answer", _on_submit_answer_multiplayer)
 		exercises_control.current_exercise.connect("check_extra_life", _try_use_extra_life)
+		exercises_control.current_exercise.connect("answer_partial_correct", _on_multiplayer_partial_correct)
 	else:
 		exercises_control.load_random_question()
 	exercises_control.current_exercise.connect("answer_correct", _on_answer_correct)
@@ -172,47 +183,37 @@ func _on_partner_found() -> void:
 	await get_tree().create_timer(1.0).timeout
 	var username = await NakamaManager.get_my_username()
 	chat_control.update_player_username(username)
-	_send_data(DATA_TYPE.USERNAME, username)
+	multiplayer_control.send_data(multiplayer_control.DATA_TYPE.USERNAME, username)
 
 func _on_considering_answer_multiplayer(answer: String) -> void:
-	_send_data(DATA_TYPE.CONSIDER_ANSWER, answer)
+	multiplayer_control.send_data(multiplayer_control.DATA_TYPE.CONSIDER_ANSWER, answer)
 	chat_control.add_message("SISTEMA", await NakamaManager.get_my_username() + " está considerando " + answer, 2)
 	
 func _on_submit_answer_multiplayer(answer: String) -> void:
-	_send_data(DATA_TYPE.SUBMIT_ANSWER, answer)
+	multiplayer_control.send_data(multiplayer_control.DATA_TYPE.SUBMIT_ANSWER, answer)
 	chat_control.add_message("SISTEMA", await NakamaManager.get_my_username() + " respondeu " + answer, 2)
 	
 func _on_send_chat_message(message: String) -> void:
-	_send_data(DATA_TYPE.CHAT_MESSAGE, message)
+	multiplayer_control.send_data(multiplayer_control.DATA_TYPE.CHAT_MESSAGE, message)
 
 func _on_data_received(data) -> void:
 	var data_type = data["type"]
 	var data_value = data["value"]
 	match data_type:
-		DATA_TYPE.USERNAME:
+		multiplayer_control.DATA_TYPE.USERNAME:
 			partner_username = data_value
-			print("[NAKAMA DEBUG] RECEBEU USERNAME: " + partner_username)
 			ui_elements.update_partner_found(partner_username)
-		DATA_TYPE.CONSIDER_ANSWER:
+		multiplayer_control.DATA_TYPE.CONSIDER_ANSWER:
 			chat_control.add_message("SISTEMA", partner_username + " está considerando " + data_value, 2)
-		DATA_TYPE.SUBMIT_ANSWER:
+		multiplayer_control.DATA_TYPE.SUBMIT_ANSWER:
 			partner_answer = data_value
 			exercises_control.current_exercise.on_partner_answer_received(partner_answer)
 			chat_control.add_message("SISTEMA", partner_username + " respondeu " + partner_answer, 2)
-		DATA_TYPE.SYSTEM_MSG:
-			pass
-		DATA_TYPE.CHAT_MESSAGE:
+		multiplayer_control.DATA_TYPE.CHAT_MESSAGE:
 			var partner_message = data_value
 			chat_control.add_message(partner_username, partner_message, 1)
 		_:
 			push_error("Tipo de dado desconhecido: " + str(data["type"]))
-	
-func _send_data(data_type: String, value) -> void:
-	var data = {
-		"type": data_type,
-		"value": value
-	}
-	multiplayer_control.send_data_through_nakama(data)
 
 func _on_powerup_double() -> void:
 	_activate_power_up("double")
@@ -249,7 +250,7 @@ func finish_game() -> void:
 	exercises_control.hide()
 #	TODO arrumar isso
 	$GameOverScreen/FinalLabel.text += str(score)
-	game_over.show()
+	$GameOverScreen.show()
 
 func _save_session() -> void:
 	SaveManager.save_session(

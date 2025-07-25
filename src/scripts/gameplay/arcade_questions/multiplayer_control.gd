@@ -7,6 +7,13 @@ signal leaderboard_updated(records)
 
 var is_receiver_connected := false
 const LEADERBOARD_ID = "global_leaderboard"
+const DATA_TYPE = {
+	USERNAME = "username",
+	CONSIDER_ANSWER = "consider_answer",
+	SUBMIT_ANSWER = "submit_answer",
+	CHAT_MESSAGE = "chat_message",
+	SYSTEM_MSG = "system_msg"
+}
 
 func is_multiplayer_session() -> bool:
 	return NakamaManager.is_server_connected()
@@ -27,10 +34,8 @@ func enter_matchmaking() -> void:
 		numeric_properties
 	)
 	
-	print(ticket)
 	if ticket.is_exception():
 		var error = ticket.get_exception().message
-		
 		PopupManager.show_error("Erro no matchmaking: " + error)
 		return
 	
@@ -46,19 +51,11 @@ func _on_matchmaker_matched(matchmaker_matched : NakamaRTAPI.MatchmakerMatched):
 		return
 	
 	NakamaManager.current_match = joinedMatch
-	print("Entrou na partida: ", NakamaManager.current_match.match_id)
 	if !is_receiver_connected:
 		NakamaManager.socket.received_match_state.connect(recive_data_from_nakama)
 		is_receiver_connected = true
 	emit_signal("partner_found")
 	NakamaManager.socket.received_matchmaker_matched.disconnect(_on_matchmaker_matched)
-	
-func send_data_through_nakama(data) -> void:
-	NakamaManager.socket.send_match_state_async(NakamaManager.current_match.match_id, 1, JSON.stringify(data))
-
-func recive_data_from_nakama(state : NakamaRTAPI.MatchData) -> void:
-	var data = JSON.parse_string(state.data)
-	emit_signal("data_received", data)
 
 func leave_match() -> void:
 	# TODO melhorar isso
@@ -97,3 +94,14 @@ func get_leaderboard_nakama() -> void:
 		emit_signal("leaderboard_updated", result.records)
 	else:
 		print("Not multiplayer. Not getting leadeboard")
+
+func send_data(data_type: String, data_value) -> void:
+	var data = {
+		"type": data_type,
+		"value": data_value
+	}
+	NakamaManager.socket.send_match_state_async(NakamaManager.current_match.match_id, 1, JSON.stringify(data))
+
+func recive_data_from_nakama(state : NakamaRTAPI.MatchData) -> void:
+	var data = JSON.parse_string(state.data)
+	emit_signal("data_received", data)

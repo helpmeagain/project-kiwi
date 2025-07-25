@@ -251,6 +251,7 @@ offset_top = 24.0
 offset_right = 145.0
 offset_bottom = 140.563
 scale = Vector2(0.269031, 0.269031)
+mouse_default_cursor_shape = 2
 theme = ExtResource("10_bbwy0")
 icon = ExtResource("11_ndjbd")
 
@@ -264,14 +265,6 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("14_76bfv")
-
-[node name="Player-score" parent="." instance=ExtResource("8_b67qj")]
-visible = false
-layout_mode = 1
-offset_left = 2.0
-offset_top = 92.0
-offset_right = 2.0
-offset_bottom = 92.0
 
 [node name="ChatControl" type="Control" parent="."]
 visible = false
@@ -323,6 +316,14 @@ layout_mode = 2
 size_flags_horizontal = 3
 placeholder_text = "Press enter to send..."
 caret_blink = true
+
+[node name="PlayerScore" parent="." instance=ExtResource("8_b67qj")]
+visible = false
+layout_mode = 1
+offset_left = 2.0
+offset_top = 92.0
+offset_right = 2.0
+offset_bottom = 92.0
 
 [node name="PowerUpSelection" type="Control" parent="."]
 visible = false

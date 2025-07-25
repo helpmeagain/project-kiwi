@@ -1,6 +1,7 @@
 extends Control
 
 signal answer_correct
+signal answer_partial_correct(player_answer, partner_answer, is_player_correct, points)
 signal answer_wrong
 signal send_considering_answer(answer)
 signal send_submit_answer(answer)
@@ -113,26 +114,14 @@ func check_answers() -> void:
 	var correct_answer = current_question.correct_answers[0]
 	var player_correct = player_answer == correct_answer
 	var partner_correct = partner_answer == correct_answer
-	var consensus = player_answer == partner_answer
 	
-	$ResultLabel.text = "Your answer: " + player_answer + (" ✓" if player_correct else " ✗")
-	$ResultLabel.text += "\nPartner's answer: " + partner_answer + (" ✓" if partner_correct else " ✗")
-	$ResultLabel.text += "\n\n"
-	
-	if player_correct && partner_correct && consensus:
-		$ResultLabel.text += "Perfect consensus! +2 points"
+	if player_correct && partner_correct:
 		emit_signal("answer_correct", 2)
-	elif consensus && player_correct:
-		$ResultLabel.text += "Agreed on correct answer! +1 point"
-		emit_signal("answer_correct", 1)
-	elif consensus:
-		$ResultLabel.text += "Agreed but wrong answer!"
-		emit_signal("answer_wrong")
+	elif player_correct || partner_correct:
+		emit_signal("answer_partial_correct", player_answer, partner_answer, player_correct, 1)
 	else:
-		$ResultLabel.text += "Disagreement! No points"
 		emit_signal("answer_wrong")
 	
-	$ResultLabel.show()
 
 func _on_button_1_pressed() -> void: _on_button_pressed(buttons[0])
 func _on_button_2_pressed() -> void: _on_button_pressed(buttons[1])
