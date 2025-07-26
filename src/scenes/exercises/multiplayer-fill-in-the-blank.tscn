@@ -6,6 +6,7 @@
 [ext_resource type="Theme" uid="uid://crg87lp8cixuh" path="res://src/assets/themes/button_clicked.tres" id="3_h5crs"]
 
 [node name="MultiplayerFillInTheBlank" type="Control"]
+texture_filter = 3
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0

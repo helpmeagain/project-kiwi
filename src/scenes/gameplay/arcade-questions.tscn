@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://di7wgqh7vibe7"]
+[gd_scene load_steps=23 format=3 uid="uid://di7wgqh7vibe7"]
 
 [ext_resource type="Script" uid="uid://ukpnntfs15i0" path="res://src/scripts/gameplay/arcade_questions/main.gd" id="1_cdixn"]
 [ext_resource type="Script" uid="uid://b28mwb5urarq3" path="res://src/scripts/gameplay/arcade_questions/background.gd" id="2_1b062"]
@@ -10,7 +10,6 @@
 [ext_resource type="Texture2D" uid="uid://cbtrgy4ve28cl" path="res://src/assets/sprites/Up-Arrows.png" id="5_8hd76"]
 [ext_resource type="Texture2D" uid="uid://mmnw8vwr7dno" path="res://src/assets/sprites/Loading.png" id="6_8u6t1"]
 [ext_resource type="Texture2D" uid="uid://x42n32rf4xqy" path="res://src/assets/sprites/Heart.png" id="6_76bfv"]
-[ext_resource type="FontFile" uid="uid://c0w25r8vykatq" path="res://src/assets/fonts/Abaddon Bold.ttf" id="7_2p6vt"]
 [ext_resource type="PackedScene" uid="uid://du6byd12byrk3" path="res://src/scenes/multiplayer/player-score.tscn" id="8_b67qj"]
 [ext_resource type="Theme" uid="uid://ch3x2byuiyaxy" path="res://src/assets/themes/menu.tres" id="9_dct4x"]
 [ext_resource type="Theme" uid="uid://drabaa7jfibga" path="res://src/assets/themes/small_button.tres" id="10_bbwy0"]
@@ -104,18 +103,20 @@ mouse_filter = 2
 script = ExtResource("3_hjejh")
 
 [node name="ScoreLabel" type="Label" parent="UIElements"]
+texture_filter = 3
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.5
-anchor_top = 0.066
-anchor_right = 0.5
-anchor_bottom = 0.066
-offset_left = -126.0
-offset_top = -30.768
-offset_right = 100.0
-offset_bottom = 38.232
+anchor_left = 0.505
+anchor_top = 0.074
+anchor_right = 0.505
+anchor_bottom = 0.074
+offset_left = -125.76
+offset_top = -29.952
+offset_right = -62.76
+offset_bottom = -15.952
+scale = Vector2(4, 4)
 theme_override_fonts/font = ExtResource("3_8u6t1")
-theme_override_font_sizes/font_size = 50
+theme_override_font_sizes/font_size = 14
 text = "Score = 0"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -123,32 +124,34 @@ vertical_alignment = 1
 [node name="TimerLabel" type="Label" parent="UIElements"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.203
-anchor_top = 0.073
-anchor_right = 0.203
-anchor_bottom = 0.073
-offset_left = -23.856
-offset_top = -28.304
-offset_right = 23.144
-offset_bottom = 28.696
+anchor_left = 0.21
+anchor_top = 0.077
+anchor_right = 0.21
+anchor_bottom = 0.077
+offset_left = -31.92
+offset_top = -35.896
+offset_right = -15.92
+offset_bottom = -17.896
+scale = Vector2(4, 4)
 theme_override_fonts/font = ExtResource("4_hjejh")
-theme_override_font_sizes/font_size = 50
+theme_override_font_sizes/font_size = 16
 text = "0s"
 
 [node name="QuestionCountLabel" type="Label" parent="UIElements"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.936
-anchor_top = 0.025
-anchor_right = 0.989
-anchor_bottom = 0.094
-offset_left = -0.272095
-offset_top = -0.200001
-offset_right = -0.328003
-offset_bottom = 0.0879974
+anchor_left = 0.907
+anchor_top = 0.083
+anchor_right = 0.907
+anchor_bottom = 0.083
+offset_left = -47.864
+offset_top = -35.784
+offset_right = -23.864
+offset_bottom = -17.784
 grow_horizontal = 0
-theme_override_fonts/font = ExtResource("7_2p6vt")
-theme_override_font_sizes/font_size = 40
+scale = Vector2(4, 4)
+theme_override_fonts/font = ExtResource("4_hjejh")
+theme_override_font_sizes/font_size = 16
 text = "0/0"
 
 [node name="PowerUpContainer" type="HBoxContainer" parent="UIElements"]
@@ -184,35 +187,36 @@ grow_vertical = 2
 [node name="MultiplayerWarningLabel" type="Label" parent="UIElements/MatchmakingControl"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.5
-anchor_top = 0.342
-anchor_right = 0.5
-anchor_bottom = 0.342
-offset_left = -469.0
-offset_top = -33.616
-offset_right = 469.0
-offset_bottom = 33.384
+anchor_left = 0.509
+anchor_top = 0.331
+anchor_right = 0.509
+anchor_bottom = 0.331
+offset_left = -445.368
+offset_top = -33.488
+offset_right = 445.632
+offset_bottom = 33.512
 theme_override_fonts/font = ExtResource("5_1b062")
-theme_override_font_sizes/font_size = 60
+theme_override_font_sizes/font_size = 57
 text = "A próxima questão será jogada junto a outro jogador!"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="MatchmakingLabel" type="Label" parent="UIElements/MatchmakingControl"]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -184.5
-offset_top = -25.5
-offset_right = 184.5
-offset_bottom = 25.5
+anchors_preset = -1
+anchor_left = 0.505
+anchor_top = 0.451
+anchor_right = 0.505
+anchor_bottom = 0.451
+offset_left = -236.76
+offset_top = -32.248
+offset_right = 157.24
+offset_bottom = 21.752
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(1.2, 1.2)
 theme_override_fonts/font = ExtResource("5_1b062")
-theme_override_font_sizes/font_size = 45
+theme_override_font_sizes/font_size = 38
 text = "Procurando outro jogador..."
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -224,7 +228,7 @@ scale = Vector2(2.4375, 2.4375)
 sprite_frames = SubResource("SpriteFrames_dct4x")
 animation = &"Loading"
 frame = 3
-frame_progress = 0.145893
+frame_progress = 0.114021
 
 [node name="MatchmakingTimer" type="Timer" parent="UIElements/MatchmakingControl"]
 

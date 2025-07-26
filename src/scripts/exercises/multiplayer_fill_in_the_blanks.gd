@@ -98,8 +98,6 @@ func submit_answer() -> void:
 		
 	
 	emit_signal("send_submit_answer", player_answer)
-	#$PartnerAnswerLabel.text = "Waiting for partner's answer..."
-	#$PartnerAnswerLabel.show()
 	check_answers()
 
 func on_partner_answer_received(answer: String) -> void:

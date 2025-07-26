@@ -14,8 +14,8 @@ static func instance() -> PopupManager:
 		Engine.get_main_loop().root.add_child(_instance)
 		_instance.set_as_top_level(true)
 		_instance.hide()
-		_instance.title_label = _instance.get_node("PopupPanel/VBoxContainer/Title")
-		_instance.subtitle_label = _instance.get_node("PopupPanel/VBoxContainer/Subtitle")
+		_instance.title_label = _instance.get_node("PopupPanel/Title")
+		_instance.subtitle_label = _instance.get_node("PopupPanel/Subtitle")
 		_instance.ok_button = _instance.get_node("PopupPanel/OkButton")
 	return _instance
 
@@ -43,13 +43,13 @@ static func show_partial_answer(player_answer: String, partner_answer: String, i
 	if is_player_correct:
 		instance()._setup_popup(
 			"You got it! +" + str(points), 
-			"You answered correctly: " + player_answer + ". \nPartner answered wrongly: " + partner_answer + "\nNo bonus point...", 
+			"You answered correctly: " + player_answer + ". \nPartner answered incorrectly: " + partner_answer + "\nNo bonus point...", 
 			Color("GREEN")
 		)
 	else:
 		instance()._setup_popup(
 			"Wrong answer!", 
-			"Partner answered correctly: " + partner_answer + ". \nYou answered wrongly: " + player_answer, 
+			"Partner answered correctly: " + partner_answer + ". \nYou answered incorrectly: " + player_answer, 
 			Color("CORAL")
 		)
 		

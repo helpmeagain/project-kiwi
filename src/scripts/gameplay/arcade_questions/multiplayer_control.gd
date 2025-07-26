@@ -88,7 +88,7 @@ func update_leaderboard(score: int) -> void:
 
 func get_leaderboard_nakama() -> void:
 	if is_multiplayer_session():
-		var result : NakamaAPI.ApiLeaderboardRecordList = await NakamaManager.client.list_leaderboard_records_async(NakamaManager.session, LEADERBOARD_ID)
+		var result : NakamaAPI.ApiLeaderboardRecordList = await NakamaManager.client.list_leaderboard_records_async(NakamaManager.session, LEADERBOARD_ID, null, null, 100)
 		if result.is_exception():
 			print("An error occurred: %s" % result)
 			return

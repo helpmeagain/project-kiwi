@@ -11,8 +11,6 @@ func update_leaderboard(records: Array) -> void:
 	for child in player_list.get_children():
 		child.queue_free()
 	
-	records.sort_custom(func(a, b): return a.score > b.score)
-	
 	for record in records:
 		var name_label = Label.new()
 		name_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER

@@ -44,24 +44,50 @@ theme = ExtResource("2_4w6cp")
 icon = ExtResource("3_12dgp")
 icon_alignment = 1
 
-[node name="HBoxContainer" type="HBoxContainer" parent="."]
-texture_filter = 3
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -287.0
-offset_top = -124.5
-offset_right = 287.0
-offset_bottom = 124.5
+offset_left = -265.5
+offset_top = -139.0
+offset_right = 265.5
+offset_bottom = 139.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 50
+
+[node name="HistoryLabel2" type="Label" parent="VBoxContainer/HBoxContainer2"]
+modulate = Color(1, 1, 1, 0)
+texture_filter = 3
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("7_h7lm6")
+theme_override_font_sizes/font_size = 52
+text = "This isn't good"
+horizontal_alignment = 1
+
+[node name="ArcadeHighScoreLabel" type="Label" parent="VBoxContainer/HBoxContainer2"]
+texture_filter = 3
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("7_h7lm6")
+theme_override_font_sizes/font_size = 57
+text = "HIGHSCORE: "
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+texture_filter = 3
+layout_mode = 2
 theme = ExtResource("4_wicqd")
 theme_override_constants/separation = 50
 
-[node name="HistoryButton" type="Button" parent="HBoxContainer"]
+[node name="HistoryButton" type="Button" parent="VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 mouse_default_cursor_shape = 2
@@ -70,7 +96,7 @@ icon = ExtResource("5_wicqd")
 icon_alignment = 1
 vertical_icon_alignment = 0
 
-[node name="ArcadeButton" type="Button" parent="HBoxContainer"]
+[node name="ArcadeButton" type="Button" parent="VBoxContainer/HBoxContainer"]
 texture_filter = 3
 layout_mode = 2
 size_flags_horizontal = 3
@@ -81,22 +107,6 @@ icon = ExtResource("6_h7lm6")
 icon_alignment = 1
 vertical_icon_alignment = 0
 
-[node name="ArcadeHighScoreLabel" type="Label" parent="."]
-texture_filter = 3
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.637
-anchor_top = 0.282
-anchor_right = 0.637
-anchor_bottom = 0.282
-offset_left = -99.824
-offset_top = -27.736
-offset_right = 94.176
-offset_bottom = 30.264
-theme_override_fonts/font = ExtResource("7_h7lm6")
-theme_override_font_sizes/font_size = 52
-text = "HIGHSCORE: "
-
 [connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]
-[connection signal="pressed" from="HBoxContainer/HistoryButton" to="." method="_on_history_button_pressed"]
-[connection signal="pressed" from="HBoxContainer/ArcadeButton" to="." method="_on_arcade_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/HistoryButton" to="." method="_on_history_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/ArcadeButton" to="." method="_on_arcade_button_pressed"]

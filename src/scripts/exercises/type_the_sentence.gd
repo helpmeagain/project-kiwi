@@ -6,6 +6,8 @@ signal answer_wrong
 var current_question: Dictionary
 var custom_data_file: String = ""
 var specific_id: String = ""
+var _regex: RegEx
+var _space_regex: RegEx
 
 @onready var original_text_label = $OriginalTextLabel
 @onready var text_input = $TextEdit
@@ -47,4 +49,12 @@ func validate_answer(answer: String) -> bool:
 	return false
 
 func normalize_answer(text: String) -> String:
-	return text.to_lower().strip_edges().replace("’", "'")
+	_regex = RegEx.new()
+	_regex.compile("[^a-z0-9 ']")
+	_space_regex = RegEx.new()
+	_space_regex.compile("\\s+")
+	var normalized = text.to_lower() 
+	normalized = normalized.replace("’", "'")
+	normalized = _regex.sub(normalized, "")
+	normalized = _space_regex.sub(normalized, " ")
+	return normalized.strip_edges()

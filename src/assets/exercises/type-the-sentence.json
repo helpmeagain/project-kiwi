@@ -4,9 +4,7 @@
 	"original": "Eu comi pizza ontem",
 	"correct_answers": [
 		"I ate pizza yesterday", 
-		"I ate pizza yesterday.", 
 		"I had pizza yesterday",
-		"I had pizza yesterday."
 	]
   },
   {
@@ -14,9 +12,7 @@
 	"original": "Ele correu no parque",
 	"correct_answers": [
 		"He ran in the park", 
-		"He ran in the park.", 
 		"He jogged in the park",
-		"He jogged in the park.",
 	]
   },
   {
@@ -24,7 +20,6 @@
 	"original": "Nós viajamos para Paris",
 	"correct_answers": [
 		"We traveled to Paris", 
-		"We travelled to Paris."
 	]
   },
   {
@@ -32,9 +27,7 @@
 	"original": "Ela esqueceu as chaves",
 	"correct_answers": [
 		"She forgot the keys", 
-		"She forgot the keys.", 
 		"She left the keys behind",
-		"She left the keys behind."
 	]
   },
   {
@@ -42,9 +35,7 @@
 	"original": "Eles compraram um carro",
 	"correct_answers": [
 		"They bought a car", 
-		"They bought a car.", 
 		"They purchased a new car",
-		"They purchased a new car."
 	]
   },
   {
@@ -52,9 +43,7 @@
 	"original": "Eu escrevi uma carta",
 	"correct_answers": [
 		"I wrote a letter", 
-		"I wrote a letter.", 
 		"I penned a letter",
-		"I penned a letter."
 	]
   },
   {
@@ -62,9 +51,7 @@
 	"original": "Ele quebrou o copo",
 	"correct_answers": [
 		"He broke the glass", 
-		"He broke the glass.", 
 		"He shattered the glass",
-		"He shattered the glass."
 	]
   },
   {
@@ -72,9 +59,7 @@
 	"original": "Nós nadamos no mar",
 	"correct_answers": [
 		"We swam in the sea", 
-		"We swam in the sea.", 
 		"We went swimming in the sea",
-		"We went swimming in the sea."
 	]
   },
   {
@@ -84,11 +69,9 @@
 		"They watched the movie", 
 		"They watched the movie", 
 		"They saw the movie",
-		"They saw the movie.",
 		"They watched the film", 
 		"They watched the film", 
 		"They saw the film",
-		"They saw the film."
 	]
   },
   {
@@ -96,13 +79,7 @@
 	"original": "Eu perdi meu telefone",
 	"correct_answers": [
 		"I lost my phone", 
-		"I lost my phone.", 
 		"I lost my cellphone",
-		"I lost my cellphone.",
-		"I misplaced my phone",
-		"I misplaced my phone.",
-		"I misplaced my cellphone",
-		"I misplaced my cellphone.",
 	]
   },
   {
@@ -110,9 +87,7 @@
 	"original": "Nós cantamos na festa",
 	"correct_answers": [
 		"We sang at the party", 
-		"We sang at the party.", 
 		"We performed at the party",
-		"We performed at the party."
 	]
   },
   {
@@ -120,9 +95,7 @@
 	"original": "Eu encontrei meus amigos",
 	"correct_answers": [
 		"I met my friends", 
-		"I met my friends.", 
 		"I ran into my friends",
-		"I ran into my friends."
 	]
   },
   {
@@ -130,7 +103,6 @@
 	"original": "Ele leu o livro",
 	"correct_answers": [
 	  "He read the book",
-	  "He read the book."
 	]
   },
   {
@@ -138,9 +110,7 @@
 	"original": "Nós construímos uma casa",
 	"correct_answers": [
 		"We built a house", 
-		"We built a house.", 
 		"We constructed a house",
-		"We constructed a house."
 	]
   },
   {
@@ -148,7 +118,6 @@
 	"original": "Eles beberam o suco",
 	"correct_answers": [
 	  "They drank the juice",
-	  "They drank the juice."
 	]
   },
   {
@@ -156,9 +125,7 @@
 	"original": "Eu dormi até tarde",
 	"correct_answers": [
 		"I slept late", 
-		"I slept late.", 
 		"I slept until late",
-		"I slept until late.",
 		"I overslept",
 	]
   },
@@ -167,9 +134,7 @@
 	"original": "Ele escolheu o presente",
 	"correct_answers": [
 		"He chose the gift", 
-		"He chose the gift.", 
 		"He picked the gift",
-		"He picked the gift.",
 	]
   },
   {
@@ -177,9 +142,7 @@
 	"original": "Nós aprendemos inglês",
 	"correct_answers": [
 		"We learned English", 
-		"We learned English.", 
 		"We studied English",
-		"We studied English."
 	]
   },
   {
@@ -187,11 +150,8 @@
 	"original": "Eu enviei o e-mail",
 	"correct_answers": [
 		"I sent the email", 
-		"I sent the email.",
 		"I sent the e-mail",
-		"I sent the e-mail.",
 		"I emailed them",
-		"I emailed them."
 	]
   },
   {
@@ -199,9 +159,7 @@
 	"original": "Eles pegaram o trem",
 	"correct_answers": [
 		"They took the train", 
-		"They took the train.", 
 		"They caught the train",
-		"They caught the train."
 	]
   },
   {
@@ -209,9 +167,7 @@
 	"original": "Ele lavou o carro",
 	"correct_answers": [
 		"He washed the car", 
-		"He washed the car.", 
 		"He cleaned the car",
-		"He cleaned the car."
 	]
   },
   {
@@ -219,7 +175,6 @@
 	"original": "Nós ganhamos o jogo",
 	"correct_answers": [
 		"We won the game",
-		"We won the game.",
 	]
   },
   {
@@ -227,9 +182,7 @@
 	"original": "Ela fechou a porta",
 	"correct_answers": [
 		"She closed the door", 
-		"She closed the door.",
 		"She shut the door",
-		"She shut the door."
 	]
   },
   {
@@ -237,22 +190,17 @@
 	"original": "Eu ouvi a música",
 	"correct_answers": [
 		"I heard the song", 
-		"I heard the song.", 
 		"I listened to the song", 
-		"I listened to the song.", 
 		"I heard the music",
-		"I heard the music.",
 		"I listened to the music",
-		"I listened to the music."]
+	]
   },
   {
 	"id": "28",
 	"original": "Ele cortou o papel",
 	"correct_answers": [
 		"He cut the paper", 
-		"He cut the paper.", 
 		"He sliced the paper",
-		"He sliced the paper."
 	]
   },
   {
@@ -260,9 +208,7 @@
 	"original": "Eles correram na praia",
 	"correct_answers": [
 		"They ran on the beach", 
-		"They ran on the beach.", 
 		"They jogged on the beach",
-		"They jogged on the beach."
 	]
   },
   {
@@ -270,9 +216,7 @@
 	"original": "Nós vendemos nossa casa",
 	"correct_answers": [
 		"We sold our house", 
-		"We sold our house.", 
 		"We put our house up for sale",
-		"We put our house up for sale."
 	]
   },
   {
@@ -280,9 +224,7 @@
 	"original": "Eu liguei para você",
 	"correct_answers": [
 		"I called you", 
-		"I called you.", 
 		"I phoned you",
-		"I phoned you.",
 	]
   },
   {
@@ -290,9 +232,7 @@
 	"original": "Ela achou o cachorro perdido",
 	"correct_answers": [
 		"She found the lost dog", 
-		"She found the lost dog.", 
 		"She discovered the lost dog",
-		"She discovered the lost dog."
 	]
   },
   {
@@ -300,9 +240,7 @@
 	"original": "Nós começamos o projeto",
 	"correct_answers": [
 		"We started the project", 
-		"We started the project.", 
 		"We began the project",
-		"We began the project."
 	]
   },
   {
@@ -310,9 +248,7 @@
 	"original": "Ele queimou o jantar",
 	"correct_answers": [
 		"He burned the dinner", 
-		"He burned the dinner.", 
 		"He overcooked the dinner",
-		"He overcooked the dinner."
 	]
   },
   {
@@ -320,13 +256,7 @@
 	"original": "Nós paramos no sinal",
 	"correct_answers": [
 		"We stopped at the light", 
-		"We stopped at the light.", 
-		"We stopped at the traffic light", 
-		"We stopped at the traffic light.", 
-		"We halted at the light",
-		"We halted at the light.",
-		"We halted at the traffic light",
-		"We halted at the traffic light."
+		"We stopped at the traffic light",
 	]
   },
   {
@@ -334,13 +264,9 @@
 	"original": "Ela pegou um táxi",
 	"correct_answers": [
 		"She took a taxi", 
-		"She took a taxi.", 
-		"She caught a taxi.", 
 		"She caught a taxi.", 
 		"She took a cab", 
-		"She took a cab.", 
 		"She caught a cab",
-		"She caught a cab."
 	]
   },
   {
@@ -348,21 +274,16 @@
 	"original": "Ele plantou uma árvore",
 	"correct_answers": [
 		"He planted a tree", 
-		"He planted a tree.", 
 		"He grew a tree",
-		"He grew a tree."
 	]
   },
   {
 	"id": "43",
 	"original": "Nós arrumamos o quarto",
 	"correct_answers": [
-		"We cleaned the room", 
-		"We cleaned the room.", 
+		"We cleaned the room",  
 		"We tidied up the room",
-		"We tidied up the room.",
 		"We tidied the room",
-		"We tidied the room"
 	]
   },
   {
@@ -370,9 +291,7 @@
 	"original": "Eu quebrei o copo",
 	"correct_answers": [
 		"I broke the glass", 
-		"I broke the glass.", 
 		"I smashed the glass",
-		"I smashed the glass."
 	]
   },
   {
@@ -380,13 +299,9 @@
 	"original": "Ele consertou a bicicleta",
 	"correct_answers": [
 		"He fixed the bike", 
-		"He fixed the bike.", 
 		"He fixed the bicycle", 
-		"He fixed the bicycle.", 
 		"He repaired the bike",
-		"He repaired the bike.",
 		"He repaired the bicycle",
-		"He repaired the bicycle."
 	]
   },
   {
@@ -394,9 +309,7 @@
 	"original": "Eles subiram a montanha",
 	"correct_answers": [
 	  "They climbed the mountain",
-	  "They climbed the mountain.",
 	  "They ascended the mountain",
-	  "They ascended the mountain."
 	]
   },
   {
@@ -404,19 +317,15 @@
 	"original": "Nós visitamos o museu",
 	"correct_answers": [
 		"We visited the museum", 
-		"We visited the museum.", 
 		"We toured the museum",
-		"We toured the museum."
 	]
   },
   {
 	"id": "54",
 	"original": "Ele mostrou o caminho",
 	"correct_answers": [
-		"He showed the way", 
-		"He showed the way.", 
+		"He showed the way",  
 		"He pointed out the way",
-		"He pointed out the way."
 	]
   },
   {
@@ -424,24 +333,20 @@
 	"original": "Eu encontrei dinheiro",
 	"correct_answers": [
 	  "I found money",
-	  "I found money.",
 	]
   },
   {
 	"id": "59",
 	"original": "Ele queimou o pão",
 	"correct_answers": [
-		"He burned the bread", 
-		"He burned the bread.", 
-		"He toasted the bread too much"
+		"He burned the bread",
 	]
   },
   {
 	"id": "61",
 	"original": "Eles discutiram o plano",
 	"correct_answers": [
-		"They discussed the plan", 
-		"They discussed the plan.", 
+		"They discussed the plan",
 		"They talked over the plan"
 	]
   },
@@ -449,9 +354,7 @@
 	"id": "62",
 	"original": "Nós caminhamos na praia",
 	"correct_answers": [
-		"We walked on the beach", 
-		"We walked on the beach.", 
-		"We strolled along the beach"
+		"We walked on the beach",
 	]
   },
   {
@@ -459,9 +362,7 @@
 	"original": "Ele emprestou seu celular",
 	"correct_answers": [
 		"He lent his phone",
-		"He lent his phone.",
 		"He lent his cellphone",
-		"He lent his cellphone.",
 	]
   },
   {
@@ -469,9 +370,7 @@
 	"original": "Ela esqueceu o aniversário",
 	"correct_answers": [
 		"She forgot the birthday", 
-		"She forgot the birthday.",
 		"She missed the birthday",
-		"She missed the birthday."
 	]
   },
   {
@@ -479,9 +378,7 @@
 	"original": "Eu cozinhei o jantar",
 	"correct_answers": [
 		"I cooked dinner", 
-		"I cooked dinner.",
 		"I prepared the dinner",
-		"I prepared the dinner.",
 	]
   },
   {
@@ -489,9 +386,7 @@
 	"original": "Eles roubaram a bicicleta",
 	"correct_answers": [
 	  "They stole the bike",
-	  "They stole the bike.",
 	  "They stole the bicycle",
-	  "They stole the bicycle."
 	]
   },
   {
@@ -499,9 +394,7 @@
 	"original": "Nós cortamos a grama",
 	"correct_answers": [
 		"We mowed the lawn", 
-		"We mowed the lawn.", 
 		"We cut the grass",
-		"We cut the grass."
 	]
   },
   {
@@ -509,7 +402,6 @@
 	"original": "Ele mentiu",
 	"correct_answers": [
 	  "He lied",
-	  "He lied.",
 	]
   },
   {
@@ -517,9 +409,7 @@
 	"original": "Eu senti frio",
 	"correct_answers": [
 		"I felt cold", 
-		"I felt cold.", 
 		"I was cold",
-		"I was cold."
 	]
   },
   {
@@ -527,9 +417,7 @@
 	"original": "Eles pescaram no rio",
 	"correct_answers": [
 	  "They fished in the river",
-	  "They fished in the river.",
 	  "They went fishing in the river",
-	  "They went fishing in the river."
 	]
   },
   {
@@ -537,9 +425,7 @@
 	"original": "Nós escalamos a colina",
 	"correct_answers": [
 		"We climbed the hill", 
-		"We climbed the hill.", 
 		"We went up the hill",
-		"We went up the hill.",
 	]
   },
   {
@@ -547,9 +433,7 @@
 	"original": "Ele machucou o joelho",
 	"correct_answers": [
 		"He hurt his knee", 
-		"He hurt his knee.", 
 		"He injured his knee",
-		"He injured his knee."
 	]
   },
   {
@@ -557,9 +441,7 @@
 	"original": "Ela acordou cedo",
 	"correct_answers": [
 		"She woke up early", 
-		"She woke up early.", 
 		"She got up early",
-		"She got up early.",
 	]
   },
   {
@@ -567,9 +449,7 @@
 	"original": "Eu joguei futebol",
 	"correct_answers": [
 		"I played soccer", 
-		"I played soccer.", 
 		"I played football",
-		"I played football."
 	]
   },
   {
@@ -577,9 +457,7 @@
 	"original": "Eles beijaram na chuva",
 	"correct_answers": [
 	  "They kissed in the rain",
-	  "They kissed in the rain.",
 	  "They had a kiss in the rain",
-	  "They had a kiss in the rain."
 	]
   },
   {
@@ -587,9 +465,7 @@
 	"original": "Nós pegamos um resfriado",
 	"correct_answers": [
 		"We caught a cold", 
-		"We caught a cold.", 
 		"We got a cold",
-		"We got a cold."
 	]
   },
   {
@@ -597,9 +473,7 @@
 	"original": "Ele desenhou um mapa",
 	"correct_answers": [
 		"He drew a map", 
-		"He drew a map.", 
 		"He sketched a map",
-		"He sketched a map."
 	]
   },
   {
@@ -607,9 +481,7 @@
 	"original": "Eu queimei o jantar",
 	"correct_answers": [
 		"I burned the dinner", 
-		"I burned the dinner.", 
 		"I overcooked the meal",
-		"I overcooked the meal."
 	]
   },
   {
@@ -617,19 +489,15 @@
 	"original": "Eles traíram a confiança",
 	"correct_answers": [
 		"They betrayed the trust", 
-		"They betrayed the trust.", 
 		"They broke the trust",
-		"They broke the trust."
 	]
   },
   {
 	"id": "80",
 	"original": "Nós dividimos o bolo",
 	"correct_answers": [
-		"We split the cake", 
-		"We split the cake.", 
+		"We split the cake",  
 		"We divided the cake",
-		"We divided the cake."
 	]
   },
   {
@@ -637,9 +505,7 @@
 	"original": "Ele prendeu a respiração",
 	"correct_answers": [
 		"He held his breath", 
-		"He held his breath.", 
 		"He kept his breath",
-		"He kept his breath."
 	]
   },
   {
@@ -647,9 +513,7 @@
 	"original": "Nós perdemos o trem",
 	"correct_answers": [
 		"We missed the train", 
-		"We missed the train.", 
 		"We didn't catch the train",
-		"We didn't catch the train."
 	]
   },
   {
@@ -657,9 +521,7 @@
 	"original": "Eles atiraram na lata",
 	"correct_answers": [
 		"They shot at the can", 
-		"They shot at the can.", 
 		"They fired at the tin",
-		"They fired at the tin."
 	]
   },
   {
@@ -667,7 +529,6 @@
 	"original": "Eles treinaram",
 	"correct_answers": [
 		"They trained",
-		"They trained."
 	]
   },
   {
@@ -685,11 +546,8 @@
 	"original": "Nós assistimos TV",
 	"correct_answers": [
 		"We watched TV", 
-		"We watched TV.", 
 		"We watched the TV", 
-		"We watched the TV.", 
 		"We viewed TV",
-		"We viewed TV."
 	]
   },
   {
@@ -697,7 +555,6 @@
 	"original": "Ela sorriu",
 	"correct_answers": [
 		"She smiled",
-		"She smiled."
 	]
   },
   {
@@ -705,9 +562,7 @@
 	"original": "Ele comprou pão",
 	"correct_answers": [
 		"He bought bread", 
-		"He bought bread.", 
 		"He purchased bread",
-		"He purchased bread."
 	]
   },
   {
@@ -715,9 +570,7 @@
 	"original": "Nós caminhamos no parque",
 	"correct_answers": [
 		"We walked in the park", 
-		"We walked in the park.", 
 		"We strolled in the park",
-		"We strolled in the park."
 	]
   },
   {
@@ -725,9 +578,7 @@
 	"original": "Ela comeu uma maçã",
 	"correct_answers": [
 		"She ate an apple", 
-		"She ate an apple", 
 		"She had an apple",
-		"She had an apple."
 	]
   },
   {
@@ -735,9 +586,7 @@
 	"original": "Eu bebi água",
 	"correct_answers": [
 		"I drank water", 
-		"I drank water.", 
 		"I had water",
-		"I had water."
 	]
   },
   {
@@ -745,7 +594,6 @@
 	"original": "Nós dançamos na festa",
 	"correct_answers": [
 		"We danced at the party", 
-		"We danced at the party."
 	]
   },
   {
@@ -753,9 +601,7 @@
 	"original": "Ele ligou a TV",
 	"correct_answers": [
 		"He turned on the TV", 
-		"He turned on the TV", 
 		"He switched on the TV",
-		"He switched on the TV"
 	]
   },
   {
@@ -763,9 +609,7 @@
 	"original": "Eu escovei os dentes",
 	"correct_answers": [
 		"I brushed my teeth", 
-		"I brushed my teeth.", 
 		"I cleaned my teeth",
-		"I cleaned my teeth."
 	]
   },
   {
@@ -773,9 +617,7 @@
 	"original": "Ela fechou a janela",
 	"correct_answers": [
 		"She closed the window", 
-		"She closed the window.", 
 		"She shut the window",
-		"She shut the window."
 	]
   },
   {
@@ -783,9 +625,7 @@
 	"original": "Nós ouvimos música",
 	"correct_answers": [
 		"We listened to music", 
-		"We listened to music.", 
 		"We heard music",
-		"We heard music."
 	]
   },
   {
@@ -793,9 +633,7 @@
 	"original": "Ele desenhou um círculo",
 	"correct_answers": [
 		"He drew a circle", 
-		"He drew a circle.", 
 		"He sketched a circle",
-		"He sketched a circle.",
 	]
   },
   {
@@ -803,9 +641,7 @@
 	"original": "Ela abriu a porta",
 	"correct_answers": [
 		"She opened the door", 
-		"She opened the door.", 
 		"She unlocked the door",
-		"She unlocked the door."
 	]
   },
   {
@@ -813,9 +649,7 @@
 	"original": "Nós comemos pizza",
 	"correct_answers": [
 		"We ate pizza", 
-		"We ate pizza.", 
 		"We had pizza",
-		"We had pizza."
 	]
   },
   {
@@ -823,9 +657,7 @@
 	"original": "Eu li um livro",
 	"correct_answers": [
 		"I read a book", 
-		"I read a book.", 
 		"I finished a book",
-		"I finished a book."
 	]
   },
   {
@@ -833,9 +665,7 @@
 	"original": "Eu cortei o papel",
 	"correct_answers": [
 		"I cut the paper", 
-		"I cut the paper.", 
 		"I sliced the paper",
-		"I sliced the paper."
 	]
   },
   {
@@ -843,9 +673,7 @@
 	"original": "Eu arrumei a cama",
 	"correct_answers": [
 		"I made the bed", 
-		"I made the bed.", 
 		"I tidied the bed",
-		"I tidied the bed."
 	]
   },
   {
@@ -853,9 +681,7 @@
 	"original": "Ele comeu sorvete",
 	"correct_answers": [
 		"He ate ice cream", 
-		"He ate ice cream.", 
 		"He had ice cream",
-		"He had ice cream."
 	]
   },
   {
@@ -863,9 +689,7 @@
 	"original": "Ela plantou uma flor",
 	"correct_answers": [
 		"She planted a flower", 
-		"She planted a flower.", 
 		"She grew a flower",
-		"She grew a flower."
 	]
   },
   {
@@ -873,9 +697,7 @@
 	"original": "Eu liguei para mamãe",
 	"correct_answers": [
 		"I called mom", 
-		"I called mom.", 
 		"I phoned mother",
-		"I phoned mother."
 	]
   },
   {
@@ -883,9 +705,7 @@
 	"original": "Eles brincaram no parque",
 	"correct_answers": [
 		"They played in the park", 
-		"They played in the park.", 
 		"They had fun in the park",
-		"They had fun in the park."
 	]
   },
   {
@@ -893,9 +713,7 @@
 	"original": "Ele comeu sanduíche",
 	"correct_answers": [
 		"He ate a sandwich", 
-		"He ate a sandwich.", 
 		"He had a sandwich",
-		"He had a sandwich."
 	]
   },
   {
@@ -903,9 +721,7 @@
 	"original": "Nós tomamos banho",
 	"correct_answers": [
 		"We took a shower", 
-		"We took a shower.", 
 		"We bathed",
-		"We bathed."
 	]
   },
   {
@@ -913,9 +729,7 @@
 	"original": "Eu lavei o meu rosto",
 	"correct_answers": [
 		"I washed my face", 
-		"I washed my face.", 
 		"I cleaned my face",
-		"I cleaned my face."
 	]
   },
   {
@@ -923,9 +737,7 @@
 	"original": "Ele comeu pipoca",
 	"correct_answers": [
 		"He ate popcorn", 
-		"He ate popcorn.", 
 		"He had popcorn",
-		"He had popcorn.",
 	]
   },
   {
@@ -933,9 +745,7 @@
 	"original": "Nós jogamos bola",
 	"correct_answers": [
 		"We played ball", 
-		"We played ball.", 
 		"We threw the ball",
-		"We threw the ball."
 	]
   }
 ]

@@ -13,6 +13,9 @@ var voice_id = voices[0]
 var custom_data_file: String = ""
 var specific_id: String = ""
 
+var _regex: RegEx
+var _space_regex: RegEx
+
 func initialize(data_file: String = "listen-then-type.json", question_id: String = "") -> void:
 	custom_data_file = data_file
 	specific_id = question_id
@@ -42,7 +45,15 @@ func validate_answer(answer: String) -> bool:
 	return false
 
 func normalize_answer(text: String) -> String:
-	return text.to_lower().strip_edges().replace("’", "'")
+	_regex = RegEx.new()
+	_regex.compile("[^a-z0-9 ']")
+	_space_regex = RegEx.new()
+	_space_regex.compile("\\s+")
+	var normalized = text.to_lower() 
+	normalized = normalized.replace("’", "'")
+	normalized = _regex.sub(normalized, "")
+	normalized = _space_regex.sub(normalized, " ")
+	return normalized.strip_edges()
 
 func _on_listen_button_pressed() -> void:
 	DisplayServer.tts_speak(text_to_speech, voice_id)

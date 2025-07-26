@@ -26,51 +26,56 @@ color = Color(0, 0, 0, 0.470588)
 texture_filter = 3
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.237
-anchor_top = 0.198
-anchor_right = 0.793
-anchor_bottom = 0.812
-offset_left = -0.0240173
-offset_top = 397.696
-offset_right = -242.536
-offset_bottom = 640.824
+anchor_left = 0.515
+anchor_top = 0.505
+anchor_right = 0.515
+anchor_bottom = 0.505
+offset_left = -320.28
+offset_top = 198.76
+offset_right = 77.72
+offset_bottom = 839.76
 grow_horizontal = 2
 grow_vertical = 2
 rotation = -1.5708
 theme = ExtResource("2_8u6u7")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="PopupPanel"]
-texture_filter = 3
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.502
-offset_left = 117.0
-offset_top = -261.499
-offset_right = 643.0
-offset_bottom = -52.7809
-rotation = 1.5708
-
-[node name="Title" type="Label" parent="PopupPanel/VBoxContainer"]
-texture_filter = 3
+[node name="Title" type="Label" parent="PopupPanel"]
 layout_mode = 2
+anchor_left = 0.74
+anchor_top = 0.5
+anchor_right = 0.74
+anchor_bottom = 0.5
+offset_left = 32.48
+offset_top = -263.5
+offset_right = 470.48
+offset_bottom = -209.5
+rotation = 1.5708
+scale = Vector2(1.2, 1.2)
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.34902)
-theme_override_font_sizes/font_size = 60
+theme_override_font_sizes/font_size = 48
 text = "Title label"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Subtitle" type="Label" parent="PopupPanel/VBoxContainer"]
-texture_filter = 3
-custom_minimum_size = Vector2(0, 110)
+[node name="Subtitle" type="Label" parent="PopupPanel"]
+texture_filter = 2
+custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
+anchor_left = 0.376
+anchor_top = 0.505
+anchor_right = 0.376
+anchor_bottom = 0.505
+offset_left = 107.352
+offset_top = -243.705
+offset_right = 513.352
+offset_bottom = -64.705
+rotation = 1.5708
+scale = Vector2(1.2, 1.2)
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("3_8u6u7")
-theme_override_font_sizes/font_size = 47
-text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque eu imperdiet lectus."
+theme_override_font_sizes/font_size = 38
+text = "Lorem ipsum "
 horizontal_alignment = 1
 autowrap_mode = 3
 
@@ -88,7 +93,7 @@ offset_bottom = 21.0214
 grow_horizontal = 2
 rotation = 1.5708
 mouse_default_cursor_shape = 2
-theme_override_font_sizes/font_size = 35
+theme_override_font_sizes/font_size = 32
 text = "Ok!"
 
 [connection signal="pressed" from="PopupPanel/OkButton" to="." method="_on_ok_button_pressed"]
