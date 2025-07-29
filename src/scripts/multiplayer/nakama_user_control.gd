@@ -45,6 +45,7 @@ func update_user_info(username_updated: String) -> void:
 		profile_updated.emit(false)
 		return
 	
+	NakamaManager._cached_username = username_updated
 	PopupManager.show_custom("Perfil", "Perfil atualizado!", Color.GREEN)
 	profile_updated.emit(true)
 

@@ -182,12 +182,15 @@ func load_next_exercise(force_single: bool = false) -> void:
 		exercise_concluded = false
 		var match_id = multiplayer_control.get_match_id()
 		exercises_control.show()
-		chat_control.show()
 		exercises_control.load_multiplayer_question(match_id)
 		exercises_control.current_exercise.connect("send_considering_answer", _on_considering_answer_multiplayer)
 		exercises_control.current_exercise.connect("send_submit_answer", _on_submit_answer_multiplayer)
 		exercises_control.current_exercise.connect("check_extra_life", _try_use_extra_life)
 		exercises_control.current_exercise.connect("answer_partial_correct", _on_multiplayer_partial_correct)
+		chat_control.show()
+		chat_control.add_message("SISTEMA", "Jogue em dupla! Entre em consenso pelo chat para ganhar o dobro de pontos. Selecione uma alternativa e clique em 'submit' para responder.", 2)
+		if extra_life_active:
+			chat_control.add_message("SISTEMA", "Você pode usar a vida extra para eliminar uma alternativa incorreta. Selecione-a e clique em 'submit'.", 2)
 	else:
 		exercises_control.load_random_question()
 	exercises_control.current_exercise.connect("answer_correct", _on_answer_correct)
@@ -230,11 +233,11 @@ func _on_matchmaking_failed_popup_pressed() -> void:
 
 func _on_considering_answer_multiplayer(answer: String) -> void:
 	multiplayer_control.send_data(multiplayer_control.DATA_TYPE.CONSIDER_ANSWER, answer)
-	chat_control.add_message("SISTEMA", await NakamaManager.get_my_username() + " está considerando " + answer, 2)
+	chat_control.add_message("SISTEMA", await NakamaManager.get_my_username() + " está considerando " + answer, 4)
 	
 func _on_submit_answer_multiplayer(answer: String) -> void:
 	multiplayer_control.send_data(multiplayer_control.DATA_TYPE.SUBMIT_ANSWER, answer)
-	chat_control.add_message("SISTEMA", await NakamaManager.get_my_username() + " respondeu " + answer, 2)
+	chat_control.add_message("SISTEMA", await NakamaManager.get_my_username() + " respondeu " + answer, 4)
 	
 func _on_send_chat_message(message: String) -> void:
 	multiplayer_control.send_data(multiplayer_control.DATA_TYPE.CHAT_MESSAGE, message)
@@ -247,11 +250,11 @@ func _on_data_received(data) -> void:
 			partner_username = data_value
 			ui_elements.update_partner_found(partner_username)
 		multiplayer_control.DATA_TYPE.CONSIDER_ANSWER:
-			chat_control.add_message("SISTEMA", partner_username + " está considerando " + data_value, 2)
+			chat_control.add_message("SISTEMA", partner_username + " está considerando " + data_value, 4)
 		multiplayer_control.DATA_TYPE.SUBMIT_ANSWER:
 			partner_answer = data_value
 			exercises_control.current_exercise.on_partner_answer_received(partner_answer)
-			chat_control.add_message("SISTEMA", partner_username + " respondeu " + partner_answer, 2)
+			chat_control.add_message("SISTEMA", partner_username + " respondeu " + partner_answer, 4)
 		multiplayer_control.DATA_TYPE.CHAT_MESSAGE:
 			var partner_message = data_value
 			chat_control.add_message(partner_username, partner_message, 1)
@@ -308,6 +311,12 @@ func finish_game() -> void:
 	exercises_control.hide()
 	$GameOverScreen/FinalLabel.text += str(score)
 	$GameOverScreen.show()
+	player_score.position = Vector2(413,142)
+	player_score.set_anchors_preset(Control.PRESET_CENTER)
+	player_score.show()
+	while(true):
+		multiplayer_control.get_leaderboard_nakama()
+		await get_tree().create_timer(5.0).timeout
 
 func _save_session() -> void:
 	if (multiplayer_control.is_multiplayer_session()):
@@ -351,8 +360,9 @@ func _on_popup_button_pressed() -> void:
 
 func _on_show_players_button_pressed() -> void:
 	player_score.visible = !player_score.visible
-	if player_score.visible:
+	while(player_score.visible):
 		multiplayer_control.get_leaderboard_nakama()
+		await get_tree().create_timer(5.0).timeout
 
 func _on_final_button_pressed() -> void:
 	get_tree().change_scene_to_file("res://src/scenes/menus/main-menu.tscn")

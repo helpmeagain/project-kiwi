@@ -27,7 +27,7 @@ func update_powerup_icons(is_double_points_active: bool, is_extra_chance_active:
 	$PowerUpContainer/ExtraChanceIcon.visible = is_extra_chance_active
 
 func show_matchmaking_screen() -> void:
-	$MatchmakingControl/MultiplayerWarningLabel.text = "A próxima questão será jogada junto a outro jogador!"
+	$MatchmakingControl/MultiplayerWarningLabel.text = "A próxima questão será jogada em dupla!"
 	$MatchmakingControl/MatchmakingLabel.text = "Procurando outro jogador..."
 	$TimerLabel.hide()
 	$QuestionCountLabel.hide()
@@ -43,7 +43,7 @@ func hide_matchmaking_screen() -> void:
 	$MatchmakingControl.hide()
 
 func update_partner_found(partner_name: String) -> void:
-	$MatchmakingControl/MultiplayerWarningLabel.text = "Encontrou o parceiro " + partner_name + "!"
+	$MatchmakingControl/MultiplayerWarningLabel.text = "Encontrou " + partner_name + "!"
 	$MatchmakingControl/MatchmakingLabel.text = "Iniciando em " + str(matchmaking_countdown) + "..."
 	$MatchmakingControl/MatchmakingTimer.start()
 	$MatchmakingControl/LoadingSprite.stop()
