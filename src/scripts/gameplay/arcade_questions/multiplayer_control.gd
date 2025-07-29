@@ -4,6 +4,7 @@ extends Control
 signal partner_found()
 signal data_received(data)
 signal leaderboard_updated(records)
+signal player_disconnected
 
 var is_receiver_connected := false
 const LEADERBOARD_ID = "global_leaderboard"
@@ -54,9 +55,15 @@ func _on_matchmaker_matched(matchmaker_matched : NakamaRTAPI.MatchmakerMatched):
 	NakamaManager.current_match = joinedMatch
 	if !is_receiver_connected:
 		NakamaManager.socket.received_match_state.connect(recive_data_from_nakama)
+		NakamaManager.socket.received_match_presence.connect(_on_match_presence_event)
 		is_receiver_connected = true
 	emit_signal("partner_found")
 	NakamaManager.socket.received_matchmaker_matched.disconnect(_on_matchmaker_matched)
+
+func _on_match_presence_event(event: NakamaRTAPI.MatchPresenceEvent):
+	if event.leaves.size() ==  1:
+		print("Player saiu! " + await NakamaManager.get_my_username() + " está sozinho")
+		emit_signal("player_disconnected")
 
 func leave_match() -> void:
 	# TODO melhorar isso
@@ -66,6 +73,7 @@ func leave_match() -> void:
 		NakamaManager.current_match = null
 		if is_receiver_connected:
 			NakamaManager.socket.received_match_state.disconnect(recive_data_from_nakama)
+			NakamaManager.socket.received_match_presence.disconnect(_on_match_presence_event)
 			is_receiver_connected = false
 		print("[NAKAMA DEBUG] SAIU DA PARTIDA: " + match_id)
 	else:

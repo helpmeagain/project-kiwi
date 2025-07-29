@@ -22,6 +22,7 @@ var double_points_active: bool = false
 var extra_life_active: bool = false
 var partner_username: String
 var partner_answer: String
+var exercise_concluded: bool = false
 
 # TODO tirar isso e achar uma maneira decente de fazer
 var POWERUP_CHOOSED = false
@@ -34,6 +35,7 @@ func _ready() -> void:
 	ui_elements.start_multiplayer_exercise.connect(load_next_exercise)
 	multiplayer_control.partner_found.connect(_on_partner_found)
 	multiplayer_control.data_received.connect(_on_data_received)
+	multiplayer_control.player_disconnected.connect(_partner_left_match)
 	player_score.set_multiplayer_control(multiplayer_control)
 	chat_control.connect("send_message", _on_send_chat_message)
 	if (!multiplayer_control.is_multiplayer_session()):
@@ -57,6 +59,7 @@ func try_restore_active_session() -> bool:
 	return false
 
 func _on_answer_correct(points: int = 1) -> void:
+	exercise_concluded = true
 	if timeout_occurred: return
 	exercises_timer.stop()
 	
@@ -75,6 +78,7 @@ func _on_answer_correct(points: int = 1) -> void:
 	chat_control.clear_chat()
 
 func _on_multiplayer_partial_correct(player_answer: String, partner_answer_recived: String, is_player_correct: bool, points: int = 1) -> void:
+	exercise_concluded = true
 	if timeout_occurred: return
 	exercises_timer.stop()
 
@@ -94,6 +98,7 @@ func _on_multiplayer_partial_correct(player_answer: String, partner_answer_reciv
 	chat_control.clear_chat()
 
 func _on_answer_wrong() -> void:
+	exercise_concluded = true
 	if timeout_occurred: return
 	if extra_life_active and !exercises_control.current_exercise.has_method("use_extra_life"):
 		_try_use_extra_life()
@@ -107,6 +112,7 @@ func _on_answer_wrong() -> void:
 	chat_control.clear_chat()
 
 func _on_timer_timeout() -> void:
+	exercise_concluded = true
 	exercises_timer.stop()
 	if extra_life_active and !exercises_control.current_exercise.has_method("use_extra_life"):
 		_try_use_extra_life()
@@ -148,6 +154,7 @@ func load_next_exercise() -> void:
 	ui_elements.update_question_count(question_count)
 	background.set_random_background()
 	if MULTIPLAYER_QUESTION_TIME:
+		exercise_concluded = false
 		var match_id = multiplayer_control.get_match_id()
 		exercises_control.show()
 		chat_control.show()
@@ -251,6 +258,15 @@ func _try_use_extra_life(answer: String = "") -> bool:
 	if exercises_control.current_exercise != null and exercises_control.current_exercise.has_method("submit_answer"):
 		exercises_control.current_exercise.submit_answer()
 	return false
+	
+func _partner_left_match() -> void:
+	if (exercise_concluded == false):
+		print("Saiu (main)")
+		chat_control.clear_chat()
+		exercises_timer.stop()
+		question_count -= 1
+		PopupManager.instance().ok_pressed.connect(_on_popup_button_pressed)
+		PopupManager.show_error("Seu parceiro saiu da partida.\nPrecisione 'ok' para procurar outro")
 
 func finish_game() -> void:
 	SaveManager.finish_session(multiplayer_control.is_multiplayer_session(), score)

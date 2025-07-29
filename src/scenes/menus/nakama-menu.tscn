@@ -54,6 +54,7 @@ animations = [{
 }]
 
 [node name="Nakama-menu" type="Control"]
+texture_filter = 3
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -103,7 +104,7 @@ alignment = 1
 
 [node name="IPLabel" type="Label" parent="ServerControl/VBoxContainer/IPContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 30
+theme_override_font_sizes/font_size = 32
 text = "IP Address:"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -133,6 +134,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("2_v8yik")
 script = ExtResource("4_e6o3a")
+metadata/_edit_group_ = true
 
 [node name="VBoxContainer" type="VBoxContainer" parent="UserControl"]
 layout_mode = 1
@@ -155,7 +157,7 @@ alignment = 1
 
 [node name="NameLabel" type="Label" parent="UserControl/VBoxContainer/NameInputContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 30
+theme_override_font_sizes/font_size = 32
 text = "Name:"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -183,18 +185,20 @@ sprite_frames = SubResource("SpriteFrames_e6o3a")
 animation = &"Loading"
 
 [node name="WaitLabel" type="Label" parent="UserControl"]
+visible = false
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.506
-anchor_top = 0.904
-anchor_right = 0.506
-anchor_bottom = 0.904
-offset_left = -503.912
-offset_top = -27.7921
-offset_right = 504.088
-offset_bottom = 28.2079
+anchor_left = 0.509
+anchor_top = 0.929
+anchor_right = 0.509
+anchor_bottom = 0.929
+offset_left = -459.368
+offset_top = -24.992
+offset_right = 689.632
+offset_bottom = 38.008
+scale = Vector2(0.8, 0.8)
 theme_override_fonts/font = ExtResource("3_kferb")
-theme_override_font_sizes/font_size = 50
+theme_override_font_sizes/font_size = 57
 text = "Aguarde o jogo iniciar! Você pode atualizar seus dados enquanto isso"
 horizontal_alignment = 1
 vertical_alignment = 1
