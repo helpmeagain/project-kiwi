@@ -36,6 +36,7 @@ func _ready() -> void:
 	multiplayer_control.partner_found.connect(_on_partner_found)
 	multiplayer_control.data_received.connect(_on_data_received)
 	multiplayer_control.player_disconnected.connect(_partner_left_match)
+	multiplayer_control.cancel_matchmaking.connect(_on_cancel_matchmaking)
 	player_score.set_multiplayer_control(multiplayer_control)
 	chat_control.connect("send_message", _on_send_chat_message)
 	if (!multiplayer_control.is_multiplayer_session()):
@@ -147,8 +148,8 @@ func next_step_after_answer() -> void:
 	_save_session()
 	load_next_exercise()
 
-func load_next_exercise() -> void:
-	var MULTIPLAYER_QUESTION_TIME = question_count % 2 == 1 && multiplayer_control.is_multiplayer_session()
+func load_next_exercise(force_single: bool = false) -> void:
+	var MULTIPLAYER_QUESTION_TIME = question_count % 2 == 1 && multiplayer_control.is_multiplayer_session() && !force_single
 	question_count += 1
 	timeout_occurred = false
 	ui_elements.update_question_count(question_count)
@@ -193,6 +194,15 @@ func _on_partner_found() -> void:
 	var username = await NakamaManager.get_my_username()
 	chat_control.update_player_username(username)
 	multiplayer_control.send_data(multiplayer_control.DATA_TYPE.USERNAME, username)
+	
+func _on_cancel_matchmaking() -> void:
+	PopupManager.instance().ok_pressed.connect(_on_matchmaking_failed_popup_pressed, CONNECT_ONE_SHOT)
+	PopupManager.show_error("Não foi possível encontrar um parceiro a tempo. Próximo exercício será solo.")
+
+func _on_matchmaking_failed_popup_pressed() -> void:
+	exercises_control.show()
+	ui_elements.hide_matchmaking_screen()
+	load_next_exercise(true)
 
 func _on_considering_answer_multiplayer(answer: String) -> void:
 	multiplayer_control.send_data(multiplayer_control.DATA_TYPE.CONSIDER_ANSWER, answer)

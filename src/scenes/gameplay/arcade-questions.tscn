@@ -270,6 +270,10 @@ grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("14_76bfv")
 
+[node name="MatchmakingTimeoutTimer" type="Timer" parent="MultiplayerControl"]
+wait_time = 60.0
+one_shot = true
+
 [node name="ChatControl" type="Control" parent="."]
 visible = false
 layout_mode = 1
@@ -463,6 +467,7 @@ text = "Exit"
 [connection signal="tree_exited" from="." to="." method="_on_tree_exited"]
 [connection signal="timeout" from="UIElements/MatchmakingControl/MatchmakingTimer" to="UIElements" method="_on_matchmaking_timer_timeout"]
 [connection signal="pressed" from="UIElements/ShowPlayersButton" to="." method="_on_show_players_button_pressed"]
+[connection signal="timeout" from="MultiplayerControl/MatchmakingTimeoutTimer" to="MultiplayerControl" method="_on_matchmaking_timeout_timer_timeout"]
 [connection signal="focus_exited" from="ChatControl/VBoxContainer/HBoxContainer/LineEdit" to="ChatControl" method="_on_line_edit_focus_exited"]
 [connection signal="text_submitted" from="ChatControl/VBoxContainer/HBoxContainer/LineEdit" to="ChatControl" method="_on_line_edit_text_submitted"]
 [connection signal="pressed" from="PowerUpSelection/HBoxContainer/PowerUpButton1" to="." method="_on_powerup_double"]

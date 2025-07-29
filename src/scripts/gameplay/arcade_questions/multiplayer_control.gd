@@ -5,8 +5,10 @@ signal partner_found()
 signal data_received(data)
 signal leaderboard_updated(records)
 signal player_disconnected
+signal cancel_matchmaking
 
 var is_receiver_connected := false
+var current_ticket = null
 const LEADERBOARD_ID = "global_leaderboard"
 const DATA_TYPE = {
 	USERNAME = "username",
@@ -21,6 +23,7 @@ func is_multiplayer_session() -> bool:
 	return NakamaManager.is_server_connected()
 
 func enter_matchmaking() -> void:
+	current_ticket = null
 	print("[DEBUB] STARTING MATCHAMAKING")
 	var query = ""
 	var min_players = 2
@@ -41,7 +44,8 @@ func enter_matchmaking() -> void:
 		PopupManager.show_error("Erro no matchmaking: " + error)
 		return
 	
-	print("DEBUG - TENANDO ENCONTRAR")
+	current_ticket = ticket
+	$MatchmakingTimeoutTimer.start()
 	NakamaManager.socket.received_matchmaker_matched.connect(_on_matchmaker_matched)
 	
 func _on_matchmaker_matched(matchmaker_matched : NakamaRTAPI.MatchmakerMatched):
@@ -52,6 +56,7 @@ func _on_matchmaker_matched(matchmaker_matched : NakamaRTAPI.MatchmakerMatched):
 		PopupManager.show_error("Erro ao entrar na partida: " + error)
 		return
 	
+	$MatchmakingTimeoutTimer.stop()
 	NakamaManager.current_match = joinedMatch
 	if !is_receiver_connected:
 		NakamaManager.socket.received_match_state.connect(recive_data_from_nakama)
@@ -114,3 +119,11 @@ func send_data(data_type: String, data_value) -> void:
 func recive_data_from_nakama(state : NakamaRTAPI.MatchData) -> void:
 	var data = JSON.parse_string(state.data)
 	emit_signal("data_received", data)
+
+func _on_matchmaking_timeout_timer_timeout() -> void:
+	if current_ticket:
+		await NakamaManager.socket.remove_matchmaker_async(current_ticket.ticket)
+		current_ticket = null
+		emit_signal("cancel_matchmaking")
+	if NakamaManager.socket.received_matchmaker_matched.is_connected(_on_matchmaker_matched):
+		NakamaManager.socket.received_matchmaker_matched.disconnect(_on_matchmaker_matched)
