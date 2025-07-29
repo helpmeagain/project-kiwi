@@ -29,7 +29,7 @@ var POWERUP_CHOOSED = false
 
 func _ready() -> void:
 	load_next_exercise()
-	#try_restore_active_session()
+	await try_restore_active_session()
 	ui_elements.max_questions = max_questions
 	ui_elements.update_all_ui_components(score, question_count, double_points_active, extra_life_active)
 	ui_elements.start_multiplayer_exercise.connect(load_next_exercise)
@@ -48,15 +48,39 @@ func _process(_delta) -> void:
 	ui_elements.update_timer_label(exercises_timer.time_left)
 
 func try_restore_active_session() -> bool:
-	var saved_data = SaveManager.load_session(multiplayer_control.is_multiplayer_session())
-	
-	if saved_data["question_count"] > 0 && saved_data["question_count"] < max_questions:
-		score = saved_data["score"]
-		question_count = saved_data["question_count"]
-		double_points_active = saved_data["double_points_active"]
-		extra_life_active = saved_data["extra_life_active"]
-		timeout_occurred = false
-		return true
+	if multiplayer_control.is_multiplayer_session():
+		var result = await NakamaManager.client.read_storage_objects_async(
+			NakamaManager.session, 
+			[
+				NakamaStorageObjectId.new("saves", "savegame", NakamaManager.session.user_id)
+			]
+		)
+		
+		if result.is_exception():
+			print("Erro ao carregar sessão multiplayer: ", result.get_exception().message)
+			return false
+		
+		if result.objects.size() > 0:
+			var storage_object = result.objects[0]
+			var saved_data = JSON.parse_string(storage_object.value)
+			print("Dados multiplayer recuperados: ", saved_data)
+			if saved_data.has("question_count") && saved_data["question_count"] > 0 && saved_data["question_count"] < max_questions:
+				score = saved_data["score"] if saved_data.has("score") else 0
+				question_count = saved_data["question_count"]
+				double_points_active = saved_data["double_points_active"] if saved_data.has("double_points_active") else false
+				extra_life_active = saved_data["extra_life_active"] if saved_data.has("extra_life_active") else false
+				timeout_occurred = false
+				return true
+		return false
+	else:
+		var saved_data = SaveManager.load_session(false)
+		if saved_data["question_count"] > 0 && saved_data["question_count"] < max_questions:
+			score = saved_data["score"]
+			question_count = saved_data["question_count"]
+			double_points_active = saved_data["double_points_active"]
+			extra_life_active = saved_data["extra_life_active"]
+			timeout_occurred = false
+			return true
 	return false
 
 func _on_answer_correct(points: int = 1) -> void:
@@ -279,14 +303,28 @@ func _partner_left_match() -> void:
 		PopupManager.show_error("Seu parceiro saiu da partida.\nPrecisione 'ok' para procurar outro")
 
 func finish_game() -> void:
-	SaveManager.finish_session(multiplayer_control.is_multiplayer_session(), score)
+	delete_saved_session()
 	ui_elements.hide()
 	exercises_control.hide()
-#	TODO arrumar isso
 	$GameOverScreen/FinalLabel.text += str(score)
 	$GameOverScreen.show()
 
 func _save_session() -> void:
+	if (multiplayer_control.is_multiplayer_session()):
+		var saveGame = {
+			"score": int(score),
+			"question_count": int(question_count + 1),
+			"double_points_active": bool(double_points_active),
+			"extra_life_active": bool(extra_life_active)
+		}
+		var data = JSON.stringify(saveGame)
+		var result = await NakamaManager.client.write_storage_objects_async(NakamaManager.session, [
+			NakamaWriteStorageObject.new("saves", "savegame", 1, 1, data , "")
+		])
+		if result.is_exception():
+			print("error" + str(result))
+			return
+		print("Stored data successfully!")
 	SaveManager.save_session(
 		multiplayer_control.is_multiplayer_session(),
 		score,
@@ -294,6 +332,18 @@ func _save_session() -> void:
 		double_points_active,
 		extra_life_active
 	)
+
+func delete_saved_session() -> void:
+	if multiplayer_control.is_multiplayer_session():
+		var object_ids = [NakamaStorageObjectId.new("saves", "savegame", NakamaManager.session.user_id)]
+		var delete_result = await NakamaManager.client.delete_storage_objects_async(NakamaManager.session, object_ids)
+		
+		if delete_result.is_exception():
+			print("Erro ao deletar sessão multiplayer: ", delete_result.get_exception().message)
+		else:
+			print("Sessão multiplayer deletada com sucesso.")
+	else:
+		SaveManager.finish_session(multiplayer_control.is_multiplayer_session(), score)
 
 func _on_popup_button_pressed() -> void:
 	next_step_after_answer()
