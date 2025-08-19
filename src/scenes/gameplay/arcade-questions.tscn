@@ -68,7 +68,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_cdixn")
-max_questions = 30
 
 [node name="BackgroundImage" type="TextureRect" parent="."]
 modulate = Color(0.229112, 0.229112, 0.229112, 1)
@@ -273,7 +272,7 @@ mouse_filter = 2
 script = ExtResource("14_76bfv")
 
 [node name="MatchmakingTimeoutTimer" type="Timer" parent="MultiplayerControl"]
-wait_time = 60.0
+wait_time = 25.0
 one_shot = true
 
 [node name="ChatControl" type="Control" parent="."]

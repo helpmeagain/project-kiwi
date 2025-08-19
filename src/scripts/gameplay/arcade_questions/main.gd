@@ -11,7 +11,7 @@ extends Control
 
 @export var score: int = 0
 @export var question_count: int = 0
-@export var max_questions = 5
+@export var max_questions = 20
 @export var power_up_interval = 3
 @export var fill_in_the_blank_timer: float = 15.0
 @export var type_translation_timer: float = 30.0
@@ -224,7 +224,7 @@ func _on_partner_found() -> void:
 	
 func _on_cancel_matchmaking() -> void:
 	PopupManager.instance().ok_pressed.connect(_on_matchmaking_failed_popup_pressed, CONNECT_ONE_SHOT)
-	PopupManager.show_error("Não foi possível encontrar um parceiro a tempo. Próximo exercício será solo.")
+	PopupManager.show_custom("Aviso!","Não encontramos uma dupla dentro de 25 segundos. Não vamos perder tempo, próximo exercício será solo!")
 
 func _on_matchmaking_failed_popup_pressed() -> void:
 	exercises_control.show()
