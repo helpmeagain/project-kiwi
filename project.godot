@@ -11,8 +11,11 @@ config_version=5
 [application]
 
 config/name="Project Kiwi"
+config/description="Educational English-learning game, combining a narrative-driven story mode with an arcade-style multiplayer experience."
+config/version="1.0"
 run/main_scene="res://src/scenes/menus/main-menu.tscn"
 config/features=PackedStringArray("4.4", "Forward Plus")
+boot_splash/show_image=false
 config/icon="uid://c5t1l62hqp4x3"
 
 [audio]
@@ -92,6 +95,7 @@ glossary/glossary_files=["res://src/assets/dialogic/glossaries/english_glossary.
 
 [display]
 
+window/size/resizable=false
 window/subwindows/embed_subwindows=false
 window/stretch/aspect="expand"
 window/stretch/scale_mode="integer"

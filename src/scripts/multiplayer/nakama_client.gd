@@ -8,9 +8,9 @@ var button_pressed = 0
 
 func _ready():
 	#randomize()
-	ip_input.text = "127.0.0.1"
+	#ip_input.text = "127.0.0.1"
 	#ip_input.text = "192.168.1.1"
-	#ip_input.text = "172.16.10.1"
+	ip_input.text = "172.16.10.1"
 	user_control.profile_updated.connect(_on_profile_updated)
 	user_control.start_game.connect(start_game)
 	NakamaManager.socket_connected.connect(on_socket_connected)
