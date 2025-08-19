@@ -1,7 +1,7 @@
 [
   {
 	"id": "1",
-	"sentence": "I _ an apple yesterday",
+	"sentence": "I ___ an apple yesterday",
 	"correct_answers": ["ate"],
 	"options": [
 	  ["ate", "eat", "eaten", "eating"]
@@ -9,7 +9,7 @@
   },
   {
 	"id": "2",
-	"sentence": "She _ to the store yesterday",
+	"sentence": "She ___ to the store yesterday",
 	"correct_answers": ["went"],
 	"options": [
 	  ["goes", "went", "going", "gone"]
@@ -17,7 +17,7 @@
   },
   {
 	"id": "3",
-	"sentence": "They _ a movie last night",
+	"sentence": "They ___ a movie last night",
 	"correct_answers": ["saw"],
 	"options": [
 	  ["see", "saw", "seen", "seeing"]
@@ -25,7 +25,7 @@
   },
   {
 	"id": "4",
-	"sentence": "He _ his keys on the table",
+	"sentence": "He ___ his keys on the table",
 	"correct_answers": ["put"],
 	"options": [
 	  ["puts", "put", "putted", "putting"]
@@ -33,7 +33,7 @@
   },
   {
 	"id": "5",
-	"sentence": "We _ a new song yesterday",
+	"sentence": "We ___ a new song yesterday",
 	"correct_answers": ["heard"],
 	"options": [
 	  ["hear", "heard", "hears", "hearing"]
@@ -41,7 +41,7 @@
   },
   {
 	"id": "6",
-	"sentence": "I _ my homework before dinner",
+	"sentence": "I ___ my homework before dinner",
 	"correct_answers": ["did"],
 	"options": [
 	  ["do", "did", "done", "doing"]
@@ -49,7 +49,7 @@
   },
   {
 	"id": "7",
-	"sentence": "She _ her arm playing soccer",
+	"sentence": "She ___ her arm playing soccer",
 	"correct_answers": ["broke"],
 	"options": [
 	  ["break", "broke", "broken", "breaking"]
@@ -57,7 +57,7 @@
   },
   {
 	"id": "8",
-	"sentence": "They _ early this morning",
+	"sentence": "They ___ early this morning",
 	"correct_answers": ["woke"],
 	"options": [
 	  ["wake", "woke", "woken", "waking"]
@@ -65,7 +65,7 @@
   },
   {
 	"id": "9",
-	"sentence": "We _ a lot of fun at the party",
+	"sentence": "We ___ a lot of fun at the party",
 	"correct_answers": ["had"],
 	"options": [
 	  ["have", "had", "has", "having"]
@@ -73,7 +73,7 @@
   },
   {
 	"id": "10",
-	"sentence": "He _ me a gift for my birthday",
+	"sentence": "He ___ me a gift for my birthday",
 	"correct_answers": ["gave"],
 	"options": [
 	  ["give", "gave", "given", "giving"]
@@ -81,7 +81,7 @@
   },
   {
 	"id": "11",
-	"sentence": "She _ the letter carefully",
+	"sentence": "She ___ the letter carefully",
 	"correct_answers": ["read"],
 	"options": [
 	  ["reads", "read", "reading", "red"]
@@ -89,7 +89,7 @@
   },
   {
 	"id": "12",
-	"sentence": "The cat _ under the sofa",
+	"sentence": "The cat ___ under the sofa",
 	"correct_answers": ["hid"],
 	"options": [
 	  ["hide", "hid", "hidden", "hiding"]
@@ -97,7 +97,7 @@
   },
   {
 	"id": "13",
-	"sentence": "I _ my phone on the bus",
+	"sentence": "I ___ my phone on the bus",
 	"correct_answers": ["lost"],
 	"options": [
 	  ["lose", "lost", "loses", "losing"]
@@ -105,7 +105,7 @@
   },
   {
 	"id": "14",
-	"sentence": "He _ me at the airport",
+	"sentence": "He ___ me at the airport",
 	"correct_answers": ["met"],
 	"options": [
 	  ["meet", "met", "meeting", "meets"]
@@ -113,7 +113,7 @@
   },
   {
 	"id": "15",
-	"sentence": "They _ all the cookies",
+	"sentence": "They ___ all the cookies",
 	"correct_answers": ["ate"],
 	"options": [
 	  ["eat", "ate", "eaten", "eating"]
@@ -121,7 +121,7 @@
   },
   {
 	"id": "16",
-	"sentence": "She _ a red dress to the event",
+	"sentence": "She ___ a red dress to the event",
 	"correct_answers": ["wore"],
 	"options": [
 	  ["wear", "wore", "worn", "wearing"]
@@ -129,7 +129,7 @@
   },
   {
 	"id": "17",
-	"sentence": "We _ across the river by boat",
+	"sentence": "We ___ across the river by boat",
 	"correct_answers": ["rode"],
 	"options": [
 	  ["ride", "rode", "ridden", "riding"]
@@ -137,7 +137,7 @@
   },
   {
 	"id": "18",
-	"sentence": "He _ the answer immediately",
+	"sentence": "He ___ the answer immediately",
 	"correct_answers": ["knew"],
 	"options": [
 	  ["know", "knew", "known", "knowing"]
@@ -145,7 +145,7 @@
   },
   {
 	"id": "19",
-	"sentence": "I _ my ankle yesterday",
+	"sentence": "I ___ my ankle yesterday",
 	"correct_answers": ["sprained"],
 	"options": [
 	  ["sprain", "sprained", "sprains", "spraining"]
@@ -153,10 +153,1450 @@
   },
   {
 	"id": "20",
-	"sentence": "They _ a lot of money on the trip",
+	"sentence": "They ___ a lot of money on the trip",
 	"correct_answers": ["spent"],
 	"options": [
 	  ["spend", "spent", "spending", "spended"]
+	]
+  },
+  {
+	"id": "21",
+	"sentence": "We ___ the movie last night",
+	"correct_answers": ["watched"],
+	"options": [
+	  ["watch", "watched", "watching", "watches"]
+	]
+  },
+  {
+	"id": "22",
+	"sentence": "She ___ the door before leaving",
+	"correct_answers": ["closed"],
+	"options": [
+	  ["close", "closed", "closing", "closes"]
+	]
+  },
+  {
+	"id": "23",
+	"sentence": "He ___ his homework after dinner",
+	"correct_answers": ["finished"],
+	"options": [
+	  ["finish", "finished", "finishing", "finishes"]
+	]
+  },
+  {
+	"id": "24",
+	"sentence": "I ___ a letter to my friend yesterday",
+	"correct_answers": ["wrote"],
+	"options": [
+	  ["write", "wrote", "written", "writing"]
+	]
+  },
+  {
+	"id": "25",
+	"sentence": "They ___ late to the party",
+	"correct_answers": ["arrived"],
+	"options": [
+	  ["arrive", "arrived", "arriving", "arrives"]
+	]
+  },
+  {
+	"id": "26",
+	"sentence": "We ___ the car before the trip",
+	"correct_answers": ["washed"],
+	"options": [
+	  ["wash", "washed", "washing", "washes"]
+	]
+  },
+  {
+	"id": "27",
+	"sentence": "I ___ breakfast at 7 a.m.",
+	"correct_answers": ["had"],
+	"options": [
+	  ["have", "had", "having", "haves"]
+	]
+  },
+  {
+	"id": "28",
+	"sentence": "She ___ a new phone last week",
+	"correct_answers": ["bought"],
+	"options": [
+	  ["buy", "bought", "buying", "buys"]
+	]
+  },
+  {
+	"id": "29",
+	"sentence": "He ___ the ball into the goal",
+	"correct_answers": ["kicked"],
+	"options": [
+	  ["kick", "kicked", "kicking", "kicks"]
+	]
+  },
+  {
+	"id": "30",
+	"sentence": "We ___ our grandparents last summer",
+	"correct_answers": ["visited"],
+	"options": [
+	  ["visit", "visited", "visiting", "visits"]
+	]
+  },
+  {
+	"id": "31",
+	"sentence": "I ___ my keys on the table",
+	"correct_answers": ["left"],
+	"options": [
+	  ["leave", "left", "leaving", "leaves"]
+	]
+  },
+  {
+	"id": "32",
+	"sentence": "She ___ a cake for my birthday",
+	"correct_answers": ["made"],
+	"options": [
+	  ["make", "made", "making", "makes"]
+	]
+  },
+  {
+	"id": "33",
+	"sentence": "He ___ very fast in the race",
+	"correct_answers": ["ran"],
+	"options": [
+	  ["run", "ran", "running", "runs"]
+	]
+  },
+  {
+	"id": "34",
+	"sentence": "They ___ about the news yesterday",
+	"correct_answers": ["talked"],
+	"options": [
+	  ["talk", "talked", "talking", "talks"]
+	]
+  },
+  {
+	"id": "35",
+	"sentence": "I ___ a strange noise outside",
+	"correct_answers": ["heard"],
+	"options": [
+	  ["hear", "heard", "hearing", "hears"]
+	]
+  },
+  {
+	"id": "36",
+	"sentence": "She ___ her wallet on the bus",
+	"correct_answers": ["lost"],
+	"options": [
+	  ["lose", "lost", "losing", "loses"]
+	]
+  },
+  {
+	"id": "37",
+	"sentence": "We ___ a taxi to the airport",
+	"correct_answers": ["took"],
+	"options": [
+	  ["take", "took", "taken", "taking"]
+	]
+  },
+  {
+	"id": "38",
+	"sentence": "He ___ his shoes before entering",
+	"correct_answers": ["removed"],
+	"options": [
+	  ["remove", "removed", "removing", "removes"]
+	]
+  },
+  {
+	"id": "39",
+	"sentence": "I ___ a beautiful sunset yesterday",
+	"correct_answers": ["saw"],
+	"options": [
+	  ["see", "saw", "seen", "seeing"]
+	]
+  },
+  {
+	"id": "40",
+	"sentence": "They ___ to music all night",
+	"correct_answers": ["listened"],
+	"options": [
+	  ["listen", "listened", "listening", "listens"]
+	]
+  },
+{
+	"id": "41",
+	"sentence": "She ___ her car keys at home",
+	"correct_answers": ["forgot"],
+	"options": [
+	  ["forget", "forgot", "forgotten", "forgetting"]
+	]
+  },
+  {
+	"id": "42",
+	"sentence": "I ___ my room yesterday afternoon",
+	"correct_answers": ["cleaned"],
+	"options": [
+	  ["clean", "cleaned", "cleaning", "cleans"]
+	]
+  },
+  {
+	"id": "43",
+	"sentence": "We ___ pizza for dinner last night",
+	"correct_answers": ["ordered"],
+	"options": [
+	  ["order", "ordered", "ordering", "orders"]
+	]
+  },
+  {
+	"id": "44",
+	"sentence": "He ___ his phone at school",
+	"correct_answers": ["found"],
+	"options": [
+	  ["find", "found", "finding", "finds"]
+	]
+  },
+  {
+	"id": "45",
+	"sentence": "They ___ the match by two goals",
+	"correct_answers": ["won"],
+	"options": [
+	  ["win", "won", "winning", "wins"]
+	]
+  },
+  {
+	"id": "46",
+	"sentence": "I ___ my friend at the mall yesterday",
+	"correct_answers": ["met"],
+	"options": [
+	  ["meet", "met", "meeting", "meets"]
+	]
+  },
+  {
+	"id": "47",
+	"sentence": "She ___ the wrong train this morning",
+	"correct_answers": ["took"],
+	"options": [
+	  ["take", "took", "taken", "taking"]
+	]
+  },
+  {
+	"id": "48",
+	"sentence": "We ___ very tired after the long trip",
+	"correct_answers": ["felt"],
+	"options": [
+	  ["feel", "felt", "feeling", "feels"]
+	]
+  },
+  {
+	"id": "49",
+	"sentence": "He ___ his shoes before running",
+	"correct_answers": ["tied"],
+	"options": [
+	  ["tie", "tied", "tying", "ties"]
+	]
+  },
+  {
+	"id": "50",
+	"sentence": "I ___ home because it started raining",
+	"correct_answers": ["ran"],
+	"options": [
+	  ["run", "ran", "running", "runs"]
+	]
+  },
+  {
+	"id": "51",
+	"sentence": "They ___ a lot of photos on vacation",
+	"correct_answers": ["took"],
+	"options": [
+	  ["take", "took", "taken", "taking"]
+	]
+  },
+  {
+	"id": "52",
+	"sentence": "She ___ the answer after thinking hard",
+	"correct_answers": ["guessed"],
+	"options": [
+	  ["guess", "guessed", "guessing", "guesses"]
+	]
+  },
+  {
+	"id": "53",
+	"sentence": "I ___ a sandwich for lunch",
+	"correct_answers": ["made"],
+	"options": [
+	  ["make", "made", "making", "makes"]
+	]
+  },
+  {
+	"id": "54",
+	"sentence": "He ___ his coffee too quickly",
+	"correct_answers": ["drank"],
+	"options": [
+	  ["drink", "drank", "drunk", "drinking"]
+	]
+  },
+  {
+	"id": "55",
+	"sentence": "We ___ to Paris last summer",
+	"correct_answers": ["traveled"],
+	"options": [
+	  ["travel", "traveled", "traveling", "travels"]
+	]
+  },
+  {
+	"id": "56",
+	"sentence": "She ___ a beautiful dress to the party",
+	"correct_answers": ["wore"],
+	"options": [
+	  ["wear", "wore", "worn", "wearing"]
+	]
+  },
+  {
+	"id": "57",
+	"sentence": "I ___ my computer because it froze",
+	"correct_answers": ["restarted"],
+	"options": [
+	  ["restart", "restarted", "restarting", "restarts"]
+	]
+  },
+  {
+	"id": "58",
+	"sentence": "They ___ a movie together on Saturday",
+	"correct_answers": ["watched"],
+	"options": [
+	  ["watch", "watched", "watching", "watches"]
+	]
+  },
+  {
+	"id": "59",
+	"sentence": "He ___ the question easily",
+	"correct_answers": ["answered"],
+	"options": [
+	  ["answer", "answered", "answering", "answers"]
+	]
+  },
+  {
+	"id": "60",
+	"sentence": "We ___ very happy with the results",
+	"correct_answers": ["were"],
+	"options": [
+	  ["are", "was", "were", "being"]
+	]
+  },
+  {
+	"id": "61",
+	"sentence": "She ___ the guitar very well at the concert",
+	"correct_answers": ["played"],
+	"options": [
+	  ["play", "played", "playing", "plays"]
+	]
+  },
+  {
+	"id": "62",
+	"sentence": "I ___ my grandparents last weekend",
+	"correct_answers": ["visited"],
+	"options": [
+	  ["visit", "visited", "visiting", "visits"]
+	]
+  },
+  {
+	"id": "63",
+	"sentence": "He ___ his wallet at the restaurant",
+	"correct_answers": ["forgot"],
+	"options": [
+	  ["forget", "forgot", "forgotten", "forgetting"]
+	]
+  },
+  {
+	"id": "64",
+	"sentence": "They ___ at the hotel for three nights",
+	"correct_answers": ["stayed"],
+	"options": [
+	  ["stay", "stayed", "staying", "stays"]
+	]
+  },
+  {
+	"id": "65",
+	"sentence": "We ___ in the park yesterday afternoon",
+	"correct_answers": ["walked"],
+	"options": [
+	  ["walk", "walked", "walking", "walks"]
+	]
+  },
+  {
+	"id": "66",
+	"sentence": "I ___ my friend a birthday gift",
+	"correct_answers": ["gave"],
+	"options": [
+	  ["give", "gave", "given", "giving"]
+	]
+  },
+  {
+	"id": "67",
+	"sentence": "She ___ a glass of water",
+	"correct_answers": ["drank"],
+	"options": [
+	  ["drink", "drank", "drunk", "drinking"]
+	]
+  },
+  {
+	"id": "68",
+	"sentence": "He ___ his bike to school yesterday",
+	"correct_answers": ["rode"],
+	"options": [
+	  ["ride", "rode", "ridden", "riding"]
+	]
+  },
+  {
+	"id": "69",
+	"sentence": "We ___ our seats before the show started",
+	"correct_answers": ["found"],
+	"options": [
+	  ["find", "found", "finding", "finds"]
+	]
+  },
+  {
+	"id": "70",
+	"sentence": "They ___ a funny joke during class",
+	"correct_answers": ["told"],
+	"options": [
+	  ["tell", "told", "telling", "tells"]
+	]
+  },
+  {
+	"id": "71",
+	"sentence": "I ___ the floor because it was dirty",
+	"correct_answers": ["swept"],
+	"options": [
+	  ["sweep", "swept", "sweeping", "sweeps"]
+	]
+  },
+  {
+	"id": "72",
+	"sentence": "She ___ a lot of money last year",
+	"correct_answers": ["earned"],
+	"options": [
+	  ["earn", "earned", "earning", "earns"]
+	]
+  },
+  {
+	"id": "73",
+	"sentence": "He ___ very late last night",
+	"correct_answers": ["slept"],
+	"options": [
+	  ["sleep", "slept", "sleeping", "sleeps"]
+	]
+  },
+  {
+	"id": "74",
+	"sentence": "They ___ the door loudly when leaving",
+	"correct_answers": ["slammed"],
+	"options": [
+	  ["slam", "slammed", "slamming", "slams"]
+	]
+  },
+  {
+	"id": "75",
+	"sentence": "We ___ some friends at the cafe",
+	"correct_answers": ["saw"],
+	"options": [
+	  ["see", "saw", "seen", "seeing"]
+	]
+  },
+  {
+	"id": "76",
+	"sentence": "I ___ an interesting book last week",
+	"correct_answers": ["read"],
+	"options": [
+	  ["read", "read", "reading", "reads"]
+	]
+  },
+  {
+	"id": "77",
+	"sentence": "She ___ her shoes because they were dirty",
+	"correct_answers": ["cleaned"],
+	"options": [
+	  ["clean", "cleaned", "cleaning", "cleans"]
+	]
+  },
+  {
+	"id": "78",
+	"sentence": "He ___ the window because it was hot",
+	"correct_answers": ["opened"],
+	"options": [
+	  ["open", "opened", "opening", "opens"]
+	]
+  },
+  {
+	"id": "79",
+	"sentence": "They ___ the tickets online",
+	"correct_answers": ["booked"],
+	"options": [
+	  ["book", "booked", "booking", "books"]
+	]
+  },
+  {
+	"id": "80",
+	"sentence": "We ___ to the radio all morning",
+	"correct_answers": ["listened"],
+	"options": [
+	  ["listen", "listened", "listening", "listens"]
+	]
+  },
+  {
+	"id": "81",
+	"sentence": "I ___ my homework before dinner",
+	"correct_answers": ["did"],
+	"options": [
+	  ["do", "did", "done", "doing"]
+	]
+  },
+  {
+	"id": "82",
+	"sentence": "She ___ flowers in the garden",
+	"correct_answers": ["planted"],
+	"options": [
+	  ["plant", "planted", "planting", "plants"]
+	]
+  },
+  {
+	"id": "83",
+	"sentence": "He ___ the stairs quickly",
+	"correct_answers": ["climbed"],
+	"options": [
+	  ["climb", "climbed", "climbing", "climbs"]
+	]
+  },
+  {
+	"id": "84",
+	"sentence": "They ___ dinner together yesterday",
+	"correct_answers": ["cooked"],
+	"options": [
+	  ["cook", "cooked", "cooking", "cooks"]
+	]
+  },
+  {
+	"id": "85",
+	"sentence": "We ___ the documents carefully",
+	"correct_answers": ["checked"],
+	"options": [
+	  ["check", "checked", "checking", "checks"]
+	]
+  },
+  {
+	"id": "86",
+	"sentence": "I ___ the lights before going to bed",
+	"correct_answers": ["turned"],
+	"options": [
+	  ["turn", "turned", "turning", "turns"]
+	]
+  },
+  {
+	"id": "87",
+	"sentence": "She ___ very happy about the results",
+	"correct_answers": ["felt"],
+	"options": [
+	  ["feel", "felt", "feeling", "feels"]
+	]
+  },
+  {
+	"id": "88",
+	"sentence": "He ___ the floor with a mop",
+	"correct_answers": ["cleaned"],
+	"options": [
+	  ["clean", "cleaned", "cleaning", "cleans"]
+	]
+  },
+  {
+	"id": "89",
+	"sentence": "They ___ their bikes in the park",
+	"correct_answers": ["rode"],
+	"options": [
+	  ["ride", "rode", "ridden", "riding"]
+	]
+  },
+  {
+	"id": "90",
+	"sentence": "We ___ the wrong road by mistake",
+	"correct_answers": ["took"],
+	"options": [
+	  ["take", "took", "taken", "taking"]
+	]
+  },
+  {
+	"id": "91",
+	"sentence": "I ___ in the swimming pool yesterday",
+	"correct_answers": ["swam"],
+	"options": [
+	  ["swim", "swam", "swum", "swimming"]
+	]
+  },
+  {
+	"id": "92",
+	"sentence": "She ___ her favorite TV show last night",
+	"correct_answers": ["watched"],
+	"options": [
+	  ["watch", "watched", "watching", "watches"]
+	]
+  },
+  {
+	"id": "93",
+	"sentence": "He ___ a new pair of shoes yesterday",
+	"correct_answers": ["bought"],
+	"options": [
+	  ["buy", "bought", "buying", "buys"]
+	]
+  },
+  {
+	"id": "94",
+	"sentence": "They ___ very loudly during the movie",
+	"correct_answers": ["laughed"],
+	"options": [
+	  ["laugh", "laughed", "laughing", "laughs"]
+	]
+  },
+  {
+	"id": "95",
+	"sentence": "We ___ the game but it was canceled",
+	"correct_answers": ["planned"],
+	"options": [
+	  ["plan", "planned", "planning", "plans"]
+	]
+  },
+  {
+	"id": "96",
+	"sentence": "I ___ my glasses in the kitchen",
+	"correct_answers": ["left"],
+	"options": [
+	  ["leave", "left", "leaving", "leaves"]
+	]
+  },
+  {
+	"id": "97",
+	"sentence": "She ___ the invitation to the party",
+	"correct_answers": ["accepted"],
+	"options": [
+	  ["accept", "accepted", "accepting", "accepts"]
+	]
+  },
+  {
+	"id": "98",
+	"sentence": "He ___ the wrong answer in the test",
+	"correct_answers": ["wrote"],
+	"options": [
+	  ["write", "wrote", "written", "writing"]
+	]
+  },
+  {
+	"id": "99",
+	"sentence": "They ___ a surprise party for him",
+	"correct_answers": ["organized"],
+	"options": [
+	  ["organize", "organized", "organizing", "organizes"]
+	]
+  },
+  {
+	"id": "100",
+	"sentence": "We ___ a very nice restaurant downtown",
+	"correct_answers": ["found"],
+	"options": [
+	  ["find", "found", "finding", "finds"]
+	]
+  },
+ {
+	"id": "101",
+	"sentence": "I ___ my bike to school yesterday",
+	"correct_answers": ["rode"],
+	"options": [
+	  ["ride", "rode", "ridden", "riding"]
+	]
+  },
+  {
+	"id": "102",
+	"sentence": "She ___ a delicious cake for us",
+	"correct_answers": ["baked"],
+	"options": [
+	  ["bake", "baked", "baking", "bakes"]
+	]
+  },
+  {
+	"id": "103",
+	"sentence": "They ___ a new house last year",
+	"correct_answers": ["built"],
+	"options": [
+	  ["build", "built", "building", "builds"]
+	]
+  },
+  {
+	"id": "104",
+	"sentence": "He ___ the guitar for hours",
+	"correct_answers": ["played"],
+	"options": [
+	  ["play", "played", "playing", "plays"]
+	]
+  },
+  {
+	"id": "105",
+	"sentence": "We ___ in the ocean during summer",
+	"correct_answers": ["swam"],
+	"options": [
+	  ["swim", "swam", "swum", "swimming"]
+	]
+  },
+  {
+	"id": "106",
+	"sentence": "I ___ my best friend a postcard",
+	"correct_answers": ["sent"],
+	"options": [
+	  ["send", "sent", "sending", "sends"]
+	]
+  },
+  {
+	"id": "107",
+	"sentence": "She ___ her new shoes yesterday",
+	"correct_answers": ["wore"],
+	"options": [
+	  ["wear", "wore", "worn", "wearing"]
+	]
+  },
+  {
+	"id": "108",
+	"sentence": "He ___ the project successfully",
+	"correct_answers": ["completed"],
+	"options": [
+	  ["complete", "completed", "completing", "completes"]
+	]
+  },
+  {
+	"id": "109",
+	"sentence": "They ___ a lot of emails today",
+	"correct_answers": ["wrote"],
+	"options": [
+	  ["write", "wrote", "written", "writing"]
+	]
+  },
+  {
+	"id": "110",
+	"sentence": "We ___ very early to catch the bus",
+	"correct_answers": ["woke"],
+	"options": [
+	  ["wake", "woke", "woken", "waking"]
+	]
+  },
+  {
+	"id": "111",
+	"sentence": "I ___ my phone on the train",
+	"correct_answers": ["lost"],
+	"options": [
+	  ["lose", "lost", "losing", "loses"]
+	]
+  },
+  {
+	"id": "112",
+	"sentence": "She ___ coffee for everyone in the office",
+	"correct_answers": ["made"],
+	"options": [
+	  ["make", "made", "making", "makes"]
+	]
+  },
+  {
+	"id": "113",
+	"sentence": "He ___ the newspaper every morning",
+	"correct_answers": ["read"],
+	"options": [
+	  ["read", "read", "reading", "reads"]
+	]
+  },
+  {
+	"id": "114",
+	"sentence": "They ___ their grandparents last weekend",
+	"correct_answers": ["visited"],
+	"options": [
+	  ["visit", "visited", "visiting", "visits"]
+	]
+  },
+  {
+	"id": "115",
+	"sentence": "We ___ a taxi to the airport",
+	"correct_answers": ["took"],
+	"options": [
+	  ["take", "took", "taken", "taking"]
+	]
+  },
+  {
+	"id": "116",
+	"sentence": "I ___ my notebook at home",
+	"correct_answers": ["forgot"],
+	"options": [
+	  ["forget", "forgot", "forgotten", "forgetting"]
+	]
+  },
+  {
+	"id": "117",
+	"sentence": "She ___ the room because it was messy",
+	"correct_answers": ["cleaned"],
+	"options": [
+	  ["clean", "cleaned", "cleaning", "cleans"]
+	]
+  },
+  {
+	"id": "118",
+	"sentence": "He ___ too much sugar in his coffee",
+	"correct_answers": ["put"],
+	"options": [
+	  ["put", "puts", "putting", "putted"]
+	]
+  },
+  {
+	"id": "119",
+	"sentence": "They ___ to London for the holidays",
+	"correct_answers": ["flew"],
+	"options": [
+	  ["fly", "flew", "flown", "flying"]
+	]
+  },
+  {
+	"id": "120",
+	"sentence": "We ___ at the hotel near the beach",
+	"correct_answers": ["stayed"],
+	"options": [
+	  ["stay", "stayed", "staying", "stays"]
+	]
+  },
+  {
+	"id": "121",
+	"sentence": "I ___ the dishes after dinner",
+	"correct_answers": ["washed"],
+	"options": [
+	  ["wash", "washed", "washing", "washes"]
+	]
+  },
+  {
+	"id": "122",
+	"sentence": "She ___ the cat because it was hungry",
+	"correct_answers": ["fed"],
+	"options": [
+	  ["feed", "fed", "feeding", "feeds"]
+	]
+  },
+  {
+	"id": "123",
+	"sentence": "He ___ in the marathon last year",
+	"correct_answers": ["ran"],
+	"options": [
+	  ["run", "ran", "running", "runs"]
+	]
+  },
+  {
+	"id": "124",
+	"sentence": "They ___ the park in the afternoon",
+	"correct_answers": ["enjoyed"],
+	"options": [
+	  ["enjoy", "enjoyed", "enjoying", "enjoys"]
+	]
+  },
+  {
+	"id": "125",
+	"sentence": "We ___ the wrong password three times",
+	"correct_answers": ["typed"],
+	"options": [
+	  ["type", "typed", "typing", "types"]
+	]
+  },
+  {
+	"id": "126",
+	"sentence": "I ___ my favorite TV series last night",
+	"correct_answers": ["watched"],
+	"options": [
+	  ["watch", "watched", "watching", "watches"]
+	]
+  },
+  {
+	"id": "127",
+	"sentence": "She ___ the window because it was raining",
+	"correct_answers": ["closed"],
+	"options": [
+	  ["close", "closed", "closing", "closes"]
+	]
+  },
+  {
+	"id": "128",
+	"sentence": "He ___ his leg while playing football",
+	"correct_answers": ["broke"],
+	"options": [
+	  ["break", "broke", "broken", "breaking"]
+	]
+  },
+  {
+	"id": "129",
+	"sentence": "They ___ lunch at a new restaurant",
+	"correct_answers": ["had"],
+	"options": [
+	  ["have", "had", "having", "haves"]
+	]
+  },
+  {
+	"id": "130",
+	"sentence": "We ___ for an exam yesterday",
+	"correct_answers": ["studied"],
+	"options": [
+	  ["study", "studied", "studying", "studies"]
+	]
+  },
+  {
+	"id": "131",
+	"sentence": "I ___ my passport at the airport",
+	"correct_answers": ["showed"],
+	"options": [
+	  ["show", "showed", "showing", "shows"]
+	]
+  },
+  {
+	"id": "132",
+	"sentence": "She ___ her car because it broke down",
+	"correct_answers": ["sold"],
+	"options": [
+	  ["sell", "sold", "selling", "sells"]
+	]
+  },
+  {
+	"id": "133",
+	"sentence": "He ___ a funny story during dinner",
+	"correct_answers": ["told"],
+	"options": [
+	  ["tell", "told", "telling", "tells"]
+	]
+  },
+  {
+	"id": "134",
+	"sentence": "They ___ their exams last week",
+	"correct_answers": ["passed"],
+	"options": [
+	  ["pass", "passed", "passing", "passes"]
+	]
+  },
+  {
+	"id": "135",
+	"sentence": "We ___ a surprise party for him",
+	"correct_answers": ["organized"],
+	"options": [
+	  ["organize", "organized", "organizing", "organizes"]
+	]
+  },
+  {
+	"id": "136",
+	"sentence": "I ___ my favorite song yesterday",
+	"correct_answers": ["sang"],
+	"options": [
+	  ["sing", "sang", "sung", "singing"]
+	]
+  },
+  {
+	"id": "137",
+	"sentence": "She ___ the bus because she was late",
+	"correct_answers": ["missed"],
+	"options": [
+	  ["miss", "missed", "missing", "misses"]
+	]
+  },
+  {
+	"id": "138",
+	"sentence": "He ___ his bed before leaving the house",
+	"correct_answers": ["made"],
+	"options": [
+	  ["make", "made", "making", "makes"]
+	]
+  },
+  {
+	"id": "139",
+	"sentence": "They ___ for hours under the rain",
+	"correct_answers": ["waited"],
+	"options": [
+	  ["wait", "waited", "waiting", "waits"]
+	]
+  },
+  {
+	"id": "140",
+	"sentence": "We ___ a big breakfast this morning",
+	"correct_answers": ["had"],
+	"options": [
+	  ["have", "had", "having", "haves"]
+	]
+  },
+  {
+	"id": "141",
+	"sentence": "I ___ my laptop because it was slow",
+	"correct_answers": ["restarted"],
+	"options": [
+	  ["restart", "restarted", "restarting", "restarts"]
+	]
+  },
+  {
+	"id": "142",
+	"sentence": "She ___ very sad when she heard the news",
+	"correct_answers": ["felt"],
+	"options": [
+	  ["feel", "felt", "feeling", "feels"]
+	]
+  },
+  {
+	"id": "143",
+	"sentence": "He ___ his hands before lunch",
+	"correct_answers": ["washed"],
+	"options": [
+	  ["wash", "washed", "washing", "washes"]
+	]
+  },
+  {
+	"id": "144",
+	"sentence": "They ___ a lot during the trip",
+	"correct_answers": ["talked"],
+	"options": [
+	  ["talk", "talked", "talking", "talks"]
+	]
+  },
+  {
+	"id": "145",
+	"sentence": "We ___ our friends for dinner yesterday",
+	"correct_answers": ["invited"],
+	"options": [
+	  ["invite", "invited", "inviting", "invites"]
+	]
+  },
+  {
+	"id": "146",
+	"sentence": "I ___ the game until midnight",
+	"correct_answers": ["played"],
+	"options": [
+	  ["play", "played", "playing", "plays"]
+	]
+  },
+  {
+	"id": "147",
+	"sentence": "She ___ the news to everyone",
+	"correct_answers": ["shared"],
+	"options": [
+	  ["share", "shared", "sharing", "shares"]
+	]
+  },
+  {
+	"id": "148",
+	"sentence": "He ___ a message to his teacher",
+	"correct_answers": ["sent"],
+	"options": [
+	  ["send", "sent", "sending", "sends"]
+	]
+  },
+  {
+	"id": "149",
+	"sentence": "They ___ very tired after hiking all day",
+	"correct_answers": ["were"],
+	"options": [
+	  ["are", "was", "were", "being"]
+	]
+  },
+  {
+	"id": "150",
+	"sentence": "We ___ a beautiful rainbow after the rain",
+	"correct_answers": ["saw"],
+	"options": [
+	  ["see", "saw", "seen", "seeing"]
+	]
+  },
+  {
+	"id": "151",
+	"sentence": "I ___ my cousin at the shopping mall",
+	"correct_answers": ["met"],
+	"options": [
+	  ["meet", "met", "meeting", "meets"]
+	]
+  },
+  {
+	"id": "152",
+	"sentence": "She ___ the lamp because it was broken",
+	"correct_answers": ["fixed"],
+	"options": [
+	  ["fix", "fixed", "fixing", "fixes"]
+	]
+  },
+  {
+	"id": "153",
+	"sentence": "He ___ his jacket because it was cold",
+	"correct_answers": ["wore"],
+	"options": [
+	  ["wear", "wore", "worn", "wearing"]
+	]
+  },
+  {
+	"id": "154",
+	"sentence": "They ___ their parents a present",
+	"correct_answers": ["gave"],
+	"options": [
+	  ["give", "gave", "given", "giving"]
+	]
+  },
+  {
+	"id": "155",
+	"sentence": "We ___ the meeting earlier than expected",
+	"correct_answers": ["started"],
+	"options": [
+	  ["start", "started", "starting", "starts"]
+	]
+  },
+  {
+	"id": "156",
+	"sentence": "I ___ my teacher a question after class",
+	"correct_answers": ["asked"],
+	"options": [
+	  ["ask", "asked", "asking", "asks"]
+	]
+  },
+  {
+	"id": "157",
+	"sentence": "She ___ a new laptop last week",
+	"correct_answers": ["bought"],
+	"options": [
+	  ["buy", "bought", "buying", "buys"]
+	]
+  },
+  {
+	"id": "158",
+	"sentence": "He ___ to the wrong address by mistake",
+	"correct_answers": ["went"],
+	"options": [
+	  ["go", "went", "gone", "going"]
+	]
+  },
+  {
+	"id": "159",
+	"sentence": "They ___ a campfire by the lake",
+	"correct_answers": ["built"],
+	"options": [
+	  ["build", "built", "building", "builds"]
+	]
+  },
+  {
+	"id": "160",
+	"sentence": "We ___ a lot of fun at the festival",
+	"correct_answers": ["had"],
+	"options": [
+	  ["have", "had", "having", "haves"]
+	]
+  },
+  {
+	"id": "161",
+	"sentence": "I ___ the report before the deadline",
+	"correct_answers": ["finished"],
+	"options": [
+	  ["finish", "finished", "finishing", "finishes"]
+	]
+  },
+  {
+	"id": "162",
+	"sentence": "She ___ her best dress for the event",
+	"correct_answers": ["chose"],
+	"options": [
+	  ["choose", "chose", "chosen", "choosing"]
+	]
+  },
+  {
+	"id": "163",
+	"sentence": "He ___ an amazing story yesterday",
+	"correct_answers": ["heard"],
+	"options": [
+	  ["hear", "heard", "hearing", "hears"]
+	]
+  },
+  {
+	"id": "164",
+	"sentence": "They ___ a taxi because it was raining",
+	"correct_answers": ["called"],
+	"options": [
+	  ["call", "called", "calling", "calls"]
+	]
+  },
+  {
+	"id": "165",
+	"sentence": "We ___ the door to keep the noise out",
+	"correct_answers": ["closed"],
+	"options": [
+	  ["close", "closed", "closing", "closes"]
+	]
+  },
+  {
+	"id": "166",
+	"sentence": "I ___ my phone bill online yesterday",
+	"correct_answers": ["paid"],
+	"options": [
+	  ["pay", "paid", "paying", "pays"]
+	]
+  },
+  {
+	"id": "167",
+	"sentence": "She ___ very nervous before the exam",
+	"correct_answers": ["felt"],
+	"options": [
+	  ["feel", "felt", "feeling", "feels"]
+	]
+  },
+  {
+	"id": "168",
+	"sentence": "He ___ his favorite book last night",
+	"correct_answers": ["read"],
+	"options": [
+	  ["read", "read", "reading", "reads"]
+	]
+  },
+  {
+	"id": "169",
+	"sentence": "They ___ a dog when they moved to the farm",
+	"correct_answers": ["adopted"],
+	"options": [
+	  ["adopt", "adopted", "adopting", "adopts"]
+	]
+  },
+  {
+	"id": "170",
+	"sentence": "We ___ a storm on our way home",
+	"correct_answers": ["faced"],
+	"options": [
+	  ["face", "faced", "facing", "faces"]
+	]
+  },
+  {
+	"id": "171",
+	"sentence": "I ___ very hungry after the workout",
+	"correct_answers": ["was"],
+	"options": [
+	  ["is", "was", "were", "being"]
+	]
+  },
+  {
+	"id": "172",
+	"sentence": "She ___ the password three times",
+	"correct_answers": ["typed"],
+	"options": [
+	  ["type", "typed", "typing", "types"]
+	]
+  },
+  {
+	"id": "173",
+	"sentence": "He ___ his hair shorter than usual",
+	"correct_answers": ["cut"],
+	"options": [
+	  ["cut", "cutting", "cuts", "cutted"]
+	]
+  },
+  {
+	"id": "174",
+	"sentence": "They ___ the mountain last summer",
+	"correct_answers": ["climbed"],
+	"options": [
+	  ["climb", "climbed", "climbing", "climbs"]
+	]
+  },
+  {
+	"id": "175",
+	"sentence": "We ___ each other at the supermarket",
+	"correct_answers": ["saw"],
+	"options": [
+	  ["see", "saw", "seen", "seeing"]
+	]
+  },
+  {
+	"id": "176",
+	"sentence": "I ___ the letter in the mailbox",
+	"correct_answers": ["put"],
+	"options": [
+	  ["put", "puts", "putting", "putted"]
+	]
+  },
+  {
+	"id": "177",
+	"sentence": "She ___ all the lights before leaving",
+	"correct_answers": ["turned"],
+	"options": [
+	  ["turn", "turned", "turning", "turns"]
+	]
+  },
+  {
+	"id": "178",
+	"sentence": "He ___ his shoes on the balcony to dry",
+	"correct_answers": ["left"],
+	"options": [
+	  ["leave", "left", "leaving", "leaves"]
+	]
+  },
+  {
+	"id": "179",
+	"sentence": "They ___ the museum on Saturday",
+	"correct_answers": ["visited"],
+	"options": [
+	  ["visit", "visited", "visiting", "visits"]
+	]
+  },
+  {
+	"id": "180",
+	"sentence": "We ___ a lot of homework yesterday",
+	"correct_answers": ["did"],
+	"options": [
+	  ["do", "did", "done", "doing"]
+	]
+  },
+  {
+	"id": "181",
+	"sentence": "I ___ the wrong bus this morning",
+	"correct_answers": ["took"],
+	"options": [
+	  ["take", "took", "taken", "taking"]
+	]
+  },
+  {
+	"id": "182",
+	"sentence": "She ___ the tickets in advance",
+	"correct_answers": ["booked"],
+	"options": [
+	  ["book", "booked", "booking", "books"]
+	]
+  },
+  {
+	"id": "183",
+	"sentence": "He ___ his coffee without sugar",
+	"correct_answers": ["drank"],
+	"options": [
+	  ["drink", "drank", "drunk", "drinking"]
+	]
+  },
+  {
+	"id": "184",
+	"sentence": "They ___ the painting on the wall",
+	"correct_answers": ["hung"],
+	"options": [
+	  ["hang", "hung", "hanging", "hangs"]
+	]
+  },
+  {
+	"id": "185",
+	"sentence": "We ___ the room because it was too hot",
+	"correct_answers": ["left"],
+	"options": [
+	  ["leave", "left", "leaving", "leaves"]
+	]
+  },
+  {
+	"id": "186",
+	"sentence": "I ___ my shoes before entering the house",
+	"correct_answers": ["removed"],
+	"options": [
+	  ["remove", "removed", "removing", "removes"]
+	]
+  },
+  {
+	"id": "187",
+	"sentence": "She ___ a great book about history",
+	"correct_answers": ["read"],
+	"options": [
+	  ["read", "read", "reading", "reads"]
+	]
+  },
+  {
+	"id": "188",
+	"sentence": "He ___ the door when he heard the noise",
+	"correct_answers": ["opened"],
+	"options": [
+	  ["open", "opened", "opening", "opens"]
+	]
+  },
+  {
+	"id": "189",
+	"sentence": "They ___ a lot of presents for Christmas",
+	"correct_answers": ["received"],
+	"options": [
+	  ["receive", "received", "receiving", "receives"]
+	]
+  },
+  {
+	"id": "190",
+	"sentence": "We ___ late because of the traffic",
+	"correct_answers": ["arrived"],
+	"options": [
+	  ["arrive", "arrived", "arriving", "arrives"]
+	]
+  },
+  {
+	"id": "191",
+	"sentence": "I ___ a new app on my phone yesterday",
+	"correct_answers": ["installed"],
+	"options": [
+	  ["install", "installed", "installing", "installs"]
+	]
+  },
+  {
+	"id": "192",
+	"sentence": "She ___ very angry when she saw the mess",
+	"correct_answers": ["got"],
+	"options": [
+	  ["get", "got", "gotten", "getting"]
+	]
+  },
+  {
+	"id": "193",
+	"sentence": "He ___ the wrong number by mistake",
+	"correct_answers": ["dialed"],
+	"options": [
+	  ["dial", "dialed", "dialing", "dials"]
+	]
+  },
+  {
+	"id": "194",
+	"sentence": "They ___ a movie at the cinema",
+	"correct_answers": ["watched"],
+	"options": [
+	  ["watch", "watched", "watching", "watches"]
+	]
+  },
+  {
+	"id": "195",
+	"sentence": "We ___ the final results yesterday",
+	"correct_answers": ["knew"],
+	"options": [
+	  ["know", "knew", "known", "knowing"]
+	]
+  },
+  {
+	"id": "196",
+	"sentence": "I ___ a message to my mom",
+	"correct_answers": ["sent"],
+	"options": [
+	  ["send", "sent", "sending", "sends"]
+	]
+  },
+  {
+	"id": "197",
+	"sentence": "She ___ all her old clothes last week",
+	"correct_answers": ["donated"],
+	"options": [
+	  ["donate", "donated", "donating", "donates"]
+	]
+  },
+  {
+	"id": "198",
+	"sentence": "He ___ his shoes at the store nearby",
+	"correct_answers": ["bought"],
+	"options": [
+	  ["buy", "bought", "buying", "buys"]
+	]
+  },
+  {
+	"id": "199",
+	"sentence": "They ___ the windows because it was sunny",
+	"correct_answers": ["opened"],
+	"options": [
+	  ["open", "opened", "opening", "opens"]
+	]
+  },
+  {
+	"id": "200",
+	"sentence": "We ___ the plants twice last week",
+	"correct_answers": ["watered"],
+	"options": [
+	  ["water", "watered", "watering", "waters"]
 	]
   }
 ]

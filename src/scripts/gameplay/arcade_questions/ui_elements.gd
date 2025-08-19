@@ -27,16 +27,23 @@ func update_powerup_icons(is_double_points_active: bool, is_extra_chance_active:
 	$PowerUpContainer/ExtraChanceIcon.visible = is_extra_chance_active
 
 func show_matchmaking_screen() -> void:
-	$MatchmakingControl/MultiplayerWarningLabel.text = "A próxima questão será jogada junto a outro jogador!"
+	$MatchmakingControl/MultiplayerWarningLabel.text = "A próxima questão será jogada em dupla!"
 	$MatchmakingControl/MatchmakingLabel.text = "Procurando outro jogador..."
+	$TimerLabel.hide()
+	$QuestionCountLabel.hide()
 	$MatchmakingControl/LoadingSprite.play()
 	$MatchmakingControl/LoadingSprite.show()
 	$MatchmakingControl.show()
 	matchmaking_countdown = COUNTDOWN_DEFAULT_VALUE
 
+func hide_matchmaking_screen() -> void:
+	$MatchmakingControl/LoadingSprite.stop()
+	$TimerLabel.show()
+	$QuestionCountLabel.show()
+	$MatchmakingControl.hide()
+
 func update_partner_found(partner_name: String) -> void:
-	print("[NAKAMA DEBUG] ATUALIZOU UI!")
-	$MatchmakingControl/MultiplayerWarningLabel.text = "Encontrou o parceiro " + partner_name + "!"
+	$MatchmakingControl/MultiplayerWarningLabel.text = "Encontrou " + partner_name + "!"
 	$MatchmakingControl/MatchmakingLabel.text = "Iniciando em " + str(matchmaking_countdown) + "..."
 	$MatchmakingControl/MatchmakingTimer.start()
 	$MatchmakingControl/LoadingSprite.stop()
@@ -49,6 +56,8 @@ func _on_matchmaking_timer_timeout() -> void:
 	else:
 		$MatchmakingControl/MatchmakingTimer.stop()
 		$MatchmakingControl.hide()
+		$TimerLabel.show()
+		$QuestionCountLabel.show()
 		emit_signal("start_multiplayer_exercise")
 	
 func hide_leaderboard() -> void:
