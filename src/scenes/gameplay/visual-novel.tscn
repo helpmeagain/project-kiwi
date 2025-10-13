@@ -23,15 +23,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="BlackBackground" type="ColorRect" parent="BackgroundControl"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0, 0, 0, 1)
-
 [node name="ImageBackground" type="TextureRect" parent="BackgroundControl"]
 layout_mode = 1
 anchors_preset = 15
@@ -39,10 +30,9 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(0.65, 0.65)
-pivot_offset = Vector2(960, 540)
 texture = ExtResource("1_w3pjf")
-stretch_mode = 5
+expand_mode = 1
+stretch_mode = 6
 script = ExtResource("2_x8kxx")
 
 [node name="QuestionsControl" type="Control" parent="."]
@@ -110,8 +100,8 @@ vertical_alignment = 1
 custom_minimum_size = Vector2(0, 65)
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.517647)
-theme_override_font_sizes/font_size = 30
+theme_override_fonts/font = ExtResource("3_jbmyh")
+theme_override_font_sizes/font_size = 48
 text = "Try again"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -182,17 +172,20 @@ text = "Continuar"
 
 [node name="EndGameControl" type="Control" parent="."]
 visible = false
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="EndGameScreen" type="ColorRect" parent="EndGameControl"]
-layout_mode = 0
-offset_left = -14.0
-offset_top = -23.0
-offset_right = 1166.0
-offset_bottom = 660.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 theme = ExtResource("2_yye55")
 color = Color(0, 0, 0, 1)
 

@@ -10,7 +10,7 @@ func _ready():
 	#randomize()
 	#ip_input.text = "127.0.0.1"
 	#ip_input.text = "192.168.1.1"
-	ip_input.text = "172.16.10.1"
+	ip_input.text = ""
 	user_control.profile_updated.connect(_on_profile_updated)
 	user_control.start_game.connect(start_game)
 	NakamaManager.socket_connected.connect(on_socket_connected)
@@ -42,11 +42,38 @@ func start_game() -> void:
 	get_tree().change_scene_to_file("res://src/scenes/gameplay/arcade-questions.tscn")
 
 func _parse_ip_and_port(input_text: String, default_port: int = 7350) -> Dictionary:
-	var parts = input_text.strip_edges().split(":")
-	var ip = parts[0]
-	var port = default_port
+	var text := input_text.strip_edges()
+
+	for prefix in ["http://", "https://", "ws://", "wss://"]:
+		if text.begins_with(prefix):
+			text = text.replace(prefix, "")
+			break
+
+	var ip := ""
+	var port := default_port
+
+	var parts := text.split(":")
 	if parts.size() > 1:
-		port = int(parts[1])
+		ip = parts[0]
+		var port_candidate := parts[1]
+		if port_candidate.is_valid_int():
+			port = int(port_candidate)
+	else:
+		ip = text
+
+	var ip_regex := RegEx.new()
+	ip_regex.compile("^\\d{1,3}(\\.\\d{1,3}){3}$")
+
+	if not ip_regex.search(ip):
+		print("[DEBUG] Hostname detectado, usando sem parse: ", ip)
+		return { "ip": ip, "port": port }
+
+	for segment in ip.split("."):
+		var num = int(segment)
+		if num < 0 or num > 255:
+			print("[DEBUG] IP inválido, tratando como hostname: ", ip)
+			return { "ip": input_text, "port": port }
+
 	return { "ip": ip, "port": port }
 
 func on_socket_connected():

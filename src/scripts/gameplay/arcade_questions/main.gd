@@ -310,13 +310,15 @@ func finish_game() -> void:
 	ui_elements.hide()
 	exercises_control.hide()
 	$GameOverScreen/FinalLabel.text += str(score)
+	if (multiplayer_control.is_multiplayer_session()):
+		player_score.position = Vector2(413,142)
+		player_score.set_anchors_preset(Control.PRESET_CENTER)
+		player_score.show()
+		while(true):
+			multiplayer_control.get_leaderboard_nakama()
+	else:
+		$GameOverScreen/VBoxContainer.show()
 	$GameOverScreen.show()
-	player_score.position = Vector2(413,142)
-	player_score.set_anchors_preset(Control.PRESET_CENTER)
-	player_score.show()
-	while(true):
-		multiplayer_control.get_leaderboard_nakama()
-		await get_tree().create_timer(5.0).timeout
 
 func _save_session() -> void:
 	if (multiplayer_control.is_multiplayer_session()):

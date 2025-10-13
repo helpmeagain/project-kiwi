@@ -95,10 +95,11 @@ glossary/glossary_files=["res://src/assets/dialogic/glossaries/english_glossary.
 
 [display]
 
-window/size/resizable=false
+window/size/viewport_width=1280
+window/size/viewport_height=720
 window/subwindows/embed_subwindows=false
+window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
-window/stretch/scale_mode="integer"
 window/per_pixel_transparency/allowed=true
 
 [editor_plugins]
